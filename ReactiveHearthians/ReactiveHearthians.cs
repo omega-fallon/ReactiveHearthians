@@ -1,4 +1,4 @@
-﻿// THANKS TO: Xen, Lutias Kokopelli, Ixrec, viovayo
+﻿// THANKS TO: Xen, Lutias Kokopelli, Ixrec, viovayo, Magister Dragon
 
 // TODO LIST:
 // Hearthians turn to face the boom and seem horrified

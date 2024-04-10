@@ -31,7 +31,7 @@
 		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
 		<Dialogue>
 			<Page>The sun isn't supposed to be that red, or that big. It's back past the village now, but I saw it.</Page>
-			<Page>hatchling, as the mayor, I need to know: what's going on?</Page>
+			<Page>Hatchling, as the mayor, I need to know: what's going on?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
@@ -51,7 +51,7 @@
 		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>The sun isn't supposed to be that red, or that big.</Page>
-			<Page>hatchling, as the mayor, I need to know: what's going on?</Page>
+			<Page>Hatchling, as the mayor, I need to know: what's going on?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>

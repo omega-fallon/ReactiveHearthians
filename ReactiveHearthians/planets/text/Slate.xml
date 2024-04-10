@@ -110,8 +110,18 @@
 		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Oh.</Page>
-			<Page>hatchling… I don't think we have much time left.</Page>
+			<Page>Hatchling… I don't think we have much time left.</Page>
 			<Page>Just… sit here by the fire with me, okay? It'll be alright.</Page>
+		</Dialogue>
+		<SetCondition>SCIENTIST_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_BoomDistraught</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>SCIENTIST_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			<Page>Gah! Oh, hatchling, you were right. You were right… why?!</Page>
+			<Page>It's… it's fine. It'll be fine, just… just sit here by the fire with me, okay? It'll be alright.</Page>
 		</Dialogue>
 		<SetCondition>SCIENTIST_SILENT</SetCondition>
 	</DialogueNode>
