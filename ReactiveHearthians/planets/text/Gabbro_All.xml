@@ -1,0 +1,196 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>FoundSomethingMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER</CancelledPersistentCondition>
+				<RequiredLogCondition>IP_RING_WORLD_X1</RequiredLogCondition>
+				<Text>I found a hidden planet!</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Discover</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER</RequiredPersistentCondition>
+				<RequiredCondition>CUSTOM_CONDITION_GABBRO_STRANGER_SOMETHINGNEW</RequiredCondition>
+				<Text>I found out something new about the Stranger.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Additional</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Discover</Name>
+		<Dialogue>
+			<Page>Whoa! Huh, I guess that anomaly Hornfels sent me out to investigate was a real anomaly after all!</Page>
+			<Page>Well, never let it be said that I can't admit when I'm wrong. Especially when being wrong means something so cool!</Page>
+			<Page>And you call it "The Stranger", huh... well, I'm hooked! Come on, time bud, tell me more!</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Additional</Name>
+		<Dialogue>
+			<Page>Ooh! Lay it on me, bud!</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_RING</CancelledPersistentCondition>
+				<Text>It's a ring world! It's just one big loop!</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Ring</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_INHABITANTS</CancelledPersistentCondition>
+				<Text>The aliens that lived in it look really... weird.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Inhabitants</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGER_EYE</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_EYE</CancelledPersistentCondition>
+				<Text>Its inhabitants had some ties to the Eye of the Universe.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Eye</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGERLANTERNHELD</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_LANTERN</CancelledPersistentCondition>
+				<Text>I found this thing inside it.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGER_DREAMWORLD</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
+				<Text>Its inhabitants have access to some kind of... dream world. I've been there.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>IP_SARCOPHAGUS_X5</RequiredLogCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_PRISONER</CancelledPersistentCondition>
+				<Text>I found a prisoner of theirs locked up in the dream world.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nevermind, sorry.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Nevermind</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_WhatElse</Name>
+		<Dialogue>
+			<Page>Anything else?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_RING</CancelledPersistentCondition>
+				<Text>It's a ring world! It's just one big loop!</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Ring</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_INHABITANTS</CancelledPersistentCondition>
+				<Text>The aliens that lived in it look really... weird.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Inhabitants</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGER_EYE</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_EYE</CancelledPersistentCondition>
+				<Text>Its inhabitants had some ties to the Eye of the Universe.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Eye</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGERLANTERNHELD</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_LANTERN</CancelledPersistentCondition>
+				<Text>I found this thing inside it.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_STRANGER_DREAMWORLD</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
+				<Text>Its inhabitants have access to some kind of... dream world. I've been there.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>IP_SARCOPHAGUS_X5</RequiredLogCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_PRISONER</CancelledPersistentCondition>
+				<Text>I found a prisoner of theirs locked up in the dream world.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>That's actually all I know...</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_ThatIsAll</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_ThatIsAll</Name>
+		<Dialogue>
+			<Page>Well, there's only one way to go fix that, pal. Go out there and check it out some more! Come on, what've you got to be afraid of?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Nevermind</Name>
+		<Dialogue>
+			<Page>That's alright. Let me know when you find something cool, though. You know where to find me.</Page>
+		</Dialogue>
+	</DialogueNode>
+	
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Ring</Name>
+		<Dialogue>
+			<Page>A ring world, huh... imagine being able to look up and see the other side of the world.</Page>
+			<Page>Sounds kind of terrifying, honestly. You wouldn't be able to have any privacy. People could always see where you are all the time...</Page>
+			<Page>Heh... fitting that it'd be in a <![CDATA[<i>loop</i>]]> of all shapes.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_RING</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Inhabitants</Name>
+		<Dialogue>
+			<Page>Hmm... big antlers like the Nomai, but with... weird fuzz on their bodies? Like... fluffy scales? Wow, that's <![CDATA[<i>weird</i>]]> weird!</Page>
+			<Page>Honestly, it kind of makes me want to go out and pet one of them. ...Assuming they're friendly, of course.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_INHABITANTS</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Eye</Name>
+		<Dialogue>
+			<Page>Did they now? I'll be honest, that's never really been my area of expertise. I don't know much about it other than that the Nomai were looking for it.</Page>
+			<Page>And... I guess now we can probably say <![CDATA[<i>they</i>]]> were looking for it, too. I wonder if any other alien races came looking after the Eye? Did any of them ever find it?</Page>
+			<Page>Mmm. I think you've given me a lot to consider with that one, time bud.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_EYE</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Lantern</Name>
+		<Dialogue>
+			<Page>Mmm... interesting. I'm no archaeologist, but that kind of looks like a lantern of some kind.</Page>
+			<Page>No idea how it would burn, though. Maybe you need some special alien lantern oil... or some kind of special alien flame.</Page>
+			<Page>Something to look into, I guess.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_LANTERN</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_DreamWorld</Name>
+		<Dialogue>
+			<Page>A... dream world? Gosh, the more you tell me about this place the more I want to go there! So all the Stranger's inhabitants aren't actually dead, they're just living in some dream world...</Page>
+			<Page>I wonder how <![CDATA[<i>that</i>]]> works. I mean, I've never been one to believe in magic... but that <![CDATA[<i>really</i>]]> sounds like magic to me.</Page>
+			<Page>Well, I'm looking forward to when you get to the bottom of it.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Prisoner</Name>
+		<Dialogue>
+			<Page>...Mmm. I feel bad for them. I can't imagine being locked up for Hearth-knows-how-long with nobody to talk to and nothing to do.</Page>
+			<Page>I guess this time loop is its own sort of prison, but at least we're not alone, right? That prisoner guy, they had no-one at all...</Page>
+			<Page>Ah... ahem. Sorry, just got kind of emotional about that for some reason. I'm glad you let them out. Even if it was just for one loop.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_PRISONER</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+</DialogueTree>

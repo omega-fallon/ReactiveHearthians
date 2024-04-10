@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHearthians", "ReactiveHearthians\ReactiveHearthians.csproj", "{1A045B2C-D036-4C8F-91F2-DB31D46701CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A045B2C-D036-4C8F-91F2-DB31D46701CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A045B2C-D036-4C8F-91F2-DB31D46701CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A045B2C-D036-4C8F-91F2-DB31D46701CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A045B2C-D036-4C8F-91F2-DB31D46701CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A6CB34A-5DF3-4EC6-9CF3-3F3CE38C305D}
+	EndGlobalSection
+EndGlobal

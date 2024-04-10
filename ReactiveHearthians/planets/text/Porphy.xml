@@ -1,0 +1,97 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Porphy_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Whoa there, astronaut! I see your litle space adventure has already gotten you some nice treasure.</Page>
+			<Page>Well, you know what Hornfels says. “It belongs in a museum” and whatnot.</Page>
+			<Page>But I won't tell anyone if you decide to keep it, heheh.</Page>
+		</Dialogue>
+		<DialogueTarget>PorphyMenu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_RedSun_Prior</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<Dialogue>
+			<Page>…Oh, hey there, little astronaut. The sun was looking pretty big and red earlier… that isn't anything to worry about, right?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>It's about to go supernova.</Text>
+				<DialogueTarget>Porphy_RH_Answer1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nope, that's normal.</Text>
+				<DialogueTarget>Porphy_RH_Answer2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>…Oh, hey there, little astronaut. The sun's looking pretty big and red right now… that isn't anything to worry about, right?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>It's about to go supernova.</Text>
+				<DialogueTarget>Porphy_RH_Answer1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nope, that's normal, I think.</Text>
+				<DialogueTarget>Porphy_RH_Answer2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Distraught</Name>
+		<EntryCondition>PORPHY_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			<Page>…Say, hatchling. You can have some if you want. Nobody else, though. I… wouldn't want them to know.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Did Feldspar finally land? Where'd all the light go?</Page>
+		</Dialogue>
+		<SetCondition>PORPHY_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Silent</Name>
+		<EntryCondition>PORPHY_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_BoomDistraught</Name>
+		<EntryCondition>PORPHY_DISTRAUGHT</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…One last drink, hatchling.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<!-- ********* -->
+	<!-- RESPONSES -->
+	<!-- ********* -->
+	<DialogueNode>
+		<Name>Porphy_RH_Answer1</Name>
+		<Dialogue>
+			<Page>…Oh. Is that so?</Page>
+			<Page>…Huh. I guess I'm not gonna get a chance to age all this sap wine. Heheh… heh…</Page>
+		</Dialogue>
+		<SetCondition>PORPHY_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Answer2</Name>
+		<Dialogue>
+			<Page>Hmm. Well, if you say so.</Page>
+		</Dialogue>
+		<DialogueTarget>PorphyMenu</DialogueTarget>
+	</DialogueNode>
+</DialogueTree>

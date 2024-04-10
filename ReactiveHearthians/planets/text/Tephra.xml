@@ -1,0 +1,69 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Tephra_RH_Space</Name>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Hullo, astronaut!</Page>
+			<Page>That was a really cool launch you did! I hope you have fun up in space.</Page>
+			<DialogueTarget>HideAndSeek2</DialogueTarget>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_PlayedTheGameSpace</Name>
+		<EntryCondition>EndHideAndSeek</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Hullo, astronaut!</Page>
+			<Page>That was a really cool launch you did! I hope you have fun up in space.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_WarpCore</Name>
+		<EntryCondition>CUSTOM_CONDITION_WARPCOREHELD</EntryCondition>
+		<Dialogue>
+			<Page>Whoa!! What is <![CDATA[<i>that</i>]]>?! It looks like a fat firefly in a jar… but I've never seen a firefly that color! That's really cool!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_AWC</Name>
+		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
+		<Dialogue>
+			<Page>Whoa!! What is <![CDATA[<i>that</i>]]>?! It looks like two fat fireflies in a jar… but I've never seen fireflies that are black or white! That's really cool!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Hullo astronaut! I think we're gonna have some kind of astranominal event coming up soon! Astranomial? Astranomai…?</Page>
+			<Page>The sun looks weird. You get it! Don't giggle at me.</Page>
+		</Dialogue>
+		<DialogueTarget>HideAndSeek2</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_RedSun_HAS</Name>
+		<EntryCondition>EndHideAndSeek</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Hullo astronaut! I think we're gonna have some kind of astranominal event coming up soon! Astranomial? Astranomai…?</Page>
+			<Page>The sun looks weird. You get it! Don't giggle at me.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Huh? W-wait, what's happening? Astronaut, what's going on?</Page>
+		</Dialogue>
+		<SetCondition>Tephra_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Silent</Name>
+		<EntryCondition>Tephra_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…I-I'll keep you safe, Galena!</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

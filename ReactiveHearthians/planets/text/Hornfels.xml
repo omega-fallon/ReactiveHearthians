@@ -1,0 +1,71 @@
+<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Curator13</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_WARPCOREHELD</RequiredCondition>
+				<Text>Hey, check this out!</Text>
+				<DialogueTarget>Curator_RH_WARPCORE</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_COOLTHINGHELD</RequiredCondition>
+				<CancelledCondition>CUSTOM_CONDITION_WARPCOREHELD</CancelledCondition>
+				<Text>Hey, check this out!</Text>
+				<DialogueTarget>Curator_RH_COOLTHING</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>SCIENTIST_SNTELLHORNFELS</RequiredCondition>
+				<Text>Slate says the Sun is redder than usual.</Text>
+				<DialogueTarget>Curator_RH_RedSunSlate</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Curator_RH_RedSunSlate</Name>
+		<Dialogue>
+			<Page>…Huh? Jeez, they've been spending too much time breathing in smoke fumes, haven't they?</Page>
+			<Page>Look, I've got bigger things to investigate than Slate's delusions. Tell them I said everything's fine so they'll get off my back, okay?</Page>
+		</Dialogue>
+		<SetCondition>HORNFELS_SUPERNOVADENY</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Curator_RH_WARPCORE</Name>
+		<Dialogue>
+			<Page>Whoa! You found a Nomai warp core! Geez, hatchling, that's pretty impressive!</Page>
+			<Page>And in such good condition, too… why, there's hardly even a scratch on it.</Page>
+			<Page>Tell ya what, hatchling. If you're willing to part with it, put it in the museum for me.</Page>
+			<Page>Anywhere is good for now; kinda busy at the moment. But don't worry, I'll make sure to put your name on the plaque.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Curator_RH_COOLTHING</Name>
+		<Dialogue>
+			<Page>Whoa! Nice catch, hatchling! Where'd you pick that up from?</Page>
+			<Page>Wanna place it in the museum for me? Anywhere is good for now; kinda busy at the moment.</Page>
+			<Page>But don't worry, I'll make sure to put your name on the plaque.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Hornfels_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…What… hatchling, did something go wrong with your ship? You felt that tremor too, right?</Page>
+		</Dialogue>
+		<SetCondition>Hornfels_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Hornfels_RH_Silent</Name>
+		<EntryCondition>Hornfels_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…Oh Hearth.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Hornfels_RH_SilentSlate</Name>
+		<EntryCondition>Hornfels_SILENT</EntryCondition>
+		<EntryCondition>HORNFELS_SUPERNOVADENY</EntryCondition>
+		<Dialogue>
+			<Page>…Oh Hearth… Slate was right.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

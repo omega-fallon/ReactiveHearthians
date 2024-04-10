@@ -1,0 +1,48 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>ShyKid_RH_Space</Name>
+		<EntryCondition>ShyKidFirstContact</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…Wow.<![CDATA[</size>]]></Page>
+			<Page><![CDATA[<size=20>]]>Good takeoff.<![CDATA[</size>]]></Page>
+		</Dialogue>
+		<SetCondition>ShyKidSaysHi</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ShyKid_RH_CoolThing</Name>
+		<EntryCondition>ShyKidFirstContact</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…Wow.<![CDATA[</size>]]></Page>
+			<Page><![CDATA[<size=20>]]>Cool thing.<![CDATA[</size>]]></Page>
+		</Dialogue>
+		<SetCondition>ShyKidSaysHi</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ShyKid_RH_RedSun</Name>
+		<EntryCondition>ShyKidFirstContact</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…Sun is big…<![CDATA[</size>]]></Page>
+			<Page><![CDATA[<size=20>]]>Weird…<![CDATA[</size>]]></Page>
+		</Dialogue>
+		<SetCondition>ShyKidSaysHi</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ShyKid_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…Wh-what was that…?<![CDATA[</size>]]></Page>
+		</Dialogue>
+		<SetCondition>ShyKidSaysHi</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ShyKid_RH_Silent</Name>
+		<EntryCondition>ShyKidSaysHi</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…<![CDATA[</size>]]></Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

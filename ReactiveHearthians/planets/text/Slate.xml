@@ -1,0 +1,157 @@
+<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>ScientistSpace</Name>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Oh! hatchling, what're you doing back here so soon? Get back up there and have some fun!</Page>
+			<Page>Don't tell me you're getting cold feet now… come on, it's perfectly safe, swear on my top eyes.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_AWC</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! What's that you got there, hatchling? Looks mighty interesting to me.</Page>
+			<Page>I have no idea what it is, though. Maybe run it by Hornfels if you're curious.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_RedSun_Prior</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<Dialogue>
+			<Page>…Hey, hatchling. Is it just me, or was the sun looking kind of red earlier?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>It's about to go supernova.</Text>
+				<DialogueTarget>ScientistAnswerRH1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Was it? I haven't noticed.</Text>
+				<DialogueTarget>ScientistAnswerRH2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_RedSun_Overhead</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Jeez… sun's looking kinda red, isn't it?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>It's about to go supernova.</Text>
+				<DialogueTarget>ScientistAnswerRH1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Is it? I haven't noticed.</Text>
+				<DialogueTarget>ScientistAnswerRH2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_TellHornfels</Name>
+		<EntryCondition>SCIENTIST_SNTELLHORNFELS</EntryCondition>
+		<Dialogue>
+			<Page>…Did you tell Hornfels yet?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>HORNFELS_SUPERNOVADENY</RequiredCondition>
+				<Text>Yeah, he thinks you're going crazy.</Text>
+				<DialogueTarget>ScientistAnswerRH3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+					<Text>No, not yet.</Text>
+				<DialogueTarget>ScientistAnswerRH4</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_HornfellsResolved</Name>
+		<EntryCondition>SCIENTIST_HORNFELLSRESOLVED</EntryCondition>
+		<Dialogue>
+			<Page>Ready to get this thing off the ground? Ship’s all fueled and ready to go.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>All systems go!</Text>
+				<DialogueTarget>ScientistAnswer12</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I’m ready if you are.</Text>
+				<DialogueTarget>ScientistAnswer13</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You’re <![CDATA[<i>]]>sure<![CDATA[</i>]]> you fixed the retro rockets?</Text>
+				<DialogueTarget>ScientistAnswer14</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>SCIENTIST_1</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_HornfellsResolved_Space</Name>
+		<EntryCondition>SCIENTIST_HORNFELLSRESOLVED</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<DialogueTarget>ScientistSpace</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_Distraught</Name>
+		<EntryCondition>SCIENTIST_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			 <Page>No, no… it couldn't be. Chert would've seen it coming… right?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Oh.</Page>
+			<Page>hatchling… I don't think we have much time left.</Page>
+			<Page>Just… sit here by the fire with me, okay? It'll be alright.</Page>
+		</Dialogue>
+		<SetCondition>SCIENTIST_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Scientist_RH_Silent</Name>
+		<EntryCondition>SCIENTIST_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…Close your eyes, hatchling.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<!-- ********* -->
+	<!-- RESPONSES -->
+	<!-- ********* -->
+	<DialogueNode>
+		<Name>ScientistAnswerRH1</Name>
+		<Dialogue>
+			<Page>…Wait, like… soon? You're kidding, right?</Page>
+			<Page>How would you know? No, it's gotta be something else… just a trick of the light…</Page>
+		</Dialogue>
+		<SetCondition>SCIENTIST_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ScientistAnswerRH2</Name>
+		<Dialogue>
+			<Page>Maybe I've been inhaling too much smoke, but it's <![CDATA[<i>]]>definitely<![CDATA[</i>]]> redder than usual.</Page>
+			<Page>…If you could, maybe let Hornfels know. At the very least so they can tell me for sure whether I'm going crazy or not.</Page>
+		</Dialogue>
+		<SetCondition>SCIENTIST_SNTELLHORNFELS</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ScientistAnswerRH3</Name>
+		<Dialogue>
+			<Page>Huh. Well, if they say so.</Page>
+		</Dialogue>
+		<SetCondition>SCIENTIST_HORNFELLSRESOLVED</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ScientistAnswerRH4</Name>
+		<Dialogue>
+			<Page>Well, please do. Just to put my mind at ease.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

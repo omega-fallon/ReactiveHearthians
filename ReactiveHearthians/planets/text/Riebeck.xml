@@ -1,0 +1,87 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<!-- Stranger stuff -->
+	<DialogueNode>
+		<Name>RiebeckLearned</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>RIEBECK_KNOWS_STRANGER</CancelledCondition>
+				<RequiredLogCondition>IP_RING_WORLD_X1</RequiredLogCondition>
+				<Text>I found a hidden planet in our solar system.</Text>
+				<DialogueTarget>RiebeckLearned_RH_Stranger</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>RiebeckLearned_RH_Stranger</Name>
+		<Dialogue>
+			<Page>WHAT?! I'm sorry, hang on a second, I need to compose myself.</Page>
+			<Page>Mmm, okay.<![CDATA[<Pause>]]> WHAT?! Okay, so this entire time, there's been a secret ring world orbiting our sun and the only reason we ever even found out about it is because its cloaking mechanism makes it block the sun's light when it passes in front of it?!</Page>
+			<Page>AND IT ISN'T EVEN NOMAIAN?!</Page>
+			<Page>Okay. Okay. Whew… easy now, Riebeck.</Page>
+			<Page>Sorry, just… we only <![CDATA[<i>recently</i>]]> nailed down translating Nomai text. And there's still so much we don't know about them! And now you're telling me there's <![CDATA[<i>another</i>]]>, <![CDATA[<i>totally separate</i>]]> alien race in this system for us to investigate?</Page>
+			<Page>Goodness. And here I thought we were maybe getting close to understanding things. I guess it just goes to show you there's always more things to be discovered, huh?</Page>
+		</Dialogue>
+		<SetCondition>RIEBECK_KNOWS_STRANGER</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<!-- Standard reaction stuff -->
+	<DialogueNode>
+		<Name>Riebeck_RH_CoolThing_First</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<SetCondition>TalkToRiebeck</SetCondition>
+		<RevealFacts>
+			<FactID>BH_RIEBECK_X1</FactID>
+		</RevealFacts>
+		<Dialogue>
+			<Page>Oh, you launched! And it looks like you've already found an artifact! That’s great. Great job, you.</Page>
+			<Page>Wow, I guess that means I’ve been out here a while, huh. Well, um, this is Brittle Hollow. But you probably knew that.</Page>
+			<Page>Lot of history here. …It’s great.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>What are you doing here?</Text>
+				<DialogueTarget>RiebeckIntro</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
+				<Text>I’m in a hurry — can I ask you something?</Text>
+				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>TalkToRiebeck</EntryCondition>
+		<Dialogue>
+			<Page>Wow! That's a really cool artifact you found, hatchling! You're becoming something of an archaeologist in your own right, huh?</Page>
+			<Page>Heh… that'd be nice. I could maybe make you my protégé some day. If… you wanted to. Just a thought.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_WarpCore</Name>
+		<EntryCondition>CUSTOM_CONDITION_WARPCOREHELD</EntryCondition>
+		<EntryCondition>TalkToRiebeck</EntryCondition>
+		<Dialogue>
+			<Page>Wow! Is that a Nomai warp core? Incredible! And in such good condition too… excellent work, hatchling!</Page>
+			<Page>You're becoming something of an archaeologist in your own right, huh? Heh… that'd be nice. I could maybe make you my protégé some day. If… you wanted to. Just a thought.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Heh… th-that was a big one!</Page>
+		</Dialogue>
+		<SetCondition>Riebeck_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_Silent</Name>
+		<EntryCondition>Riebeck_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…W-wait, what's with that weird gurgling sound?</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

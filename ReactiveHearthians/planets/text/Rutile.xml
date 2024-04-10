@@ -1,0 +1,116 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Rutile_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Well that's a nice little trinket you found there, hatchling. Bring more new stuff like that and we might actually get some people to go up and look at the museum every once in a while.</Page>
+			<Page>Need anything from me, hatchling?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>Tree</RequiredCondition>
+				<Text>Marl is plotting to cut down that big tree. Again.</Text>
+				<DialogueTarget>Marl</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Are you going to watch the launch?</Text>
+				<DialogueTarget>Launch</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Do you really worry that the space program will burn the village down?</Text>
+				<DialogueTarget>Fires</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I’m good.</Text>
+				<DialogueTarget>Good</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_RedSun_Prior</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<Dialogue>
+			<Page>The sun isn't supposed to be that red, or that big. It's back past the village now, but I saw it.</Page>
+			<Page>hatchling, as the mayor, I need to know: what's going on?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>The sun is about to go supernova.</Text>
+				<DialogueTarget>Rutile_RH_Answer1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I'm as confused as you are.</Text>
+				<DialogueTarget>Rutile_RH_Answer2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>The sun isn't supposed to be that red, or that big.</Page>
+			<Page>hatchling, as the mayor, I need to know: what's going on?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>The sun is about to go supernova.</Text>
+				<DialogueTarget>Rutile_RH_Answer1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I'm as confused as you are.</Text>
+				<DialogueTarget>Rutile_RH_Answer2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_Distraught</Name>
+		<EntryCondition>Rutile_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			<Page>Don't tell anyone else. Please.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Gah! Hearth's sake, everyone, duck and cover!</Page>
+		</Dialogue>
+		<SetCondition>Rutile_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_BoomDistraught</Name>
+		<EntryCondition>Rutile_DISTRAUGHT</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…See? They have no idea. It's… it's better this way.</Page>
+		</Dialogue>
+		<SetCondition>Rutile_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_Silent</Name>
+		<EntryCondition>Rutile_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…</Page>
+		</Dialogue>
+	</DialogueNode>
+	<!-- ********* -->
+	<!-- RESPONSES -->
+	<!-- ********* -->
+	<DialogueNode>
+		<Name>Rutile_RH_Answer1</Name>
+		<Dialogue>
+			<Page>…</Page>
+			<Page>…Then there's nothing to do.</Page>
+		</Dialogue>
+		<SetCondition>Rutile_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Rutile_RH_Answer2</Name>
+		<Dialogue>
+			<Page>AAA</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

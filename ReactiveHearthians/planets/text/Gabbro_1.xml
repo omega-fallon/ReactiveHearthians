@@ -1,0 +1,27 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>GabbroMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<CancelledCondition>LOOP_COUNT_GOE_2</CancelledCondition>
+				<Text>Hey, just so you know, we were going to be in a time loop but I took care of it.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_1_Known</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	
+	<!-- Reactions -->
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_1_Known</Name>
+		<Dialogue>
+			<Page>What?! A... time loop?</Page>
+			<Page>Uhh... well, alright. I guess I'm glad that that isn't going to happen.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_FIRSTLOOP_CANCEL</SetPersistentCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+</DialogueTree>

@@ -1,0 +1,44 @@
+<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>ScaredMiner3</Name>
+		<EntryCondition>PostZeroG</EntryCondition>
+		<Dialogue>
+			<Page>All done in there, pal?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Yup, all done.</Text>
+				<DialogueTarget>Done</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>All done. Now give me the dirt.</Text>
+				<DialogueTarget>Dirt</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Yeah, and guess where I'm going next?</Text>
+				<DialogueTarget>Guess</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>TalkedToTuff</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tuff_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>…Whoa. Look at that thing… the way it sparkles, like it's capturing all the light inside of it… where'd you find that, hatchling?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tuff_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…The heck was that?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Done</Name>
+		<Dialogue>
+			<Page>Eugh. Good. I don't even like thinking about that cave…</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

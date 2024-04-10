@@ -1,0 +1,34 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Gneiss_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Well I'll be! Good find, space cadet! I'd wish you luck out there, but it seems like you might not need it, aha!</Page>
+			<Page>Oh, I'm only joking. Good luck, hatchling.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gneiss_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>My eyes must not be what they used to be. Sun doesn't seem quite right.</Page>
+			<Page>…Oh, ignore me, hatchling. Just talking to myself.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gneiss_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Gah… a tremor? What's going on?</Page>
+		</Dialogue>
+		<SetCondition>Gneiss_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gneiss_RH_Silent</Name>
+		<EntryCondition>Gneiss_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…Oh goodness… someone get the children!</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

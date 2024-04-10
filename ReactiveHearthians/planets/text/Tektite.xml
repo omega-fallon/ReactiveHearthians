@@ -1,0 +1,116 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Tektite_RH_CoolThing_First</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Heyo, hatchling! Nice find you've got there. I assume you're back down here to show it off?</Page>
+			<Page>Me? I was using the old scout launcher and saw smoke in one of the photos, so I thought I’d come over here myself and take a look.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>So what crashed?</Text>
+				<DialogueTarget>Tektite1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Is that a Dark Bramble seed?</Text>
+				<DialogueTarget>Tektite2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>TalkedToImpactTektite</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>TalkedToImpactTektite</EntryCondition>
+		<Dialogue>
+			<Page>Blasted seed did a lot of damage when it crashed. I liked this crater.</Page>
+			<Page>Oh, hatchling. Nice thing you've got there. Sorry, I'm a bit distracted at the moment. Need something from me?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I threw a Little Scout into the seed.</Text>
+				<DialogueTarget>Tektite5</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
+				<DialogueTarget>Tektite6</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
+				<DialogueTarget>Tektite7</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nope, I’m good.</Text>
+				<DialogueTarget>Tektite8</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_RedSun_First</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Goodness. First this seed, now the sun's looking all wonky… what's going on?</Page>
+			<Page>Oh, hatchling. I didn't see you there. Sorry, I'm a bit distracted at the moment.</Page>
+			<Page>I was using the old scout launcher and saw smoke in one of the photos, so I thought I’d come over here myself and take a look.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>So what crashed?</Text>
+				<DialogueTarget>Tektite1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Is that a Dark Bramble seed?</Text>
+				<DialogueTarget>Tektite2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>TalkedToImpactTektite</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>TalkedToImpactTektite</EntryCondition>
+		<Dialogue>
+			<Page>Goodness. First this seed, now the sun's looking all wonky… what's going on?</Page>
+			<Page>Oh, hatchling. I didn't see you there. Sorry, I'm a bit distracted at the moment. Need something from me?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I threw a Little Scout into the seed.</Text>
+				<DialogueTarget>Tektite5</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
+				<DialogueTarget>Tektite6</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
+				<DialogueTarget>Tektite7</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nope, I’m good.</Text>
+				<DialogueTarget>Tektite8</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>Stars above! What's happening?! Is that coming from the seed?</Page>
+		</Dialogue>
+		<SetCondition>Tektite_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_Silent</Name>
+		<EntryCondition>Tektite_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…hatchling… I'm sorry…</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

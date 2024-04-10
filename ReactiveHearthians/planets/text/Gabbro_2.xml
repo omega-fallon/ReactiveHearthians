@@ -1,0 +1,77 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>GabbroMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<CancelledCondition>CUSTOM_CONDITION_AWCHELD</CancelledCondition>
+				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
+				<CancelledCondition>LOOP_COUNT_GOE_3</CancelledCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<Text>I shut off the time loop.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_2_NotHolding</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_AWCHELD</RequiredCondition>
+				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
+				<CancelledCondition>LOOP_COUNT_GOE_3</CancelledCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<Text>I shut off the time loop. This is the core.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_2_Holding</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	
+	<!-- Reactions -->
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_2_NotHolding</Name>
+		<Dialogue>
+			<Page>What?! No, no, the sun's about to go supernova again! For Hearth's sake, turn it back on!</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_SECONDLOOP_CANCEL</SetPersistentCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+		<SetCondition>GABBRO_LOOPEND_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_2_Holding</Name>
+		<Dialogue>
+			<Page>What?! No, no, the sun's about to go supernova again! For Hearth's sake, put it back!</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD_HOLDING</SetPersistentCondition>
+		<SetPersistentCondition>GABBRO_RH_SECONDLOOP_CANCEL</SetPersistentCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+		<SetCondition>GABBRO_LOOPEND_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	
+	<!-- Chicken from the prior loop -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_1_Chicken</Name>
+		<EntryCondition>GABBRO_RH_FIRSTLOOP_CANCEL</EntryCondition>
+		<Dialogue>
+			<Page>Huh. Alright, so, either that thing you did to stop the time loop from happening didn't work, or you chickened out, because I <![CDATA[<i>definitely</i>]]> just died and came back to life.</Page>
+			<Page>I assume it happened to you too, right?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Oh yeah, we definitely died.</Text>
+				<DialogueTarget>Gabbro2T_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I think we’re the only ones who know.</Text>
+				<DialogueTarget>Gabbro2T_3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>SaidHiToGabbro</SetCondition>
+	</DialogueNode>
+	
+	<!-- Panic -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Distraught</Name>
+		<EntryCondition>GABBRO_LOOPEND_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			<Page>...Hearth... no, not yet. Not yet!</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "TIMBER_MOON",
+  "Props": {
+    "dialogue": [
+      {
+        "pathToExistingDialogue": "Sector_THM/Characters_THM/Villager_HEA_Esker/ConversationZone_Esker",
+        "xmlFile": "planets/text/Esker.xml"
+      }
+    ]
+  }
+}

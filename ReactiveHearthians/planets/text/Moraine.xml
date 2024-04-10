@@ -1,0 +1,54 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Moraine_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Hmm! Whoa! Barely any time in space and you've already found something museum-worthy!</Page>
+			<Page>Gosh… I'm sure Slate's really proud of you. Y'know, even if they wouldn't say that out loud.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Haven’t you been up in this tree a while?</Text>
+				<DialogueTarget>SignalscopeKid6</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Any good sounds from space today?</Text>
+				<DialogueTarget>SignalscopeKid3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Agh… I'm going to have to close my eyes, now. The sun's way too bright today!</Page>
+			<Page>Eugh, and I'm sweating like a fish on a grill! Maybe I should get down from here…</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>You <![CDATA[<i>have</i>]]> been up here for a while.</Text>
+				<DialogueTarget>SignalscopeKid6</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>SignalscopeKid2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>Holy Hearth! The whole tree's shaking!</Page>
+		</Dialogue>
+		<SetCondition>Moraine_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Silent</Name>
+		<EntryCondition>Moraine_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>Duck and cover, hatchling!</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

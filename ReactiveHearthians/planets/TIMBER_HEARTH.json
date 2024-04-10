@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "TIMBER_HEARTH",
+  "Props": {
+    "dialogue": [
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/ConversationZone_RSci",
+        "xmlFile": "planets/text/Slate.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/ConversationZone",
+        "xmlFile": "planets/text/Mica.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy/ConversationZone",
+        "xmlFile": "planets/text/Porphy.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile/ConversationZone",
+        "xmlFile": "planets/text/Rutile.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/ConversationZone",
+        "xmlFile": "planets/text/Marl.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra/ConversationZone",
+        "xmlFile": "planets/text/Tephra.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena/ConversationZone",
+        "xmlFile": "planets/text/Galena.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel/ConversationZone",
+        "xmlFile": "planets/text/Spinel.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/ConversationZone",
+        "xmlFile": "planets/text/Arkose.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine/ConversationZone",
+        "xmlFile": "planets/text/Moraine.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/ConversationZone",
+        "xmlFile": "planets/text/Gossan.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/ConversationZone_Tuff",
+        "xmlFile": "planets/text/Tuff.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)/ConversationZone_Hornfels",
+        "xmlFile": "planets/text/Hornfels.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum/ConversationZone",
+        "xmlFile": "planets/text/Hal.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/ConversationZone",
+        "xmlFile": "planets/text/Tektite.xml"
+      }
+    ]
+  }
+}

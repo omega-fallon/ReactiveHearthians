@@ -1,0 +1,292 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>GabbroMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
+				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
+				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
+				<Text>I'm headed for the Eye of the Universe. The time loop had to be shut down, though.</Text>
+				<DialogueTarget>Gabbro_Eye_3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
+				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
+				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
+				<Text>I'm headed for the Eye of the Universe. The time loop had to be shut down, though.</Text>
+				<DialogueTarget>Gabbro_Eye_3_LoopEndBefore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
+				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
+				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
+				<RequiredCondition>GABBRO_LOOPEND_DONTANSWERME</RequiredCondition>
+				<Text>I'm headed for the Eye of the Universe.</Text>
+				<DialogueTarget>Gabbro_Eye_3_LoopEndBefore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<CancelledCondition>CUSTOM_CONDITION_AWCHELD</CancelledCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
+				<Text>I shut off the time loop.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_3_NotHolding</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_AWCHELD</RequiredCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
+				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
+				<Text>I shut off the time loop. This is the core.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_3_Holding</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
+				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
+				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
+				<Text>I'm turning the time loop off again.</Text>
+				<DialogueTarget>Gabbro_NoMoreLoop_3_Again</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<!-- Eye reactions -->
+	<DialogueNode>
+		<Name>Gabbro_Eye_3</Name>
+		<Dialogue>
+			<Page>I see.<![CDATA[<Pause>]]> That's quite the ambitious goal, time bud.</Page>
+			<Page>And I think you're absolutely gonna be able to do it.</Page>
+			<Page>I'll be here, rooting for you, just like always. Don't feel bad for me; I'm ready to die. Especially if it's for something like this.</Page>
+			<Page>Go make the Nomai proud, friend.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_GOEYE_TOLD</SetPersistentCondition>
+		<SetCondition>GABBRO_LOOPEND_AFTEREYE</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_Eye_3_LoopEndBefore</Name>
+		<Dialogue>
+			<Page>I see.<![CDATA[<Pause>]]> That's quite the ambitious goal, time bud.</Page>
+			<Page>And I think you're absolutely gonna be able to do it. Just don't chicken out this time, okay?</Page>
+			<Page>I'll be here, rooting for you, just like always. Don't feel bad for me; I'm ready to die. Especially if it's for something like this.</Page>
+			<Page>Go make the Nomai proud, friend.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_GOEYE_TOLD</SetPersistentCondition>
+		<SetCondition>GABBRO_LOOPEND_AFTEREYE</SetCondition>
+	</DialogueNode>
+	
+	<!-- End of loop reactions -->
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_3_NotHolding</Name>
+		<Dialogue>
+			<Page>...Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> ...Huh.</Page>
+			<Page>You know, I...<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just...</Page>
+			<Page>...I mean, we're not gonna be able to stop the sun from exploding, are we? So...<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
+			<Page>We could live forever like this...<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
+			<Page>We could spend the whole loop building something up just for it to get knocked down. What kind of existence is that?</Page>
+			<Page>I've had time to think all of this over. Heck, thinking things over is pretty much all that I've been doing.</Page>
+			<Page>And I think I've come to my conclusion:<![CDATA[<Pause>]]> I'm ready to die.</Page>
+			<Page>But if you're not...<![CDATA[<Pause>]]> you could always go and turn it back on. If there's even possible, and if there's still time, that is.</Page>
+			<Page>The choice is yours. But just know that if you choose to leave things like this, I'm at peace about it.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_CONTENTED</SetCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_3_Holding</Name>
+		<Dialogue>
+			<Page>...Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> ...Huh.</Page>
+			<Page>You know, I...<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just...</Page>
+			<Page>...I mean, we're not gonna be able to stop the sun from exploding, are we? So...<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
+			<Page>We could live forever like this...<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
+			<Page>We could spend the whole loop building something up just for it to get knocked down. What kind of existence is that?</Page>
+			<Page>I've had time to think all of this over. Heck, thinking things over is pretty much all that I've been doing.</Page>
+			<Page>And I think I've come to my conclusion:<![CDATA[<Pause>]]> I'm ready to die.</Page>
+			<Page>But if you're not...<![CDATA[<Pause>]]> you could always go and put that thing back. If there's even still time, that is.</Page>
+			<Page>The choice is yours. But just know that if you choose to leave things like this, I'm at peace about it.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_CONTENTED</SetCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD_HOLDING</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_NoMoreLoop_3_Again</Name>
+		<Dialogue>
+			<Page>Alright, time buddy. Then I'm gonna drift off again.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
+		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
+	</DialogueNode>
+
+	<!-- Chicken out -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Chicken</Name>
+		<EntryCondition>GABBRO_LOOPEND_TOLD</EntryCondition>
+		<Dialogue>
+			<Page>...Hello again.</Page>
+			<Page>I guess you changed your mind.<![CDATA[<Pause>]]> That's okay.</Page>
+			<DialogueTarget>GabbroMenu</DialogueTarget>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_CHICKEN_CALLEDOUT</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_2_Chicken</Name>
+		<EntryCondition>GABBRO_RH_SECONDLOOP_CANCEL</EntryCondition>
+		<EntryCondition>LOOP_COUNT_IS_3</EntryCondition>
+		<Dialogue>
+			<Page>...Hey.</Page>
+			<Page>Alright. I may have overreacted a little there. Or maybe not? I'm... really not sure how I feel about all this.</Page>
+			<Page>Anyways, umm... what's going on with you?</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_CHICKEN_CALLEDOUT</SetPersistentCondition>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I found something!</Text>
+				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you doing out here?</Text>
+				<DialogueTarget>WhatAreYouDoing_3T</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Where should I explore on Giant’s Deep?</Text>
+				<DialogueTarget>WhereToExplore_3T</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What’s up with this planet?</Text>
+				<DialogueTarget>ThisPlanet_3T</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>AskedGabbroForHisShip</CancelledPersistentCondition>
+				<CancelledPersistentCondition>FoundGabbroShip</CancelledPersistentCondition>
+				<Text>Where’s your ship?</Text>
+				<DialogueTarget>GabbrosShip</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>AskedGabbroForHisShip</RequiredPersistentCondition>
+				<CancelledPersistentCondition>FoundGabbroShip</CancelledPersistentCondition>
+				<Text>Where’s your ship?</Text>
+				<DialogueTarget>GabbrosShip2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>FoundGabbroShip</RequiredPersistentCondition>
+				<CancelledPersistentCondition>ToldGabbroAboutHisShip</CancelledPersistentCondition>
+				<Text>I found your ship!</Text>
+				<DialogueTarget>GabbrosShip3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>FoundGabbroShip</RequiredPersistentCondition>
+				<RequiredPersistentCondition>ToldGabbroAboutHisShip</RequiredPersistentCondition>
+				<CancelledCondition>ToldGabbroAboutHisShipThisLoop</CancelledCondition>
+				<Text>I saw your ship again.</Text>
+				<DialogueTarget>GabbrosShip4</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>See you later.</Text>
+				<DialogueTarget>Goodbye</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Chicken_Redirect</Name>
+		<EntryCondition>GABBRO_CHICKEN_CALLEDOUT</EntryCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_Eye_Chicken</Name>
+		<EntryCondition>GABBRO_GOEYE_TOLD</EntryCondition>
+		<Dialogue>
+			<Page>...Hello again.</Page>
+			<Page>I guess you changed your mind.<![CDATA[<Pause>]]> That's okay.</Page>
+			<DialogueTarget>GabbroMenu</DialogueTarget>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_GOEYE_CHICKEN_CALLEDOUT</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_GoEye_Chicken_Redirect</Name>
+		<EntryCondition>GABBRO_GOEYE_CHICKEN_CALLEDOUT</EntryCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Gabbro knows what the core is and you're holding it. -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_SeeCore</Name>
+		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
+		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
+		<Dialogue>
+			<Page>...Ah, I see you brought that thing with you again. Keeping your promise this time?</Page>
+			<Page>Heh. Don't answer that, time bud. I'm perfectly alright with either outcome.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_DONTANSWERME</SetCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Contented -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Contented_NotHolding</Name>
+		<EntryCondition>GABBRO_LOOPEND_CONTENTED</EntryCondition>
+		<Dialogue>
+			<Page>Hey, time buddy. Still sticking by your choice?</Page>
+			<Page>Well, either way, I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one. You're welcome to lay here next to me, bud.</Page>
+			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Contented_StillHolding</Name>
+		<EntryCondition>GABBRO_LOOPEND_CONTENTED</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
+		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
+		<Dialogue>
+			<Page>Hey, time buddy. I see you're sticking by your choice.</Page>
+			<Page>I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of it. You're welcome to lay here next to me, bud.</Page>
+			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
+	</DialogueNode>
+
+	<!-- AfterEye and Silent -->
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_AfterEye</Name>
+		<EntryCondition>GABBRO_LOOPEND_AFTEREYE</EntryCondition>
+		<Dialogue>
+			<Page>Hey, time buddy. Still sticking by your choice?</Page>
+			<Page>Well, either way, I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one.</Page>
+			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+		</Dialogue>
+		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
+		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_AfterEye_Silent</Name>
+		<EntryCondition>GABBRO_LOOPEND_AFTEREYE</EntryCondition>
+		<EntryCondition>GABBRO_LOOPEND_PARTNERSINTIME</EntryCondition>
+		<Dialogue>
+			<Page>...</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_LoopEnd_Silent</Name>
+		<EntryCondition>GABBRO_LOOPEND_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>...</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

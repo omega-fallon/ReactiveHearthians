@@ -1,0 +1,9 @@
+{
+  "filename": "ReactiveHearthians.dll",
+  "author": "OmegaFallon",
+  "name": "Reactive Hearthians",
+  "uniqueName": "OmegaFallon.ReactiveHearthians",
+  "version": "1.0.0",
+  "owmlVersion": "2.7.2",
+  "dependencies": [ "xen.NewHorizons" ]
+}

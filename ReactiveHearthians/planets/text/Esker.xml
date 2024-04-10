@@ -1,0 +1,87 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Esker_RH_CoolThing_First</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<DialogueTarget>Esker1</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>EskerSaysHi</EntryCondition>
+		<Dialogue>
+			<Page>Hey! Nice find, hatchling. Did you pick that up from somewhere around here?</Page>
+			<Page>My… that really is a beaut. Hornfels'll want that for sure!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_RedSun_FIRSTTIME</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<SetCondition>RH_ESKER_REDSUNFIRST</SetCondition>
+		<Dialogue>
+			<Page>…Hmm.</Page>
+			<Page>Something's not right about the sun. I've never seen it get so red.</Page>
+			<Page>Oh! Hello there, hatchling. Ground control didn’t tell me you were launching. Long time no see!</Page>
+			<Page>Actually. I guess it’s been a long time since I’ve seen anyone.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>TM_ESKER_X1</FactID>
+		</RevealFacts>
+		<SetCondition>EskerSaysHi</SetCondition>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Don’t the other travelers come by?</Text>
+				<DialogueTarget>OtherTravelers</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Was that you whistling?</Text>
+				<DialogueTarget>Music</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Seems lonely up here.</Text>
+				<DialogueTarget>Lonely</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What is this place?</Text>
+				<DialogueTarget>Place</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
+				<Text>Marl says hi.</Text>
+				<DialogueTarget>Marl</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Talk to you later.</Text>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_RedSun_SEEONSECOND</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>EskerSaysHi</EntryCondition>
+		<Dialogue>
+			<Page>…Hmm.</Page>
+			<Page>Something's not right about the sun. I've never seen it get so red.</Page>
+			<DialogueTarget>Esker2</DialogueTarget>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_RedSun_SECOND</Name>
+		<EntryCondition>RH_ESKER_REDSUNFIRST</EntryCondition>
+		<DialogueTarget>Secondary</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Agh! What?! What's going on?!</Page>
+		</Dialogue>
+		<SetCondition>Esker_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_Silent</Name>
+		<EntryCondition>Esker_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…Dear Hearth, it's… it's beautiful…</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

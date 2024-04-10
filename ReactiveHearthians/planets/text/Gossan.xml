@@ -1,0 +1,81 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Gossan_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<Dialogue>
+			<Page>Oh my… where'd you get <![CDATA[<i>that</i>]]> from?</Page>
+			<Page>You might want to swing that by Hornfels, otherwise he might swipe it right out of your hands!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gossan_RH_CoolThing_PostZeroG</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>PostZeroG</EntryCondition>
+		<Dialogue>
+			<Page>Oh my… where'd you get <![CDATA[<i>that</i>]]> from?</Page>
+			<Page>Heh, I guess your training paid off, huh? Good job!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gossan_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>Whew. I sure am glad I'm in here; it is <![CDATA[<i>hot</i>]]> out today!</Page>
+			<Page>Anyways, it's good to see you before your big launch! Nerves getting the better of you?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Right, like you weren’t nervous for your first flight.</Text>
+				<DialogueTarget>Coach2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I’m a little nervous, yeah.</Text>
+				<DialogueTarget>Coach3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Are you kidding? I’m a natural at this!</Text>
+				<DialogueTarget>Coach4</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gossan_RH_RedSun_Space</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Whew. I sure am glad I'm in here; it is <![CDATA[<i>hot</i>]]> out today!</Page>
+			<Page>Best of luck out there, cadet.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Coach12_RH</Name>
+		<EntryCondition>CoachSaysHi_1</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<DialogueTarget>Coach12</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>PostZeroG_B</Name>
+		<EntryCondition>PostZeroG</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<DialogueTarget>PostZeroG</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gossan_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Whoa! What's Tuff doing down there?!</Page>
+		</Dialogue>
+		<SetCondition>Gossan_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gossan_RH_Silent</Name>
+		<EntryCondition>Gossan_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…Oh… I… I don't think that was Tuff.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

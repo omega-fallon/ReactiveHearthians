@@ -1,0 +1,107 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Space</Name>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Well well well! Back so soon? Let me guess… yeah, you want to get some practice in with this little beauty of a machine over here, don't you?</Page>
+			<Page>If you ask me, I think you had a fine takeoff! But if you <![CDATA[<i>really</i>]]> want to practice with me, I <![CDATA[<i>guess</i>]]> I could help you out a little.</Page>
+		</Dialogue>
+		<DialogueTarget>ModelRocketKid4</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_RedSun_Prior</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<Dialogue>
+			<Page>…Hmm? Oh! Heya. Sorry, I was just kinda… distracted, thinkin' about stuff.</Page>
+			<Page>Me and Slate made some cool modifications to my model ship over here. You can, umm… take it for a spin, yeah! It'll be good practice for the real thing.</Page>
+		</Dialogue>
+		<SetCondition>MODELROCKETKID_REASSURED</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_RedSun</Name>
+		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<Dialogue>
+			<Page>…Hmm? Oh! Heya. Sorry, I was just kinda… distracted. You… you see the sun getting all big and red too, right? It's not just me?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
+				<Text>It's about to go supernova.</Text>
+				<DialogueTarget>ModelRocketKid_RH_Answer1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I think that just happens sometimes.</Text>
+				<DialogueTarget>ModelRocketKid_RH_Answer2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Reassured</Name>
+		<EntryCondition>MODELROCKETKID_REASSURED</EntryCondition>
+		<Dialogue>
+			<Page>Well? Come on, what are you waiting for?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_ReassuredCrash</Name>
+		<EntryCondition>MODELROCKETKID_REASSURED</EntryCondition>
+		<EntryCondition>CrashedModelRocket</EntryCondition>
+		<Dialogue>
+			<Page>Wow, that was just like the time the external fuel tanks exploded on reentry!</Page>
+			<Page>You’ll… you’ll be okay flying the big one, right?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Distraught</Name>
+		<EntryCondition>MODELROCKETKID_DISTRAUGHT</EntryCondition>
+		<Dialogue>
+			<Page>…Eugh… I… it can't be too soon, can it? How did it get like that so fast? I can't… come on, Mica, breathe…</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…What was that noise?</Page>
+			<Page>…A-and why did it get so dark all of a sudden? Like… darker than night usually is?</Page>
+		</Dialogue>
+		<SetCondition>MODELROCKETKID_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Silent</Name>
+		<EntryCondition>MODELROCKETKID_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_BoomDistraught</Name>
+		<EntryCondition>MODELROCKETKID_DISTRAUGHT</EntryCondition>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Shit! Shit shit shit, we're all gonna die! You <![CDATA[<i>monster</i>]]>, why would you tell me?! I could've died in ignorance! Oh Hearth, oh Hearth!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<!-- ********* -->
+	<!-- RESPONSES -->
+	<!-- ********* -->
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Answer1</Name>
+		<Dialogue>
+			<Page>…What? Come on, that's not funny.</Page>
+			<Page>If you're going to tell a dumb joke like that, the least you could do is smile!</Page>
+			<Page>…</Page>
+			<Page>Oh <![CDATA[<i>Hearth</i>]]>, you're not kidding, are you? I… I need to lie down.</Page>
+		</Dialogue>
+		<SetCondition>MODELROCKETKID_DISTRAUGHT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Answer2</Name>
+		<Dialogue>
+			<Page>I wouldn't know it myself. I'm an engineer, not a astonomer!</Page>
+			<Page>Anyways, if you wanna get some test flying in, I'm the Hearthian to go to! Give this mechanical marvel a test run, will ya?</Page>
+		</Dialogue>
+		<SetCondition>MODELROCKETKID_REASSURED</SetCondition>
+	</DialogueNode>
+</DialogueTree>

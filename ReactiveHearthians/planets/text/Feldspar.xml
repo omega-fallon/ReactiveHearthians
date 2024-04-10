@@ -1,0 +1,100 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>FeldsparSecondary</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
+				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
+				<Text>I landed on the Sun Station.</Text>
+				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
+				<RequiredCondition>COMET_INTERIOR</RequiredCondition>
+				<Text>I went inside the Interloper.</Text>
+				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_CoolThing</Name>
+		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>TalkedToFeldspar</EntryCondition>
+		<Dialogue>
+			<Page>Oho! Hatchling, is that a piece of <![CDATA[<i>treasure</i>]]> you're carrying?</Page>
+			<Page>Heh. Well well, I must say, I'm a bit proud! Come on, pull up a marshmallow stick, fellow adventurer.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I found something!</Text>
+				<DialogueTarget>FoundSomethingMenu_TreasureIntro</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Where should I explore here?</Text>
+				<DialogueTarget>FeldsparExplore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
+				<DialogueTarget>FeldsparCore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Where’s your ship?</Text>
+				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What happened to this anglerfish?</Text>
+				<DialogueTarget>FeldsparFish</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Shouldn’t I tell ground control to come get you?</Text>
+				<DialogueTarget>FeldsparRescue</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nah, I’m good.</Text>
+				<DialogueTarget>FeldsparGood</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_Boom</Name>
+		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Whoa. Say, hatchling, you weren't expecting anyone else coming here, were you? It sounds like someone crash landed!</Page>
+		</Dialogue>
+		<SetCondition>Feldspar_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_Silent</Name>
+		<EntryCondition>Feldspar_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>…That doesn't sound good.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>FoundSomethingMenu_TreasureIntro</Name>
+		<Dialogue>
+			<Page>Clearly so! But I imagine you mean something <![CDATA[<i>other</i>]]> than what you've got in your hand, mmm?</Page>
+		</Dialogue>
+		<DialogueTarget>FoundSomethingMenu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_SunStationBrag</Name>
+		<Dialogue>
+			<Page>Ahaha! Really now, hatchling! The <![CDATA[<i>Sun Station</i>]]>?</Page>
+			<Page>Wow! That's a risky play. Matter of fact, I'd say it's downright stupid!</Page>
+			<Page>Ahh... I'm so proud. The kids are alright if you ask me! Hahaha...</Page>
+		</Dialogue>
+		<SetCondition>FELDSPAR_RH_SUNSTATIONBRAG</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_InterloperBrag</Name>
+		<Dialogue>
+			<Page>Whoa! Hang on now, hatchling, there's an <![CDATA[<i>inside</i>]]> to that thing?</Page>
+			<Page>Hearth, nobody's ever even landed on it! My my, you must feel quite proud of yourself, exploring uncharted territory!</Page>
+			<Page>You're a real trailblazer, hatchling. Just don't let it get to your head.</Page>
+		</Dialogue>
+		<SetCondition>FELDSPAR_RH_INTERLOPERBRAG</SetCondition>
+	</DialogueNode>
+</DialogueTree>
