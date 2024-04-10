@@ -71,7 +71,7 @@
 		<Name>Gabbro_LoopEnd_Distraught</Name>
 		<EntryCondition>GABBRO_LOOPEND_DISTRAUGHT</EntryCondition>
 		<Dialogue>
-			<Page>...Hearth... no, not yet. Not yet!</Page>
+			<Page>…Hearth… no, not yet. Not yet!</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>

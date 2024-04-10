@@ -17,8 +17,8 @@
 	<DialogueNode>
 		<Name>Gabbro_NoMoreLoop_1_Known</Name>
 		<Dialogue>
-			<Page>What?! A... time loop?</Page>
-			<Page>Uhh... well, alright. I guess I'm glad that that isn't going to happen.</Page>
+			<Page>What?! A… time loop?</Page>
+			<Page>Uhh… well, alright. I guess I'm glad that that isn't going to happen.</Page>
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_RH_FIRSTLOOP_CANCEL</SetPersistentCondition>
 		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>

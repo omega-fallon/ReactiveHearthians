@@ -94,14 +94,14 @@
 	<DialogueNode>
 		<Name>Gabbro_NoMoreLoop_3_NotHolding</Name>
 		<Dialogue>
-			<Page>...Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> ...Huh.</Page>
-			<Page>You know, I...<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just...</Page>
-			<Page>...I mean, we're not gonna be able to stop the sun from exploding, are we? So...<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
-			<Page>We could live forever like this...<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
+			<Page>…Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> …Huh.</Page>
+			<Page>You know, I…<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just…</Page>
+			<Page>…I mean, we're not gonna be able to stop the sun from exploding, are we? So…<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
+			<Page>We could live forever like this…<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
 			<Page>We could spend the whole loop building something up just for it to get knocked down. What kind of existence is that?</Page>
 			<Page>I've had time to think all of this over. Heck, thinking things over is pretty much all that I've been doing.</Page>
 			<Page>And I think I've come to my conclusion:<![CDATA[<Pause>]]> I'm ready to die.</Page>
-			<Page>But if you're not...<![CDATA[<Pause>]]> you could always go and turn it back on. If there's even possible, and if there's still time, that is.</Page>
+			<Page>But if you're not…<![CDATA[<Pause>]]> you could always go and turn it back on. If there's even possible, and if there's still time, that is.</Page>
 			<Page>The choice is yours. But just know that if you choose to leave things like this, I'm at peace about it.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_CONTENTED</SetCondition>
@@ -110,14 +110,14 @@
 	<DialogueNode>
 		<Name>Gabbro_NoMoreLoop_3_Holding</Name>
 		<Dialogue>
-			<Page>...Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> ...Huh.</Page>
-			<Page>You know, I...<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just...</Page>
-			<Page>...I mean, we're not gonna be able to stop the sun from exploding, are we? So...<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
-			<Page>We could live forever like this...<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
+			<Page>…Oh.<![CDATA[<Pause>]]> Really?<![CDATA[<Pause>]]> …Huh.</Page>
+			<Page>You know, I…<![CDATA[<Pause>]]> I kind of thought I'd have a stronger reaction to that, but honestly, I just…</Page>
+			<Page>…I mean, we're not gonna be able to stop the sun from exploding, are we? So…<![CDATA[<Pause>]]> what would be the point of even continuing the loop?</Page>
+			<Page>We could live forever like this…<![CDATA[<Pause>]]> but it'd only be us who would know it. And we wouldn't be able to do anything of any actual consequence.</Page>
 			<Page>We could spend the whole loop building something up just for it to get knocked down. What kind of existence is that?</Page>
 			<Page>I've had time to think all of this over. Heck, thinking things over is pretty much all that I've been doing.</Page>
 			<Page>And I think I've come to my conclusion:<![CDATA[<Pause>]]> I'm ready to die.</Page>
-			<Page>But if you're not...<![CDATA[<Pause>]]> you could always go and put that thing back. If there's even still time, that is.</Page>
+			<Page>But if you're not…<![CDATA[<Pause>]]> you could always go and put that thing back. If there's even still time, that is.</Page>
 			<Page>The choice is yours. But just know that if you choose to leave things like this, I'm at peace about it.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_CONTENTED</SetCondition>
@@ -138,7 +138,7 @@
 		<Name>Gabbro_LoopEnd_Chicken</Name>
 		<EntryCondition>GABBRO_LOOPEND_TOLD</EntryCondition>
 		<Dialogue>
-			<Page>...Hello again.</Page>
+			<Page>…Hello again.</Page>
 			<Page>I guess you changed your mind.<![CDATA[<Pause>]]> That's okay.</Page>
 			<DialogueTarget>GabbroMenu</DialogueTarget>
 		</Dialogue>
@@ -149,9 +149,9 @@
 		<EntryCondition>GABBRO_RH_SECONDLOOP_CANCEL</EntryCondition>
 		<EntryCondition>LOOP_COUNT_IS_3</EntryCondition>
 		<Dialogue>
-			<Page>...Hey.</Page>
-			<Page>Alright. I may have overreacted a little there. Or maybe not? I'm... really not sure how I feel about all this.</Page>
-			<Page>Anyways, umm... what's going on with you?</Page>
+			<Page>…Hey.</Page>
+			<Page>Alright. I may have overreacted a little there. Or maybe not? I'm… really not sure how I feel about all this.</Page>
+			<Page>Anyways, umm… what's going on with you?</Page>
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_CHICKEN_CALLEDOUT</SetPersistentCondition>
 		<DialogueOptionsList>
@@ -211,7 +211,7 @@
 		<Name>Gabbro_Eye_Chicken</Name>
 		<EntryCondition>GABBRO_GOEYE_TOLD</EntryCondition>
 		<Dialogue>
-			<Page>...Hello again.</Page>
+			<Page>…Hello again.</Page>
 			<Page>I guess you changed your mind.<![CDATA[<Pause>]]> That's okay.</Page>
 			<DialogueTarget>GabbroMenu</DialogueTarget>
 		</Dialogue>
@@ -229,7 +229,7 @@
 		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
 		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
 		<Dialogue>
-			<Page>...Ah, I see you brought that thing with you again. Keeping your promise this time?</Page>
+			<Page>…Ah, I see you brought that thing with you again. Keeping your promise this time?</Page>
 			<Page>Heh. Don't answer that, time bud. I'm perfectly alright with either outcome.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_DONTANSWERME</SetCondition>
@@ -242,8 +242,8 @@
 		<EntryCondition>GABBRO_LOOPEND_CONTENTED</EntryCondition>
 		<Dialogue>
 			<Page>Hey, time buddy. Still sticking by your choice?</Page>
-			<Page>Well, either way, I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one. You're welcome to lay here next to me, bud.</Page>
-			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+			<Page>Well, either way, I think…<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one. You're welcome to lay here next to me, bud.</Page>
+			<Page>It's been…<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
 		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
@@ -255,8 +255,8 @@
 		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
 		<Dialogue>
 			<Page>Hey, time buddy. I see you're sticking by your choice.</Page>
-			<Page>I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of it. You're welcome to lay here next to me, bud.</Page>
-			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+			<Page>I think…<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of it. You're welcome to lay here next to me, bud.</Page>
+			<Page>It's been…<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
 		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
@@ -268,8 +268,8 @@
 		<EntryCondition>GABBRO_LOOPEND_AFTEREYE</EntryCondition>
 		<Dialogue>
 			<Page>Hey, time buddy. Still sticking by your choice?</Page>
-			<Page>Well, either way, I think...<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one.</Page>
-			<Page>It's been...<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
+			<Page>Well, either way, I think…<![CDATA[<Pause>]]> I think I'm gonna close my eyes for the rest of this one.</Page>
+			<Page>It's been…<![CDATA[<Pause>]]> really great being with you. I couldn't've wished for a better partner in time.</Page>
 		</Dialogue>
 		<SetCondition>GABBRO_LOOPEND_SILENT</SetCondition>
 		<SetPersistentCondition>GABBRO_LOOPEND_PARTNERSINTIME</SetPersistentCondition>
@@ -279,14 +279,14 @@
 		<EntryCondition>GABBRO_LOOPEND_AFTEREYE</EntryCondition>
 		<EntryCondition>GABBRO_LOOPEND_PARTNERSINTIME</EntryCondition>
 		<Dialogue>
-			<Page>...</Page>
+			<Page>…</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_Silent</Name>
 		<EntryCondition>GABBRO_LOOPEND_SILENT</EntryCondition>
 		<Dialogue>
-			<Page>...</Page>
+			<Page>…</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>

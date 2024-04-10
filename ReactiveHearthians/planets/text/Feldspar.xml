@@ -84,7 +84,7 @@
 		<Dialogue>
 			<Page>Ahaha! Really now, hatchling! The <![CDATA[<i>Sun Station</i>]]>?</Page>
 			<Page>Wow! That's a risky play. Matter of fact, I'd say it's downright stupid!</Page>
-			<Page>Ahh... I'm so proud. The kids are alright if you ask me! Hahaha...</Page>
+			<Page>Ahh… I'm so proud. The kids are alright if you ask me! Hahaha…</Page>
 		</Dialogue>
 		<SetCondition>FELDSPAR_RH_SUNSTATIONBRAG</SetCondition>
 	</DialogueNode>
