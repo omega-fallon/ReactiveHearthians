@@ -21,7 +21,9 @@ using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -55,11 +57,12 @@ namespace ReactiveHearthians
             {
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
-                nameYourVariableWhatever = GameObject.Find("SolarSystemRoot").GetComponent<TimeLoop>();
-                nameYourVariableWhatever2 = GameObject.Find("SolarSystemRoot").GetComponent<TimeLoop>();
+                volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
+            GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
+            GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
         }
 
         // Special patching for Gabbro.
@@ -87,58 +90,44 @@ namespace ReactiveHearthians
             }
         }
 
-        // Patching for Hearthians cowering
-        private TimeLoop nameYourVariableWhatever;
-        private TimeLoop nameYourVariableWhatever2;
-        public void Update()
-        {
-            if (nameYourVariableWhatever != null)
-            {
-                if (TimeLoop.GetSecondsElapsed() >= 1330)
-                {
-                    MakeAllCower();
-                    nameYourVariableWhatever = null;
-                }
+        // Hearthians cowering
+        private List<CowerAnimTriggerVolume> volumes;
 
-                if (nameYourVariableWhatever2 != null)
-                {
-                    if (TimeLoop.GetSecondsElapsed() >= 970 && DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_DISTRAUGHT"))
-                    {
-                        MakeMicaCower();
-                        nameYourVariableWhatever2 = null;
-                    }
-                }
+        private void MakeMicaCower(string name, bool state)
+        {
+            if (name == "MODELROCKETKID_DISTRAUGHT" && state)
+            {
+                var volume = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+                volume.StartCoroutine(Coweroutine(volume._animator, 970));
+                volumes.Remove(volume);
             }
         }
+
         private void MakeAllCower()
         {
-            GameObject.Find("AudioSource_BanjoTuning").SetActive(false);
-            foreach (var volume in Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>())
-            {
-                var animator = volume._animator;
-                animator.SetTrigger("ProbeDodge");
-                volume.StartCoroutine(FYeahCoroutines(animator));
-            }
+            foreach (var volume in volumes) volume.StartCoroutine(Coweroutine(volume._animator, 1330));
+            StartCoroutine(Banjoroutine(1330));
         }
-        // TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/CowerAnimTrigger
-        private void MakeMicaCower()
-        {
-            var volume = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
 
-            var animator = volume._animator;
+        private IEnumerator Coweroutine(Animator animator, int time)
+        {
+            while (TimeLoop.GetSecondsElapsed() < time) yield return null;
             animator.SetTrigger("ProbeDodge");
-            volume.StartCoroutine(FYeahCoroutines(animator));
-        }
-
-        private IEnumerator FYeahCoroutines(Animator animator)
-        {
             while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") && !animator.GetCurrentAnimatorStateInfo(1).IsName("Cower 2")) yield return null;
             var n = animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") ? 0 : 1;
             while (true)
             {
-                animator.CrossFade("Cower 2", 0.1f, n);
+                var info = animator.GetCurrentAnimatorStateInfo(n);
+                if (info.normalizedTime * info.length >= 0.2f) animator.CrossFade("Cower 2", 0.2f, n, -0.2f);
                 yield return null;
             }
+        }
+
+        private IEnumerator Banjoroutine(int time)
+        {
+            var banjo = GameObject.Find("AudioSource_BanjoTuning");
+            while (banjo != null && TimeLoop.GetSecondsElapsed() < time) yield return null;
+            if (banjo != null) banjo.SetActive(false);
         }
 
         // Dialogue variables
