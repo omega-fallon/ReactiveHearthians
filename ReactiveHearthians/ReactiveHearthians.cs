@@ -5,6 +5,7 @@
 // change Riebeck’s introductory message that he starts a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
 // Hug mod compat
+// More Solanum interactions
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -18,6 +19,7 @@ using HarmonyLib;
 using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
+using System.Collections;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
@@ -96,13 +98,25 @@ namespace ReactiveHearthians
                 }
             }
         }
-        public void MakeAllCower()
+        private void MakeAllCower()
         {
-            CowerAnimTriggerVolume[] cowervolumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>();
-
-            foreach (var cowervolume in cowervolumes)
+            GameObject.Find("AudioSource_BanjoTuning").SetActive(false);
+            foreach (var volume in Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>())
             {
-                cowervolume._animator.SetTrigger("ProbeDodge");
+                var animator = volume._animator;
+                animator.SetTrigger("ProbeDodge");
+                volume.StartCoroutine(FYeahCoroutines(animator));
+            }
+        }
+
+        private IEnumerator FYeahCoroutines(Animator animator)
+        {
+            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") && !animator.GetCurrentAnimatorStateInfo(1).IsName("Cower 2")) yield return null;
+            var n = animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") ? 0 : 1;
+            while (true)
+            {
+                animator.CrossFade("Cower 2", 0.1f, n);
+                yield return null;
             }
         }
 

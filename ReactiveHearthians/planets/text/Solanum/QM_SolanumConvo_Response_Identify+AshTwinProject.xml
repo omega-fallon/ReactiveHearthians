@@ -1,0 +1,11 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: The <![CDATA[<color=lightblue>Ash Twin Project</color>]]> is a machine constructed inside the core of Ash Twin. I imagine you have seen mention of it elsewhere, yes?</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: Its intended purpose was to help my clan discover the <![CDATA[<color=lightblue>Eye of the Universe</color>]]>. However, it did not succeed, and was never activated.</Text>
+	</TextBlock>
+</NomaiObject>

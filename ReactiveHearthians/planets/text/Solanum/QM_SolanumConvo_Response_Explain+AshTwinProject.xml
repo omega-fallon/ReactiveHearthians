@@ -1,0 +1,16 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: The <![CDATA[<color=lightblue>Ash Twin Project</color>]]> was our clan's most ambitious undertaking. It was also our most controversial.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: Had anything gone wrong during its operation, it would result in the destruction of this entire solar system. There were some among us Nomai who opposed its construction, though most were in favor, myself included.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>3</ID>
+		<ParentID>3</ParentID>
+		<Text>SOLANUM: Unfortunately, our plan of using the <![CDATA[<color=lightblue>Sun Station</color>]]> to power it did not work, and so it has yet to be used.</Text>
+	</TextBlock>
+</NomaiObject>
