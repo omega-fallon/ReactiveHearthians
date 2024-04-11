@@ -5,8 +5,6 @@
 			<DialogueOption>
 				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
 				<CancelledCondition>CUSTOM_CONDITION_AWCHELD</CancelledCondition>
-				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
-				<CancelledCondition>LOOP_COUNT_GOE_3</CancelledCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<Text>I shut off the time loop.</Text>
@@ -14,8 +12,6 @@
 			</DialogueOption>
 			<DialogueOption>
 				<RequiredCondition>CUSTOM_CONDITION_AWCHELD</RequiredCondition>
-				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
-				<CancelledCondition>LOOP_COUNT_GOE_3</CancelledCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<Text>I shut off the time loop. This is the core.</Text>

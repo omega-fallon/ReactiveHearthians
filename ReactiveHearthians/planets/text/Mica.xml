@@ -92,9 +92,15 @@
 			<Page>…What? Come on, that's not funny.</Page>
 			<Page>If you're going to tell a dumb joke like that, the least you could do is smile!</Page>
 			<Page>…</Page>
-			<Page>Oh <![CDATA[<i>Hearth</i>]]>, you're not kidding, are you? I… I need to lie down.</Page>
 		</Dialogue>
 		<SetCondition>MODELROCKETKID_DISTRAUGHT</SetCondition>
+		<DialogueTarget>ModelRocketKid_RH_Answer1B</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>ModelRocketKid_RH_Answer1B</Name>
+		<Dialogue>
+			<Page>Oh <![CDATA[<i>Hearth</i>]]>, you're not kidding, are you? I… I need to lie down.</Page>
+		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_Answer2</Name>

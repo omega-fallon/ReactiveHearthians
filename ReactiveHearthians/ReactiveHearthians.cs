@@ -6,6 +6,7 @@
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
 // Hug mod compat
 // More Solanum interactions
+// Have Mica cower when distraught
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -55,6 +56,7 @@ namespace ReactiveHearthians
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
                 nameYourVariableWhatever = GameObject.Find("SolarSystemRoot").GetComponent<TimeLoop>();
+                nameYourVariableWhatever2 = GameObject.Find("SolarSystemRoot").GetComponent<TimeLoop>();
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -85,8 +87,9 @@ namespace ReactiveHearthians
             }
         }
 
-        // Patching for Hearthians cowering at the supernova boom
+        // Patching for Hearthians cowering
         private TimeLoop nameYourVariableWhatever;
+        private TimeLoop nameYourVariableWhatever2;
         public void Update()
         {
             if (nameYourVariableWhatever != null)
@@ -95,6 +98,15 @@ namespace ReactiveHearthians
                 {
                     MakeAllCower();
                     nameYourVariableWhatever = null;
+                }
+
+                if (nameYourVariableWhatever2 != null)
+                {
+                    if (TimeLoop.GetSecondsElapsed() >= 970 && DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_DISTRAUGHT"))
+                    {
+                        MakeMicaCower();
+                        nameYourVariableWhatever2 = null;
+                    }
                 }
             }
         }
@@ -107,6 +119,15 @@ namespace ReactiveHearthians
                 animator.SetTrigger("ProbeDodge");
                 volume.StartCoroutine(FYeahCoroutines(animator));
             }
+        }
+        // TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/CowerAnimTrigger
+        private void MakeMicaCower()
+        {
+            var volume = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+
+            var animator = volume._animator;
+            animator.SetTrigger("ProbeDodge");
+            volume.StartCoroutine(FYeahCoroutines(animator));
         }
 
         private IEnumerator FYeahCoroutines(Animator animator)
