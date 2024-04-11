@@ -1,3 +1,4 @@
+![Screenshot 2024-04-08 205904](https://github.com/omega-fallon/ReactiveHearthians/assets/36779526/0f0064fa-7f8a-4d9d-bbf6-0eb1f9fa7ca6)
 # ReactiveHearthians
 Adds new dialogue to most Hearthians.
 
