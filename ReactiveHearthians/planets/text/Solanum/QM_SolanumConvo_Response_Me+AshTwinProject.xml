@@ -1,0 +1,16 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: I offer you some caution regarding the <![CDATA[<color=lightblue>Ash Twin Project</color>]]>: its operation involves an inherent level of danger. To my knowledge, there are no current plans of activating it, but if you hear word of this changing, I recommend leaving this solar system.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: It would be a great pity for an outside creature like yourself to be caught up in the potential destruction caused by our species. Alternatively, if allowed, perhaps one of my clan could take you inside the <![CDATA[<color=lightblue>Project</color>]]>?</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>3</ID>
+		<ParentID>2</ParentID>
+		<Text>SOLANUM: I can only assume you, too, are a knowledge-seeking species like us Nomai. Even if not, the inside of the <![CDATA[<color=lightblue>Ash Twin Project</color>]]> is a truly beautiful sight to behold. Ask one of the Nomai on the twins about it, if you please. You may tell them I approve of you.</Text>
+	</TextBlock>
+</NomaiObject>

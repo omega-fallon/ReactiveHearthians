@@ -1,0 +1,11 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: I had no direct involvement in the <![CDATA[<color=lightblue>Ash Twin Project</color>]]>, but I was among its supporters. There is little I want more in life than for the <![CDATA[<color=lightblue>Eye</color>]]> to be found.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: I consider it a great pity that the <![CDATA[<color=lightblue>Ash Twin Project</color>]]> was unable to be activated. Perhaps one day, my clan will find another way.</Text>
+	</TextBlock>
+</NomaiObject>

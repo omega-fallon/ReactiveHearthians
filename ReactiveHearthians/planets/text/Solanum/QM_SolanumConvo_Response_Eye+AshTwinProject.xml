@@ -1,0 +1,11 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: The <![CDATA[<color=lightblue>Ash Twin Project</color>]]> was created to find the <![CDATA[<color=lightblue>Eye of the Universe</color>]]>. This was to be done by linking it to the <![CDATA[<color=lightblue>Orbital Probe Cannon</color>]]> and repeatedly firing probes into space in random directions until the <![CDATA[<color=lightblue>Eye</color>]]> was found.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: Finding and going to the <![CDATA[<color=lightblue>Eye</color>]]> is my clan's ultimate aim. It is a pity, then, that the <![CDATA[<color=lightblue>Ash Twin Project</color>]]> never bore fruit.</Text>
+	</TextBlock>
+</NomaiObject>

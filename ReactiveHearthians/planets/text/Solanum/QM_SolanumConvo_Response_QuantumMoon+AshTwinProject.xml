@@ -1,0 +1,21 @@
+﻿<NomaiObject>
+	<TextBlock>
+		<ID>1</ID>
+		<Text>SOLANUM: Perhaps one might ask why the <![CDATA[<color=lightblue>Ash Twin Project</color>]]> is necessary at all, given that my clan is able to access the <![CDATA[<color=lightblue>Quantum Moon</color>]]>'s sixth location. Right now, we are extrodinarily close to the <![CDATA[<color=lightblue>Eye</color>]]>.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>2</ID>
+		<ParentID>1</ParentID>
+		<Text>SOLANUM: Unfortunately, for reasons that are not clear to us, accessing the <![CDATA[<color=lightblue>Eye</color>]]> via the <![CDATA[<color=lightblue>Quantum Moon</color>]]> appaers to be impossible. Simply leaping off into the atmosphere above will merely lead one back to the solar system.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>3</ID>
+		<ParentID>2</ParentID>
+		<Text>SOLANUM: Furthermore, while on the <![CDATA[<color=lightblue>Quantum Moon</color>]]> in any of its locations, tracking and communications technology breaks down completely. Despite standing right here, so close to the <![CDATA[<color=lightblue>Eye</color>]]>, there is no way to determine my position relative to anything else in the solar system, and thus, no way to find the <![CDATA[<color=lightblue>Eye</color>]]>.</Text>
+	</TextBlock>
+	<TextBlock>
+		<ID>4</ID>
+		<ParentID>3</ParentID>
+		<Text>SOLANUM: It is immensely frustrating, I must admit.</Text>
+	</TextBlock>
+</NomaiObject>

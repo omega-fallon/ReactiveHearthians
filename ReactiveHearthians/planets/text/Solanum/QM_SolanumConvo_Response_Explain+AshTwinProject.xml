@@ -6,11 +6,11 @@
 	<TextBlock>
 		<ID>2</ID>
 		<ParentID>1</ParentID>
-		<Text>SOLANUM: Had anything gone wrong during its operation, it would result in the destruction of this entire solar system. There were some among us Nomai who opposed its construction, though most were in favor, myself included.</Text>
+		<Text>SOLANUM: Had anything gone wrong during its operation, it would result in the destruction of this entire solar system. There were some among us Nomai who opposed its construction, but it was built regardless, due to its promise of helping us find the <![CDATA[<color=lightblue>Eye of the Universe</color>]]>.</Text>
 	</TextBlock>
 	<TextBlock>
 		<ID>3</ID>
 		<ParentID>3</ParentID>
-		<Text>SOLANUM: Unfortunately, our plan of using the <![CDATA[<color=lightblue>Sun Station</color>]]> to power it did not work, and so it has yet to be used.</Text>
+		<Text>SOLANUM: However, our plan of using the <![CDATA[<color=lightblue>Sun Station</color>]]> to power it failed, and so the <![CDATA[<color=lightblue>Ash Twin Project</color>]]> has yet to be activated.</Text>
 	</TextBlock>
 </NomaiObject>
