@@ -12,7 +12,7 @@
 	<DialogueNode>
 		<Name>ShyKid_RH_CoolThing</Name>
 		<EntryCondition>ShyKidFirstContact</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page><![CDATA[<size=20>]]>…Wow.<![CDATA[</size>]]></Page>
 			<Page><![CDATA[<size=20>]]>Cool thing.<![CDATA[</size>]]></Page>
@@ -22,8 +22,8 @@
 	<DialogueNode>
 		<Name>ShyKid_RH_RedSun</Name>
 		<EntryCondition>ShyKidFirstContact</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page><![CDATA[<size=20>]]>…Sun is big…<![CDATA[</size>]]></Page>
 			<Page><![CDATA[<size=20>]]>Weird…<![CDATA[</size>]]></Page>
@@ -32,7 +32,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ShyKid_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page><![CDATA[<size=20>]]>…Wh-what was that…?<![CDATA[</size>]]></Page>
 		</Dialogue>

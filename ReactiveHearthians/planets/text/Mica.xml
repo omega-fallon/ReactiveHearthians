@@ -10,17 +10,17 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_RedSun_Prior</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
 		<Dialogue>
 			<Page>…Hmm? Oh! Heya. Sorry, I was just kinda… distracted, thinkin' about stuff.</Page>
 			<Page>Me and Slate made some cool modifications to my model ship over here. You can, umm… take it for a spin, yeah! It'll be good practice for the real thing.</Page>
 		</Dialogue>
-		<SetCondition>MODELROCKETKID_REASSURED</SetCondition>
+		<SetCondition>MODELROCKETKID_RH_REASSURED</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>…Hmm? Oh! Heya. Sorry, I was just kinda… distracted. You… you see the sun getting all big and red too, right? It's not just me?</Page>
 		</Dialogue>
@@ -38,14 +38,14 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_Reassured</Name>
-		<EntryCondition>MODELROCKETKID_REASSURED</EntryCondition>
+		<EntryCondition>MODELROCKETKID_RH_REASSURED</EntryCondition>
 		<Dialogue>
 			<Page>Well? Come on, what are you waiting for?</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_ReassuredCrash</Name>
-		<EntryCondition>MODELROCKETKID_REASSURED</EntryCondition>
+		<EntryCondition>MODELROCKETKID_RH_REASSURED</EntryCondition>
 		<EntryCondition>CrashedModelRocket</EntryCondition>
 		<Dialogue>
 			<Page>Wow, that was just like the time the external fuel tanks exploded on reentry!</Page>
@@ -53,32 +53,47 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>ModelRocketKid_RH_MicasWrath</Name>
+		<EntryCondition>MICAS_WRATH</EntryCondition>
+		<Dialogue>
+			<Page>Why you...! We spent <![CDATA[<i>weeks</i>]]> on that rocket! And you just go and fly it into the sun?! Like it's nothing?!</Page>
+			<Page>Ghh... don't even talk to me anymore!</Page>
+		</Dialogue>
+		<SetCondition>ModelRocketKid_RH_MicaNoTalkMe</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<EntryCondition>ModelRocketKid_RH_MicaNoTalkMe</EntryCondition>
+		<Dialogue>
+			<Page>I <![CDATA[<i>said</i>]]> don't talk to me!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>ModelRocketKid_RH_Distraught</Name>
-		<EntryCondition>MODELROCKETKID_DISTRAUGHT</EntryCondition>
+		<EntryCondition>MODELROCKETKID_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>
 			<Page>…Eugh… I… it can't be too soon, can it? How did it get like that so fast? I can't… come on, Mica, breathe…</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…What was that noise?</Page>
 			<Page>…A-and why did it get so dark all of a sudden? Like… darker than night usually is?</Page>
 		</Dialogue>
-		<SetCondition>MODELROCKETKID_SILENT</SetCondition>
+		<SetCondition>MODELROCKETKID_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_Silent</Name>
-		<EntryCondition>MODELROCKETKID_SILENT</EntryCondition>
+		<EntryCondition>MODELROCKETKID_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ModelRocketKid_RH_BoomDistraught</Name>
-		<EntryCondition>MODELROCKETKID_DISTRAUGHT</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>MODELROCKETKID_RH_DISTRAUGHT</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Shit! Shit shit shit, we're all gonna die! You <![CDATA[<i>monster</i>]]>, why would you tell me?! I could've died in ignorance! Oh Hearth, oh Hearth!</Page>
 		</Dialogue>
@@ -93,7 +108,7 @@
 			<Page>If you're going to tell a dumb joke like that, the least you could do is smile!</Page>
 			<Page>…</Page>
 		</Dialogue>
-		<SetCondition>MODELROCKETKID_DISTRAUGHT</SetCondition>
+		<SetCondition>MODELROCKETKID_RH_DISTRAUGHT</SetCondition>
 		<DialogueTarget>ModelRocketKid_RH_Answer1B</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
@@ -108,6 +123,6 @@
 			<Page>I wouldn't know it myself. I'm an engineer, not a astonomer!</Page>
 			<Page>Anyways, if you wanna get some test flying in, I'm the Hearthian to go to! Give this mechanical marvel a test run, will ya?</Page>
 		</Dialogue>
-		<SetCondition>MODELROCKETKID_REASSURED</SetCondition>
+		<SetCondition>MODELROCKETKID_RH_REASSURED</SetCondition>
 	</DialogueNode>
 </DialogueTree>

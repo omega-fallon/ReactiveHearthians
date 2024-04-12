@@ -1,7 +1,7 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Tektite_RH_CoolThing_First</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Heyo, hatchling! Nice find you've got there. I assume you're back down here to show it off?</Page>
 			<Page>Me? I was using the old scout launcher and saw smoke in one of the photos, so I thought I’d come over here myself and take a look.</Page>
@@ -20,7 +20,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tektite_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<EntryCondition>TalkedToImpactTektite</EntryCondition>
 		<Dialogue>
 			<Page>Blasted seed did a lot of damage when it crashed. I liked this crater.</Page>
@@ -49,8 +49,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tektite_RH_RedSun_First</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>Goodness. First this seed, now the sun's looking all wonky… what's going on?</Page>
 			<Page>Oh, hatchling. I didn't see you there. Sorry, I'm a bit distracted at the moment.</Page>
@@ -70,8 +70,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tektite_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<EntryCondition>TalkedToImpactTektite</EntryCondition>
 		<Dialogue>
 			<Page>Goodness. First this seed, now the sun's looking all wonky… what's going on?</Page>
@@ -100,17 +100,17 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tektite_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>Stars above! What's happening?! Is that coming from the seed?</Page>
 		</Dialogue>
-		<SetCondition>Tektite_SILENT</SetCondition>
+		<SetCondition>TEKTITE_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tektite_RH_Silent</Name>
-		<EntryCondition>Tektite_SILENT</EntryCondition>
+		<EntryCondition>TEKTITE_RH_SILENT</EntryCondition>
 		<Dialogue>
-			<Page>…hatchling… I'm sorry…</Page>
+			<Page>Hatchling… I'm sorry…</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>

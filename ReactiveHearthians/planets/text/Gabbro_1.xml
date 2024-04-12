@@ -3,7 +3,7 @@
 		<Name>GabbroMenu</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<CancelledCondition>LOOP_COUNT_GOE_2</CancelledCondition>

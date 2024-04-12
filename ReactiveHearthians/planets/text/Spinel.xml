@@ -1,7 +1,7 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Spinel_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Fishing song, fishing song… whoa, what's that you brought along? Don't throw it in the water, hatchling.</Page>
 			<Page>What are you up to, anyway?</Page>
@@ -19,7 +19,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Spinel_RH_CoolThing_Grumpy</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<EntryCondition>Spinel_Grumpy</EntryCondition>
 		<Dialogue>
 			<Page>You can go away now, assuming you’re done scaring off all the fish. And take that weird thing with you.</Page>
@@ -27,8 +27,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Spinel_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>Fishing rite, fishing rite… that sun is looking mighty bright!</Page>
 			<Page>Heh… geez, I'm sweating a storm up here! But that isn't going to stop me from getting my catch, not at all.</Page>
@@ -47,15 +47,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Spinel_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Shoot! My line br… wait, what was that?</Page>
 		</Dialogue>
-		<SetCondition>Spinel_SILENT</SetCondition>
+		<SetCondition>SPINEL_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Spinel_RH_Silent</Name>
-		<EntryCondition>Spinel_SILENT</EntryCondition>
+		<EntryCondition>SPINEL_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…It's… so dark…</Page>
 		</Dialogue>

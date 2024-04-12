@@ -27,7 +27,7 @@
 	<!-- Standard reaction stuff -->
 	<DialogueNode>
 		<Name>Riebeck_RH_CoolThing_First</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<SetCondition>TalkToRiebeck</SetCondition>
 		<RevealFacts>
 			<FactID>BH_RIEBECK_X1</FactID>
@@ -51,7 +51,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Riebeck_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<EntryCondition>TalkToRiebeck</EntryCondition>
 		<Dialogue>
 			<Page>Wow! That's a really cool artifact you found, hatchling! You're becoming something of an archaeologist in your own right, huh?</Page>
@@ -61,7 +61,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Riebeck_RH_WarpCore</Name>
-		<EntryCondition>CUSTOM_CONDITION_WARPCOREHELD</EntryCondition>
+		<EntryCondition>RH_WARPCOREHELD</EntryCondition>
 		<EntryCondition>TalkToRiebeck</EntryCondition>
 		<Dialogue>
 			<Page>Wow! Is that a Nomai warp core? Incredible! And in such good condition too… excellent work, hatchling!</Page>
@@ -71,7 +71,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Riebeck_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>Whoa! Heh… th-that was a big one!</Page>
 		</Dialogue>

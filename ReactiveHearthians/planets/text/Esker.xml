@@ -1,12 +1,12 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Esker_RH_CoolThing_First</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<DialogueTarget>Esker1</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Esker_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<EntryCondition>EskerSaysHi</EntryCondition>
 		<Dialogue>
 			<Page>Hey! Nice find, hatchling. Did you pick that up from somewhere around here?</Page>
@@ -15,7 +15,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Esker_RH_RedSun_FIRSTTIME</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
 		<SetCondition>RH_ESKER_REDSUNFIRST</SetCondition>
 		<Dialogue>
 			<Page>…Hmm.</Page>
@@ -56,7 +56,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Esker_RH_RedSun_SEEONSECOND</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
 		<EntryCondition>EskerSaysHi</EntryCondition>
 		<Dialogue>
 			<Page>…Hmm.</Page>
@@ -71,15 +71,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Esker_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Agh! What?! What's going on?!</Page>
 		</Dialogue>
-		<SetCondition>Esker_SILENT</SetCondition>
+		<SetCondition>ESKER_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Esker_RH_Silent</Name>
-		<EntryCondition>Esker_SILENT</EntryCondition>
+		<EntryCondition>ESKER_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…Dear Hearth, it's… it's beautiful…</Page>
 		</Dialogue>

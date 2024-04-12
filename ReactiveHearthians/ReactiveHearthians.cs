@@ -6,7 +6,7 @@
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
 // Hug mod compat
 // More Solanum interactions
-// Have Mica cower when distraught
+// Angry Mica animation?
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -15,6 +15,8 @@
 // Tell Gabbro about the Stranger
 // Tell Feldspar you landed on the Sun Station and went inside the Interloper
 // Gabbro needs to react to you holding the AWC if you're holding it and they know what it is
+// Have Mica cower when distraught
+// Mica's Wrath!
 
 using HarmonyLib;
 using NewHorizons;
@@ -90,12 +92,27 @@ namespace ReactiveHearthians
             }
         }
 
+        // Patching for Mica's wrath
+        [HarmonyPatch]
+        public class MyPatchClass2
+        {
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(DestructionVolume), nameof(DestructionVolume.VanishModelRocketShip))]
+            public static void OnModelRocketShipDestroyed_Postfix()
+            {
+                if (TimeLoop.GetSecondsElapsed() < 1330)
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("MICAS_WRATH", true);
+                }
+            }
+        }
+
         // Hearthians cowering
         private List<CowerAnimTriggerVolume> volumes;
 
         private void MakeMicaCower(string name, bool state)
         {
-            if (name == "MODELROCKETKID_DISTRAUGHT" && state)
+            if (name == "MODELROCKETKID_RH_DISTRAUGHT" && state)
             {
                 var volume = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
                 volume.StartCoroutine(Coweroutine(volume._animator, 970));
@@ -155,68 +172,68 @@ namespace ReactiveHearthians
             // This variable is set true when the Sun is over the Timber Hearth village. Timestamps provided by Lutias Kokopelli.
             if ((TimeLoop.GetSecondsElapsed() >= 103 && TimeLoop.GetSecondsElapsed() <= 307) || (TimeLoop.GetSecondsElapsed() >= 519 && TimeLoop.GetSecondsElapsed() <= 723) || (TimeLoop.GetSecondsElapsed() >= 935 && TimeLoop.GetSecondsElapsed() <= 1139))
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_VILLAGEDAY", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_VILLAGEDAY", true);
             }
             else
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_VILLAGEDAY", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_VILLAGEDAY", false);
             }
 
             // This variable is set true when a large amount of rubble has fallen into Brittle Hollow - UNUSED
             if (TimeLoop.GetSecondsElapsed() >= 660)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_BRITTLEBROKEN", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_BRITTLEBROKEN", true);
             }
 
             // This variable is set true around when the Sun turns red. This figure is set to 16:10. It's sooner than when Chert changes, but at this point the red sun peaks above the horizon on the village, which is what I'm actually using this variable for.
             if (TimeLoop.GetSecondsElapsed() >= 970)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_REDSUN", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_REDSUN", true);
             }
 
             // This variable is set true once End Times begins playing
             if (TimeLoop.GetSecondsElapsed() >= 1235)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_ENDTIMES", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ENDTIMES", true);
             }
 
             // This variable is set true when the supernova's boom occurs at 22:10.
             if (TimeLoop.GetSecondsElapsed() >= 1330)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_BOOM", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_BOOM", true);
             }
 
             // This variable is set true if the ATP is deactivated
             var TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
             if ((TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_ATPDOWN", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
             }
             else
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_ATPDOWN", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", false);
             }
 
             // STRANGER //
             // This variable is set true if the player knows of the Strangelings' connection to the Eye.
             if (Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_X2") || Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X2"))
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGER_EYE", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_EYE", true);
             }
 
             // This variable is set true if the player has visited the dream world.
             if (Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_1"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_2"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_3"]._state >= ShipLogEntry.State.Explored) {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGER_DREAMWORLD", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAMWORLD", true);
             }
 
             // This variable is set to true if the player has something new to say about the Stranger to Gabbro
-            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("CUSTOM_CONDITION_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && DialogueConditionManager.SharedInstance.GetConditionState("CUSTOM_CONDITION_STRANGER_DREAMWORLD") == true)|| (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true))
+            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAMWORLD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true))
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_GABBRO_STRANGER_SOMETHINGNEW", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", true);
             }
             else
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_GABBRO_STRANGER_SOMETHINGNEW", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", false);
             }
 
             // Sets variables depending on what (if anything) the player is holding. //
@@ -233,59 +250,59 @@ namespace ReactiveHearthians
                         // The item is the Advanced Warp Core
                         if (warpCore._wcType == WarpCoreType.Vessel)
                         {
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", true);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", true);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", true);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", true);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                         // The item is a broken warp core
                         else if ((warpCore._wcType == WarpCoreType.VesselBroken) || (warpCore._wcType == WarpCoreType.SimpleBroken))
                         {
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                         }
                         // The item is some other kind of warp core
                         else
                         {
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", true);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", true);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                     }
                     // The item is one of the Stranger's lanterns
-                    else if (item._type == ItemType.Lantern || item._type == ItemType.DreamLantern)
+                    else if (item._type == ItemType.DreamLantern)
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", true);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", true);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", true);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     else
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                     }
                 }
                 // Holding nothing
                 else
                 {
-                    DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                 }
             }
             catch
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_AWCHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_WARPCOREHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_STRANGERLANTERNHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("CUSTOM_CONDITION_COOLTHINGHELD", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Arkose_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Wow, that thing you're holding looks <![CDATA[<i>awesome</i>]]>!</Page>
 			<Page>…Can I… no, no you can keep it! But put it in the museum so I can look at it!</Page>
@@ -9,8 +9,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Arkose_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>…Whew! It's really hot out today, astronaut! But that isn't gonna stop me!</Page>
 			<Page>When I grow up I'm gonna have the best throwing arm in the village! I'll be so cool!</Page>
@@ -18,15 +18,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Arkose_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Agh! I dropped a rock on my foot! Why's everything shaking?!</Page>
 		</Dialogue>
-		<SetCondition>Arkose_SILENT</SetCondition>
+		<SetCondition>ARKOSE_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Arkose_RH_Silent</Name>
-		<EntryCondition>Arkose_SILENT</EntryCondition>
+		<EntryCondition>ARKOSE_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…Wait, no, please, I wanted to die from ghost matter!</Page>
 		</Dialogue>

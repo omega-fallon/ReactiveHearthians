@@ -7,7 +7,7 @@
 				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
 				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
 				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
 				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
@@ -19,7 +19,7 @@
 				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
 				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
 				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
 				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
@@ -31,7 +31,7 @@
 				<RequiredLogCondition>DB_VESSEL_X2</RequiredLogCondition>
 				<RequiredLogCondition>DB_VESSEL_X3</RequiredLogCondition>
 				<RequiredLogCondition>OPC_EYE_COORDINATES_X1</RequiredLogCondition>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_GOEYE_TOLD</CancelledPersistentCondition>
 				<RequiredCondition>GABBRO_LOOPEND_DONTANSWERME</RequiredCondition>
@@ -39,8 +39,8 @@
 				<DialogueTarget>Gabbro_Eye_3_LoopEndBefore</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
-				<CancelledCondition>CUSTOM_CONDITION_AWCHELD</CancelledCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
+				<CancelledCondition>RH_AWCHELD</CancelledCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
@@ -48,7 +48,7 @@
 				<DialogueTarget>Gabbro_NoMoreLoop_3_NotHolding</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_AWCHELD</RequiredCondition>
+				<RequiredCondition>RH_AWCHELD</RequiredCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
@@ -56,7 +56,7 @@
 				<DialogueTarget>Gabbro_NoMoreLoop_3_Holding</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<RequiredPersistentCondition>GABBRO_LOOPEND_TOLD</RequiredPersistentCondition>
 				<CancelledCondition>GABBRO_LOOPEND_DONTANSWERME</CancelledCondition>
@@ -226,7 +226,7 @@
 	<!-- Gabbro knows what the core is and you're holding it. -->
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_SeeCore</Name>
-		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
+		<EntryCondition>RH_AWCHELD</EntryCondition>
 		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
 		<Dialogue>
 			<Page>…Ah, I see you brought that thing with you again. Keeping your promise this time?</Page>
@@ -251,7 +251,7 @@
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_Contented_StillHolding</Name>
 		<EntryCondition>GABBRO_LOOPEND_CONTENTED</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_AWCHELD</EntryCondition>
+		<EntryCondition>RH_AWCHELD</EntryCondition>
 		<EntryCondition>GABBRO_LOOPEND_TOLD_HOLDING</EntryCondition>
 		<Dialogue>
 			<Page>Hey, time buddy. I see you're sticking by your choice.</Page>

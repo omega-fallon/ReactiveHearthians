@@ -1,14 +1,14 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Marl_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Nice little gizmo you've got there, hatchling. Hornfels' gonna be real jealous you found something that good in such short time.</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Marl_RH_RedSun_Prior</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
 		<Dialogue>
 			<Page>Eugh, finally, nighttime. I don't know what it is, but the sun was <![CDATA[<i>bright</i>]]> before. Real red, too.</Page>
 			<Page>Anyways, back to more important things. That dang tree…</Page>
@@ -16,8 +16,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Marl_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>Geez, that sun is <![CDATA[<i>bright</i>]]>, I tell ya! Real red, too.</Page>
 			<Page>Somehow, this is that tree's fault. Not sure how, but I know it.</Page>
@@ -26,15 +26,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Marl_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…What in Hearth's name was that?</Page>
 		</Dialogue>
-		<SetCondition>Marl_SILENT</SetCondition>
+		<SetCondition>MARL_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Marl_RH_Silent</Name>
-		<EntryCondition>Marl_SILENT</EntryCondition>
+		<EntryCondition>MARL_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…Oh no.</Page>
 		</Dialogue>

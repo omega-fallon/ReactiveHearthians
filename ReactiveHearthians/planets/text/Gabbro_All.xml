@@ -10,7 +10,7 @@
 			</DialogueOption>
 			<DialogueOption>
 				<RequiredPersistentCondition>GABBRO_RH_STRANGER</RequiredPersistentCondition>
-				<RequiredCondition>CUSTOM_CONDITION_GABBRO_STRANGER_SOMETHINGNEW</RequiredCondition>
+				<RequiredCondition>RH_GABBRO_STRANGER_SOMETHINGNEW</RequiredCondition>
 				<Text>I found out something new about the Stranger.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Additional</DialogueTarget>
 			</DialogueOption>
@@ -43,19 +43,19 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Inhabitants</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGER_EYE</RequiredCondition>
+				<RequiredCondition>RH_STRANGER_EYE</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_EYE</CancelledPersistentCondition>
 				<Text>Its inhabitants had some ties to the Eye of the Universe.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Eye</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGERLANTERNHELD</RequiredCondition>
+				<RequiredCondition>RH_STRANGERLANTERNHELD</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_LANTERN</CancelledPersistentCondition>
 				<Text>I found this thing inside it.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGER_DREAMWORLD</RequiredCondition>
+				<RequiredCondition>RH_STRANGER_DREAMWORLD</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
 				<Text>Its inhabitants have access to some kind of… dream world. I've been there.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
@@ -91,19 +91,19 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Inhabitants</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGER_EYE</RequiredCondition>
+				<RequiredCondition>RH_STRANGER_EYE</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_EYE</CancelledPersistentCondition>
 				<Text>Its inhabitants had some ties to the Eye of the Universe.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Eye</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGERLANTERNHELD</RequiredCondition>
+				<RequiredCondition>RH_STRANGERLANTERNHELD</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_LANTERN</CancelledPersistentCondition>
 				<Text>I found this thing inside it.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_STRANGER_DREAMWORLD</RequiredCondition>
+				<RequiredCondition>RH_STRANGER_DREAMWORLD</RequiredCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
 				<Text>Its inhabitants have access to some kind of… dream world. I've been there.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>

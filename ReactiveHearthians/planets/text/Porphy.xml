@@ -1,7 +1,7 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Porphy_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Whoa there, astronaut! I see your litle space adventure has already gotten you some nice treasure.</Page>
 			<Page>Well, you know what Hornfels says. “It belongs in a museum” and whatnot.</Page>
@@ -11,7 +11,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_RedSun_Prior</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
 		<Dialogue>
 			<Page>…Oh, hey there, little astronaut. The sun was looking pretty big and red earlier… that isn't anything to worry about, right?</Page>
 		</Dialogue>
@@ -29,8 +29,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>…Oh, hey there, little astronaut. The sun's looking pretty big and red right now… that isn't anything to worry about, right?</Page>
 		</Dialogue>
@@ -48,30 +48,30 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Distraught</Name>
-		<EntryCondition>PORPHY_DISTRAUGHT</EntryCondition>
+		<EntryCondition>PORPHY_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>
 			<Page>…Say, hatchling. You can have some if you want. Nobody else, though. I… wouldn't want them to know.</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Did Feldspar finally land? Where'd all the light go?</Page>
 		</Dialogue>
-		<SetCondition>PORPHY_SILENT</SetCondition>
+		<SetCondition>PORPHY_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Silent</Name>
-		<EntryCondition>PORPHY_SILENT</EntryCondition>
+		<EntryCondition>PORPHY_RH_SILENT</EntryCondition>
 		<Dialogue>
-			<Page>…</Page>
+			<Page>…Ah. That's… the end, isn't it?</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_BoomDistraught</Name>
-		<EntryCondition>PORPHY_DISTRAUGHT</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>PORPHY_RH_DISTRAUGHT</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…One last drink, hatchling.</Page>
 		</Dialogue>
@@ -85,7 +85,7 @@
 			<Page>…Oh. Is that so?</Page>
 			<Page>…Huh. I guess I'm not gonna get a chance to age all this sap wine. Heheh… heh…</Page>
 		</Dialogue>
-		<SetCondition>PORPHY_DISTRAUGHT</SetCondition>
+		<SetCondition>PORPHY_RH_DISTRAUGHT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Answer2</Name>

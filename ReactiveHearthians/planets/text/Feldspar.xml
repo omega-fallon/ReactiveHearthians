@@ -20,7 +20,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Feldspar_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<EntryCondition>TalkedToFeldspar</EntryCondition>
 		<Dialogue>
 			<Page>Oho! Hatchling, is that a piece of <![CDATA[<i>treasure</i>]]> you're carrying?</Page>
@@ -59,15 +59,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Feldspar_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…Whoa. Say, hatchling, you weren't expecting anyone else coming here, were you? It sounds like someone crash landed!</Page>
 		</Dialogue>
-		<SetCondition>Feldspar_SILENT</SetCondition>
+		<SetCondition>FELDSPAR_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Feldspar_RH_Silent</Name>
-		<EntryCondition>Feldspar_SILENT</EntryCondition>
+		<EntryCondition>FELDSPAR_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>…That doesn't sound good.</Page>
 		</Dialogue>

@@ -3,18 +3,18 @@
 		<Name>Curator13</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_WARPCOREHELD</RequiredCondition>
+				<RequiredCondition>RH_WARPCOREHELD</RequiredCondition>
 				<Text>Hey, check this out!</Text>
 				<DialogueTarget>Curator_RH_WARPCORE</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_COOLTHINGHELD</RequiredCondition>
-				<CancelledCondition>CUSTOM_CONDITION_WARPCOREHELD</CancelledCondition>
+				<RequiredCondition>RH_COOLTHINGHELD</RequiredCondition>
+				<CancelledCondition>RH_WARPCOREHELD</CancelledCondition>
 				<Text>Hey, check this out!</Text>
 				<DialogueTarget>Curator_RH_COOLTHING</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>SCIENTIST_SNTELLHORNFELS</RequiredCondition>
+				<RequiredCondition>SCIENTIST_RH_SNTELLHORNFELS</RequiredCondition>
 				<Text>Slate says the Sun is redder than usual.</Text>
 				<DialogueTarget>Curator_RH_RedSunSlate</DialogueTarget>
 			</DialogueOption>
@@ -26,7 +26,7 @@
 			<Page>…Huh? Jeez, they've been spending too much time breathing in smoke fumes, haven't they?</Page>
 			<Page>Look, I've got bigger things to investigate than Slate's delusions. Tell them I said everything's fine so they'll get off my back, okay?</Page>
 		</Dialogue>
-		<SetCondition>HORNFELS_SUPERNOVADENY</SetCondition>
+		<SetCondition>HORNFELS_RH_SUPERNOVADENY</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Curator_RH_WARPCORE</Name>
@@ -47,7 +47,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Hornfels_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…What… hatchling, did something go wrong with your ship? You felt that tremor too, right?</Page>
 		</Dialogue>
@@ -63,7 +63,7 @@
 	<DialogueNode>
 		<Name>Hornfels_RH_SilentSlate</Name>
 		<EntryCondition>Hornfels_SILENT</EntryCondition>
-		<EntryCondition>HORNFELS_SUPERNOVADENY</EntryCondition>
+		<EntryCondition>HORNFELS_RH_SUPERNOVADENY</EntryCondition>
 		<Dialogue>
 			<Page>…Oh Hearth… Slate was right.</Page>
 		</Dialogue>

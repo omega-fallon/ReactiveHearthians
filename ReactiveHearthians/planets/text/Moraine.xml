@@ -1,7 +1,7 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
 		<Name>Moraine_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Hmm! Whoa! Barely any time in space and you've already found something museum-worthy!</Page>
 			<Page>Gosh… I'm sure Slate's really proud of you. Y'know, even if they wouldn't say that out loud.</Page>
@@ -19,8 +19,8 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Moraine_RH_RedSun</Name>
-		<EntryCondition>CUSTOM_CONDITION_REDSUN</EntryCondition>
-		<EntryCondition>CUSTOM_CONDITION_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_REDSUN</EntryCondition>
+		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
 		<Dialogue>
 			<Page>Agh… I'm going to have to close my eyes, now. The sun's way too bright today!</Page>
 			<Page>Eugh, and I'm sweating like a fish on a grill! Maybe I should get down from here…</Page>
@@ -38,15 +38,15 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Moraine_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>Holy Hearth! The whole tree's shaking!</Page>
 		</Dialogue>
-		<SetCondition>Moraine_SILENT</SetCondition>
+		<SetCondition>MORAINE_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Moraine_RH_Silent</Name>
-		<EntryCondition>Moraine_SILENT</EntryCondition>
+		<EntryCondition>MORAINE_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page>Duck and cover, hatchling!</Page>
 		</Dialogue>

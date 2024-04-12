@@ -3,15 +3,15 @@
 		<Name>GabbroMenu</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_ATPDOWN</RequiredCondition>
-				<CancelledCondition>CUSTOM_CONDITION_AWCHELD</CancelledCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
+				<CancelledCondition>RH_AWCHELD</CancelledCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<Text>I shut off the time loop.</Text>
 				<DialogueTarget>Gabbro_NoMoreLoop_2_NotHolding</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>CUSTOM_CONDITION_AWCHELD</RequiredCondition>
+				<RequiredCondition>RH_AWCHELD</RequiredCondition>
 				<RequiredLogCondition>TT_TIME_LOOP_DEVICE_X3</RequiredLogCondition>
 				<CancelledPersistentCondition>GABBRO_LOOPEND_TOLD</CancelledPersistentCondition>
 				<Text>I shut off the time loop. This is the core.</Text>

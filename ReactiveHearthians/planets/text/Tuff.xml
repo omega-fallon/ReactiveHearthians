@@ -23,14 +23,14 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tuff_RH_CoolThing</Name>
-		<EntryCondition>CUSTOM_CONDITION_COOLTHINGHELD</EntryCondition>
+		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>…Whoa. Look at that thing… the way it sparkles, like it's capturing all the light inside of it… where'd you find that, hatchling?</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tuff_RH_Boom</Name>
-		<EntryCondition>CUSTOM_CONDITION_BOOM</EntryCondition>
+		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page>…The heck was that?</Page>
 		</Dialogue>
