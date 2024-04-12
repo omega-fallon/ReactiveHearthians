@@ -12,7 +12,7 @@
 		<DialogueOptionsList>
 			<DialogueOption>
 				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredCondition>COMET_INTERIOR</RequiredCondition>
+				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
 				<Text>I went inside the Interloper.</Text>
 				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
 			</DialogueOption>
