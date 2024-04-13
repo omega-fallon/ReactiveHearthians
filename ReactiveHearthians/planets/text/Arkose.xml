@@ -1,10 +1,68 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Arkose1</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredLogCondition>COMET_INTERIOR_X3</RequiredLogCondition>
+				<Text>Ghost matter is no joke. It's what killed off the Nomai.</Text>
+				<DialogueTarget>Arkose_RH_KillOffNomai</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>COMET_INTERIOR_X3</RequiredLogCondition>
+				<Text>Did you know ghost matter came here from the Interloper?</Text>
+				<DialogueTarget>Arkose_RH_Interloper</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>CODEX_ENTERED_TESSERACT</RequiredPersistentCondition>
+				<Text>I can see ghost matter now!</Text>
+				<DialogueTarget>Arkose_RH_CODEX_SeeMatter</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_KillOffNomai</Name>
+		<Dialogue>
+			<Page>Wow... wait, you mean, like, <![CDATA[<i>all</i>]]> of them?!</Page>
+			<Page>That's <![CDATA[<i>awesome</i>]]>! Thanks for telling me!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_Interloper</Name>
+		<Dialogue>
+			<Page>No way! That's always been my favorite planet! Cool!</Page>
+			<!-- For all those interested: yes, I know it is a comet. Arkose is a child. -->
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_CODEX_SeeMatter</Name>
+		<Dialogue>
+			<Page>Whoa!! Really?! Like, without using a camera or anything? Just with your eyes?</Page>
+			<Page>That is <![CDATA[<i>so</i>]]> cool! How'd you do that?</Page>
+		</Dialogue>
+		<DialogueTarget>Arkose_RH_CODEX_HowSee</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_CODEX_HowSee</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I stepped into some weird tesseract on a planet beneath the sun.</Text>
+				<DialogueTarget>Arkose_RH_CODEX_Unfair</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_CODEX_Unfair</Name>
+		<Dialogue>
+			<Page>Lucky! Man, how come I never get to do cool stuff like that?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<!-- Regular stuff -->
+	<DialogueNode>
 		<Name>Arkose_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Wow, that thing you're holding looks <![CDATA[<i>awesome</i>]]>!</Page>
-			<Page>…Can I… no, no you can keep it! But put it in the museum so I can look at it!</Page>
+			<Page>Can I… no, no you can keep it! But put it in the museum so I can look at it!</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>

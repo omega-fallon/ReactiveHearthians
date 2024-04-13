@@ -3,7 +3,7 @@
 		<Name>ScientistSpace</Name>
 		<EntryCondition>Space</EntryCondition>
 		<Dialogue>
-			<Page>Oh! hatchling, what're you doing back here so soon? Get back up there and have some fun!</Page>
+			<Page>Oh! Hatchling, what're you doing back here so soon? Get back up there and have some fun!</Page>
 			<Page>Don't tell me you're getting cold feet now… come on, it's perfectly safe, swear on my top eyes.</Page>
 		</Dialogue>
 	</DialogueNode>

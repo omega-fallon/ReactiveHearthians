@@ -7,6 +7,7 @@
 // Hug mod compat
 // More Solanum interactions
 // Angry Mica animation?
+// Characters react to you dying in front of them
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -17,6 +18,10 @@
 // Gabbro needs to react to you holding the AWC if you're holding it and they know what it is
 // Have Mica cower when distraught
 // Mica's Wrath!
+// Tell Arkose about the Interloper being the source of all ghost matter
+// ASTRAL CODEC - Tell Arkose about being able to see ghost matter
+// Add scroll objects to "cool items" list
+// THE VISION - Add vision torch to "cool items" list
 
 using HarmonyLib;
 using NewHorizons;
@@ -278,6 +283,14 @@ namespace ReactiveHearthians
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", true);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
+                    }
+                    // The item is a Nomai scroll or vision torch
+                    else if (item._type == ItemType.Scroll || item._type == ItemType.VisionTorch)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     else
