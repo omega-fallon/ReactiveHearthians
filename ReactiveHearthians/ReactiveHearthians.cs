@@ -12,6 +12,9 @@
 // Tell Hal about Solanum?
 // THE OUTSIDER - Tell Hal about the Friend?
 // ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
+// Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
+// Make Slate an exception and potentially Rutile exceptions to the cowering code given certain conditions
+// Maybe add dialogue for reaching somewhere without your ship???
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -77,6 +80,8 @@ namespace ReactiveHearthians
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
+
+            Locator.GetPlayerDetector().GetComponent<HazardDetector>().OnFirstContactDamage += OnFirstContactDamage;
         }
 
         // Special patching for Gabbro.
@@ -134,7 +139,29 @@ namespace ReactiveHearthians
 
         private void MakeAllCower()
         {
-            foreach (var volume in volumes) volume.StartCoroutine(Coweroutine(volume._animator, 1330));
+            var volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+            var volume_rutile = GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+            var volume_porphy = GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+
+            foreach (var volume in volumes)
+            {
+                if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT") && volume == volume_mica)
+                {
+                    // Do nothing; Mica is already cowering //
+                }
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT") && volume == volume_rutile)
+                {
+                    // Do nothing; Rutile was informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
+                }
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT") && volume == volume_porphy)
+                {
+                    // Do nothing; same as above but for Porphy //
+                }
+                else
+                {
+                    volume.StartCoroutine(Coweroutine(volume._animator, 1330));
+                }
+            }
             StartCoroutine(Banjoroutine(1330));
         }
 
@@ -157,6 +184,15 @@ namespace ReactiveHearthians
             var banjo = GameObject.Find("AudioSource_BanjoTuning");
             while (banjo != null && TimeLoop.GetSecondsElapsed() < time) yield return null;
             if (banjo != null) banjo.SetActive(false);
+        }
+
+        // On damage
+        public void OnFirstContactDamage(HazardVolume volume)
+        {
+            if (volume != null)
+            {
+                ModHelper.Console.WriteLine(volume.ToString(), MessageType.Success);
+            }
         }
 
         // Dialogue variables
