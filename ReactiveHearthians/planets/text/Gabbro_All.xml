@@ -61,11 +61,24 @@
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>RH_STRANGER_DREAM_IS_CODE</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD_CODE</CancelledPersistentCondition>
+				<Text>The dream world is actually a computer simulation.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld_Code</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
 				<RequiredLogCondition>IP_SARCOPHAGUS_X5</RequiredLogCondition>
 				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_PRISONER</CancelledPersistentCondition>
 				<Text>I found a prisoner of theirs locked up in the dream world.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>IP_DREAM_HOME_X1</RequiredLogCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_FRIEND</CancelledPersistentCondition>
+				<Text>I found a friendly inhabitant in the dream world through a fire in Dark Bramble.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Friend</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
 				<Text>Nevermind, sorry.</Text>
@@ -109,11 +122,24 @@
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>RH_STRANGER_DREAM_IS_CODE</RequiredCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD_CODE</CancelledPersistentCondition>
+				<Text>The dream world is actually a computer simulation.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld_Code</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
 				<RequiredLogCondition>IP_SARCOPHAGUS_X5</RequiredLogCondition>
 				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_PRISONER</CancelledPersistentCondition>
 				<Text>I found a prisoner of theirs locked up in the dream world.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>IP_DREAM_HOME_X1</RequiredLogCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_FRIEND</CancelledPersistentCondition>
+				<Text>I found a friendly inhabitant in the dream world through a fire in Dark Bramble.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Friend</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
 				<Text>That's actually all I know…</Text>
@@ -184,6 +210,15 @@
 		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_DreamWorld_Code</Name>
+		<Dialogue>
+			<Page>Oh! Yeah, that makes sense. I mean, more sense than it being magic, anyways.</Page>
+			<Page>That's a lot of effort to go through, though. I guess they really missed their old home. Or maybe they wanted to be immortal? Maybe both.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD_CODE</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Gabbro_RH_Stranger_Prisoner</Name>
 		<Dialogue>
 			<Page>…Mmm. I feel bad for them. I can't imagine being locked up for Hearth-knows-how-long with nobody to talk to and nothing to do.</Page>
@@ -191,6 +226,15 @@
 			<Page>Ah… ahem. Sorry, just got kind of emotional about that for some reason. I'm glad you let them out. Even if it was just for one loop.</Page>
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_RH_STRANGER_PRISONER</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Friend</Name>
+		<Dialogue>
+			<Page>Whoa! They set stuff up on Dark Bramble, too? I always thought those wooden structures were just built by the Nomai using the resources they had around them.</Page>
+			<Page>It's fortunate that they spoke Nomai. Probably good that you went and talked to them; poor guy probably hasn't talked to anyone new in millenia!</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_FRIEND</SetPersistentCondition>
 		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

@@ -1,5 +1,5 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
-	<!-- Stranger stuff -->
+	<!-- Stranger & mod stuff -->
 	<DialogueNode>
 		<Name>RiebeckLearned</Name>
 		<DialogueOptionsList>
@@ -8,6 +8,24 @@
 				<RequiredLogCondition>IP_RING_WORLD_X1</RequiredLogCondition>
 				<Text>I found a hidden planet in our solar system.</Text>
 				<DialogueTarget>RiebeckLearned_RH_Stranger</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
+				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
+				<CancelledLogCondition>codex_astral_codex_species</CancelledLogCondition>
+				<Text>I found a space station far below the orbital plane.</Text>
+				<DialogueTarget>RiebeckLearned_RH_LingeringChime</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
+				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
+				<RequiredLogCondition>codex_astral_codex_species</RequiredLogCondition>
+				<Text>I found a space station far below the orbital plane that comes from the universe before ours.</Text>
+				<DialogueTarget>RiebeckLearned_RH_LingeringChime_2</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
@@ -22,6 +40,29 @@
 			<Page>Goodness. And here I thought we were maybe getting close to understanding things. I guess it just goes to show you there's always more things to be discovered, huh?</Page>
 		</Dialogue>
 		<SetCondition>RIEBECK_KNOWS_STRANGER</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>RiebeckLearned_RH_LingeringChime</Name>
+		<Dialogue>
+			<Page>...Whoa. Really?</Page>
+			<Page>And you say you found Nomai writing inside... but the ship didn't look Nomaian in origin?</Page>
+			<Page>That is <![CDATA[<i>fascinating</i>]]>! An abandoned ship... but no corpses. Nomai writing, but no tell-tale signs of Nomai architecture.</Page>
+			<Page>That just doesn't add up. It seems like you've got a mystery on your hands, hatchling! Go out there and investigate it. I'm rooting for you.</Page>
+		</Dialogue>
+		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>RiebeckLearned_RH_LingeringChime_2</Name>
+		<Dialogue>
+			<Page>...Whoa. Really?</Page>
+			<Page>From the universe before ours... how does that even work? Time travel, maybe? Gosh, thinking of things that far back in the past makes my head hurt!</Page>
+			<Page>It's a good thing you found their ship, then. It seems like they went through a lot of trouble to be remembered.</Page>
+			<Page>Geez... I guess this is a little grim, but... I hope once we're all gone, people remember us, too, you know?</Page>
+			<Page>Ah, but don't worry about that, hatchling! That won't happen in any of our lifetimes.</Page>
+		</Dialogue>
+		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 	<!-- Standard reaction stuff -->
