@@ -8,6 +8,10 @@
 // More Solanum interactions
 // Angry Mica animation?
 // Characters react to you dying in front of them
+// Some characters have dialogue for you being suited up
+// Tell Hal about Solanum?
+// THE OUTSIDER - Tell Hal about the Friend?
+// ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -209,6 +213,18 @@ namespace ReactiveHearthians
             if (TimeLoop.GetSecondsElapsed() >= 1330)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_BOOM", true);
+            }
+
+            // This variable is set true if the player is wearing a space suit (either the training or the regular one)
+            if (Locator.GetPlayerSuit().IsWearingSuit())
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED", true);
+            }
+
+            // This variable is set true if the player is wearing the training suit
+            if (Locator.GetPlayerSuit().IsTrainingSuit())
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TRAINING_SUITED", true);
             }
 
             // This variable is set true if the ATP is deactivated

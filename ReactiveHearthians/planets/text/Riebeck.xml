@@ -45,9 +45,9 @@
 	<DialogueNode>
 		<Name>RiebeckLearned_RH_LingeringChime</Name>
 		<Dialogue>
-			<Page>...Whoa. Really?</Page>
-			<Page>And you say you found Nomai writing inside... but the ship didn't look Nomaian in origin?</Page>
-			<Page>That is <![CDATA[<i>fascinating</i>]]>! An abandoned ship... but no corpses. Nomai writing, but no tell-tale signs of Nomai architecture.</Page>
+			<Page>…Whoa. Really?</Page>
+			<Page>And you say you found Nomai writing inside… but the ship didn't look Nomaian in origin?</Page>
+			<Page>That is <![CDATA[<i>fascinating</i>]]>! An abandoned ship… but no corpses. Nomai writing, but no tell-tale signs of Nomai architecture.</Page>
 			<Page>That just doesn't add up. It seems like you've got a mystery on your hands, hatchling! Go out there and investigate it. I'm rooting for you.</Page>
 		</Dialogue>
 		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>
@@ -56,10 +56,10 @@
 	<DialogueNode>
 		<Name>RiebeckLearned_RH_LingeringChime_2</Name>
 		<Dialogue>
-			<Page>...Whoa. Really?</Page>
-			<Page>From the universe before ours... how does that even work? Time travel, maybe? Gosh, thinking of things that far back in the past makes my head hurt!</Page>
+			<Page>…Whoa. Really?</Page>
+			<Page>From the universe before ours… how does that even work? Time travel, maybe? Gosh, thinking of things that far back in the past makes my head hurt!</Page>
 			<Page>It's a good thing you found their ship, then. It seems like they went through a lot of trouble to be remembered.</Page>
-			<Page>Geez... I guess this is a little grim, but... I hope once we're all gone, people remember us, too, you know?</Page>
+			<Page>Geez… I guess this is a little grim, but… I hope once we're all gone, people remember us, too, you know?</Page>
 			<Page>Ah, but don't worry about that, hatchling! That won't happen in any of our lifetimes.</Page>
 		</Dialogue>
 		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>

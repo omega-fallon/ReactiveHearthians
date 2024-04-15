@@ -56,8 +56,8 @@
 		<Name>ModelRocketKid_RH_MicasWrath</Name>
 		<EntryCondition>MICAS_WRATH</EntryCondition>
 		<Dialogue>
-			<Page>Why you...! We spent <![CDATA[<i>weeks</i>]]> on that rocket! And you just go and fly it into the sun?! Like it's nothing?!</Page>
-			<Page>Ghh... don't even talk to me anymore!</Page>
+			<Page>Why you…! We spent <![CDATA[<i>weeks</i>]]> on that rocket! And you just go and fly it into the sun?! Like it's nothing?!</Page>
+			<Page>Ghh… don't even talk to me anymore!</Page>
 		</Dialogue>
 		<SetCondition>ModelRocketKid_RH_MicaNoTalkMe</SetCondition>
 	</DialogueNode>

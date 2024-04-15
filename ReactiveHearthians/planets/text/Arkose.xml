@@ -22,7 +22,7 @@
 	<DialogueNode>
 		<Name>Arkose_RH_KillOffNomai</Name>
 		<Dialogue>
-			<Page>Wow... wait, you mean, like, <![CDATA[<i>all</i>]]> of them?!</Page>
+			<Page>Wow… wait, you mean, like, <![CDATA[<i>all</i>]]> of them?!</Page>
 			<Page>That's <![CDATA[<i>awesome</i>]]>! Thanks for telling me!</Page>
 		</Dialogue>
 	</DialogueNode>

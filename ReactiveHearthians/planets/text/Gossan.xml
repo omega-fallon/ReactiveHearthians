@@ -64,6 +64,14 @@
 		<DialogueTarget>PostZeroG</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Gossan_RH_TrainingSuit</Name>
+		<EntryCondition>RH_TRAINING_SUITED</EntryCondition>
+		<Dialogue>
+			<Page>Hey! Come on, you know you're not supposed to take that suit out of the zero-g cave!</Page>
+			<Page>Go put it back now, cadet. You've got your <![CDATA[<i>own</i>]]> suit in your ship.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Gossan_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

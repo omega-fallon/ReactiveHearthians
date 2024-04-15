@@ -49,7 +49,7 @@
 		<Name>Hornfels_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
-			<Page>…What… hatchling, did something go wrong with your ship? You felt that tremor too, right?</Page>
+			<Page>…What? Hatchling, did something go wrong with your ship? You felt that tremor too, right?</Page>
 		</Dialogue>
 		<SetCondition>Hornfels_SILENT</SetCondition>
 	</DialogueNode>

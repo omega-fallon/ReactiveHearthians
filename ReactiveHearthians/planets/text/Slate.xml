@@ -8,7 +8,7 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
-		<Name>Scientist_RH_AWC</Name>
+		<Name>Scientist_RH_COOLTHING</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Whoa! What's that you got there, hatchling? Looks mighty interesting to me.</Page>

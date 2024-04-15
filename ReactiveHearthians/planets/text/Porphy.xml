@@ -1,10 +1,41 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Porphy_RH_Spacesuit</Name>
+		<EntryCondition>RH_SUITED</EntryCondition>
+		<Dialogue>
+			<Page>Heyo, hatchling! I see you're already suited up for your little journey among the stars!</Page>
+			<Page>When you return, let’s you, me, and Gossan open up a bottle of the Good Stuff.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I’m only seeking adventure amongst one star, actually. Other stars are too far away.</Text>
+				<DialogueTarget>SolarSystem</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>The Good Stuff is less “delicious sap wine” and more “daunting digestive challenge.”</Text>
+				<DialogueTarget>GoodStuff</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>PorphySaysHi</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Redirect</Name>
+		<EntryCondition>RH_SUITED</EntryCondition>
+		<EntryCondition>PorphySaysHi</EntryCondition>
+		<DialogueTarget>SapWineMaker2</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Redirect_2</Name>
+		<EntryCondition>RH_SUITED</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<DialogueTarget>SapWineMaker3</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Porphy_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Whoa there, astronaut! I see your litle space adventure has already gotten you some nice treasure.</Page>
-			<Page>Well, you know what Hornfels says. “It belongs in a museum” and whatnot.</Page>
+			<Page>Well, you know what Hornfels says: “It belongs in a museum” and whatnot.</Page>
 			<Page>But I won't tell anyone if you decide to keep it, heheh.</Page>
 		</Dialogue>
 		<DialogueTarget>PorphyMenu</DialogueTarget>
@@ -22,7 +53,7 @@
 				<DialogueTarget>Porphy_RH_Answer1</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<Text>Nope, that's normal.</Text>
+				<Text>Nope, that's normal, I think.</Text>
 				<DialogueTarget>Porphy_RH_Answer2</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>

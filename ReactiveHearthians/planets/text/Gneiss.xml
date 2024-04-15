@@ -20,7 +20,7 @@
 		<Name>Gneiss_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
-			<Page>…Gah… a tremor? What's going on?</Page>
+			<Page>Gah… a tremor? What's going on?</Page>
 		</Dialogue>
 		<SetCondition>GNEISS_RH_SILENT</SetCondition>
 	</DialogueNode>
@@ -28,7 +28,7 @@
 		<Name>Gneiss_RH_Silent</Name>
 		<EntryCondition>GNEISS_RH_SILENT</EntryCondition>
 		<Dialogue>
-			<Page>…Oh goodness… someone get the children!</Page>
+			<Page>Oh goodness… someone get the children!</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>
