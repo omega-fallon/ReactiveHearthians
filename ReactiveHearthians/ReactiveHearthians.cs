@@ -77,6 +77,8 @@ namespace ReactiveHearthians
         public HazardVolume hazardvolume_feldsparfire;
         public float hazardvolume_feldsparfire_lasttouched;
 
+        public DarkMatterVolume darkmattervolume_arkose;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -92,13 +94,15 @@ namespace ReactiveHearthians
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
                 volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
-                
+
                 // Campfires people are sat near
                 hazardvolume_slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
                 hazardvolume_riebeckfire = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
-                hazardvolume_eskerfire = GameObject.Find("Moon_Body/Sector_THM/Interactables_THM/Effects_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
-                hazardvolume_chertfire = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Lakebed_VisibleFrom_Far/Prefab_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
-                hazardvolume_feldsparfire = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Prefab_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_eskerfire = GameObject.Find("Moon_Body/Sector_THM/Interactables_THM/Effects_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_chertfire = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Lakebed_VisibleFrom_Far/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_feldsparfire = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+
+                darkmattervolume_arkose = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/DarkMatterVolume").GetComponent<DarkMatterVolume>();
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -190,6 +194,10 @@ namespace ReactiveHearthians
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_FIRE_DAMAGED", true);
                         ReactiveHearthians.Instance.hazardvolume_feldsparfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else if (eVolume == ReactiveHearthians.Instance.darkmattervolume_arkose)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_ARKOSE_DARKMATTER_DAMAGED", true);
                     }
                     else
                     {

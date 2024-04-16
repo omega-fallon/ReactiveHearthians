@@ -1,5 +1,13 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Arkose_RH_GhostMatterDamage</Name>
+		<EntryCondition>RH_ARKOSE_DARKMATTER_DAMAGED</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Be careful around the ghost matter, astronaut!</Page>
+		</Dialogue>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Arkose1</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
