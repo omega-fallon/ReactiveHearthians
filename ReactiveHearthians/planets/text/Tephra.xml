@@ -63,6 +63,14 @@
 		<Name>Tephra_RH_Silent</Name>
 		<EntryCondition>TEPHRA_RH_SILENT</EntryCondition>
 		<Dialogue>
+			<Page>Astronaut, p-please, help me!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Silent_L2</Name>
+		<EntryCondition>TEPHRA_RH_SILENT</EntryCondition>
+		<EntryCondition>LOOP_COUNT_GOE_2</EntryCondition>
+		<Dialogue>
 			<Page>…I-I'll keep you safe, Galena!</Page>
 		</Dialogue>
 	</DialogueNode>

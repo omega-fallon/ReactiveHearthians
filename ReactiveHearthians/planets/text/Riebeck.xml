@@ -65,6 +65,7 @@
 		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
+	
 	<!-- Standard reaction stuff -->
 	<DialogueNode>
 		<Name>Riebeck_RH_CoolThing_First</Name>
@@ -110,6 +111,46 @@
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Riebeck_RH_Fire_First</Name>
+		<EntryCondition>RH_RIEBECK_FIRE_DAMAGED_RECENT</EntryCondition>
+		<SetCondition>TalkToRiebeck</SetCondition>
+		<RevealFacts>
+			<FactID>BH_RIEBECK_X1</FactID>
+		</RevealFacts>
+		<Dialogue>
+			<Page>Ah! Hearth, hatchling, you scared me there! You've really gotta be more careful around open flames.</Page>
+			<Page>Goodness, umm… well, hey! I guess you launched. That’s great. Great job, you.</Page>
+			<Page>Lot of history here. …It’s great.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>What are you doing here?</Text>
+				<DialogueTarget>RiebeckIntro</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
+				<Text>I’m in a hurry — can I ask you something?</Text>
+				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<ConditionToCancel>RH_RIEBECK_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_RIEBECK_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_Fire_TalkToAgain</Name>
+		<EntryCondition>RH_RIEBECK_FIRE_DAMAGED_RECENT</EntryCondition>
+		<EntryCondition>TalkToRiebeck</EntryCondition>
+		<Dialogue>
+			<Page>Ah! Hearth, hatchling, you scared me there! You've really gotta be more careful around open flames.</Page>
+			<Page>Goodness, umm… well, hey! What's up?</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+		<ConditionToCancel>RH_RIEBECK_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_RIEBECK_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Riebeck_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>

@@ -55,7 +55,7 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>RH_STRANGER_DREAMWORLD</RequiredCondition>
+				<RequiredPersistentCondition>DREAMWORLD_EVER_BEEN</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
 				<Text>Its inhabitants have access to some kind of… dream world. I've been there.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>
@@ -116,7 +116,7 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Lantern</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<RequiredCondition>RH_STRANGER_DREAMWORLD</RequiredCondition>
+				<RequiredPersistentCondition>DREAMWORLD_EVER_BEEN</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</CancelledPersistentCondition>
 				<Text>Its inhabitants have access to some kind of… dream world. I've been there.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_DreamWorld</DialogueTarget>

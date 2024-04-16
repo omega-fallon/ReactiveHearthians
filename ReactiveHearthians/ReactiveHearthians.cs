@@ -7,14 +7,13 @@
 // Hug mod compat
 // More Solanum interactions
 // Angry Mica animation?
-// Characters react to you dying in front of them
-// Some characters have dialogue for you being suited up
 // Tell Hal about Solanum?
 // THE OUTSIDER - Tell Hal about the Friend?
 // ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
 // Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
-// Make Slate an exception and potentially Rutile exceptions to the cowering code given certain conditions
 // Maybe add dialogue for reaching somewhere without your ship???
+// Dialogue for standing on someone's campfire
+// Characters react to you dying in front of them
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -32,6 +31,8 @@
 // THE OUTSIDER - Tell Gabbro about talking to "Friend"
 // ASTRAL CODEC - Tell Riebeck about finding the Lingering Chime
 // THE OUTSIDER - Compat for Dream variable
+// Make Slate an exception and potentially Rutile exceptions to the cowering code given certain conditions
+// Some characters have dialogue for you being suited up
 
 using HarmonyLib;
 using NewHorizons;
@@ -75,19 +76,29 @@ namespace ReactiveHearthians
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
                 volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
+                
+                // Campfires people are sat near
+                hazardvolume_slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_riebeckfire = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
-
-            Locator.GetPlayerDetector().GetComponent<HazardDetector>().OnFirstContactDamage += OnFirstContactDamage;
+            GlobalMessenger.AddListener("EnterDreamWorld",DreamWorldBeen);
         }
 
-        // Special patching for Gabbro.
+        public HazardVolume hazardvolume_slatefire;
+        public float hazardvolume_slatefire_lasttouched;
+
+        public HazardVolume hazardvolume_riebeckfire;
+        public float hazardvolume_riebeckfire_lasttouched;
+
+        // Harmony patches
         [HarmonyPatch]
         public class MyPatchClass
         {
+            // Special patching for Gabbro.
             [HarmonyPostfix]
             [HarmonyPatch(typeof(GabbroDialogueSwapper), nameof(GabbroDialogueSwapper.Start))]
             public static void GabbroDialogueSwapper_Postfix()
@@ -107,12 +118,8 @@ namespace ReactiveHearthians
                     ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_3.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", GameObject.Find("GabbroIsland_Body"));
                 }
             }
-        }
 
-        // Patching for Mica's wrath
-        [HarmonyPatch]
-        public class MyPatchClass2
-        {
+            // Patching for Mica's wrath
             [HarmonyPostfix]
             [HarmonyPatch(typeof(DestructionVolume), nameof(DestructionVolume.VanishModelRocketShip))]
             public static void OnModelRocketShipDestroyed_Postfix()
@@ -120,6 +127,26 @@ namespace ReactiveHearthians
                 if (TimeLoop.GetSecondsElapsed() < 1330)
                 {
                     DialogueConditionManager.SharedInstance.SetConditionState("MICAS_WRATH", true);
+                }
+            }
+
+            // Patching for taking damage
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(HazardDetector), nameof(HazardDetector.OnVolumeAdded))]
+            public static void DamageVolume_PostFix(EffectVolume eVolume, HazardDetector __instance)
+            {
+                if (__instance.CompareTag("PlayerDetector"))
+                {
+                    if (eVolume == ReactiveHearthians.Instance.hazardvolume_slatefire)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_FIRE_DAMAGED", true);
+                        ReactiveHearthians.Instance.hazardvolume_slatefire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else if (eVolume == ReactiveHearthians.Instance.hazardvolume_riebeckfire)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_FIRE_DAMAGED", true);
+                        ReactiveHearthians.Instance.hazardvolume_riebeckfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
                 }
             }
         }
@@ -139,6 +166,7 @@ namespace ReactiveHearthians
 
         private void MakeAllCower()
         {
+            // Caching these so Find is only ran thrice
             var volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
             var volume_rutile = GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
             var volume_porphy = GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
@@ -186,13 +214,10 @@ namespace ReactiveHearthians
             if (banjo != null) banjo.SetActive(false);
         }
 
-        // On damage
-        public void OnFirstContactDamage(HazardVolume volume)
+        // Dream world been to detection
+        public void DreamWorldBeen()
         {
-            if (volume != null)
-            {
-                ModHelper.Console.WriteLine(volume.ToString(), MessageType.Success);
-            }
+            PlayerData.SetPersistentCondition("DREAMWORLD_EVER_BEEN", true);
         }
 
         // Dialogue variables
@@ -251,6 +276,37 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_BOOM", true);
             }
 
+            // Campfire recency checks //
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_SLATE_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_SLATE_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - hazardvolume_slatefire_lasttouched <= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_FIRE_DAMAGED_RECENT", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_FIRE_DAMAGED_RECENT", false);
+            }
+
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_RIEBECK_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_RIEBECK_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - hazardvolume_riebeckfire_lasttouched <= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_FIRE_DAMAGED_RECENT", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_FIRE_DAMAGED_RECENT", false);
+            }
+
+            // Misc variables //
+            // This variable is set true if the ATP is deactivated
+            var TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
+            if ((TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", false);
+            }
+
             // This variable is set true if the player is wearing a space suit (either the training or the regular one)
             if (Locator.GetPlayerSuit().IsWearingSuit())
             {
@@ -263,17 +319,6 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_TRAINING_SUITED", true);
             }
 
-            // This variable is set true if the ATP is deactivated
-            var TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
-            if ((TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
-            {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
-            }
-            else
-            {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", false);
-            }
-
             // STRANGER //
             // This variable is set true if the player knows of the Strangelings' connection to the Eye.
             if (Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_X2") || Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X2"))
@@ -283,15 +328,11 @@ namespace ReactiveHearthians
 
             // This variable is set true if the player has visited the dream world.
             if (Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_1"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_2"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_3"]._state >= ShipLogEntry.State.Explored) {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAMWORLD", true);
+                PlayerData.SetPersistentCondition("DREAMWORLD_EVER_BEEN", true);
             }
             else if (ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1"))
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAMWORLD", true);
-            }
-            else
-            {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAMWORLD", false);
+                PlayerData.SetPersistentCondition("DREAMWORLD_EVER_BEEN", true);
             }
 
             // This variable is set true if the player knows the dream world is a simulation.
@@ -378,7 +419,7 @@ namespace ReactiveHearthians
             }
 
             // This variable is set to true if the player has something new to say about the Stranger to Gabbro
-            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAMWORLD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD_CODE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAM_IS_CODE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_FRIEND") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1")))
+            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && PlayerData.GetPersistentCondition("DREAMWORLD_EVER_BEEN")) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD_CODE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAM_IS_CODE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_FRIEND") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1")))
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", true);
             }
