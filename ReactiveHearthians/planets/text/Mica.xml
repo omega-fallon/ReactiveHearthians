@@ -59,10 +59,11 @@
 			<Page>Why you…! We spent <![CDATA[<i>weeks</i>]]> on that rocket! And you just go and fly it into the sun?! Like it's nothing?!</Page>
 			<Page>Ghh… don't even talk to me anymore!</Page>
 		</Dialogue>
-		<SetCondition>ModelRocketKid_RH_MicaNoTalkMe</SetCondition>
+		<SetCondition>MODELROCKETKID_RH_NOTALKME</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
-		<EntryCondition>ModelRocketKid_RH_MicaNoTalkMe</EntryCondition>
+		<Name>ModelRocketKid_RH_NoTalkMe</Name>
+		<EntryCondition>MODELROCKETKID_RH_NOTALKME</EntryCondition>
 		<Dialogue>
 			<Page>I <![CDATA[<i>said</i>]]> don't talk to me!</Page>
 		</Dialogue>
