@@ -10,10 +10,9 @@
 // Tell Hal about Solanum?
 // THE OUTSIDER - Tell Hal about the Friend?
 // ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
-// Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
 // Maybe add dialogue for reaching somewhere without your ship???
-// Dialogue for standing on someone's campfire
 // Characters react to you dying in front of them
+// Dialogue for getting damaged by the ghost matter near Arkose
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -33,6 +32,8 @@
 // THE OUTSIDER - Compat for Dream variable
 // Make Slate an exception and potentially Rutile exceptions to the cowering code given certain conditions
 // Some characters have dialogue for you being suited up
+// Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
+// Dialogue for standing on someone's campfire
 
 using HarmonyLib;
 using NewHorizons;
@@ -61,6 +62,21 @@ namespace ReactiveHearthians
             Instance = this;
         }
 
+        public HazardVolume hazardvolume_slatefire;
+        public float hazardvolume_slatefire_lasttouched;
+
+        public HazardVolume hazardvolume_riebeckfire;
+        public float hazardvolume_riebeckfire_lasttouched;
+
+        public HazardVolume hazardvolume_eskerfire;
+        public float hazardvolume_eskerfire_lasttouched;
+
+        public HazardVolume hazardvolume_chertfire;
+        public float hazardvolume_chertfire_lasttouched;
+
+        public HazardVolume hazardvolume_feldsparfire;
+        public float hazardvolume_feldsparfire_lasttouched;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -80,6 +96,9 @@ namespace ReactiveHearthians
                 // Campfires people are sat near
                 hazardvolume_slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
                 hazardvolume_riebeckfire = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_eskerfire = GameObject.Find("Moon_Body/Sector_THM/Interactables_THM/Effects_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_chertfire = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Lakebed_VisibleFrom_Far/Prefab_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
+                hazardvolume_feldsparfire = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Prefab_HEA_Campfire/Props_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -87,12 +106,6 @@ namespace ReactiveHearthians
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
             GlobalMessenger.AddListener("EnterDreamWorld",DreamWorldBeen);
         }
-
-        public HazardVolume hazardvolume_slatefire;
-        public float hazardvolume_slatefire_lasttouched;
-
-        public HazardVolume hazardvolume_riebeckfire;
-        public float hazardvolume_riebeckfire_lasttouched;
 
         // Harmony patches
         [HarmonyPatch]
@@ -119,6 +132,21 @@ namespace ReactiveHearthians
                 }
             }
 
+            // Special patching for Chert
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(ChertDialogueSwapper), nameof(ChertDialogueSwapper.Start))]
+            public static void ChertDialogueSwapper_Postfix()
+            {
+                if (TimeLoop.GetSecondsElapsed() < 660)
+                {
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_1.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                }
+                else if (TimeLoop.GetSecondsElapsed() >= 660 && TimeLoop.GetSecondsElapsed() < 1020)
+                {
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_2.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                }
+            }
+
             // Patching for Mica's wrath
             [HarmonyPostfix]
             [HarmonyPatch(typeof(DestructionVolume), nameof(DestructionVolume.VanishModelRocketShip))]
@@ -137,6 +165,7 @@ namespace ReactiveHearthians
             {
                 if (__instance.CompareTag("PlayerDetector"))
                 {
+                    // Campfire damage
                     if (eVolume == ReactiveHearthians.Instance.hazardvolume_slatefire)
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_FIRE_DAMAGED", true);
@@ -146,6 +175,25 @@ namespace ReactiveHearthians
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_FIRE_DAMAGED", true);
                         ReactiveHearthians.Instance.hazardvolume_riebeckfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else if (eVolume == ReactiveHearthians.Instance.hazardvolume_eskerfire)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_ESKER_FIRE_DAMAGED", true);
+                        ReactiveHearthians.Instance.hazardvolume_eskerfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else if (eVolume == ReactiveHearthians.Instance.hazardvolume_chertfire)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_FIRE_DAMAGED", true);
+                        ReactiveHearthians.Instance.hazardvolume_chertfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else if (eVolume == ReactiveHearthians.Instance.hazardvolume_feldsparfire)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_FIRE_DAMAGED", true);
+                        ReactiveHearthians.Instance.hazardvolume_feldsparfire_lasttouched = TimeLoop.GetSecondsElapsed();
+                    }
+                    else
+                    {
+                        ReactiveHearthians.Instance.ModHelper.Console.WriteLine(eVolume.ToString(), MessageType.Success);
                     }
                 }
             }
@@ -295,6 +343,33 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_FIRE_DAMAGED_RECENT", false);
             }
 
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_ESKER_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_ESKER_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - hazardvolume_eskerfire_lasttouched <= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ESKER_FIRE_DAMAGED_RECENT", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ESKER_FIRE_DAMAGED_RECENT", false);
+            }
+
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_CHERT_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_CHERT_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - hazardvolume_chertfire_lasttouched <= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_FIRE_DAMAGED_RECENT", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_FIRE_DAMAGED_RECENT", false);
+            }
+
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_FELDSPAR_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_FELDSPAR_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - hazardvolume_feldsparfire_lasttouched <= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_FIRE_DAMAGED_RECENT", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_FIRE_DAMAGED_RECENT", false);
+            }
+
             // Misc variables //
             // This variable is set true if the ATP is deactivated
             var TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
@@ -312,11 +387,29 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED", true);
             }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED", false);
+            }
 
             // This variable is set true if the player is wearing the training suit
             if (Locator.GetPlayerSuit().IsTrainingSuit())
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_TRAINING_SUITED", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TRAINING_SUITED", false);
+            }
+
+            // This variable is set true if the player is wearing the normal suit before getting the launch codes (possible via a tricky geyser maneuver)
+            if (TimeLoop.GetLoopCount() == 1 && Locator.GetPlayerSuit().IsWearingSuit() && Locator.GetPlayerSuit().IsTrainingSuit() == false)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED_EARLY", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED_EARLY", false);
             }
 
             // STRANGER //

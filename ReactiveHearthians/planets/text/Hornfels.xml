@@ -1,5 +1,44 @@
 <DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Hornfels_RH_EarlySuit</Name>
+		<EntryCondition>RH_SUITED_EARLY</EntryCondition>
+		<Dialogue>
+			<Page>There you a… wait, how come you have your suit on already?</Page>
+			<Page>Geez, I guess you must be really eager to go! Well you're in luck: I just finished pre-flight observations, and local conditions are good.</Page>
+			<Page>And you’ll be our <![CDATA[<i>]]>first<![CDATA[</i>]]> astronaut ever equipped with a Nomai translator tool! I confess, I’ve been giddy all day just thinking about it.</Page>
+			<Page>We’re better equipped than ever to unravel the mysteries of the Nomai. You and Hal should be very proud of your work!</Page>
+			<Page>Tell me, what’s your plan once you’re in space?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I’m going to learn more about the Nomai.</Text>
+				<DialogueTarget>Curator2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I’ll meet up with the other travelers.</Text>
+				<DialogueTarget>Curator3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I want to go somewhere no one’s gone before.</Text>
+				<DialogueTarget>Curator4</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I think I’ll start with something small.</Text>
+				<DialogueTarget>Curator5</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I don’t know.</Text>
+				<DialogueTarget>Curator6</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I’m gonna wing it!</Text>
+				<DialogueTarget>Curator7</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>TalkedToHornfels</SetCondition>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Curator13</Name>
 		<DialogueOptionsList>
 			<DialogueOption>

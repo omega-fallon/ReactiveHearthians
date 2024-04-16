@@ -1,5 +1,56 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Esker_RH_Fire_First</Name>
+		<EntryCondition>RH_ESKER_FIRE_DAMAGED_RECENT</EntryCondition>
+		<Dialogue>
+			<Page>Whoa there! Easy around the fire.</Page>
+			<Page>Ground control didn’t tell me you were launching. Long time no see!</Page>
+			<Page>Actually. I guess it’s been a long time since I’ve seen anyone.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>TM_ESKER_X1</FactID>
+		</RevealFacts>
+		<SetCondition>EskerSaysHi</SetCondition>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Don’t the other travelers come by?</Text>
+				<DialogueTarget>OtherTravelers</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Was that you whistling?</Text>
+				<DialogueTarget>Music</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Seems lonely up here.</Text>
+				<DialogueTarget>Lonely</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What is this place?</Text>
+				<DialogueTarget>Place</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
+				<Text>Marl says hi.</Text>
+				<DialogueTarget>Marl</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Talk to you later.</Text>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<ConditionToCancel>RH_ESKER_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_ESKER_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_Fire_TalkToAgain</Name>
+		<EntryCondition>RH_ESKER_FIRE_DAMAGED_RECENT</EntryCondition>
+		<EntryCondition>EskerSaysHi</EntryCondition>
+		<Dialogue>
+			<Page>Whoa there! Easy around the fire.</Page>
+		</Dialogue>
+		<DialogueTarget>Esker2</DialogueTarget>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Esker_RH_CoolThing_First</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<DialogueTarget>Esker1</DialogueTarget>

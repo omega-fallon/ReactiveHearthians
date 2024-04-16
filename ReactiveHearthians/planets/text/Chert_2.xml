@@ -1,0 +1,47 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Chert_S2_Fire_First</Name>
+		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
+		<Dialogue>
+			<Page>Hm? Oh, goodness! Please, please, be careful around the fire!</Page>
+			<Page>Ahem. Well, it's good to see you! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S2_Fire_1to2</Name>
+		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
+		<EntryCondition>METCHERT_1</EntryCondition>
+		<Dialogue>
+			<Page>Hm? Oh, goodness! Please, please, be careful around the fire!</Page>
+			<Page>Ahem. Well, I'm glad you're back. Have you noticed anything unusual about the stars lately? Something seems...<![CDATA[<Pause=0.5>]]> how to put this... <![CDATA[<Pause=0.5>]]>off.</Page>
+			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all...</Page>
+		</Dialogue>
+		<SetCondition>SaidHiToChert2</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S2_TalkToAgain</Name>
+		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<Dialogue>
+			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+</DialogueTree>
