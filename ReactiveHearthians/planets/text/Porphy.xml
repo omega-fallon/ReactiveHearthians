@@ -78,6 +78,13 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Porphy_RH_PotStand</Name>
+		<EntryCondition>RH_PORPHY_POT_STAND</EntryCondition>
+		<Dialogue>
+			<Page>Mind getting down from there, hatchling? I'm trying to make sap wine, here!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Porphy_RH_Distraught</Name>
 		<EntryCondition>PORPHY_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>

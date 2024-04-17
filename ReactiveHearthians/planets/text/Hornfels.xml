@@ -3,7 +3,7 @@
 		<Name>Hornfels_RH_EarlySuit</Name>
 		<EntryCondition>RH_SUITED_EARLY</EntryCondition>
 		<Dialogue>
-			<Page>There you a… wait, how come you have your suit on already?</Page>
+			<Page>There you a… wait, how do you have your suit on already?</Page>
 			<Page>Geez, I guess you must be really eager to go! Well you're in luck: I just finished pre-flight observations, and local conditions are good.</Page>
 			<Page>And you’ll be our <![CDATA[<i>]]>first<![CDATA[</i>]]> astronaut ever equipped with a Nomai translator tool! I confess, I’ve been giddy all day just thinking about it.</Page>
 			<Page>We’re better equipped than ever to unravel the mysteries of the Nomai. You and Hal should be very proud of your work!</Page>
@@ -36,6 +36,15 @@
 			</DialogueOption>
 		</DialogueOptionsList>
 		<SetCondition>TalkedToHornfels</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Hornfels_RH_L1Skip_Takeoff</Name>
+		<EntryCondition>RH_L1_SKIP_DONE</EntryCondition>
+		<Dialogue>
+			<Page>There you are! Hearth's sake, hatchling, you took off without even getting the launch codes first!</Page>
+			<Page>How'd you even do that? Gosh, and here all I wanted to do was wish you luck!</Page>
+		</Dialogue>
+		<DialogueTarget>Curator13</DialogueTarget>
 	</DialogueNode>
 	
 	<DialogueNode>

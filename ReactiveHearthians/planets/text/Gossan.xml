@@ -4,7 +4,7 @@
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
 			<Page>Oh my… where'd you get <![CDATA[<i>that</i>]]> from?</Page>
-			<Page>You might want to swing that by Hornfels, otherwise he might swipe it right out of your hands!</Page>
+			<Page>You might want to swing that by Hornfels, otherwise they might swipe it right out of your hands!</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>

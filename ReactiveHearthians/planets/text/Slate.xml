@@ -211,7 +211,7 @@
 		<DialogueOptionsList>
 			<DialogueOption>
 				<RequiredCondition>HORNFELS_RH_SUPERNOVADENY</RequiredCondition>
-				<Text>Yeah, he thinks you're going crazy.</Text>
+				<Text>Yeah, they think you're going crazy.</Text>
 				<DialogueTarget>ScientistAnswerRH3</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>

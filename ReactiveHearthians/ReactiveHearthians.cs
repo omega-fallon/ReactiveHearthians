@@ -2,7 +2,7 @@
 
 // TODO LIST:
 // Hearthians turn to face the boom and seem horrified
-// change Riebeck’s introductory message that he starts a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
+// change Riebeck’s introductory message that they start a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
 // Hug mod compat
 // More Solanum interactions
@@ -12,7 +12,8 @@
 // ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
 // Maybe add dialogue for reaching somewhere without your ship???
 // Characters react to you dying in front of them
-// Dialogue for getting damaged by the ghost matter near Arkose
+// Characters react to you standing on top of them
+// Porphy reacts to you standing on their pot
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -34,6 +35,7 @@
 // Some characters have dialogue for you being suited up
 // Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
 // Dialogue for standing on someone's campfire
+// Dialogue for getting damaged by the ghost matter near Arkose
 
 using HarmonyLib;
 using NewHorizons;
@@ -411,13 +413,29 @@ namespace ReactiveHearthians
             }
 
             // This variable is set true if the player is wearing the normal suit before getting the launch codes (possible via a tricky geyser maneuver)
-            if (TimeLoop.GetLoopCount() == 1 && Locator.GetPlayerSuit().IsWearingSuit() && Locator.GetPlayerSuit().IsTrainingSuit() == false)
+            if (TimeLoop.GetLoopCount() == 1 && Locator.GetPlayerSuit().IsWearingSuit() && Locator.GetPlayerSuit().IsTrainingSuit() == false && PlayerData.GetPersistentCondition("LAUNCH_CODES_GIVEN") == false)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED_EARLY", true);
             }
             else
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_SUITED_EARLY", false);
+            }
+
+            // This variable is set true if the player has taken off before getting the launch codes (see above)
+            if (TimeLoop.GetLoopCount() == 1 && DialogueConditionManager.SharedInstance.GetConditionState("Space") && PlayerData.GetPersistentCondition("LAUNCH_CODES_GIVEN") == false)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_L1_SKIP_DONE", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_L1_SKIP_DONE", false);
+            }
+
+            // This variable is set true if the player is standing on Porphy's pot.
+            if (false)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_PORPHY_POT_STAND", false);
             }
 
             // STRANGER //
