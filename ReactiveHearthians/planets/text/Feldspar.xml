@@ -4,9 +4,9 @@
 		<EntryCondition>RH_FELDSPAR_FIRE_DAMAGED_RECENT</EntryCondition>
 		<Dialogue>
 			<Page>Whoa!</Page>
-			<Page>Okay, first off, stay away from the fire pit. Second off, where’d you come from? No one’s come here in... well, ever, actually.</Page>
+			<Page>Okay, first off, stay away from the fire pit. Second off, where’d you come from? No one’s come here in… well, ever, actually.</Page>
 			<Page>That makes you the second Hearthian to ever reach Dark Bramble — after me, of course. Well done!</Page>
-			<Page>...Say, it’s you! They made you an astronaut? And you haven’t blown yourself up yet, good for you!</Page>
+			<Page>…Say, it’s you! They made you an astronaut? And you haven’t blown yourself up yet, good for you!</Page>
 		</Dialogue>
 		<RevealFacts>
 			<FactID>DB_FELDSPAR_X1</FactID>

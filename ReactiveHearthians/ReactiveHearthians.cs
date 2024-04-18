@@ -141,6 +141,7 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("EnterRoastingMode", EnterRoastingMode);
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
+            GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
         }
 
         // Harmony patches
@@ -318,6 +319,12 @@ namespace ReactiveHearthians
         public void AshTwinFix()
         {
 
+        }
+
+        // Big head mode variable
+        public void BigHeadMode()
+        {
+            DialogueConditionManager.SharedInstance.SetConditionState("BIG_HEAD_MODE", true);
         }
 
         // C-a-m-p-f-i-r-e f-u-n-c funcs

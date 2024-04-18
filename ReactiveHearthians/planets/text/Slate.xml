@@ -171,7 +171,7 @@
 		<EntryCondition>RH_SLATE_ATE_BAD_MALLOW</EntryCondition>
 		<Dialogue>
 			<Page>Whoa! Hatchling, what in Hearth's name did you just <![CDATA[<i>]]>eat<![CDATA[</i>]]>? That marshmallow was greener than grass!</Page>
-			<Page>You alright there? Stomach treating you okay? ...Why are you looking at me all funny?</Page>
+			<Page>You alright there? Stomach treating you okay? …Why are you looking at me all funny?</Page>
 		</Dialogue>
 		<SetCondition>RH_SLATE_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>

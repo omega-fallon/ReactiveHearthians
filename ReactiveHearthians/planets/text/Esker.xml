@@ -13,6 +13,11 @@
 		<SetCondition>EskerSaysHi</SetCondition>
 		<DialogueOptionsList>
 			<DialogueOption>
+				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
+				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
+				<DialogueTarget>Esker_RH_High</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
 				<Text>Don’t the other travelers come by?</Text>
 				<DialogueTarget>OtherTravelers</DialogueTarget>
 			</DialogueOption>
@@ -66,6 +71,28 @@
 	</DialogueNode>
 
 	<DialogueNode>
+		<Name>Esker1</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
+				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
+				<DialogueTarget>Esker_RH_High</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Esker_RH_High</Name>
+		<Dialogue>
+			<Page>Hoo boy… alright, hatchling. Easy now, take some long, deep breaths.</Page>
+			<Page>You're tripping on expired marshmallows right now, and let me tell you from experience: if you think sap wine is bad, you're in for a nightmare.</Page>
+			<Page>Potentially even literally. This is going to be a bad, long high for you. I'd recommend lying down on the ground with an empty bucket at the ready.</Page>
+			<Page>If you start seeing weird things or hearing voices do <![CDATA[<i>not</i>]]> engage. At some point it's going to feel like there are bugs on you but I promise there aren't actually any bugs.</Page>
+			<Page>Are you getting all this? Hearth to hatchling? Oh boy… welp, this is gonna be a learning experience. Good luck.</Page>
+		</Dialogue>
+	</DialogueNode>
+
+	<DialogueNode>
 		<Name>Esker_RH_BadMallow_First</Name>
 		<EntryCondition>RH_ESKER_ATE_BAD_MALLOW</EntryCondition>
 		<Dialogue>
@@ -78,6 +105,11 @@
 		</RevealFacts>
 		<SetCondition>EskerSaysHi</SetCondition>
 		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
+				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
+				<DialogueTarget>Esker_RH_High</DialogueTarget>
+			</DialogueOption>
 			<DialogueOption>
 				<Text>Don’t the other travelers come by?</Text>
 				<DialogueTarget>OtherTravelers</DialogueTarget>

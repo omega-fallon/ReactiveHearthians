@@ -26,8 +26,8 @@
 		<EntryCondition>METCHERT_1</EntryCondition>
 		<Dialogue>
 			<Page>Hm? Oh, goodness! Please, please, be careful around the fire!</Page>
-			<Page>Ahem. Well, I'm glad you're back. Have you noticed anything unusual about the stars lately? Something seems...<![CDATA[<Pause=0.5>]]> how to put this... <![CDATA[<Pause=0.5>]]>off.</Page>
-			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all...</Page>
+			<Page>Ahem. Well, I'm glad you're back. Have you noticed anything unusual about the stars lately? Something seems…<![CDATA[<Pause=0.5>]]> how to put this… <![CDATA[<Pause=0.5>]]>off.</Page>
+			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all…</Page>
 		</Dialogue>
 		<SetCondition>SaidHiToChert2</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
@@ -49,7 +49,7 @@
 		<Name>Chert_S2_BadMallow_First</Name>
 		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
 		<Dialogue>
-			<Page>Hm? Uhh... ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
+			<Page>Hm? Uhh… ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
 			<Page>Regardless, it's good to see you. I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
@@ -71,7 +71,7 @@
 		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
 		<EntryCondtion>SaidHiToChert2</EntryCondtion>
 		<Dialogue>
-			<Page>Uhh... ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
+			<Page>Uhh… ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
 		</Dialogue>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
