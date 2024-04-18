@@ -5,6 +5,39 @@
 		<Dialogue>
 			<Page>Whoa! Be careful around the ghost matter, astronaut!</Page>
 		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>That was totally on purpose.</Text>
+				<DialogueTarget>Arkose_RH_OnPurpose</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Let that be a lesson to you, kid!</Text>
+				<DialogueTarget>Arkose_RH_Lesson</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>Arkose_loves_ghost_matter</SetCondition>
+		<SetCondition>Arkose_RH_DamageComment</SetCondition>
+	</DialogueNode>
+	
+	<DialogueNode>
+		<Name>Arkose_RH_GhostMatterDamage_Redirect</Name>
+		<EntryCondition>Arkose_RH_DamageComment</EntryCondition>
+		<DialogueTarget>Arkose5</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Arkose_RH_OnPurpose</Name>
+		<Dialogue>
+			<Page>If you did do it on purpose that'd be a really dumb thing to do, and if you didn't do it on purpose that's still dumb.</Page>
+			<Page>Why do you think I'm w-<![CDATA[<Pause=1>]]>a-<![CDATA[<Pause=1>]]>a-<![CDATA[<Pause=1>]]>y over here?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_Lesson</Name>
+		<Dialogue>
+			<Page>Ugh, stop talking to me like you're actually a grown-up. You're still a kid!</Page>
+			<Page>And I <![CDATA[<i>know</i>]]> ghost matter's dangerous! Why do you think I'm w-<![CDATA[<Pause=1>]]>a-<![CDATA[<Pause=1>]]>a-<![CDATA[<Pause=1>]]>y over here?</Page>
+		</Dialogue>
 	</DialogueNode>
 	
 	<DialogueNode>
@@ -61,7 +94,7 @@
 	<DialogueNode>
 		<Name>Arkose_RH_CODEX_Unfair</Name>
 		<Dialogue>
-			<Page>Lucky! Man, how come I never get to do cool stuff like that?</Page>
+			<Page>Lucky! How come I never get to do cool stuff like that?</Page>
 		</Dialogue>
 	</DialogueNode>
 	<!-- Regular stuff -->

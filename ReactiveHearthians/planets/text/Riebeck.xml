@@ -150,6 +150,45 @@
 		<ConditionToCancel>RH_RIEBECK_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_RIEBECK_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Riebeck_RH_BadMallow_First</Name>
+		<EntryCondition>RH_RIEBECK_ATE_BAD_MALLOW</EntryCondition>
+		<SetCondition>TalkToRiebeck</SetCondition>
+		<RevealFacts>
+			<FactID>BH_RIEBECK_X1</FactID>
+		</RevealFacts>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>Good Hearth, what are they teaching hatchlings these days? That mallow was puke-green...<![CDATA[</size>]]></Page>
+			<Page>Oh, umm, hello there! Good to see you launched, good job, you.</Page>
+			<Page>Are you alright? Like, physically and mentally speaking? You're looking at me all funny.</Page>
+			<Page>Wow, I guess I’ve been out here a while, huh. Well, um, this is Brittle Hollow. But you probably knew that.</Page>
+			<Page>Lot of history here. …It’s great.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>What are you doing here?</Text>
+				<DialogueTarget>RiebeckIntro</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
+				<Text>I’m in a hurry — can I ask you something?</Text>
+				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>RH_RIEBECK_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Riebeck_RH_BadMallow</Name>
+		<EntryCondition>RH_RIEBECK_ATE_BAD_MALLOW</EntryCondition>
+		<EntryCondition>TalkToRiebeck</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>Good Hearth, what are they teaching hatchlings these days? That mallow was puke-green...<![CDATA[</size>]]></Page>
+			<Page>Oh! Umm, hey there. What's up?</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+		<SetCondition>RH_RIEBECK_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
 	
 	<DialogueNode>
 		<Name>Riebeck_RH_Boom</Name>

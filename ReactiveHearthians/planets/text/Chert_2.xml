@@ -35,7 +35,7 @@
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
-		<Name>Chert_S2_TalkToAgain</Name>
+		<Name>Chert_S2_Fire_TalkToAgain</Name>
 		<EntryCondtion>SaidHiToChert2</EntryCondtion>
 		<Dialogue>
 			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
@@ -43,5 +43,37 @@
 		<DialogueTarget>Questions</DialogueTarget>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S2_BadMallow_First</Name>
+		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
+		<Dialogue>
+			<Page>Hm? Uhh... ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
+			<Page>Regardless, it's good to see you. I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
+	<!-- Intentionally not putting a 1-to-2 dialogue here, let it default to the vanilla one. -->
+	<DialogueNode>
+		<Name>Chert_S2_BadMallow_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
+		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<Dialogue>
+			<Page>Uhh... ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
+		</Dialogue>
+		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

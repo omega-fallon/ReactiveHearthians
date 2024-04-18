@@ -3,7 +3,7 @@
 		<Name>Esker_RH_Fire_First</Name>
 		<EntryCondition>RH_ESKER_FIRE_DAMAGED_RECENT</EntryCondition>
 		<Dialogue>
-			<Page>Whoa there! Easy around the fire.</Page>
+			<Page>Whoa there! Easy around the fire, hatchling.</Page>
 			<Page>Ground control didn’t tell me you were launching. Long time no see!</Page>
 			<Page>Actually. I guess it’s been a long time since I’ve seen anyone.</Page>
 		</Dialogue>
@@ -45,7 +45,7 @@
 		<EntryCondition>RH_ESKER_FIRE_DAMAGED_RECENT</EntryCondition>
 		<EntryCondition>EskerSaysHi</EntryCondition>
 		<Dialogue>
-			<Page>Whoa there! Easy around the fire.</Page>
+			<Page>Whoa there! Easy around the fire, hatchling.</Page>
 		</Dialogue>
 		<DialogueTarget>Esker2</DialogueTarget>
 	</DialogueNode>
@@ -64,6 +64,59 @@
 			<Page>My… that really is a beaut. Hornfels'll want that for sure!</Page>
 		</Dialogue>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Esker_RH_BadMallow_First</Name>
+		<EntryCondition>RH_ESKER_ATE_BAD_MALLOW</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Did you grab that from my stash?</Page>
+			<Page>Eugh, I don't know how you managed to stomach that, hatchling. Bad mallows are nothing to joke about.</Page>
+			<Page>It's good to see you, though. Been a long time since I've seen anyone.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>TM_ESKER_X1</FactID>
+		</RevealFacts>
+		<SetCondition>EskerSaysHi</SetCondition>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Don’t the other travelers come by?</Text>
+				<DialogueTarget>OtherTravelers</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Was that you whistling?</Text>
+				<DialogueTarget>Music</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Seems lonely up here.</Text>
+				<DialogueTarget>Lonely</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What is this place?</Text>
+				<DialogueTarget>Place</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
+				<Text>Marl says hi.</Text>
+				<DialogueTarget>Marl</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Talk to you later.</Text>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>RH_ESKER_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_BadMallow</Name>
+		<EntryCondition>RH_ESKER_ATE_BAD_MALLOW</EntryCondition>
+		<EntryCondition>EskerSaysHi</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Did you grab that from my stash?</Page>
+			<Page>Eugh, I don't know how you managed to stomach that, hatchling. Bad mallows are nothing to joke about.</Page>
+		</Dialogue>
+		<DialogueTarget>Esker2</DialogueTarget>
+		<SetCondition>RH_ESKER_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Esker_RH_RedSun_FIRSTTIME</Name>
 		<EntryCondition>RH_REDSUN</EntryCondition>

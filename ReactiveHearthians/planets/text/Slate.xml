@@ -165,6 +165,17 @@
 			<Page>I have no idea what it is, though. Maybe run it by Hornfels if you're curious.</Page>
 		</Dialogue>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Scientist_RH_BadMallow</Name>
+		<EntryCondition>RH_SLATE_ATE_BAD_MALLOW</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Hatchling, what in Hearth's name did you just <![CDATA[<i>]]>eat<![CDATA[</i>]]>? That marshmallow was greener than grass!</Page>
+			<Page>You alright there? Stomach treating you okay? ...Why are you looking at me all funny?</Page>
+		</Dialogue>
+		<SetCondition>RH_SLATE_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Scientist_RH_RedSun_Prior</Name>
 		<EntryCondition>RH_REDSUN</EntryCondition>
