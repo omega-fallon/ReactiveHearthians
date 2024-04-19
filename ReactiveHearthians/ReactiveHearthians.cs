@@ -585,6 +585,26 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_PORPHY_POT_STAND", false);
             }
 
+            // This variable is set true if Tephra is positioned next to Galena.
+            if ( DialogueConditionManager.SharedInstance.GetConditionState("BeginHideAndSeek") || (TimeLoop.GetLoopCount() == 1 && DialogueConditionManager.SharedInstance.GetConditionState("RH_NOMAI_STATUE_LINKED")) )
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_WITH_GALENA", false);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_WITH_GALENA", true);
+            }
+
+            // This variable is set true if the Hide and Seek game is available to be played.
+            if (DialogueConditionManager.SharedInstance.GetConditionState("RH_TEPHRA_WITH_GALENA") && DialogueConditionManager.SharedInstance.GetConditionState("BeginHideAndSeek") == false)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_HIDEANDSEEK_AVAILABLE", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_HIDEANDSEEK_AVAILABLE", false);
+            }
+
             // STRANGER //
             // This variable is set true if the player knows of the Strangelings' connection to the Eye.
             if (Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_X2") || Locator.GetShipLogManager().IsFactRevealed("IP_ZONE_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_STORY_X2"))

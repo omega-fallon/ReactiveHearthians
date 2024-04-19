@@ -5,16 +5,16 @@
 		<Dialogue>
 			<Page>Hullo, astronaut!</Page>
 			<Page>That was a really cool launch you did! I hope you have fun up in space.</Page>
-			<DialogueTarget>HideAndSeek2</DialogueTarget>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
-		<Name>Tephra_RH_PlayedTheGameSpace</Name>
-		<EntryCondition>EndHideAndSeek</EntryCondition>
+		<Name>Tephra_RH_Space_ToHAS</Name>
+		<EntryCondition>RH_HIDEANDSEEK_AVAILABLE</EntryCondition>
 		<EntryCondition>Space</EntryCondition>
 		<Dialogue>
 			<Page>Hullo, astronaut!</Page>
 			<Page>That was a really cool launch you did! I hope you have fun up in space.</Page>
+			<DialogueTarget>HideAndSeek2</DialogueTarget>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
@@ -39,17 +39,17 @@
 			<Page>Hullo astronaut! I think we're gonna have some kind of astranominal event coming up soon! Astranomial? Astranomai…?</Page>
 			<Page>The sun looks weird. You get it! Don't giggle at me.</Page>
 		</Dialogue>
-		<DialogueTarget>HideAndSeek2</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tephra_RH_RedSun_HAS</Name>
-		<EntryCondition>EndHideAndSeek</EntryCondition>
 		<EntryCondition>RH_REDSUN</EntryCondition>
 		<EntryCondition>RH_VILLAGEDAY</EntryCondition>
+		<EntryCondition>RH_HIDEANDSEEK_AVAILABLE</EntryCondition>
 		<Dialogue>
 			<Page>Hullo astronaut! I think we're gonna have some kind of astranominal event coming up soon! Astranomial? Astranomai…?</Page>
 			<Page>The sun looks weird. You get it! Don't giggle at me.</Page>
 		</Dialogue>
+		<DialogueTarget>HideAndSeek2</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tephra_RH_Boom</Name>
@@ -67,9 +67,9 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
-		<Name>Tephra_RH_Silent_L2</Name>
+		<Name>Tephra_RH_Silent_Galena</Name>
 		<EntryCondition>TEPHRA_RH_SILENT</EntryCondition>
-		<EntryCondition>LOOP_COUNT_GOE_2</EntryCondition>
+		<EntryCondition>RH_TEPHRA_WITH_GALENA</EntryCondition>
 		<Dialogue>
 			<Page>…I-I'll keep you safe, Galena!</Page>
 		</Dialogue>

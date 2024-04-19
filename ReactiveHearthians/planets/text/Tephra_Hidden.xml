@@ -1,0 +1,25 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Tephra_RH_Boom</Name>
+		<EntryCondition>RH_BOOM</EntryCondition>
+		<Dialogue>
+			<Page>…Huh? W-wait, what's happening? Astronaut, what's going on?</Page>
+		</Dialogue>
+		<SetCondition>TEPHRA_RH_SILENT</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Silent</Name>
+		<EntryCondition>TEPHRA_RH_SILENT</EntryCondition>
+		<Dialogue>
+			<Page>Astronaut, p-please, help me!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Silent_Galena</Name>
+		<EntryCondition>TEPHRA_RH_SILENT</EntryCondition>
+		<EntryCondition>RH_TEPHRA_WITH_GALENA</EntryCondition>
+		<Dialogue>
+			<Page>…I-I'll keep you safe, Galena!</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>
