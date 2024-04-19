@@ -21,7 +21,7 @@
 		<Dialogue>
 			<Page>Whoa! Huh, I guess that anomaly Hornfels sent me out to investigate was a real anomaly after all!</Page>
 			<Page>Well, never let it be said that I can't admit when I'm wrong. Especially when being wrong means something so cool!</Page>
-			<Page>And you call it "The Stranger", huh… well, I'm hooked! Come on, time bud, tell me more!</Page>
+			<Page>And you call it “The Stranger”, huh… well, I'm hooked! Come on, time bud, tell me more!</Page>
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_RH_STRANGER</SetPersistentCondition>
 		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>

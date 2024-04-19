@@ -37,6 +37,7 @@
 // Dialogue for if you're wearing the regular space suit talking to Hornfels/Hal on the first loop
 // Dialogue for standing on someone's campfire
 // Dialogue for getting damaged by the ghost matter near Arkose
+// Bad Mallow dialogue, being high dialogue for Esker
 
 using HarmonyLib;
 using NewHorizons;
@@ -135,7 +136,7 @@ namespace ReactiveHearthians
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
-            GlobalMessenger.AddListener("EnterDreamWorld",DreamWorldBeen);
+            GlobalMessenger.AddListener("EnterDreamWorld", DreamWorldBeen);
             GlobalMessenger.AddListener("TriggerMemoryUplink", StatueLinked);
             GlobalMessenger.AddListener("EnterTimeLoopCentral", AshTwinFix);
             GlobalMessenger<Campfire>.AddListener("EnterRoastingMode", EnterRoastingMode);
@@ -174,13 +175,21 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(ChertDialogueSwapper), nameof(ChertDialogueSwapper.Start))]
             public static void ChertDialogueSwapper_Postfix()
             {
-                if (TimeLoop.GetSecondsElapsed() < 660)
+                if (TimeLoop.GetMinutesElapsed() >= 20.5f)
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_1.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                    // Nothing for now
                 }
-                else if (TimeLoop.GetSecondsElapsed() >= 660 && TimeLoop.GetSecondsElapsed() < 1020)
+                else if (TimeLoop.GetMinutesElapsed() >= 17f)
+                {
+                    // Nothing for now
+                }
+                else if (TimeLoop.GetMinutesElapsed() >= 11f)
                 {
                     ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_2.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                }
+                else
+                {
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_1.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
                 }
             }
 
@@ -318,7 +327,7 @@ namespace ReactiveHearthians
         // Statue readout & glow fix
         public void AshTwinFix()
         {
-
+            // Add this!
         }
 
         // Big head mode variable
@@ -362,10 +371,7 @@ namespace ReactiveHearthians
         public List<BadMarshmallowCan> badcans;
         public void EatMarshmallow(float toastedFraction)
         {
-            if (badcans == null)
-            {
-                badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
-            }
+            badcans ??= Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
 
             if (badcans.Any(can => can._pickedUp) && toastedFraction < 1f)
             {
@@ -587,7 +593,8 @@ namespace ReactiveHearthians
             }
 
             // This variable is set true if the player has visited the dream world.
-            if (Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_1"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_2"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_3"]._state >= ShipLogEntry.State.Explored) {
+            if (Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_1"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_2"]._state >= ShipLogEntry.State.Explored || Locator.GetShipLogManager()._entryDict["IP_DREAM_ZONE_3"]._state >= ShipLogEntry.State.Explored)
+            {
                 PlayerData.SetPersistentCondition("DREAMWORLD_EVER_BEEN", true);
             }
             else if (ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1"))
