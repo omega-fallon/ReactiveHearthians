@@ -130,4 +130,11 @@
 			<Page>…Wait, no, please, I wanted to die from ghost matter!</Page>
 		</Dialogue>
 	</DialogueNode>
+	<DialogueNode>
+		<Name>Arkose_RH_Boom_Hugged</Name>
+		<EntryCondition>RH_ARKOSE_HUGGED_SUPERNOVA</EntryCondition>
+		<Dialogue>
+			<Page>Th-thank you… I'm sorry.</Page>
+		</Dialogue>
+	</DialogueNode>
 </DialogueTree>

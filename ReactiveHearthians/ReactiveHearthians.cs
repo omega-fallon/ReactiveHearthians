@@ -40,6 +40,7 @@
 // Bad Mallow dialogue, being high dialogue for Esker
 
 using HarmonyLib;
+using HugMod;
 using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
@@ -66,6 +67,7 @@ namespace ReactiveHearthians
             Instance = this;
         }
 
+        // Various publics
         public HazardVolume hazardvolume_slatefire;
         public float hazardvolume_slatefire_lasttouched;
 
@@ -101,14 +103,23 @@ namespace ReactiveHearthians
         public float chertfire_badmallow_lastate;
         public float feldsparfire_badmallow_lastate;
 
+        public CowerAnimTriggerVolume volume_mica;
+        public CowerAnimTriggerVolume volume_rutile;
+        public CowerAnimTriggerVolume volume_porphy;
+
+        public List<BadMarshmallowCan> badcans;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(ReactiveHearthians)} is loaded!", MessageType.Success);
+            ModHelper.Console.WriteLine($"{nameof(ReactiveHearthians)} is loaded!", MessageType.Success);
 
             // Get the New Horizons API and load configs
             newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
             newHorizons.LoadConfigs(this);
+
+            // Hug API
+            var hugApi = ModHelper.Interaction.TryGetModApi<IHugModApi>("VioVayo.HugMod");
 
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
@@ -131,6 +142,33 @@ namespace ReactiveHearthians
                 hazardvolume_feldsparfire = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
 
                 darkmattervolume_arkose = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/DarkMatterVolume").GetComponent<DarkMatterVolume>();
+
+                // Makes the badmallow list
+                badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
+
+                if (hugApi != null)
+                {
+                    // Huggables
+                    var Tephra_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
+                    var Tephra_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
+                    var Tephra_PostObservatory = GameObject.Find("Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+
+                    var Galena_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
+                    var Galena_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
+
+                    var Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
+
+                    // Subbing methods
+
+                    hugApi.OnHugStart(Tephra_Standard, Tephra_Hug);
+                    hugApi.OnHugStart(Tephra_HAS, Tephra_Hug);
+                    hugApi.OnHugStart(Tephra_PostObservatory, Tephra_Hug);
+
+                    hugApi.OnHugStart(Galena_Standard, Galena_Hug);
+                    hugApi.OnHugStart(Galena_HAS, Galena_Hug);
+
+                    hugApi.OnHugStart(Arkose_Standard, Arkose_Hug);
+                }
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -143,6 +181,31 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
+        }
+
+        // Hug mod methods
+        public void Tephra_Hug()
+        {
+            if (TimeLoop.GetSecondsElapsed() >= 1330)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_HUGGED_SUPERNOVA", true);
+            }
+        }
+
+        public void Galena_Hug()
+        {
+            if (TimeLoop.GetSecondsElapsed() >= 1330)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GALENA_HUGGED_SUPERNOVA", true);
+            }
+        }
+
+        public void Arkose_Hug()
+        {
+            if (TimeLoop.GetSecondsElapsed() >= 1330)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ARKOSE_HUGGED_SUPERNOVA", true);
+            }
         }
 
         // Harmony patches
@@ -211,7 +274,7 @@ namespace ReactiveHearthians
             {
                 if (__instance.CompareTag("PlayerDetector"))
                 {
-                    // Campfire damage
+                    // Campfire & ghost matter damage
                     if (eVolume == ReactiveHearthians.Instance.hazardvolume_slatefire)
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_FIRE_DAMAGED", true);
@@ -265,9 +328,16 @@ namespace ReactiveHearthians
         private void MakeAllCower()
         {
             // Caching these so Find is only ran thrice
-            var volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-            var volume_rutile = GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-            var volume_porphy = GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+            try 
+            {
+                volume_mica ??= GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+                volume_rutile ??= GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+                volume_porphy ??= GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+            }
+            catch
+            {
+                ModHelper.Console.WriteLine("Couldn't find Mica/Rutile/Porphy CowerAnimTriggerVolume", MessageType.Error);
+            }
 
             foreach (var volume in volumes)
             {
@@ -368,11 +438,9 @@ namespace ReactiveHearthians
             chertfire_roasting = false;
             feldsparfire_roasting = false;
         }
-        public List<BadMarshmallowCan> badcans;
+        
         public void EatMarshmallow(float toastedFraction)
         {
-            badcans ??= Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
-
             if (badcans.Any(can => can._pickedUp) && toastedFraction < 1f)
             {
                 if (slatefire_roasting)

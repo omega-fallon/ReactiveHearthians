@@ -22,4 +22,11 @@
 			<Page>…I-I'll keep you safe, Galena!</Page>
 		</Dialogue>
 	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Boom_Hugged</Name>
+		<EntryCondition>RH_TEPHRA_HUGGED_SUPERNOVA</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<i>Sniffle</i>]]>… th-thank you, astronaut…</Page>
+		</Dialogue>
+	</DialogueNode>
 </DialogueTree>

@@ -14,8 +14,8 @@
 		<Dialogue>
 			<Page>Hullo, astronaut!</Page>
 			<Page>That was a really cool launch you did! I hope you have fun up in space.</Page>
-			<DialogueTarget>HideAndSeek2</DialogueTarget>
 		</Dialogue>
+		<DialogueTarget>HideAndSeek2</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tephra_RH_WarpCore</Name>
@@ -72,6 +72,13 @@
 		<EntryCondition>RH_TEPHRA_WITH_GALENA</EntryCondition>
 		<Dialogue>
 			<Page>…I-I'll keep you safe, Galena!</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tephra_RH_Boom_Hugged</Name>
+		<EntryCondition>RH_TEPHRA_HUGGED_SUPERNOVA</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<i>Sniffle</i>]]>… th-thank you, astronaut…</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>

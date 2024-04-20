@@ -45,4 +45,11 @@
 			<Page><![CDATA[<size=20>]]>…<![CDATA[</size>]]></Page>
 		</Dialogue>
 	</DialogueNode>
+	<DialogueNode>
+		<Name>Galena_RH_Boom_Hugged</Name>
+		<EntryCondition>RH_GALENA_HUGGED_SUPERNOVA</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…P-please… make it stop…<![CDATA[</size>]]></Page>
+		</Dialogue>
+	</DialogueNode>
 </DialogueTree>
