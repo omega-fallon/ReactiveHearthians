@@ -15,6 +15,8 @@
 // Characters react to you standing on top of them
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
+// Add slide reels to interesting items
+// Add dialogue for slide reel burning
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -159,15 +161,14 @@ namespace ReactiveHearthians
                     var Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
 
                     // Subbing methods
+                    hugApi.OnHugStart(Tephra_Standard, Person_Hug("TEPHRA"));
+                    hugApi.OnHugStart(Tephra_HAS, Person_Hug("TEPHRA"));
+                    hugApi.OnHugStart(Tephra_PostObservatory, Person_Hug("TEPHRA"));
 
-                    hugApi.OnHugStart(Tephra_Standard, Tephra_Hug);
-                    hugApi.OnHugStart(Tephra_HAS, Tephra_Hug);
-                    hugApi.OnHugStart(Tephra_PostObservatory, Tephra_Hug);
+                    hugApi.OnHugStart(Galena_Standard, Person_Hug("GALENA"));
+                    hugApi.OnHugStart(Galena_HAS, Person_Hug("GALENA"));
 
-                    hugApi.OnHugStart(Galena_Standard, Galena_Hug);
-                    hugApi.OnHugStart(Galena_HAS, Galena_Hug);
-
-                    hugApi.OnHugStart(Arkose_Standard, Arkose_Hug);
+                    hugApi.OnHugStart(Arkose_Standard, Person_Hug("ARKOSE"));
                 }
             };
 
@@ -183,29 +184,14 @@ namespace ReactiveHearthians
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
         }
 
-        // Hug mod methods
-        public void Tephra_Hug()
+        // Hug mod method
+        public void Person_Hug(string person)
         {
             if (TimeLoop.GetSecondsElapsed() >= 1330)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_HUGGED_SUPERNOVA", true);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED_SUPERNOVA", true);
             }
-        }
-
-        public void Galena_Hug()
-        {
-            if (TimeLoop.GetSecondsElapsed() >= 1330)
-            {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_GALENA_HUGGED_SUPERNOVA", true);
-            }
-        }
-
-        public void Arkose_Hug()
-        {
-            if (TimeLoop.GetSecondsElapsed() >= 1330)
-            {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_ARKOSE_HUGGED_SUPERNOVA", true);
-            }
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_" + person + "_HUGGED", true);
         }
 
         // Harmony patches
@@ -333,6 +319,23 @@ namespace ReactiveHearthians
                 volume_mica ??= GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
                 volume_rutile ??= GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
                 volume_porphy ??= GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+
+                // Removing certain people from the function,
+                if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
+                {
+                    // Remove Mica; they are already cowering //
+                    volumes.Remove(volume_mica);
+                }
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
+                {
+                    // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
+                    volumes.Remove(volume_rutile);
+                }
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
+                {
+                    // Remove Porphy; same as above but for Porphy //
+                    volumes.Remove(volume_porphy);
+                }
             }
             catch
             {
@@ -341,22 +344,7 @@ namespace ReactiveHearthians
 
             foreach (var volume in volumes)
             {
-                if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT") && volume == volume_mica)
-                {
-                    // Do nothing; Mica is already cowering //
-                }
-                else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT") && volume == volume_rutile)
-                {
-                    // Do nothing; Rutile was informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
-                }
-                else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT") && volume == volume_porphy)
-                {
-                    // Do nothing; same as above but for Porphy //
-                }
-                else
-                {
-                    volume.StartCoroutine(Coweroutine(volume._animator, 1330));
-                }
+                volume.StartCoroutine(Coweroutine(volume._animator, 1330));
             }
             StartCoroutine(Banjoroutine(1330));
         }
