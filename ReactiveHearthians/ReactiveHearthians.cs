@@ -105,11 +105,15 @@ namespace ReactiveHearthians
         public float chertfire_badmallow_lastate;
         public float feldsparfire_badmallow_lastate;
 
-        public CowerAnimTriggerVolume volume_mica;
-        public CowerAnimTriggerVolume volume_rutile;
-        public CowerAnimTriggerVolume volume_porphy;
+        public CowerAnimTriggerVolume cower_volume_mica;
+        public CowerAnimTriggerVolume cower_volume_rutile;
+        public CowerAnimTriggerVolume cower_volume_porphy;
+
+        public GameObject Gabbro_Island;
+        public GameObject Ember_Twin;
 
         public List<BadMarshmallowCan> badcans;
+        private List<CowerAnimTriggerVolume> cower_volumes;
 
         private void Start()
         {
@@ -128,7 +132,6 @@ namespace ReactiveHearthians
             {
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
-                volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
 
                 // Campfires people are sat near
                 slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/Controller_Campfire").GetComponent<Campfire>();
@@ -148,6 +151,18 @@ namespace ReactiveHearthians
                 // Makes the badmallow list
                 badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
 
+                // All cower volumes
+                cower_volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
+
+                // Specific cower volumes
+                cower_volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+                cower_volume_rutile = GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+                cower_volume_porphy = GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
+
+                // Bodies
+                Gabbro_Island = GameObject.Find("GabbroIsland_Body");
+                Ember_Twin = GameObject.Find("CaveTwin_Body");
+
                 if (hugApi != null)
                 {
                     // Huggables
@@ -161,14 +176,14 @@ namespace ReactiveHearthians
                     var Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
 
                     // Subbing methods
-                    hugApi.OnHugStart(Tephra_Standard, Person_Hug("TEPHRA"));
-                    hugApi.OnHugStart(Tephra_HAS, Person_Hug("TEPHRA"));
-                    hugApi.OnHugStart(Tephra_PostObservatory, Person_Hug("TEPHRA"));
+                    hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
+                    hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
+                    hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
 
-                    hugApi.OnHugStart(Galena_Standard, Person_Hug("GALENA"));
-                    hugApi.OnHugStart(Galena_HAS, Person_Hug("GALENA"));
+                    hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
+                    hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
 
-                    hugApi.OnHugStart(Arkose_Standard, Person_Hug("ARKOSE"));
+                    hugApi.OnHugStart(Arkose_Standard, () => { Person_Hug("ARKOSE"); });
                 }
             };
 
@@ -203,19 +218,19 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(GabbroDialogueSwapper), nameof(GabbroDialogueSwapper.Start))]
             public static void GabbroDialogueSwapper_Postfix()
             {
-                ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_All.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", GameObject.Find("GabbroIsland_Body"));
+                ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_All.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
 
                 if (TimeLoop.GetLoopCount() == 1)
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_1.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", GameObject.Find("GabbroIsland_Body"));
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_1.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
                 }
                 else if (TimeLoop.GetLoopCount() == 2)
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_2.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", GameObject.Find("GabbroIsland_Body"));
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_2.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
                 }
                 else
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_3.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", GameObject.Find("GabbroIsland_Body"));
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_3.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
                 }
             }
 
@@ -234,11 +249,11 @@ namespace ReactiveHearthians
                 }
                 else if (TimeLoop.GetMinutesElapsed() >= 11f)
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_2.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_2.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", ReactiveHearthians.Instance.Ember_Twin);
                 }
                 else
                 {
-                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_1.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", GameObject.Find("CaveTwin_Body"));
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_1.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", ReactiveHearthians.Instance.Ember_Twin);
                 }
             }
 
@@ -299,15 +314,12 @@ namespace ReactiveHearthians
         }
 
         // Hearthians cowering
-        private List<CowerAnimTriggerVolume> volumes;
-
         private void MakeMicaCower(string name, bool state)
         {
             if (name == "MODELROCKETKID_RH_DISTRAUGHT" && state)
             {
-                var volume = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-                volume.StartCoroutine(Coweroutine(volume._animator, 970));
-                volumes.Remove(volume);
+                cower_volume_mica.StartCoroutine(Coweroutine(cower_volume_mica._animator, 970));
+                cower_volumes.Remove(cower_volume_mica);
             }
         }
 
@@ -316,25 +328,21 @@ namespace ReactiveHearthians
             // Caching these so Find is only ran thrice
             try 
             {
-                volume_mica ??= GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-                volume_rutile ??= GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-                volume_porphy ??= GameObject.Find("Villager_HEA_Porphy/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
-
                 // Removing certain people from the function,
                 if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
                 {
                     // Remove Mica; they are already cowering //
-                    volumes.Remove(volume_mica);
+                    cower_volumes.Remove(cower_volume_mica);
                 }
                 else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
                 {
                     // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
-                    volumes.Remove(volume_rutile);
+                    cower_volumes.Remove(cower_volume_rutile);
                 }
                 else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
                 {
                     // Remove Porphy; same as above but for Porphy //
-                    volumes.Remove(volume_porphy);
+                    cower_volumes.Remove(cower_volume_porphy);
                 }
             }
             catch
@@ -342,9 +350,16 @@ namespace ReactiveHearthians
                 ModHelper.Console.WriteLine("Couldn't find Mica/Rutile/Porphy CowerAnimTriggerVolume", MessageType.Error);
             }
 
-            foreach (var volume in volumes)
+            foreach (var cower_volume in cower_volumes)
             {
-                volume.StartCoroutine(Coweroutine(volume._animator, 1330));
+                try
+                {
+                    cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                }
+                catch
+                {
+                    ModHelper.Console.WriteLine("Coweroutine couldn't be run on this cower_volume: " + cower_volume.ToString(), MessageType.Error);
+                }
             }
             StartCoroutine(Banjoroutine(1330));
         }
@@ -687,6 +702,7 @@ namespace ReactiveHearthians
             // Sets variables depending on what (if anything) the player is holding. //
             try
             {
+                // The player is holding an item
                 if (Locator.GetToolModeSwapper().GetToolMode() != ToolMode.None)
                 {
                     var item = Locator.GetToolModeSwapper().GetItemCarryTool().GetHeldItem();
@@ -701,6 +717,7 @@ namespace ReactiveHearthians
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", true);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                         // The item is a broken warp core
@@ -709,6 +726,7 @@ namespace ReactiveHearthians
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                         }
                         // The item is some other kind of warp core
@@ -717,6 +735,7 @@ namespace ReactiveHearthians
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                     }
@@ -726,14 +745,34 @@ namespace ReactiveHearthians
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", true);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
-                    // The item is a Nomai scroll or vision torch
-                    else if (item._type == ItemType.Scroll || item._type == ItemType.VisionTorch)
+                    // The item is a vision torch
+                    else if (item._type == ItemType.VisionTorch)
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
+                    }
+                    // The item is a Nomai scroll
+                    else if (item._type == ItemType.Scroll)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
+                    }
+                    // The item is a slide reel
+                    else if (item._type == ItemType.SlideReel)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", true);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     else
@@ -741,15 +780,17 @@ namespace ReactiveHearthians
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                     }
                 }
-                // Holding nothing
+                // The player is not holding an item
                 else
                 {
                     DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                     DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                     DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                     DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
                 }
             }
@@ -758,6 +799,7 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
             }
 
