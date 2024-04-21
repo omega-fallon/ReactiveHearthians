@@ -115,6 +115,15 @@ namespace ReactiveHearthians
         public List<BadMarshmallowCan> badcans;
         private List<CowerAnimTriggerVolume> cower_volumes;
 
+        public GameObject Tephra_Standard;
+        public GameObject Tephra_HAS;
+        public GameObject Tephra_PostObservatory;
+
+        public GameObject Galena_Standard;
+        public GameObject Galena_HAS;
+
+        public GameObject Arkose_Standard;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -163,17 +172,17 @@ namespace ReactiveHearthians
                 Gabbro_Island = GameObject.Find("GabbroIsland_Body");
                 Ember_Twin = GameObject.Find("CaveTwin_Body");
 
-                if (hugApi != null)
+                if (hugApi != null && false)
                 {
                     // Huggables
-                    var Tephra_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
-                    var Tephra_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
-                    var Tephra_PostObservatory = GameObject.Find("Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+                    Tephra_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
+                    Tephra_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
+                    Tephra_PostObservatory = GameObject.Find("Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
 
-                    var Galena_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
-                    var Galena_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
+                    Galena_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
+                    Galena_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
 
-                    var Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
+                    Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
 
                     // Subbing methods
                     hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
@@ -206,7 +215,7 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED_SUPERNOVA", true);
             }
-            DialogueConditionManager.SharedInstance.SetConditionState("RH_" + person + "_HUGGED", true);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", true);
         }
 
         // Harmony patches
@@ -319,7 +328,6 @@ namespace ReactiveHearthians
             if (name == "MODELROCKETKID_RH_DISTRAUGHT" && state)
             {
                 cower_volume_mica.StartCoroutine(Coweroutine(cower_volume_mica._animator, 970));
-                cower_volumes.Remove(cower_volume_mica);
             }
         }
 
@@ -350,16 +358,9 @@ namespace ReactiveHearthians
                 ModHelper.Console.WriteLine("Couldn't find Mica/Rutile/Porphy CowerAnimTriggerVolume", MessageType.Error);
             }
 
-            foreach (var cower_volume in cower_volumes)
+            foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
             {
-                try
-                {
-                    cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
-                }
-                catch
-                {
-                    ModHelper.Console.WriteLine("Coweroutine couldn't be run on this cower_volume: " + cower_volume.ToString(), MessageType.Error);
-                }
+                cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
             }
             StartCoroutine(Banjoroutine(1330));
         }
