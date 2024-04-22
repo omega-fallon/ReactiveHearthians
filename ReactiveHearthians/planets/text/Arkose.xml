@@ -119,7 +119,7 @@
 		<Name>Arkose_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
-			<Page>…Agh! I dropped a rock on my foot! Why's everything shaking?!</Page>
+			<Page>…Agh! Why's everything shaking?!</Page>
 		</Dialogue>
 		<SetCondition>ARKOSE_RH_SILENT</SetCondition>
 	</DialogueNode>

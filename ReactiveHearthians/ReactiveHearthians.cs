@@ -124,6 +124,8 @@ namespace ReactiveHearthians
 
         public GameObject Arkose_Standard;
 
+        public IHugModApi hugApi;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -134,7 +136,7 @@ namespace ReactiveHearthians
             newHorizons.LoadConfigs(this);
 
             // Hug API
-            var hugApi = ModHelper.Interaction.TryGetModApi<IHugModApi>("VioVayo.HugMod");
+            hugApi = ModHelper.Interaction.TryGetModApi<IHugModApi>("VioVayo.HugMod");
 
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
@@ -172,7 +174,7 @@ namespace ReactiveHearthians
                 Gabbro_Island = GameObject.Find("GabbroIsland_Body");
                 Ember_Twin = GameObject.Find("CaveTwin_Body");
 
-                if (hugApi != null && false)
+                if (hugApi != null)
                 {
                     // Huggables
                     Tephra_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
@@ -183,17 +185,10 @@ namespace ReactiveHearthians
                     Galena_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
 
                     Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
-
-                    // Subbing methods
-                    hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
-                    hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
-                    hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
-
-                    hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
-                    hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
-
-                    hugApi.OnHugStart(Arkose_Standard, () => { Person_Hug("ARKOSE"); });
                 }
+
+                // Everything that gets done a frame later goes here:
+                StartCoroutine(WaitAGoshDarnedFrame());
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -206,6 +201,27 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
+        }
+
+        // Single-frame delay coroutine
+        private IEnumerator WaitAGoshDarnedFrame()
+        {
+            yield return null;
+
+            // Getting all the cower_volumes into a list. This MUST be done here and not on Start(), for some reason
+            cower_volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
+
+            if (hugApi != null) 
+            {
+                hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
+                hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
+                hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+
+                hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
+                hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
+
+                hugApi.OnHugStart(Arkose_Standard, () => { Person_Hug("ARKOSE"); });
+            }
         }
 
         // Hug mod method
@@ -322,7 +338,7 @@ namespace ReactiveHearthians
             }
         }
 
-        // Hearthians cowering
+        // Hearthians cowering //
         private void MakeMicaCower(string name, bool state)
         {
             if (name == "MODELROCKETKID_RH_DISTRAUGHT" && state)
@@ -333,35 +349,33 @@ namespace ReactiveHearthians
 
         private void MakeAllCower()
         {
-            // Caching these so Find is only ran thrice
-            try 
+            // Removing certain people from the function,
+            if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
             {
-                // Removing certain people from the function,
-                if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
-                {
-                    // Remove Mica; they are already cowering //
-                    cower_volumes.Remove(cower_volume_mica);
-                }
-                else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
-                {
-                    // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
-                    cower_volumes.Remove(cower_volume_rutile);
-                }
-                else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
-                {
-                    // Remove Porphy; same as above but for Porphy //
-                    cower_volumes.Remove(cower_volume_porphy);
-                }
+                // Remove Mica; they are already cowering //
+                cower_volumes.Remove(cower_volume_mica);
             }
-            catch
+            else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
             {
-                ModHelper.Console.WriteLine("Couldn't find Mica/Rutile/Porphy CowerAnimTriggerVolume", MessageType.Error);
+                // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
+                cower_volumes.Remove(cower_volume_rutile);
+            }
+            else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
+            {
+                // Remove Porphy; same as above but for Porphy //
+                cower_volumes.Remove(cower_volume_porphy);
             }
 
+            // Iterates through each cower_volume and runs the coweroutine on each
             foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
             {
-                cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                if (cower_volume.gameObject.activeInHierarchy) 
+                {
+                    cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                }
             }
+
+            // Gets rid of Gneiss' banjo sound
             StartCoroutine(Banjoroutine(1330));
         }
 
