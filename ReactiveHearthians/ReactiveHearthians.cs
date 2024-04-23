@@ -8,14 +8,12 @@
 // Angry Mica animation?
 // Tell Hal about Solanum?
 // THE OUTSIDER - Tell Hal about the Friend?
-// ASTRAL CODEC - For any mod that introduces a new species, add a dialogue option for them to the addendum of the AC
 // Maybe add dialogue for reaching somewhere without your ship???
 // Characters react to you dying in front of them
 // Characters react to you standing on top of them
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
-// Hug mod compat
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -40,6 +38,7 @@
 // Dialogue for getting damaged by the ghost matter near Arkose
 // Bad Mallow dialogue, being high dialogue for Esker
 // Add slide reels to interesting items
+// Hug mod compat
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -301,18 +300,36 @@ namespace ReactiveHearthians
 
                 hugApi.OnHugStart(Feldspar_Standard, () => { Person_Hug("FELDSPAR"); });
 
-                hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
-                hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
+                if (Galena_Standard != null)
+                {
+                    hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
+                }
+                if (Galena_HAS != null)
+                {
+                    hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
+                }
 
                 hugApi.OnHugStart(Gneiss_Standard, () => { Person_Hug("GNEISS"); });
 
                 hugApi.OnHugStart(Gossan_Standard, () => { Person_Hug("GOSSAN"); });
 
-                hugApi.OnHugStart(Hal_Standard, () => { Person_Hug("HAL"); });
-                hugApi.OnHugStart(Hal_Outside, () => { Person_Hug("HAL"); });
+                if (Hal_Standard != null)
+                {
+                    hugApi.OnHugStart(Hal_Standard, () => { Person_Hug("HAL"); });
+                }
+                if (Hal_Outside != null)
+                {
+                    hugApi.OnHugStart(Hal_Outside, () => { Person_Hug("HAL"); });
+                }
 
-                hugApi.OnHugStart(Hornfels_Standard, () => { Person_Hug("HORNFELS"); });
-                hugApi.OnHugStart(Hornfels_Downstairs, () => { Person_Hug("HORNFELS"); });
+                if (Hornfels_Standard != null)
+                {
+                    hugApi.OnHugStart(Hornfels_Standard, () => { Person_Hug("HORNFELS"); });
+                }
+                if (Hornfels_Downstairs != null)
+                {
+                    hugApi.OnHugStart(Hornfels_Downstairs, () => { Person_Hug("HORNFELS"); });
+                }
 
                 hugApi.OnHugStart(Marl_Standard, () => { Person_Hug("MARL"); });
 
@@ -332,9 +349,18 @@ namespace ReactiveHearthians
 
                 hugApi.OnHugStart(Tektite_Standard, () => { Person_Hug("TEKTITE"); });
 
-                hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
-                hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
-                hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+                if (Tephra_Standard != null)
+                {
+                    hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
+                }
+                if (Tephra_HAS != null)
+                {
+                    hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
+                }
+                if (Tephra_PostObservatory != null)
+                {
+                    hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+                }
 
                 hugApi.OnHugStart(Tuff_Standard, () => { Person_Hug("TUFF"); });
             }
@@ -558,6 +584,21 @@ namespace ReactiveHearthians
         public void StatueLinked()
         {
             PlayerData.SetPersistentCondition("RH_NOMAI_STATUE_LINKED", true);
+
+            // Rechecking Hal & Tephra, just in case
+            if (hugApi != null)
+            {
+                if (Hal_Outside == null)
+                {
+                    Hal_Outside = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Outside");
+                    hugApi.OnHugStart(Hal_Outside, () => { Person_Hug("HAL"); });
+                }
+                if (Tephra_PostObservatory == null)
+                {
+                    Tephra_PostObservatory = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+                    hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+                }
+            }
         }
 
         // Statue readout & glow fix
