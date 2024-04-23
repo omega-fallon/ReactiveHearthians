@@ -66,6 +66,14 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Rutile_RH_Hugged</Name>
+		<EntryCondition>RH_RUTILE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks, hatchling. Glad to see you're as cuddly as ever.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_RUTILE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Rutile_RH_Distraught</Name>
 		<EntryCondition>RUTILE_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>

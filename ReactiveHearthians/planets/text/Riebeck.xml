@@ -189,7 +189,18 @@
 		<DialogueTarget>Questions</DialogueTarget>
 		<SetCondition>RH_RIEBECK_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>
-	
+
+	<DialogueNode>
+		<Name>Riebeck_RH_Hugged</Name>
+		<EntryCondition>RH_RIEBECK_HUGGED</EntryCondition>
+		<EntryCondition>TalkToRiebeck</EntryCondition>
+		<Dialogue>
+			<Page>Aww, thanks hatchling! You really know me well; I love giving hugs!</Page>
+			<Page>How's it going?</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+		<ConditionToCancel>RH_RIEBECK_HUGGED</ConditionToCancel>
+	</DialogueNode>
 	<DialogueNode>
 		<Name>Riebeck_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>

@@ -52,6 +52,14 @@
 		<DialogueTarget>HideAndSeek2</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Tephra_RH_Hugged</Name>
+		<EntryCondition>RH_TEPHRA_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks for the hug, astronaut!</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_TEPHRA_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Tephra_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

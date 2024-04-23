@@ -37,6 +37,23 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Moraine_RH_Hugged</Name>
+		<EntryCondition>RH_MORAINE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Oh, are you nervous about your big launch? I appreciate the hug, but you reall don't have anything to worry about. You'll be fine!</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_MORAINE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Hugged_Space</Name>
+		<EntryCondition>RH_MORAINE_HUGGED</EntryCondition>
+		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page>Oh, are you homesick already? I appreciate the hug, but you should really be up there exploring!</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_MORAINE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Moraine_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

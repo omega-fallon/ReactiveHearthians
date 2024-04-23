@@ -62,4 +62,13 @@
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S1_Hugged</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S1</EntryCondition>
+		<Dialogue>
+			<Page>Aww! Thank you, that's very kind of you.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_CHERT_HUGGED_S1</ConditionToCancel>
+	</DialogueNode>
 </DialogueTree>

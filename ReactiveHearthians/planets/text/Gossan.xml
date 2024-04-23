@@ -72,6 +72,14 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Gossan_RH_Hugged</Name>
+		<EntryCondition>RH_GOSSAN_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Heh, nerves that bad, huh? That's fine, I don't mind hugs.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_GOSSAN_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Gossan_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

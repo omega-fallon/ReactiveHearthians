@@ -17,6 +17,14 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Gneiss_RH_Hugged</Name>
+		<EntryCondition>RH_GNEISS_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Oh, hatchling, how sweet of you! Thanks, hun.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_GNEISS_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Gneiss_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

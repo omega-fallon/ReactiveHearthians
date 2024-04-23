@@ -260,6 +260,14 @@
 		<DialogueTarget>ScientistSpace</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Slate_RH_Hugged</Name>
+		<EntryCondition>RH_SLATE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Agh! Come on, hatchling, no hugs! You know that.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_SLATE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Scientist_RH_Distraught</Name>
 		<EntryCondition>SCIENTIST_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>

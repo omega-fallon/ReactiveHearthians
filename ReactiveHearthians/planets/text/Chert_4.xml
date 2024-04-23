@@ -1,0 +1,10 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Chert_S4_Hugged</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S4</EntryCondition>
+		<Dialogue>
+			<Page>...Thank you. I'm... so very sorry you had to be here for this.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_CHERT_HUGGED_S4</ConditionToCancel>
+	</DialogueNode>
+</DialogueTree>

@@ -4,7 +4,6 @@
 // Hearthians turn to face the boom and seem horrified
 // change Riebeck’s introductory message that they start a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
-// Hug mod compat
 // More Solanum interactions
 // Angry Mica animation?
 // Tell Hal about Solanum?
@@ -15,8 +14,8 @@
 // Characters react to you standing on top of them
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
-// Add slide reels to interesting items
 // Add dialogue for slide reel burning
+// Hug mod compat
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -40,6 +39,12 @@
 // Dialogue for standing on someone's campfire
 // Dialogue for getting damaged by the ghost matter near Arkose
 // Bad Mallow dialogue, being high dialogue for Esker
+// Add slide reels to interesting items
+
+// ASTRAL CODEC ADDENDUMS
+// - Hearth's Neighbor [done]
+// - Magisterium [done]
+// - Band Together
 
 using HarmonyLib;
 using HugMod;
@@ -115,16 +120,55 @@ namespace ReactiveHearthians
         public List<BadMarshmallowCan> badcans;
         private List<CowerAnimTriggerVolume> cower_volumes;
 
-        public GameObject Tephra_Standard;
-        public GameObject Tephra_HAS;
-        public GameObject Tephra_PostObservatory;
+        public IHugModApi hugApi;
+
+        public GameObject[] huggables;
+
+        // Huggable people
+        public GameObject Arkose_Standard;
+
+        public GameObject Chert_Standard;
+
+        public GameObject Esker_Standard;
+
+        public GameObject Feldspar_Standard;
 
         public GameObject Galena_Standard;
         public GameObject Galena_HAS;
 
-        public GameObject Arkose_Standard;
+        public GameObject Gneiss_Standard;
 
-        public IHugModApi hugApi;
+        public GameObject Gossan_Standard;
+
+        public GameObject Hal_Standard;
+        public GameObject Hal_Outside;
+
+        public GameObject Hornfels_Standard;
+        public GameObject Hornfels_Downstairs;
+
+        public GameObject Marl_Standard;
+
+        public GameObject Mica_Standard;
+
+        public GameObject Moraine_Standard;
+
+        public GameObject Porphy_Standard;
+
+        public GameObject Riebeck_Standard;
+
+        public GameObject Rutile_Standard;
+
+        public GameObject Slate_Standard;
+
+        public GameObject Spinel_Standard;
+
+        public GameObject Tektite_Standard;
+
+        public GameObject Tephra_Standard;
+        public GameObject Tephra_HAS;
+        public GameObject Tephra_PostObservatory;
+
+        public GameObject Tuff_Standard;
 
         private void Start()
         {
@@ -162,9 +206,6 @@ namespace ReactiveHearthians
                 // Makes the badmallow list
                 badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
 
-                // All cower volumes
-                cower_volumes = Resources.FindObjectsOfTypeAll<CowerAnimTriggerVolume>().ToList();
-
                 // Specific cower volumes
                 cower_volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
                 cower_volume_rutile = GameObject.Find("Villager_HEA_Rutile/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
@@ -176,15 +217,51 @@ namespace ReactiveHearthians
 
                 if (hugApi != null)
                 {
-                    // Huggables
-                    Tephra_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
-                    Tephra_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
-                    Tephra_PostObservatory = GameObject.Find("Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+                    // Huggable people
+                    Arkose_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
 
-                    Galena_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
-                    Galena_HAS = GameObject.Find("Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
+                    Chert_Standard = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/");
 
-                    Arkose_Standard = GameObject.Find("Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
+                    Esker_Standard = GameObject.Find("Moon_Body/Sector_THM/Characters_THM/Villager_HEA_Esker/");
+
+                    Feldspar_Standard = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Pioneer_Characters/Traveller_HEA_Feldspar/");
+
+                    Galena_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
+                    Galena_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
+
+                    Gneiss_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss");
+
+                    Gossan_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan");
+
+                    Hal_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum");
+                    Hal_Outside = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Outside");
+
+                    Hornfels_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels");
+                    Hornfels_Downstairs = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)");
+
+                    Marl_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl");
+
+                    Mica_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica");
+
+                    Moraine_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine");
+
+                    Porphy_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy");
+
+                    Riebeck_Standard = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck");
+
+                    Rutile_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile");
+
+                    Slate_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate");
+
+                    Spinel_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel");
+
+                    Tektite_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2");
+
+                    Tephra_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
+                    Tephra_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
+                    Tephra_PostObservatory = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+
+                    Tuff_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff");
                 }
 
                 // Everything that gets done a frame later goes here:
@@ -213,14 +290,53 @@ namespace ReactiveHearthians
 
             if (hugApi != null) 
             {
-                hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
-                hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
-                hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+                huggables = hugApi.GetAllHuggables();
+
+                // Mirror above, setting watchers.
+                hugApi.OnHugStart(Arkose_Standard, () => { Person_Hug("ARKOSE"); });
+
+                hugApi.OnHugStart(Chert_Standard, () => { Person_Hug("CHERT"); });
+
+                hugApi.OnHugStart(Esker_Standard, () => { Person_Hug("ESKER"); });
+
+                hugApi.OnHugStart(Feldspar_Standard, () => { Person_Hug("FELDSPAR"); });
 
                 hugApi.OnHugStart(Galena_Standard, () => { Person_Hug("GALENA"); });
                 hugApi.OnHugStart(Galena_HAS, () => { Person_Hug("GALENA"); });
 
-                hugApi.OnHugStart(Arkose_Standard, () => { Person_Hug("ARKOSE"); });
+                hugApi.OnHugStart(Gneiss_Standard, () => { Person_Hug("GNEISS"); });
+
+                hugApi.OnHugStart(Gossan_Standard, () => { Person_Hug("GOSSAN"); });
+
+                hugApi.OnHugStart(Hal_Standard, () => { Person_Hug("HAL"); });
+                hugApi.OnHugStart(Hal_Outside, () => { Person_Hug("HAL"); });
+
+                hugApi.OnHugStart(Hornfels_Standard, () => { Person_Hug("HORNFELS"); });
+                hugApi.OnHugStart(Hornfels_Downstairs, () => { Person_Hug("HORNFELS"); });
+
+                hugApi.OnHugStart(Marl_Standard, () => { Person_Hug("MARL"); });
+
+                hugApi.OnHugStart(Mica_Standard, () => { Person_Hug("MICA"); });
+
+                hugApi.OnHugStart(Moraine_Standard, () => { Person_Hug("MORAINE"); });
+
+                hugApi.OnHugStart(Porphy_Standard, () => { Person_Hug("PORPHY"); });
+
+                hugApi.OnHugStart(Riebeck_Standard, () => { Person_Hug("RIEBECK"); });
+
+                hugApi.OnHugStart(Rutile_Standard, () => { Person_Hug("RUTILE"); });
+
+                hugApi.OnHugStart(Slate_Standard, () => { Person_Hug("SLATE"); });
+
+                hugApi.OnHugStart(Spinel_Standard, () => { Person_Hug("SPINEL"); });
+
+                hugApi.OnHugStart(Tektite_Standard, () => { Person_Hug("TEKTITE"); });
+
+                hugApi.OnHugStart(Tephra_Standard, () => { Person_Hug("TEPHRA"); });
+                hugApi.OnHugStart(Tephra_HAS, () => { Person_Hug("TEPHRA"); });
+                hugApi.OnHugStart(Tephra_PostObservatory, () => { Person_Hug("TEPHRA"); });
+
+                hugApi.OnHugStart(Tuff_Standard, () => { Person_Hug("TUFF"); });
             }
         }
 
@@ -231,6 +347,27 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED_SUPERNOVA", true);
             }
+
+            if (person == "CHERT")
+            {
+                if (TimeLoop.GetMinutesElapsed() >= 20.5f)
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S4", true);
+                }
+                else if (TimeLoop.GetMinutesElapsed() >= 17f)
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S3", true);
+                }
+                else if (TimeLoop.GetMinutesElapsed() >= 11f)
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S2", true);
+                }
+                else
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S1", true);
+                }
+            }
+
             DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", true);
         }
 
@@ -266,11 +403,11 @@ namespace ReactiveHearthians
             {
                 if (TimeLoop.GetMinutesElapsed() >= 20.5f)
                 {
-                    // Nothing for now
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_4.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", ReactiveHearthians.Instance.Ember_Twin);
                 }
                 else if (TimeLoop.GetMinutesElapsed() >= 17f)
                 {
-                    // Nothing for now
+                    ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_3.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", ReactiveHearthians.Instance.Ember_Twin);
                 }
                 else if (TimeLoop.GetMinutesElapsed() >= 11f)
                 {
@@ -381,6 +518,17 @@ namespace ReactiveHearthians
 
         private IEnumerator Coweroutine(Animator animator, int time)
         {
+            if (hugApi != null)
+            {
+                GameObject current = animator.gameObject, huggable = null;
+                while (huggable == null && current != null)
+                {
+                    if (huggables.Contains(current)) huggable = current;
+                    current = current.transform.parent?.gameObject;
+                }
+                if (huggable != null) hugApi.SetAnimationTrigger(huggable, (int)HugTrigger.None);
+            }
+
             while (TimeLoop.GetSecondsElapsed() < time) yield return null;
             animator.SetTrigger("ProbeDodge");
             while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") && !animator.GetCurrentAnimatorStateInfo(1).IsName("Cower 2")) yield return null;
@@ -790,6 +938,7 @@ namespace ReactiveHearthians
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", true);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
+                    // The item is something else
                     else
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);

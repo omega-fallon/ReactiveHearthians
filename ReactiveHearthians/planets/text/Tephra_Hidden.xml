@@ -1,5 +1,13 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Tephra_RH_Hugged</Name>
+		<EntryCondition>RH_TEPHRA_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks for the hug, astronaut!</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_TEPHRA_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Tephra_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

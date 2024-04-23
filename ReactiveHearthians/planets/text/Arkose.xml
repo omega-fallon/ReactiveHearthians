@@ -116,6 +116,14 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Arkose_RH_Hugged</Name>
+		<EntryCondition>RH_ARKOSE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Agh! Hey, come on, I'm 8-and-a-half, I don't need hugs anymore!</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_ARKOSE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Arkose_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

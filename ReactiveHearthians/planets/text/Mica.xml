@@ -53,6 +53,14 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Mica_RH_Hugged</Name>
+		<EntryCondition>RH_MICA_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Heh, alright, alright, come on, there's no need to get so cuddly! I'm still gonna be here when you get back, you know.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_MICA_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>ModelRocketKid_RH_MicasWrath</Name>
 		<EntryCondition>MICAS_WRATH</EntryCondition>
 		<Dialogue>

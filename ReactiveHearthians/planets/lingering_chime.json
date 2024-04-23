@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Lingering Chime",
+  "Props": {
+    "dialogue": [
+      {
+        "pathToExistingDialogue": "Sector/Station/CodecDispenser/Core/CodecAddendumDialogue",
+        "xmlFile": "planets/text/Codec_Addendum.xml"
+      }
+    ]
+  }
+}

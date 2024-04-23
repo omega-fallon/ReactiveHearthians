@@ -215,6 +215,14 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Feldspar_RH_Hugged</Name>
+		<EntryCondition>RH_FELDSPAR_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Heh. Alright, alright hatchling, don't get sappy on me! Riebeck gives better hugs than me anyways.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_FELDSPAR_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Feldspar_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

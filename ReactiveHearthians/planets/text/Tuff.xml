@@ -25,20 +25,35 @@
 		<Name>Tuff_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
-			<Page>…Whoa. Look at that thing… the way it sparkles, like it's capturing all the light inside of it… where'd you find that, hatchling?</Page>
+			<Page>â€¦Whoa. Look at that thingâ€¦ the way it sparkles, like it's capturing all the light inside of itâ€¦ where'd you find that, hatchling?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tuff_RH_Hugged</Name>
+		<EntryCondition>RH_TUFF_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Mmm. You know I'm not big on hugs, hatchling.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_TUFF_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>TooSick_Redirect</Name>
+		<EntryCondition>TooSick</EntryCondition>
+		<Dialogue>
+			<Page>Hurghâ€¦</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Tuff_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
-			<Page>…The heck was that?</Page>
+			<Page>â€¦The heck was that?</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Done</Name>
 		<Dialogue>
-			<Page>Eugh. Good. I don't even like thinking about that cave…</Page>
+			<Page>Eugh. Good. I don't even like thinking about that caveâ€¦</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>

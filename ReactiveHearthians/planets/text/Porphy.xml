@@ -81,14 +81,22 @@
 		<Name>Porphy_RH_PotStand</Name>
 		<EntryCondition>RH_PORPHY_POT_STAND</EntryCondition>
 		<Dialogue>
-			<Page>Mind getting down from there, hatchling? I'm trying to make sap wine, here!</Page>
+			<Page>Mind getting down from there, hatchling? I'm trying to make sap wine over here!</Page>
 		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Porphy_RH_Hugged</Name>
+		<EntryCondition>RH_PORPHY_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Sappy as ever, eh hatchling? That's fine, I don't mind hugs.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_PORPHY_HUGGED</ConditionToCancel>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Distraught</Name>
 		<EntryCondition>PORPHY_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>
-			<Page>…Say, hatchling. You can have some if you want. Nobody else, though. I… wouldn't want them to know.</Page>
+			<Page>…Say, hatchling. Why don't you… have a glass with me, okay? Nobody else, though. I… wouldn't want them to know what's gonna happen.</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>

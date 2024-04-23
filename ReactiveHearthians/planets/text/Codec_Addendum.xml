@@ -1,0 +1,53 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>START</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredLogCondition>DS_DAMAGE</RequiredLogCondition>
+				<RequiredLogCondition>HNPodResolution</RequiredLogCondition>
+				<CancelledCondition>CODEX_ADDENDUM_LONELYHERMIT</CancelledCondition>
+				<Text><![CDATA[<i>Pray for the inhabitants of the Lonely Hermit...</i>]]></Text>
+				<DialogueTarget>LonelyHermit</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>MagistariumComplete</RequiredCondition>
+				<CancelledCondition>CODEX_ADDENDUM_MAGISTAR</CancelledCondition>
+				<Text><![CDATA[<i>Ponder the Magistarium...</i>]]></Text>
+				<DialogueTarget>Magistar</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>LonelyHermit</Name>
+		<Dialogue>
+			<Page>The Lonely Hermit, the sole planet of Hearth's Neighbor, was populated by a species of furred amphibians, who tragically found themselves caught in a civil war that ended in the annihilation of their planet and their species.</Page>
+			<Page>Only one of their kind escaped, fired from an escape pod on the species' vessel, which eventually landed in Timber Hearth.</Page>
+			<Page>May we mourn the unnecessary loss of their kind, and may we pray that the sole survivor lived on.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text><![CDATA[<i>...</i>]]></Text>
+				<DialogueTarget>START</DialogueTarget>
+				<ConditionToSet>CODEX_ADDENDUM_LONELYHERMIT</ConditionToSet>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Magistar</Name>
+		<Dialogue>
+			<Page>The Magister was a being of mysteriously immense power and age. His goal was to prevent the universe from ending, what he called the "lie of the Universe".</Page>
+			<Page>He journeyed across the universe, picking up individuals of various species in order to help build a Device which would achieve his goal.</Page>
+			<Page>There was Vultos, the sole survivor of the war on the Lonely Hermit; Vespa, an inventor of the Stranger's species; Acquarius, a electrical engineer of a four-armed acquatic species; Lily, a Nomai inventor whose invention was laughed at by her peers; a Roja, a botanist and painter belonging to a fluffy insectioid species; and finally, a Hearthian astronaut named Quartz.</Page>
+			<Page>Together, they worked to achieve the Magister's vision and ascended to what they call the Outer Planes, a place above time and space where they may float around for all eternity.</Page>
+			<Page>Remember their goal, even as the universe ends despite them.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text><![CDATA[<i>...</i>]]></Text>
+				<DialogueTarget>START</DialogueTarget>
+				<ConditionToSet>CODEX_ADDENDUM_MAGISTAR</ConditionToSet>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+</DialogueTree>

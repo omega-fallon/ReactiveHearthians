@@ -76,4 +76,13 @@
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S2_Hugged</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S2</EntryCondition>
+		<Dialogue>
+			<Page>Aww! Thank you. A hug... yes, certainly helps keep my mind occupied.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_CHERT_HUGGED_S2</ConditionToCancel>
+	</DialogueNode>
 </DialogueTree>

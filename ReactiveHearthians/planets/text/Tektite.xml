@@ -99,6 +99,35 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Tektite_RH_Hugged_TalkedTo</Name>
+		<EntryCondition>RH_TEKTITE_HUGGED</EntryCondition>
+		<EntryCondition>TalkedToImpactTektite</EntryCondition>
+		<Dialogue>
+			<Page>Hugs are much appreciated, hatchling, much appreciated. Sorry if I seem distracted, it's just 'cause I am. Need something?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I threw a Little Scout into the seed.</Text>
+				<DialogueTarget>Tektite5</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
+				<DialogueTarget>Tektite6</DialogueTarget>
+				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
+				<DialogueTarget>Tektite7</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nope, I’m good.</Text>
+				<DialogueTarget>Tektite8</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<ConditionToCancel>RH_TEKTITE_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Tektite_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

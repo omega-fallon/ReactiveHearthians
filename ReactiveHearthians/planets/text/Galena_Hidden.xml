@@ -1,15 +1,24 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Galena_RH_Hugged</Name>
+		<EntryCondition>RH_GALENA_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page><![CDATA[<size=20>]]>…<![CDATA[</size>]]></Page>
+			<Page><![CDATA[<size=20>]]>…Thanks.<![CDATA[</size>]]></Page>
+		</Dialogue>
+		<ConditionToCancel>RH_GALENA_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>ShyKid_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
 			<Page><![CDATA[<size=20>]]>…Wh-what was that…?<![CDATA[</size>]]></Page>
 		</Dialogue>
-		<SetCondition>ShyKidSaysHi</SetCondition>
+		<SetCondition>SHYKID_RH_SILENT</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>ShyKid_RH_Silent</Name>
-		<EntryCondition>ShyKidSaysHi</EntryCondition>
+		<EntryCondition>SHYKID_RH_SILENT</EntryCondition>
 		<Dialogue>
 			<Page><![CDATA[<size=20>]]>…<![CDATA[</size>]]></Page>
 		</Dialogue>

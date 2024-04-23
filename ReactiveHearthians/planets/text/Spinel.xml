@@ -46,6 +46,14 @@
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Spinel_RH_Hugged</Name>
+		<EntryCondition>RH_SPINEL_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Geez! Listen, I appreciate the hug, hatchling, but I gotta keep my line straight, alright?</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_SPINEL_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Spinel_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

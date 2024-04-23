@@ -206,6 +206,15 @@
 		<DialogueTarget>Secondary</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Esker_RH_Hugged</Name>
+		<EntryCondition>RH_ESKER_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Ah! Aww, hatchling, it's been too long since I've gotten a nice hug.</Page>
+			<Page>...Way too long, actually.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_ESKER_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Esker_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>

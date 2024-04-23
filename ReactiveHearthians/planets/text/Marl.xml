@@ -3,7 +3,7 @@
 		<Name>Marl_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
-			<Page>Nice little gizmo you've got there, hatchling. Hornfels' gonna be real jealous you found something that good in such short time.</Page>
+			<Page>Nice little gizmo you've got there, hatchling. Hornfels is gonna be real jealous you found something that good in such short time.</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
@@ -23,6 +23,14 @@
 			<Page>Somehow, this is that tree's fault. Not sure how, but I know it.</Page>
 			<Page>…Alright, that's a stretch even for me, but you get my point!</Page>
 		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Marl_RH_Hugged</Name>
+		<EntryCondition>RH_MARL_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks for the hug! Hope you have a good time up in space.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_MARL_HUGGED</ConditionToCancel>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Marl_RH_Boom</Name>

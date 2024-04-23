@@ -94,6 +94,15 @@
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>Hornfels_RH_Hugged</Name>
+		<EntryCondition>RH_HORNFELS_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks for the hug, hatchling.</Page>
+		</Dialogue>
+		<DialogueTarget>Curator13</DialogueTarget>
+		<ConditionToCancel>RH_HORNFELS_HUGGED</ConditionToCancel>
+	</DialogueNode>
+	<DialogueNode>
 		<Name>Hornfels_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>
 		<Dialogue>
