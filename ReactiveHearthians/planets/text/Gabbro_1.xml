@@ -12,6 +12,15 @@
 			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Hugged</Name>
+		<EntryCondition>RH_GABBRO_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Thanks there, bud. It gets kinda lonely out here sometimes.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_GABBRO_HUGGED</ConditionToCancel>
+	</DialogueNode>
 	
 	<!-- Reactions -->
 	<DialogueNode>

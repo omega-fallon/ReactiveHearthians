@@ -4,12 +4,28 @@
   "Props": {
     "dialogue": [
       {
-        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/ConversationZone_RSci",
-        "xmlFile": "planets/text/Slate.xml"
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/ConversationZone",
+        "xmlFile": "planets/text/Arkose.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss/ConversationZone",
+        "xmlFile": "planets/text/Gneiss.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/ConversationZone",
+        "xmlFile": "planets/text/Gossan.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/ConversationZone",
+        "xmlFile": "planets/text/Marl.xml"
       },
       {
         "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica/ConversationZone",
         "xmlFile": "planets/text/Mica.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine/ConversationZone",
+        "xmlFile": "planets/text/Moraine.xml"
       },
       {
         "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy/ConversationZone",
@@ -20,35 +36,23 @@
         "xmlFile": "planets/text/Rutile.xml"
       },
       {
-        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl/ConversationZone",
-        "xmlFile": "planets/text/Marl.xml"
+        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate/ConversationZone_RSci",
+        "xmlFile": "planets/text/Slate.xml"
       },
       {
         "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel/ConversationZone",
         "xmlFile": "planets/text/Spinel.xml"
       },
       {
-        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter/ConversationZone",
-        "xmlFile": "planets/text/Arkose.xml"
-      },
-      {
-        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine/ConversationZone",
-        "xmlFile": "planets/text/Moraine.xml"
-      },
-      {
-        "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan/ConversationZone",
-        "xmlFile": "planets/text/Gossan.xml"
+        "pathToExistingDialogue": "Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/ConversationZone",
+        "xmlFile": "planets/text/Tektite.xml"
       },
       {
         "pathToExistingDialogue": "Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff/ConversationZone_Tuff",
         "xmlFile": "planets/text/Tuff.xml"
       },
-      {
-        "pathToExistingDialogue": "Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2/ConversationZone",
-        "xmlFile": "planets/text/Tektite.xml"
-      },
 
-      // Multi-zone characters
+      // Multi-zone characters //
       {
         "pathToExistingDialogue": "Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)/ConversationZone_Hornfels",
         "xmlFile": "planets/text/Hornfels.xml"

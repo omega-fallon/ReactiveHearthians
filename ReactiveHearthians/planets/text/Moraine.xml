@@ -40,7 +40,7 @@
 		<Name>Moraine_RH_Hugged</Name>
 		<EntryCondition>RH_MORAINE_HUGGED</EntryCondition>
 		<Dialogue>
-			<Page>Oh, are you nervous about your big launch? I appreciate the hug, but you reall don't have anything to worry about. You'll be fine!</Page>
+			<Page>Oh, are you nervous about your big launch? I appreciate the hug, but you really don't have anything to worry about. You'll be fine!</Page>
 		</Dialogue>
 		<ConditionToCancel>RH_MORAINE_HUGGED</ConditionToCancel>
 	</DialogueNode>

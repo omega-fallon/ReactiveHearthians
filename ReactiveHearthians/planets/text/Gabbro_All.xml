@@ -74,6 +74,7 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>THE_OUTSIDER</RequiredCondition>
 				<RequiredLogCondition>IP_DREAM_HOME_X1</RequiredLogCondition>
 				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_FRIEND</CancelledPersistentCondition>
@@ -135,6 +136,7 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Prisoner</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>THE_OUTSIDER</RequiredCondition>
 				<RequiredLogCondition>IP_DREAM_HOME_X1</RequiredLogCondition>
 				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_FRIEND</CancelledPersistentCondition>

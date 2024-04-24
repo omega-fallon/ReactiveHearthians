@@ -14,6 +14,7 @@
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
+// Hug dialogue for Gabbro
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -134,6 +135,8 @@ namespace ReactiveHearthians
 
         public GameObject Feldspar_Standard;
 
+        public GameObject Gabbro_Standard;
+
         public GameObject Galena_Standard;
         public GameObject Galena_HAS;
 
@@ -171,6 +174,10 @@ namespace ReactiveHearthians
 
         public GameObject Tuff_Standard;
 
+        // Mods installed
+        public bool Outsider_Installed;
+        public bool Astral_Codec_Installed;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -182,6 +189,25 @@ namespace ReactiveHearthians
 
             // Hug API
             hugApi = ModHelper.Interaction.TryGetModApi<IHugModApi>("VioVayo.HugMod");
+
+            // Mods loaded
+            if (ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null)
+            {
+                Outsider_Installed = true;
+            }
+            else
+            {
+                Outsider_Installed = false;
+            }
+
+            if (ModHelper.Interaction.TryGetMod("Walker.AstralCodex") != null)
+            {
+                Astral_Codec_Installed = true;
+            }
+            else
+            {
+                Astral_Codec_Installed = false;
+            }
 
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
@@ -229,6 +255,8 @@ namespace ReactiveHearthians
                     Esker_Standard = GameObject.Find("Moon_Body/Sector_THM/Characters_THM/Villager_HEA_Esker/");
 
                     Feldspar_Standard = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Pioneer_Characters/Traveller_HEA_Feldspar/");
+
+                    Gabbro_Standard = GameObject.Find("Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/");
 
                     Galena_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
                     Galena_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
@@ -305,6 +333,8 @@ namespace ReactiveHearthians
                 hugApi.OnHugStart(Esker_Standard, () => { Person_Hug("ESKER"); });
 
                 hugApi.OnHugStart(Feldspar_Standard, () => { Person_Hug("FELDSPAR"); });
+
+                hugApi.OnHugStart(Gabbro_Standard, () => { Person_Hug("GABBRO"); });
 
                 if (Galena_Standard != null)
                 {
@@ -692,11 +722,20 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", false);
             }
+
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S4", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S3", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S2", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S1", false);
         }
 
         // Dialogue variables
         public void OnEnterConversation()
         {
+            // Installed mod variables. //
+            DialogueConditionManager.SharedInstance.SetConditionState("ASTRAL_CODEC", Astral_Codec_Installed);
+            DialogueConditionManager.SharedInstance.SetConditionState("THE_OUTSIDER", Outsider_Installed);
+
             // Loop variables. //
             if (TimeLoop.GetLoopCount() == 1)
             {

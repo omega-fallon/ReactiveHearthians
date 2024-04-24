@@ -54,6 +54,7 @@
 				<DialogueTarget>Arkose_RH_Interloper</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>ASTRAL_CODEC</RequiredCondition>
 				<RequiredPersistentCondition>CODEX_ENTERED_TESSERACT</RequiredPersistentCondition>
 				<Text>I can see ghost matter now!</Text>
 				<DialogueTarget>Arkose_RH_CODEX_SeeMatter</DialogueTarget>
@@ -80,10 +81,6 @@
 			<Page>Whoa!! Really?! Like, without using a camera or anything? Just with your eyes?</Page>
 			<Page>That is <![CDATA[<i>so</i>]]> cool! How'd you do that?</Page>
 		</Dialogue>
-		<DialogueTarget>Arkose_RH_CODEX_HowSee</DialogueTarget>
-	</DialogueNode>
-	<DialogueNode>
-		<Name>Arkose_RH_CODEX_HowSee</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
 				<Text>I stepped into some weird tesseract on a planet beneath the sun.</Text>
