@@ -43,7 +43,7 @@
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
 // - Magisterium [done]
-// - Band Together
+// - Band Together [done]
 
 using HarmonyLib;
 using HugMod;
@@ -122,6 +122,8 @@ namespace ReactiveHearthians
         public IHugModApi hugApi;
 
         public GameObject[] huggables;
+
+        public TimeLoopCoreController TheMountain;
 
         // Huggable people
         public GameObject Arkose_Standard;
@@ -214,6 +216,9 @@ namespace ReactiveHearthians
                 Gabbro_Island = GameObject.Find("GabbroIsland_Body");
                 Ember_Twin = GameObject.Find("CaveTwin_Body");
 
+                // ATP
+                TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
+
                 if (hugApi != null)
                 {
                     // Huggable people
@@ -268,6 +273,7 @@ namespace ReactiveHearthians
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
+            GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
             GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
             GlobalMessenger.AddListener("EnterDreamWorld", DreamWorldBeen);
@@ -678,6 +684,16 @@ namespace ReactiveHearthians
             }
         }
 
+        // Resetting hug variables - test
+        public void OnExitConversation()
+        {
+            string[] people = { "ARKOSE", "CHERT", "ESKER", "FELDSPAR", "GABBRO", "GALENA", "GNEISS", "GOSSAN", "HAL", "HORNFELS", "MARL", "MICA", "MORAINE", "PORPHY", "RIEBECK", "RUTILE", "SLATE", "SPINEL", "TEKTITE", "TEPHRA", "TUFF" };
+            foreach (string person in people)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", false);
+            }
+        }
+
         // Dialogue variables
         public void OnEnterConversation()
         {
@@ -804,8 +820,7 @@ namespace ReactiveHearthians
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated
-            var TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
-            if ((TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
+            if (TheMountain != null && (TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
             }

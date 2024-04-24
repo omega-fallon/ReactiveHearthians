@@ -15,6 +15,12 @@
 				<Text><![CDATA[<i>Ponder the Magistarium...</i>]]></Text>
 				<DialogueTarget>Magistar</DialogueTarget>
 			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>BandTogetherComplete</RequiredCondition>
+				<CancelledCondition>CODEX_ADDENDUM_BANDTOGETHER</CancelledCondition>
+				<Text><![CDATA[<i>Learn from the tale of Fractured Harmony...</i>]]></Text>
+				<DialogueTarget>BandTogether</DialogueTarget>
+			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
 
@@ -47,6 +53,22 @@
 				<Text><![CDATA[<i>...</i>]]></Text>
 				<DialogueTarget>START</DialogueTarget>
 				<ConditionToSet>CODEX_ADDENDUM_MAGISTAR</ConditionToSet>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>BandTogether</Name>
+		<Dialogue>
+			<Page>Fractured Harmony was a planet populated by both Nomai and Ghirds. On it there was a large door, sealed by a key. Arguments over its contents led to the key being shattered and the people of the planet splitting into four clans: The Nomai Followers of Greed and Exploration, and the Ghird Followers of Worship and Logic.</Page>
+			<Page>I, stranger to the world, helped unite the clans in their goal to open the door. When it swung open, there was only a campfire, no treasure, no knowledge, just a campfire.</Page>
+			<Page>I sat down and lit it, toasting marshmallows, and soon, all the people of the planet gathered around, and peace was restored.</Page>
+			<Page>Take this tale and keep its moral in your hearts.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text><![CDATA[<i>...</i>]]></Text>
+				<DialogueTarget>START</DialogueTarget>
+				<ConditionToSet>CODEX_ADDENDUM_BANDTOGETHER</ConditionToSet>
 			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
