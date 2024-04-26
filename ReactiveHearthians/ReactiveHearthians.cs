@@ -14,7 +14,6 @@
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
-// Hug dialogue for Gabbro
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -40,6 +39,7 @@
 // Bad Mallow dialogue, being high dialogue for Esker
 // Add slide reels to interesting items
 // Hug mod compat
+// Hug dialogue for Gabbro
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -178,6 +178,38 @@ namespace ReactiveHearthians
         public bool Outsider_Installed;
         public bool Astral_Codec_Installed;
 
+        // Sectors inside of bodies
+        public bool InSector_TH;
+
+        // Last damaged
+        public float arkose_last_damaged;
+        public float chert_last_damaged;
+        public float esker_last_damaged;
+        public float feldspar_last_damaged;
+        public float gabbro_last_damaged;
+        public float galena_last_damaged;
+        public float gneiss_last_damaged;
+        public float gossan_last_damaged;
+        public float hal_last_damaged;
+        public float hornfels_last_damaged;
+        public float marl_last_damaged;
+        public float mica_last_damaged;
+        public float moraine_last_damaged;
+        public float porphy_last_damaged;
+        public float riebeck_last_damaged;
+        public float rutile_last_damaged;
+        public float slate_last_damaged;
+        public float spinel_last_damaged;
+        public float tektite_last_damaged;
+        public float tephra_last_damaged;
+        public float tuff_last_damaged;
+
+        // Positions (broadly speaking) of variable position NPCs
+        string halPosition;
+        string hornfelsPosition;
+        string tephraPosition;
+        string galenaPosition;
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -215,6 +247,9 @@ namespace ReactiveHearthians
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
 
+                // Sets this to true by default
+                InSector_TH = true;
+
                 // Campfires people are sat near
                 slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/Controller_Campfire").GetComponent<Campfire>();
                 riebeckfire = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Interactables_Crossroads/VisibleFrom_BH/Prefab_HEA_Campfire/Controller_Campfire").GetComponent<Campfire>();
@@ -245,56 +280,53 @@ namespace ReactiveHearthians
                 // ATP
                 TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();
 
-                if (hugApi != null)
-                {
-                    // Huggable people
-                    Arkose_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
+                // NPC objects
+                Arkose_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Arkose_GhostMatter");
 
-                    Chert_Standard = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/");
+                Chert_Standard = GameObject.Find("CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/");
 
-                    Esker_Standard = GameObject.Find("Moon_Body/Sector_THM/Characters_THM/Villager_HEA_Esker/");
+                Esker_Standard = GameObject.Find("Moon_Body/Sector_THM/Characters_THM/Villager_HEA_Esker/");
 
-                    Feldspar_Standard = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Pioneer_Characters/Traveller_HEA_Feldspar/");
+                Feldspar_Standard = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Pioneer_Characters/Traveller_HEA_Feldspar/");
 
-                    Gabbro_Standard = GameObject.Find("Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/");
+                Gabbro_Standard = GameObject.Find("Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/");
 
-                    Galena_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
-                    Galena_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
+                Galena_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Galena");
+                Galena_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Galena (1)");
 
-                    Gneiss_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss");
+                Gneiss_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Gneiss");
 
-                    Gossan_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan");
+                Gossan_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Gossan");
 
-                    Hal_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum");
-                    Hal_Outside = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Outside");
+                Hal_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Museum");
+                Hal_Outside = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Character_HEA_Hal_Outside");
 
-                    Hornfels_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels");
-                    Hornfels_Downstairs = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)");
+                Hornfels_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels");
+                Hornfels_Downstairs = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Characters_Observatory/Villager_HEA_Hornfels (1)");
 
-                    Marl_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl");
+                Marl_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Marl");
 
-                    Mica_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica");
+                Mica_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Mica");
 
-                    Moraine_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine");
+                Moraine_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_UpperVillage/Characters_UpperVillage/Villager_HEA_Moraine");
 
-                    Porphy_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy");
+                Porphy_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Porphy");
 
-                    Riebeck_Standard = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck");
+                Riebeck_Standard = GameObject.Find("BrittleHollow_Body/Sector_BH/Sector_Crossroads/Characters_Crossroads/Traveller_HEA_Riebeck");
 
-                    Rutile_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile");
+                Rutile_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Rutile");
 
-                    Slate_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate");
+                Slate_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_StartingCamp/Characters_StartingCamp/Villager_HEA_Slate");
 
-                    Spinel_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel");
+                Spinel_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Villager_HEA_Spinel");
 
-                    Tektite_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2");
+                Tektite_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ImpactCrater/Characters_ImpactCrater/Villager_HEA_Tektite_2");
 
-                    Tephra_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
-                    Tephra_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
-                    Tephra_PostObservatory = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
+                Tephra_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_PreGame/Villager_HEA_Tephra");
+                Tephra_HAS = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_LowerVillage/Characters_LowerVillage/Kids_Hidden/Villager_HEA_Tephra (1)");
+                Tephra_PostObservatory = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Sector_VillageCemetery/Characters_VillageCemetery/Villager_HEA_Tephra_PostObservatory");
 
-                    Tuff_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff");
-                }
+                Tuff_Standard = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_ZeroGCave/Characters_ZeroGCave/Villager_HEA_Tuff");
 
                 // Everything that gets done a frame later goes here:
                 StartCoroutine(WaitAGoshDarnedFrame());
@@ -492,7 +524,185 @@ namespace ReactiveHearthians
                 }
             }
 
-            // Patching for taking damage
+            // Sets variables for which planet the player is on, as needed
+            // SectorEnter fires for every sector entered; it's possible to be in multiple sectors, I think? Don't add an else.
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(PlayerSectorDetector), nameof(PlayerSectorDetector.OnAddSector))]
+            public static void SectorEnter(Sector sector)
+            {
+                if (sector.GetIDString() == "TH")
+                {
+                    ReactiveHearthians.Instance.InSector_TH = true;
+                }
+            }
+
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(PlayerSectorDetector), nameof(PlayerSectorDetector.OnRemoveSector))]
+            public static void SectorExit(Sector sector)
+            {
+                if (sector.GetIDString() == "TH")
+                {
+                    ReactiveHearthians.Instance.InSector_TH = false;
+                }
+            }
+
+            // Patching for characters reacting to you taking damage near them.
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(PlayerAnimController), nameof(PlayerAnimController.OnInstantDamage))]
+            public static void FallDamage_PostFix(InstantDamageType damageType)
+            {
+                Vector3 playerPosition = Locator.GetPlayerBody().transform.position;
+                float reactRadius = 10;
+
+                // Player is in Timber Hearth
+                if (ReactiveHearthians.Instance.InSector_TH)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken in Timber Hearth.", MessageType.Success);
+
+                    // Updates these positions
+                    ReactiveHearthians.Instance.GetVariableNPCPositions();
+
+                    // Impact damage
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        // Test characters who are off by themselves and have no chance of overlapping first, using else ifs. Doing this to avoid doing unnecessary checks (if you're close to Tektite for example, you're 100% nowhere near anybody else. No need to check for anyone else. 
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tektite_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_TEKTITE_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.tektite_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        else if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tuff_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_TUFF_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.tuff_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        else if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Gossan_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_GOSSAN_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.gossan_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        else if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Arkose_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_ARKOSE_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.arkose_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        else if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Moraine_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_MORAINE_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.moraine_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        else if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Slate_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.slate_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                        // Non-loner NPCs
+                        else
+                        {
+                            // Tephra
+                            if (ReactiveHearthians.Instance.tephraPosition == "STANDARD" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tephra_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.tephra_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            else if (ReactiveHearthians.Instance.tephraPosition == "HAS" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tephra_HAS.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.tephra_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            else if (ReactiveHearthians.Instance.tephraPosition == "POST_OBSERVATORY" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tephra_PostObservatory.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.tephra_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+
+                            // Galena
+                            if (ReactiveHearthians.Instance.galenaPosition == "STANDARD" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Galena_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_GALENA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.galena_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            else if (ReactiveHearthians.Instance.galenaPosition == "HAS" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Galena_HAS.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_GALENA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.galena_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+
+                            // Hornfels
+                            if (ReactiveHearthians.Instance.hornfelsPosition == "STANDARD" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Hornfels_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_HORNFELS_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.hornfels_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            else if (ReactiveHearthians.Instance.hornfelsPosition == "DOWNSTAIRS" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Hornfels_Downstairs.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_HORNFELS_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.hornfels_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+
+                            // Hal
+                            if (ReactiveHearthians.Instance.halPosition == "STANDARD" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Hal_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_HAL_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.hal_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            else if (ReactiveHearthians.Instance.halPosition == "OUTSIDE" && Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Hal_Outside.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_HAL_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.hal_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+
+                            // Everybody else: Gneiss, Marl, Mica, Porphy, Rutile, Spinel
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Gneiss_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_GNEISS_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.gneiss_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Marl_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_MARL_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.marl_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Mica_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_MICA_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.mica_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Porphy_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_PORPHY_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.porphy_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Rutile_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_RUTILE_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.rutile_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                            if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Spinel_Standard.transform.position) <= reactRadius)
+                            {
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_SPINEL_IMPACT_DAMAGE", true);
+                                ReactiveHearthians.Instance.spinel_last_damaged = TimeLoop.GetSecondsElapsed();
+                            }
+                        }
+                    }
+                    else if (damageType == InstantDamageType.Puncture)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Tektite_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_TEKTITE_PUNCTURE_DAMAGE", true);
+                            ReactiveHearthians.Instance.tektite_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
+                else
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken elsewhere.", MessageType.Success);
+                }
+
+                
+            }
+
+            // Patching for entering a hazard detector
             [HarmonyPostfix]
             [HarmonyPatch(typeof(HazardDetector), nameof(HazardDetector.OnVolumeAdded))]
             public static void DamageVolume_PostFix(EffectVolume eVolume, HazardDetector __instance)
@@ -534,6 +744,43 @@ namespace ReactiveHearthians
                         ReactiveHearthians.Instance.ModHelper.Console.WriteLine(eVolume.ToString(), MessageType.Success);
                     }
                 }
+            }
+        }
+
+        // Determines the positions of Hal, Hornfels, Tephra, and Galena.
+        public void GetVariableNPCPositions()
+        {
+            // Hal and Hornfels
+            if (TimeLoop.GetLoopCount() == 1)
+            {
+                hornfelsPosition = "STANDARD";
+
+                if (PlayerData.GetPersistentCondition("RH_NOMAI_STATUE_LINKED"))
+                {
+                    halPosition = "OUTSIDE";
+                }
+            }
+            else
+            {
+                hornfelsPosition = "DOWNSTAIRS";
+                halPosition = "STANDARD";
+            }
+
+            // Tephra and Galena
+            if (TimeLoop.GetLoopCount() == 1 && DialogueConditionManager.SharedInstance.GetConditionState("RH_NOMAI_STATUE_LINKED"))
+            {
+                tephraPosition = "POST_OBSERVATORY";
+                galenaPosition = "STANDARD";
+            }
+            else if (DialogueConditionManager.SharedInstance.GetConditionState("BeginHideAndSeek") || DialogueConditionManager.SharedInstance.GetConditionState("EndHideAndSeek") == false)
+            {
+                tephraPosition = "HAS";
+                galenaPosition = "HAS";
+            }
+            else
+            {
+                tephraPosition = "STANDARD";
+                galenaPosition = "STANDARD";
             }
         }
 
@@ -714,13 +961,16 @@ namespace ReactiveHearthians
             }
         }
 
-        // Resetting hug variables - test
+        // Resetting dialogue variables
         public void OnExitConversation()
         {
+            // Resetting all hug & damage variables to false
             string[] people = { "ARKOSE", "CHERT", "ESKER", "FELDSPAR", "GABBRO", "GALENA", "GNEISS", "GOSSAN", "HAL", "HORNFELS", "MARL", "MICA", "MORAINE", "PORPHY", "RIEBECK", "RUTILE", "SLATE", "SPINEL", "TEKTITE", "TEPHRA", "TUFF" };
             foreach (string person in people)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_IMPACT_DAMAGE", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_PUNCTURE_DAMAGE", false);
             }
 
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S4", false);
@@ -915,7 +1165,7 @@ namespace ReactiveHearthians
             }
 
             // This variable is set true if Tephra is positioned next to Galena.
-            if ( DialogueConditionManager.SharedInstance.GetConditionState("BeginHideAndSeek") || (TimeLoop.GetLoopCount() == 1 && DialogueConditionManager.SharedInstance.GetConditionState("RH_NOMAI_STATUE_LINKED")) )
+            if (tephraPosition == "STANDARD" && galenaPosition == "STANDARD")
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_WITH_GALENA", false);
             }
