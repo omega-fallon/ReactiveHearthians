@@ -1107,6 +1107,8 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_ATE_BAD_MALLOW", false);
             }
 
+            // Resetting damage dialogue variables!! Add this!! //
+
             // Misc variables //
             // This variable is set true if the ATP is deactivated
             if (TheMountain != null && (TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)

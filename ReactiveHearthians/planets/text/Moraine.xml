@@ -1,5 +1,47 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Moraine_RH_Damage</Name>
+		<EntryCondition>RH_MORAINE_IMPACT_DAMAGE</EntryCondition>
+		<SetCondition>HasTalkedtoMoraine</SetCondition>
+		<Dialogue>
+			<Page>Whoa! You gotta be more careful. One more good whack like that and this whole platform is going to crumble!</Page>
+			<Page>...You <![CDATA[<i>are</i>]]> okay, right?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Yeah, I'm fine.</Text>
+				<DialogueTarget>Moraine_RH_Damage_Fine</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Who are you?</Text>
+				<DialogueTarget>Moraine_RH_Damage_Who</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text><![CDATA[<i>Feign a concussive lobotomization.</i>]]></Text>
+				<DialogueTarget>Moraine_RH_Damage_Feign</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Damage_Fine</Name>
+		<Dialogue>
+			<Page>Alright, good. I worry about you sometimes, astronaut.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Damage_Who</Name>
+		<Dialogue>
+			<Page>Haha, verrrrrrry funny. My name is Moraine and I like signalscopes. And in case you've forgotten, you're you and you're an astronaut.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Moraine_RH_Damage_Feign</Name>
+		<Dialogue>
+			<Page>Pff... your face looks hillarious right now. Come on, put your tongue back in your mouth and get up in space!</Page>
+		</Dialogue>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Moraine_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
@@ -65,7 +107,7 @@
 		<Name>Moraine_RH_Silent</Name>
 		<EntryCondition>MORAINE_RH_SILENT</EntryCondition>
 		<Dialogue>
-			<Page>Duck and cover, hatchling!</Page>
+			<Page>Duck and cover!</Page>
 		</Dialogue>
 	</DialogueNode>
 </DialogueTree>
