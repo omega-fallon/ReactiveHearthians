@@ -266,6 +266,7 @@ namespace ReactiveHearthians
 
                 // Reset these variables
                 AllCower = false;
+                boomTime = 1360;
 
                 // The below code only runs on loading into the vanilla solar system
                 if (loadScene != OWScene.SolarSystem) return;
@@ -355,7 +356,7 @@ namespace ReactiveHearthians
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
-            GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower);
+            GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower_Supernova);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", MakeMicaCower);
             GlobalMessenger.AddListener("EnterDreamWorld", DreamWorldBeen);
             GlobalMessenger.AddListener("TriggerMemoryUplink", StatueLinked);
@@ -364,7 +365,7 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
-            GlobalMessenger.AddListener("PlayerDeath", MakeAllCower);
+            GlobalMessenger<DeathType>.AddListener("PlayerDeath", MakeAllCower_Death);
         }
 
         // Single-frame delay coroutine
@@ -459,7 +460,7 @@ namespace ReactiveHearthians
         // Hug mod method
         public void Person_Hug(string person)
         {
-            if (TimeLoop.GetSecondsElapsed() >= 1330)
+            if (TimeLoop.GetSecondsElapsed() >= boomTime)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED_SUPERNOVA", true);
             }
@@ -927,57 +928,80 @@ namespace ReactiveHearthians
         }
 
         public bool AllCower;
-        private void MakeAllCower()
+        public float boomTime;
+        private void MakeAllCower_Supernova()
         {
+            ModHelper.Console.WriteLine("MakeAllCower_Supernova triggered.", MessageType.Success);
+            
             if (AllCower)
             {
                 // Do nothing; function has already been run before
             }
             else
             {
-                // Checking whether we're doing the supernova cower or the regular death cower
-                if (TimeLoop.GetSecondsElapsed() < 1330)
+                // Removing certain people from the function,
+                if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
                 {
-                    // Don't remove anybody; this is the regular death cower.
+                    // Remove Mica; they are already cowering //
+                    cower_volumes.Remove(cower_volume_mica);
                 }
-                else
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
                 {
-                    // Removing certain people from the function,
-                    if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
-                    {
-                        // Remove Mica; they are already cowering //
-                        cower_volumes.Remove(cower_volume_mica);
-                    }
-                    else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
-                    {
-                        // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
-                        cower_volumes.Remove(cower_volume_rutile);
-                    }
-                    else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
-                    {
-                        // Remove Porphy; same as above but for Porphy //
-                        cower_volumes.Remove(cower_volume_porphy);
-                    }
+                    // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
+                    cower_volumes.Remove(cower_volume_rutile);
                 }
+                else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
+                {
+                    // Remove Porphy; same as above but for Porphy //
+                    cower_volumes.Remove(cower_volume_porphy);
+                }
+
+                boomTime = TimeLoop.GetSecondsElapsed() + 10;
 
                 // Iterates through each cower_volume and runs the coweroutine on each
                 foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
                 {
                     if (cower_volume.gameObject.activeInHierarchy)
                     {
-                        cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                        cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, boomTime));
                     }
                 }
 
                 // Gets rid of Gneiss' banjo sound
-                StartCoroutine(Banjoroutine(1330));
+                StartCoroutine(Banjoroutine(boomTime));
+
+                // Sets a flag so this function is run only once.
+                AllCower = true;
+            }
+        }
+        private void MakeAllCower_Death(DeathType deathType)
+        {
+            ModHelper.Console.WriteLine("MakeAllCower_Death triggered.", MessageType.Success);
+
+            if (AllCower)
+            {
+                // Do nothing; function has already been run before
+            }
+            else
+            {
+                // Iterates through each cower_volume and runs the coweroutine on each
+                foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
+                {
+                    if (cower_volume.gameObject.activeInHierarchy)
+                    {
+                        cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 0));
+                    }
+                }
+
+                // Gets rid of Gneiss' banjo sound
+                StartCoroutine(Banjoroutine(0));
 
                 // Sets a flag so this function is run only once.
                 AllCower = true;
             }
         }
 
-        private IEnumerator Coweroutine(Animator animator, int time)
+        private IEnumerator Coweroutine(Animator animator, float time)
         {
             if (hugApi != null)
             {
@@ -1002,7 +1026,7 @@ namespace ReactiveHearthians
             }
         }
 
-        private IEnumerator Banjoroutine(int time)
+        private IEnumerator Banjoroutine(float time)
         {
             var banjo = GameObject.Find("AudioSource_BanjoTuning");
             while (banjo != null && TimeLoop.GetSecondsElapsed() < time) yield return null;
@@ -1198,8 +1222,8 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_ENDTIMES", true);
             }
 
-            // This variable is set true when the supernova's boom occurs at 22:10.
-            if (TimeLoop.GetSecondsElapsed() >= 1330)
+            // This variable is set true when the supernova's boom occurs (normally 22:10)
+            if (TimeLoop.GetSecondsElapsed() >= boomTime)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_BOOM", true);
             }

@@ -1,5 +1,47 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Tektite_RH_Puncture_First</Name>
+		<EntryCondition>RH_TEKTITE_PUNCTURE_DAMAGE</EntryCondition>
+		<Dialogue>
+			<Page>Hatchling! Hearth's sake, get away from that thing! Don't go losing a limb like me.</Page>
+			<Page>What are you still doing here anyways? I thought you were suppose to be taking that tin can of yours into space today.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I came over here to see what crashed.</Text>
+				<DialogueTarget>Tektite_RH_CameSeeCrashed</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Is that a Dark Bramble seed?</Text>
+				<DialogueTarget>Tektite2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>TalkedToImpactTektite</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Tektite_RH_Puncture_TalkToAgain</Name>
+		<EntryCondition>RH_TEKTITE_PUNCTURE_DAMAGE</EntryCondition>
+		<EntryCondition>TalkedToImpactTektite</EntryCondition>
+		<Dialogue>
+			<Page>Hatchling! Hearth's sake, get away from that thing! Don't go losing a limb like me. I don't need the seed causing any more damage than it already has!</Page>
+			<Page>Blasted thing... I liked this crater.</Page>
+			<Page>Need something from me, hatchling?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>Tektite4</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Tektite_RH_CameSeeCrashed</Name>
+		<Dialogue>
+			<Page>Same as me, then. I dunno what this thing is, exactly. Looks like some kind of plant seed, but it’s not anything I’ve seen on Timber Hearth before - and trust me, I was quite the explorer back in the day.</Page>
+			<Page>D’you think it’s extraterrestrial? It kinda looks like something that might’ve come off of Dark Bramble. Whatever it is, it put down roots in a hurry.</Page>
+		</Dialogue>
+		<DialogueTarget>Tektite3</DialogueTarget>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Tektite_RH_CoolThing_First</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
 		<Dialogue>
