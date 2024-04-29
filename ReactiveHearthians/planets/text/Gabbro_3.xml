@@ -149,8 +149,11 @@
 		<Dialogue>
 			<Page>…Hello again.</Page>
 			<Page>I guess you changed your mind.<![CDATA[<Pause=1>]]> That's okay.</Page>
-			<DialogueTarget>GabbroMenu</DialogueTarget>
+			<Page>What's up?</Page>
 		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>GabbroMenu</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
 		<SetPersistentCondition>GABBRO_CHICKEN_CALLEDOUT</SetPersistentCondition>
 	</DialogueNode>
 	<DialogueNode>
@@ -171,9 +174,11 @@
 		<Name>Gabbro_LoopEnd_Chicken_Redirect</Name>
 		<EntryCondition>GABBRO_CHICKEN_CALLEDOUT</EntryCondition>
 		<Dialogue>
-			<Page></Page>
+			<Page>What’s up?</Page>
 		</Dialogue>
-		<DialogueTarget>GabbroMenu</DialogueTarget>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>GabbroMenu</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Gabbro_Eye_Chicken</Name>
@@ -181,17 +186,22 @@
 		<Dialogue>
 			<Page>…Hello again.</Page>
 			<Page>I guess you changed your mind.<![CDATA[<Pause=1>]]> That's okay.</Page>
-			<DialogueTarget>GabbroMenu</DialogueTarget>
+			<Page>What's up?</Page>
 		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>GabbroMenu</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
 		<SetPersistentCondition>GABBRO_GOEYE_CHICKEN_CALLEDOUT</SetPersistentCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_GoEye_Chicken_Redirect</Name>
 		<EntryCondition>GABBRO_GOEYE_CHICKEN_CALLEDOUT</EntryCondition>
 		<Dialogue>
-			<Page></Page>
+			<Page>What’s up?</Page>
 		</Dialogue>
-		<DialogueTarget>GabbroMenu</DialogueTarget>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>GabbroMenu</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
 	</DialogueNode>
 
 	<!-- Gabbro knows what the core is and you're holding it. -->

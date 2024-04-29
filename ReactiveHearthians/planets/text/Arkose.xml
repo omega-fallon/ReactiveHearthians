@@ -23,9 +23,8 @@
 		<Name>Arkose_RH_GhostMatterDamage_Redirect</Name>
 		<EntryCondition>Arkose_RH_DamageComment</EntryCondition>
 		<Dialogue>
-			<Page></Page>
+			<Page>It’s cool that Little Scouts can detect ghost matter and all, but what would be <![CDATA[<i>really</i>]]> cool is if the Little Scout could, like, shoot ghost matter at stuff. All <![CDATA[<i>pew pew pew</i>]]>!</Page>
 		</Dialogue>
-		<DialogueTarget>Arkose5</DialogueTarget>
 	</DialogueNode>
 
 	<DialogueNode>
