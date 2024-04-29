@@ -6,19 +6,19 @@
 				<RequiredLogCondition>DS_DAMAGE</RequiredLogCondition>
 				<RequiredLogCondition>HNPodResolution</RequiredLogCondition>
 				<CancelledCondition>CODEX_ADDENDUM_LONELYHERMIT</CancelledCondition>
-				<Text><![CDATA[<i>Pray for the inhabitants of the Lonely Hermit...</i>]]></Text>
+				<Text><![CDATA[<i>Pray for the inhabitants of the Lonely Hermit…</i>]]></Text>
 				<DialogueTarget>LonelyHermit</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
 				<RequiredCondition>MagistariumComplete</RequiredCondition>
 				<CancelledCondition>CODEX_ADDENDUM_MAGISTAR</CancelledCondition>
-				<Text><![CDATA[<i>Ponder the Magistarium...</i>]]></Text>
+				<Text><![CDATA[<i>Ponder the Magistarium…</i>]]></Text>
 				<DialogueTarget>Magistar</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
 				<RequiredCondition>BandTogetherComplete</RequiredCondition>
 				<CancelledCondition>CODEX_ADDENDUM_BANDTOGETHER</CancelledCondition>
-				<Text><![CDATA[<i>Learn from the tale of Fractured Harmony...</i>]]></Text>
+				<Text><![CDATA[<i>Learn from the tale of Fractured Harmony…</i>]]></Text>
 				<DialogueTarget>BandTogether</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
@@ -33,7 +33,7 @@
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<Text><![CDATA[<i>...</i>]]></Text>
+				<Text><![CDATA[<i>…</i>]]></Text>
 				<DialogueTarget>START</DialogueTarget>
 				<ConditionToSet>CODEX_ADDENDUM_LONELYHERMIT</ConditionToSet>
 			</DialogueOption>
@@ -50,7 +50,7 @@
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<Text><![CDATA[<i>...</i>]]></Text>
+				<Text><![CDATA[<i>…</i>]]></Text>
 				<DialogueTarget>START</DialogueTarget>
 				<ConditionToSet>CODEX_ADDENDUM_MAGISTAR</ConditionToSet>
 			</DialogueOption>
@@ -66,7 +66,7 @@
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<Text><![CDATA[<i>...</i>]]></Text>
+				<Text><![CDATA[<i>…</i>]]></Text>
 				<DialogueTarget>START</DialogueTarget>
 				<ConditionToSet>CODEX_ADDENDUM_BANDTOGETHER</ConditionToSet>
 			</DialogueOption>

@@ -210,7 +210,7 @@
 		<EntryCondition>RH_ESKER_HUGGED</EntryCondition>
 		<Dialogue>
 			<Page>Ah! Aww, hatchling, it's been too long since I've gotten a nice hug.</Page>
-			<Page>...Way too long, actually.</Page>
+			<Page>…Way too long, actually.</Page>
 		</Dialogue>
 		<ConditionToCancel>RH_ESKER_HUGGED</ConditionToCancel>
 	</DialogueNode>

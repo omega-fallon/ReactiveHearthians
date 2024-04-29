@@ -1,4 +1,89 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<!-- Damage -->
+	<DialogueNode>
+		<Name>Feldspar_RH_Damage_First</Name>
+		<EntryCondition>RH_FELDSPAR_IMPACT_DAMAGE</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Geez, that was quite the landing! Where’d you come from? No one’s come here in… well, ever, actually.</Page>
+			<Page>That makes you the second Hearthian to ever reach Dark Bramble — after me, of course. Well done!</Page>
+			<Page>…Say, it’s you! They made you an astronaut? And you haven’t blown yourself up yet, good for you!</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>DB_FELDSPAR_X1</FactID>
+		</RevealFacts>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Let me guess: anglerfish?</Text>
+				<DialogueTarget>FeldsparSkip</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Feldspar! You’re alive!</Text>
+				<DialogueTarget>Feldspar2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>We all thought you were dead for sure.</Text>
+				<DialogueTarget>Feldspar3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Have you been here in Dark Bramble all this time?</Text>
+				<DialogueTarget>Feldspar4</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Feldspar_RH_Damage_TalkToAgain</Name>
+		<EntryCondition>RH_FELDSPAR_IMPACT_DAMAGE</EntryCondition>
+		<EntryCondition>TalkedToFeldspar</EntryCondition>
+		<Dialogue>
+			<Page>Whoa! Harsh landing, huh?</Page>
+			<Page>Goodness, well, wanna hear some tales of my exploits?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I found something!</Text>
+				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
+				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
+				<Text>I landed on the Sun Station.</Text>
+				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
+				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
+				<Text>I went inside the Interloper.</Text>
+				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Where should I explore here?</Text>
+				<DialogueTarget>FeldsparExplore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
+				<DialogueTarget>FeldsparCore</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Where’s your ship?</Text>
+				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What happened to this anglerfish?</Text>
+				<DialogueTarget>FeldsparFish</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Shouldn’t I tell ground control to come get you?</Text>
+				<DialogueTarget>FeldsparRescue</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Nah, I’m good.</Text>
+				<DialogueTarget>FeldsparGood</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	
+	<!-- Fire -->
 	<DialogueNode>
 		<Name>Feldspar_RH_Fire_First</Name>
 		<EntryCondition>RH_FELDSPAR_FIRE_DAMAGED_RECENT</EntryCondition>

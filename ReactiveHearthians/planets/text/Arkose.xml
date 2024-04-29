@@ -22,6 +22,9 @@
 	<DialogueNode>
 		<Name>Arkose_RH_GhostMatterDamage_Redirect</Name>
 		<EntryCondition>Arkose_RH_DamageComment</EntryCondition>
+		<Dialogue>
+			<Page></Page>
+		</Dialogue>
 		<DialogueTarget>Arkose5</DialogueTarget>
 	</DialogueNode>
 

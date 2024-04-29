@@ -2,6 +2,7 @@
 	<DialogueNode>
 		<Name>Porphy_RH_Spacesuit</Name>
 		<EntryCondition>RH_SUITED</EntryCondition>
+		<SetCondition>PorphySaysHi</SetCondition>
 		<Dialogue>
 			<Page>Heyo, hatchling! I see you're already suited up for your little journey among the stars!</Page>
 			<Page>When you return, let’s you, me, and Gossan open up a bottle of the Good Stuff.</Page>
@@ -16,18 +17,23 @@
 				<DialogueTarget>GoodStuff</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
-		<SetCondition>PorphySaysHi</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Redirect</Name>
 		<EntryCondition>RH_SUITED</EntryCondition>
 		<EntryCondition>PorphySaysHi</EntryCondition>
+		<Dialogue>
+			<Page></Page>
+		</Dialogue>
 		<DialogueTarget>SapWineMaker2</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Redirect_2</Name>
 		<EntryCondition>RH_SUITED</EntryCondition>
 		<EntryCondition>Space</EntryCondition>
+		<Dialogue>
+			<Page></Page>
+		</Dialogue>
 		<DialogueTarget>SapWineMaker3</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>

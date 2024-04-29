@@ -5,7 +5,7 @@
 		<SetCondition>HasTalkedtoMoraine</SetCondition>
 		<Dialogue>
 			<Page>Whoa! You gotta be more careful. One more good whack like that and this whole platform is going to crumble!</Page>
-			<Page>...You <![CDATA[<i>are</i>]]> okay, right?</Page>
+			<Page>…You <![CDATA[<i>are</i>]]> okay, right?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
@@ -37,7 +37,7 @@
 	<DialogueNode>
 		<Name>Moraine_RH_Damage_Feign</Name>
 		<Dialogue>
-			<Page>Pff... your face looks hillarious right now. Come on, put your tongue back in your mouth and get up in space!</Page>
+			<Page>Pff… your face looks hillarious right now. Come on, put your tongue back in your mouth and get up in space!</Page>
 		</Dialogue>
 	</DialogueNode>
 	

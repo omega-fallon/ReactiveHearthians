@@ -1,9 +1,90 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Chert_S4_Damage</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<SetCondition>Secondary1</SetCondition>
+		<Dialogue>
+			<Page>Oh, friend, please. You don't need to throw your body about like that. Our sun will do plenty.</Page>
+			<Page>Come, sit with me as we watch it die.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Sure, why not.</Text>
+				<DialogueTarget>Chert1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
+				<Text>If it helps, we’re in a time loop, so we won’t really die.</Text>
+				<DialogueTarget>Chert2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>No, thanks.</Text>
+				<DialogueTarget>Chert3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S4_Damage_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<EntryCondition>Secondary1</EntryCondition>
+		<Dialogue>
+			<Page>Oh, friend, please. You don't need to throw your body about like that. Our sun will do plenty.</Page>
+		</Dialogue>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S4_Fire_First</Name>
+		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
+		<SetCondition>Secondary1</SetCondition>
+		<Dialogue>
+			<Page>Oh, friend, please. You don't need to burn yourself. Our sun will do plenty.</Page>
+			<Page>Come, sit with me as we watch it die.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Sure, why not.</Text>
+				<DialogueTarget>Chert1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
+				<Text>If it helps, we’re in a time loop, so we won’t really die.</Text>
+				<DialogueTarget>Chert2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>No, thanks.</Text>
+				<DialogueTarget>Chert3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S4_Fire_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
+		<EntryCondition>Secondary1</EntryCondition>
+		<Dialogue>
+			<Page>Oh, friend, please. You don't need to burn yourself. Our sun will do plenty.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
+		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>Chert_S4_Hugged</Name>
 		<EntryCondition>RH_CHERT_HUGGED_S4</EntryCondition>
+		<SetCondition>Secondary1</SetCondition>
 		<Dialogue>
-			<Page>...Thank you. I'm... so very sorry you had to be here for this.</Page>
+			<Page>…Thank you. I'm… so very sorry you had to be here for this.</Page>
+		</Dialogue>
+		<ConditionToCancel>RH_CHERT_HUGGED_S4</ConditionToCancel>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S4_Hugged_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S4</EntryCondition>
+		<EntryCondition>Secondary1</EntryCondition>
+		<Dialogue>
+			<Page>…Thank you. I'm… so very sorry you had to be here for this.</Page>
 		</Dialogue>
 		<ConditionToCancel>RH_CHERT_HUGGED_S4</ConditionToCancel>
 	</DialogueNode>

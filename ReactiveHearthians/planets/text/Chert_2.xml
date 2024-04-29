@@ -1,4 +1,47 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<!-- Damage -->
+	<DialogueNode>
+		<Name>Chert_S2_Damage_First</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<Dialogue>
+			<Page>Hm? Oh, goodness! Please, please, be careful! You could've concussed yourself there, friend!</Page>
+			<Page>Ahem. Well, it's good to see you! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S2_Damage_1to2</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<EntryCondition>METCHERT_1</EntryCondition>
+		<Dialogue>
+			<Page>Hm? Oh, goodness! Please, please, be careful! You could've concussed yourself there, friend!</Page>
+			<Page>Ahem. Well, I'm glad you're back. Have you noticed anything unusual about the stars lately? Something seems…<![CDATA[<Pause=0.5>]]> how to put this… <![CDATA[<Pause=0.5>]]>off.</Page>
+			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all…</Page>
+		</Dialogue>
+		<SetCondition>SaidHiToChert2</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S2_Damage_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<Dialogue>
+			<Page>My! Had a bumpy entrance, did you? Be careful, now.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Fire -->
 	<DialogueNode>
 		<Name>Chert_S2_Fire_First</Name>
 		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
@@ -36,6 +79,7 @@
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Chert_S2_Fire_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
 		<EntryCondtion>SaidHiToChert2</EntryCondtion>
 		<Dialogue>
 			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
@@ -81,7 +125,7 @@
 		<Name>Chert_S2_Hugged</Name>
 		<EntryCondition>RH_CHERT_HUGGED_S2</EntryCondition>
 		<Dialogue>
-			<Page>Aww! Thank you. A hug... yes, certainly helps keep my mind occupied.</Page>
+			<Page>Aww! Thank you. A hug… yes, certainly helps keep my mind occupied.</Page>
 		</Dialogue>
 		<ConditionToCancel>RH_CHERT_HUGGED_S2</ConditionToCancel>
 	</DialogueNode>

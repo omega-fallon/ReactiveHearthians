@@ -214,6 +214,9 @@
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_Chicken_Redirect</Name>
 		<EntryCondition>GABBRO_CHICKEN_CALLEDOUT</EntryCondition>
+		<Dialogue>
+			<Page></Page>
+		</Dialogue>
 		<DialogueTarget>GabbroMenu</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
@@ -229,6 +232,9 @@
 	<DialogueNode>
 		<Name>Gabbro_LoopEnd_GoEye_Chicken_Redirect</Name>
 		<EntryCondition>GABBRO_GOEYE_CHICKEN_CALLEDOUT</EntryCondition>
+		<Dialogue>
+			<Page></Page>
+		</Dialogue>
 		<DialogueTarget>GabbroMenu</DialogueTarget>
 	</DialogueNode>
 

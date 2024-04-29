@@ -1,4 +1,35 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<!-- Damage -->
+	<DialogueNode>
+		<Name>Chert_S1_Damage_First</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<Dialogue>
+			<Page>Goodness! Please, please, be careful! You could've concussed yourself there, friend!</Page>
+			<Page>Ahem. Well, it's good to see you! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Damage_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
+		<EntryCondtion>SaidHiToChert</EntryCondtion>
+		<Dialogue>
+			<Page>My! Had a bumpy entrance, did you? Be careful, now.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Fire -->
 	<DialogueNode>
 		<Name>Chert_S1_Fire_First</Name>
 		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>

@@ -1,19 +1,19 @@
 ﻿// THANKS TO: Xen, Lutias Kokopelli, Ixrec, viovayo, Magister Dragon
 
 // TODO LIST:
-// Hearthians turn to face the boom and seem horrified
-// change Riebeck’s introductory message that they start a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
+// Change Riebeck’s introductory message that they start a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
 // More Solanum interactions
 // Angry Mica animation?
 // Tell Hal about Solanum?
 // THE OUTSIDER - Tell Hal about the Friend?
 // Maybe add dialogue for reaching somewhere without your ship???
-// Characters react to you dying in front of them
 // Characters react to you standing on top of them
 // Porphy reacts to you standing on their pot
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
+// Add damage dialogue
+// Fix node redirects
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -40,6 +40,7 @@
 // Add slide reels to interesting items
 // Hug mod compat
 // Hug dialogue for Gabbro
+// Characters react to you dying in front of them
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -179,7 +180,12 @@ namespace ReactiveHearthians
         public bool Astral_Codec_Installed;
 
         // Sectors inside of bodies
-        public bool InSector_TH;
+        public bool InSector_TimberHearth;
+        public bool InSector_BrittleHollow;
+        public bool InSector_PioneerDimension;
+        public bool InSector_TimberMoon;
+        public bool InSector_CaveTwin;
+        public bool InSector_GiantsDeep;
 
         // Last damaged
         public float arkose_last_damaged;
@@ -244,11 +250,18 @@ namespace ReactiveHearthians
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
             {
+                // Makes the badmallow list
+                badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
+
+                // Resets this variable
+                AllCower = false;
+
+                // The below code only runs on loading into the vanilla solar system
                 if (loadScene != OWScene.SolarSystem) return;
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
 
                 // Sets this to true by default
-                InSector_TH = true;
+                InSector_TimberHearth = true;
 
                 // Campfires people are sat near
                 slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/Controller_Campfire").GetComponent<Campfire>();
@@ -264,9 +277,6 @@ namespace ReactiveHearthians
                 hazardvolume_feldsparfire = GameObject.Find("DB_PioneerDimension_Body/Sector_PioneerDimension/Interactables_PioneerDimension/Prefab_HEA_Campfire/HeatHazardVolume").GetComponent<HazardVolume>();
 
                 darkmattervolume_arkose = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/DarkMatterVolume").GetComponent<DarkMatterVolume>();
-
-                // Makes the badmallow list
-                badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
 
                 // Specific cower volumes
                 cower_volume_mica = GameObject.Find("Villager_HEA_Mica/CowerAnimTrigger").GetComponent<CowerAnimTriggerVolume>();
@@ -343,6 +353,7 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
+            GlobalMessenger.AddListener("PlayerDeath", MakeAllCower);
         }
 
         // Single-frame delay coroutine
@@ -530,9 +541,31 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(PlayerSectorDetector), nameof(PlayerSectorDetector.OnAddSector))]
             public static void SectorEnter(Sector sector)
             {
-                if (sector.GetIDString() == "TH")
+                //ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player has entered sector \""+sector.gameObject.name+"\"", MessageType.Success);
+
+                if (sector.gameObject.name == "Sector_TH")
                 {
-                    ReactiveHearthians.Instance.InSector_TH = true;
+                    ReactiveHearthians.Instance.InSector_TimberHearth = true;
+                }
+                else if (sector.gameObject.name == "Sector_THM")
+                {
+                    ReactiveHearthians.Instance.InSector_TimberMoon = true;
+                }
+                else if (sector.gameObject.name == "Sector_CaveTwin")
+                {
+                    ReactiveHearthians.Instance.InSector_CaveTwin = true;
+                }
+                else if (sector.gameObject.name == "Sector_BH")
+                {
+                    ReactiveHearthians.Instance.InSector_BrittleHollow = true;
+                }
+                else if (sector.gameObject.name == "Sector_GabbroIsland")
+                {
+                    ReactiveHearthians.Instance.InSector_GiantsDeep = true;
+                }
+                else if (sector.gameObject.name == "Sector_PioneerDimension")
+                {
+                    ReactiveHearthians.Instance.InSector_PioneerDimension = true;
                 }
             }
 
@@ -540,9 +573,31 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(PlayerSectorDetector), nameof(PlayerSectorDetector.OnRemoveSector))]
             public static void SectorExit(Sector sector)
             {
-                if (sector.GetIDString() == "TH")
+                //ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player has exited sector \""+sector.gameObject.name+ "\"", MessageType.Success);
+
+                if (sector.gameObject.name == "Sector_TH")
                 {
-                    ReactiveHearthians.Instance.InSector_TH = false;
+                    ReactiveHearthians.Instance.InSector_TimberHearth = false;
+                }
+                else if (sector.gameObject.name == "Sector_THM")
+                {
+                    ReactiveHearthians.Instance.InSector_TimberMoon = false;
+                }
+                else if (sector.gameObject.name == "Sector_CaveTwin")
+                {
+                    ReactiveHearthians.Instance.InSector_CaveTwin = false;
+                }
+                else if (sector.gameObject.name == "Sector_BH")
+                {
+                    ReactiveHearthians.Instance.InSector_BrittleHollow = false;
+                }
+                else if (sector.gameObject.name == "Sector_GabbroIsland")
+                {
+                    ReactiveHearthians.Instance.InSector_GiantsDeep = false;
+                }
+                else if (sector.gameObject.name == "Sector_PioneerDimension")
+                {
+                    ReactiveHearthians.Instance.InSector_PioneerDimension = false;
                 }
             }
 
@@ -555,9 +610,9 @@ namespace ReactiveHearthians
                 float reactRadius = 10;
 
                 // Player is in Timber Hearth
-                if (ReactiveHearthians.Instance.InSector_TH)
+                if (ReactiveHearthians.Instance.InSector_TimberHearth)
                 {
-                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken in Timber Hearth.", MessageType.Success);
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken on Timber Hearth.", MessageType.Success);
 
                     // Updates these positions
                     ReactiveHearthians.Instance.GetVariableNPCPositions();
@@ -694,12 +749,75 @@ namespace ReactiveHearthians
                         }
                     }
                 }
+                // Player is on the Attlerock
+                else if (ReactiveHearthians.Instance.InSector_TimberMoon)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken on the Attlerock.", MessageType.Success);
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Esker_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_ESKER_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.esker_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
+                // Player is on Ember Twin
+                else if (ReactiveHearthians.Instance.InSector_CaveTwin)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken on Ember Twin.", MessageType.Success);
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Chert_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.chert_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
+                // Player is on Brittle Hollow
+                else if (ReactiveHearthians.Instance.InSector_BrittleHollow)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken on Brittle Hollow.", MessageType.Success);
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Riebeck_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.riebeck_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
+                // Player is on Gabbro's Island
+                else if (ReactiveHearthians.Instance.InSector_GiantsDeep)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken on Gabbro's Island.", MessageType.Success);
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Gabbro_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.gabbro_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
+                // Player is in Feldspar's dimension
+                else if (ReactiveHearthians.Instance.InSector_PioneerDimension)
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken in Feldspar's dimension.", MessageType.Success);
+                    if (damageType == InstantDamageType.Impact)
+                    {
+                        if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Feldspar_Standard.transform.position) <= reactRadius)
+                        {
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_IMPACT_DAMAGE", true);
+                            ReactiveHearthians.Instance.feldspar_last_damaged = TimeLoop.GetSecondsElapsed();
+                        }
+                    }
+                }
                 else
                 {
                     ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken elsewhere.", MessageType.Success);
                 }
-
-                
             }
 
             // Patching for entering a hazard detector
@@ -793,36 +911,55 @@ namespace ReactiveHearthians
             }
         }
 
+        public bool AllCower;
         private void MakeAllCower()
         {
-            // Removing certain people from the function,
-            if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
+            if (AllCower)
             {
-                // Remove Mica; they are already cowering //
-                cower_volumes.Remove(cower_volume_mica);
+                // Do nothing; function has already been run before
             }
-            else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
+            else
             {
-                // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
-                cower_volumes.Remove(cower_volume_rutile);
-            }
-            else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
-            {
-                // Remove Porphy; same as above but for Porphy //
-                cower_volumes.Remove(cower_volume_porphy);
-            }
-
-            // Iterates through each cower_volume and runs the coweroutine on each
-            foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
-            {
-                if (cower_volume.gameObject.activeInHierarchy) 
+                // Checking whether we're doing the supernova cower or the regular death cower
+                if (TimeLoop.GetSecondsElapsed() < 1330)
                 {
-                    cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                    // Don't remove anybody; this is the regular death cower.
                 }
-            }
+                else
+                {
+                    // Removing certain people from the function,
+                    if (DialogueConditionManager.SharedInstance.GetConditionState("MODELROCKETKID_RH_DISTRAUGHT"))
+                    {
+                        // Remove Mica; they are already cowering //
+                        cower_volumes.Remove(cower_volume_mica);
+                    }
+                    else if (DialogueConditionManager.SharedInstance.GetConditionState("RUTILE_RH_DISTRAUGHT"))
+                    {
+                        // Remove Rutile; they were informed of the supernova beforehand and is calm (ignore the variable name being called 'distraught') //
+                        cower_volumes.Remove(cower_volume_rutile);
+                    }
+                    else if (DialogueConditionManager.SharedInstance.GetConditionState("PORPHY_RH_DISTRAUGHT"))
+                    {
+                        // Remove Porphy; same as above but for Porphy //
+                        cower_volumes.Remove(cower_volume_porphy);
+                    }
+                }
 
-            // Gets rid of Gneiss' banjo sound
-            StartCoroutine(Banjoroutine(1330));
+                // Iterates through each cower_volume and runs the coweroutine on each
+                foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
+                {
+                    if (cower_volume.gameObject.activeInHierarchy)
+                    {
+                        cower_volume.StartCoroutine(Coweroutine(cower_volume._animator, 1330));
+                    }
+                }
+
+                // Gets rid of Gneiss' banjo sound
+                StartCoroutine(Banjoroutine(1330));
+
+                // Sets a flag so this function is run only once.
+                AllCower = true;
+            }
         }
 
         private IEnumerator Coweroutine(Animator animator, int time)
@@ -1108,6 +1245,91 @@ namespace ReactiveHearthians
             }
 
             // Resetting damage dialogue variables!! Add this!! //
+            if (TimeLoop.GetSecondsElapsed() - arkose_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ARKOSE_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - chert_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - esker_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_ESKER_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - feldspar_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_FELDSPAR_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - gabbro_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - galena_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GALENA_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - gneiss_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GNEISS_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - gossan_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_GOSSAN_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - hal_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_HAL_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - hornfels_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_HORNFELS_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - marl_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_MARL_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - mica_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_MICA_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - moraine_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_MORAINE_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - porphy_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_PORPHY_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - riebeck_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_RIEBECK_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - rutile_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_RUTILE_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - slate_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SLATE_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - spinel_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SPINEL_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - tektite_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEKTITE_IMPACT_DAMAGE", false);
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEKTITE_PUNCTURE_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - tephra_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TEPHRA_IMPACT_DAMAGE", false);
+            }
+            if (TimeLoop.GetSecondsElapsed() - tuff_last_damaged >= 10)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_TUFF_IMPACT_DAMAGE", false);
+            }
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated
