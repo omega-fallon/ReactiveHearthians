@@ -1,4 +1,13 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>ChertSecondary</Name>
+		<EntryCondition>SaidHiToChert</EntryCondition>
+		<Dialogue>
+			<Page>Hello again!</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
 	<!-- Damage -->
 	<DialogueNode>
 		<Name>Chert_S1_Damage_First</Name>
@@ -14,7 +23,7 @@
 	<DialogueNode>
 		<Name>Chert_S1_Damage_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
-		<EntryCondtion>SaidHiToChert</EntryCondtion>
+		<EntryCondition>SaidHiToChert</EntryCondition>
 		<Dialogue>
 			<Page>My! Had a bumpy entrance, did you? Be careful, now.</Page>
 		</Dialogue>
@@ -38,7 +47,7 @@
 	<DialogueNode>
 		<Name>Chert_S1_Fire_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
-		<EntryCondtion>SaidHiToChert</EntryCondtion>
+		<EntryCondition>SaidHiToChert</EntryCondition>
 		<Dialogue>
 			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
 		</Dialogue>
@@ -62,7 +71,7 @@
 	<DialogueNode>
 		<Name>Chert_S1_BadMallow_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
-		<EntryCondtion>SaidHiToChert</EntryCondtion>
+		<EntryCondition>SaidHiToChert</EntryCondition>
 		<Dialogue>
 			<Page>Uhh… ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
 		</Dialogue>

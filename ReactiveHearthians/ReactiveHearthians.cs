@@ -13,7 +13,6 @@
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
 // Add damage dialogue
-// Fix node redirects
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -42,6 +41,7 @@
 // Hug dialogue for Gabbro
 // Characters react to you dying in front of them
 // Change Gabbro dialogue on first loop if you do the geyser skip
+// Fix node redirects
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -213,10 +213,10 @@ namespace ReactiveHearthians
         public float tuff_last_damaged;
 
         // Positions (broadly speaking) of variable position NPCs
-        string halPosition;
-        string hornfelsPosition;
-        string tephraPosition;
-        string galenaPosition;
+        public string halPosition;
+        public string hornfelsPosition;
+        public string tephraPosition;
+        public string galenaPosition;
 
         private void Start()
         {
@@ -264,7 +264,7 @@ namespace ReactiveHearthians
                 // Makes the badmallow list
                 badcans = Resources.FindObjectsOfTypeAll<BadMarshmallowCan>().ToList();
 
-                // Resets this variable
+                // Reset these variables
                 AllCower = false;
 
                 // The below code only runs on loading into the vanilla solar system
@@ -496,6 +496,8 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(GabbroDialogueSwapper), nameof(GabbroDialogueSwapper.Start))]
             public static void GabbroDialogueSwapper_Postfix()
             {
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("GabbroDialogueSwapperGabbroDialogueSwapper postfix has been run.", MessageType.Success);
+
                 ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_All.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
 
                 if (TimeLoop.GetLoopCount() == 1)
@@ -514,9 +516,11 @@ namespace ReactiveHearthians
 
             // Special patching for Chert
             [HarmonyPostfix]
-            [HarmonyPatch(typeof(ChertDialogueSwapper), nameof(ChertDialogueSwapper.Start))]
+            [HarmonyPatch(typeof(ChertDialogueSwapper), nameof(ChertDialogueSwapper.OnStartConversation))]
             public static void ChertDialogueSwapper_Postfix()
             {
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("ChertDialogueSwapper postfix has been run.", MessageType.Success);
+
                 if (TimeLoop.GetMinutesElapsed() >= 20.5f)
                 {
                     ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Chert_4.xml")), "{ pathToExistingDialogue: \"CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_Lakebed/Interactables_Lakebed/Traveller_HEA_Chert/ConversationZone_Chert\" }", ReactiveHearthians.Instance.Ember_Twin);

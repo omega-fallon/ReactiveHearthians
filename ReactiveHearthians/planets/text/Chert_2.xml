@@ -26,7 +26,7 @@
 	<DialogueNode>
 		<Name>Chert_S2_Damage_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
-		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<EntryCondition>SaidHiToChert2</EntryCondition>
 		<Dialogue>
 			<Page>My! Had a bumpy entrance, did you? Be careful, now.</Page>
 		</Dialogue>
@@ -64,7 +64,7 @@
 	<DialogueNode>
 		<Name>Chert_S2_Fire_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_FIRE_DAMAGED_RECENT</EntryCondition>
-		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<EntryCondition>SaidHiToChert2</EntryCondition>
 		<Dialogue>
 			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
 		</Dialogue>
@@ -89,7 +89,7 @@
 	<DialogueNode>
 		<Name>Chert_S2_BadMallow_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_ATE_BAD_MALLOW</EntryCondition>
-		<EntryCondtion>SaidHiToChert2</EntryCondtion>
+		<EntryCondition>SaidHiToChert2</EntryCondition>
 		<Dialogue>
 			<Page>Uhh… ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
 		</Dialogue>
