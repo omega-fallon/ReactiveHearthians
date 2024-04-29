@@ -41,6 +41,7 @@
 // Hug mod compat
 // Hug dialogue for Gabbro
 // Characters react to you dying in front of them
+// Change Gabbro dialogue on first loop if you do the geyser skip
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -178,6 +179,7 @@ namespace ReactiveHearthians
         // Mods installed
         public bool Outsider_Installed;
         public bool Astral_Codec_Installed;
+        public bool Play_As_Gabbro_Installed;
 
         // Sectors inside of bodies
         public bool InSector_TimberHearth;
@@ -245,6 +247,15 @@ namespace ReactiveHearthians
             else
             {
                 Astral_Codec_Installed = false;
+            }
+
+            if (ModHelper.Interaction.TryGetMod("xen.PlayAsGabbro") != null)
+            {
+                Play_As_Gabbro_Installed = true;
+            }
+            else
+            {
+                Play_As_Gabbro_Installed = false;
             }
 
             // Example of accessing game code.
@@ -1122,6 +1133,19 @@ namespace ReactiveHearthians
             // Installed mod variables. //
             DialogueConditionManager.SharedInstance.SetConditionState("ASTRAL_CODEC", Astral_Codec_Installed);
             DialogueConditionManager.SharedInstance.SetConditionState("THE_OUTSIDER", Outsider_Installed);
+
+            DialogueConditionManager.SharedInstance.SetConditionState("PLAY_AS_GABBRO", Play_As_Gabbro_Installed);
+            DialogueConditionManager.SharedInstance.SetConditionState("NOPLAY_AS_GABBRO", !Play_As_Gabbro_Installed);
+
+            // Nomai statue skip variable //
+            if (PlayerData.GetPersistentCondition("RH_NOMAI_STATUE_LINKED") || TimeLoop.GetLoopCount() > 1)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_NOMAI_STATUE_NOT_LINKED", false);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_NOMAI_STATUE_NOT_LINKED", true);
+            }
 
             // Loop variables. //
             if (TimeLoop.GetLoopCount() == 1)

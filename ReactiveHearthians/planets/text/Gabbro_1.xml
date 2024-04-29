@@ -1,5 +1,53 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>MeetGabbro_Skip</Name>
+		<EntryCondition>RH_NOMAI_STATUE_NOT_LINKED</EntryCondition>
+		<Dialogue>
+			<Page>Nice, it’s you. Good to see you made it here in one piece. The first solo launch is a doozy, isn’t it?</Page>
+			<Page>So hey, don’t laugh, but I think I might have had some kind of spiritual experience with a rock shaped like a face.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>GD_GABBRO_ISLAND_X0</FactID>
+		</RevealFacts>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>…What?</Text>
+				<DialogueTarget>Explanation1_Skip</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Explanation1_Skip</Name>
+		<Dialogue>
+			<Page>One of the islands on Giant’s Deep has a Nomai statue on the beach - ever seen one? I brought one back to Timber Hearth with me. Big stone sculpture of a Nomai’s head, three eyes and everything. Beautifully carved, too.</Page>
+			<Page>So one minute I’m standing on an island looking at a Nomai sculpture on the beach, and the next thing I know, it’s looking back at me, glowing.</Page>
+			<Page>The sculpture replays everything I’ve just done, like it’s been watching me through my own eyes, you know? And then suddenly it stops and everything’s normal again.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>GD_STATUE_ISLAND_R1</FactID>
+			<FactID>GD_GABBRO_ISLAND_X1</FactID>
+		</RevealFacts>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I have absolutely no idea what you're talking about.</Text>
+				<DialogueTarget>RH_Gabbro_NoIdea</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>RH_Gabbro_NoIdea</Name>
+		<Dialogue>
+			<Page>Huh. Well, that's weird, then. I'm not sure what all this could mean.</Page>
+			<Page>I tried radioing Hornfels and asking them about it, but they told me I must have just nodded off out here and gotten confused.</Page>
+			<Page>Then we talked about dreams until Hornfels told me to go refill my oxygen tank before I talked myself to death.</Page>
+			<Page>So that’s what’s new with me. But hey, this is your first solo voyage! Let’s talk about you, you know?</Page>
+		</Dialogue>
+		<SetPersistentCondition>MetGabbro_Loop1</SetPersistentCondition>
+		<SetCondition>SaidHiToGabbro</SetCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
 		<Name>GabbroMenu</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
