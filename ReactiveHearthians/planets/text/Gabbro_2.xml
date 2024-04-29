@@ -60,12 +60,24 @@
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
+				<RequiredPersistentCondition>MetGabbro_Loop1</RequiredPersistentCondition>
 				<Text>Oh yeah, we definitely died.</Text>
 				<DialogueTarget>Gabbro2T_2</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredPersistentCondition>MetGabbro_Loop1</RequiredPersistentCondition>
 				<Text>I think we’re the only ones who know.</Text>
 				<DialogueTarget>Gabbro2T_3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>MetGabbro_Loop1</CancelledPersistentCondition>
+				<Text>Oh yeah, we definitely died.</Text>
+				<DialogueTarget>Gabbro2F_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>MetGabbro_Loop1</CancelledPersistentCondition>
+				<Text>I think we’re the only ones who know.</Text>
+				<DialogueTarget>Gabbro2F_3</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
 		<SetCondition>SaidHiToGabbro</SetCondition>

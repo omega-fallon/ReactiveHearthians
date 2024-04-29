@@ -164,51 +164,7 @@
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_CHICKEN_CALLEDOUT</SetPersistentCondition>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I found something!</Text>
-				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What are you doing out here?</Text>
-				<DialogueTarget>WhatAreYouDoing_3T</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where should I explore on Giant’s Deep?</Text>
-				<DialogueTarget>WhereToExplore_3T</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What’s up with this planet?</Text>
-				<DialogueTarget>ThisPlanet_3T</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledPersistentCondition>AskedGabbroForHisShip</CancelledPersistentCondition>
-				<CancelledPersistentCondition>FoundGabbroShip</CancelledPersistentCondition>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>GabbrosShip</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>AskedGabbroForHisShip</RequiredPersistentCondition>
-				<CancelledPersistentCondition>FoundGabbroShip</CancelledPersistentCondition>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>GabbrosShip2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>FoundGabbroShip</RequiredPersistentCondition>
-				<CancelledPersistentCondition>ToldGabbroAboutHisShip</CancelledPersistentCondition>
-				<Text>I found your ship!</Text>
-				<DialogueTarget>GabbrosShip3</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>FoundGabbroShip</RequiredPersistentCondition>
-				<RequiredPersistentCondition>ToldGabbroAboutHisShip</RequiredPersistentCondition>
-				<CancelledCondition>ToldGabbroAboutHisShipThisLoop</CancelledCondition>
-				<Text>I saw your ship again.</Text>
-				<DialogueTarget>GabbrosShip4</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>See you later.</Text>
-				<DialogueTarget>Goodbye</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>GabbroMenu</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

@@ -12,23 +12,7 @@
 			<FactID>DB_FELDSPAR_X1</FactID>
 		</RevealFacts>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
-				<Text>Let me guess: anglerfish?</Text>
-				<DialogueTarget>FeldsparSkip</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Feldspar! You’re alive!</Text>
-				<DialogueTarget>Feldspar2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>We all thought you were dead for sure.</Text>
-				<DialogueTarget>Feldspar3</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Have you been here in Dark Bramble all this time?</Text>
-				<DialogueTarget>Feldspar4</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Feldspar1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -40,46 +24,7 @@
 			<Page>Goodness, well, wanna hear some tales of my exploits?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I found something!</Text>
-				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
-				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
-				<Text>I landed on the Sun Station.</Text>
-				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
-				<Text>I went inside the Interloper.</Text>
-				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where should I explore here?</Text>
-				<DialogueTarget>FeldsparExplore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
-				<DialogueTarget>FeldsparCore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What happened to this anglerfish?</Text>
-				<DialogueTarget>FeldsparFish</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Shouldn’t I tell ground control to come get you?</Text>
-				<DialogueTarget>FeldsparRescue</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nah, I’m good.</Text>
-				<DialogueTarget>FeldsparGood</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>FeldsparSecondary</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	
@@ -97,23 +42,7 @@
 			<FactID>DB_FELDSPAR_X1</FactID>
 		</RevealFacts>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
-				<Text>Let me guess: anglerfish?</Text>
-				<DialogueTarget>FeldsparSkip</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Feldspar! You’re alive!</Text>
-				<DialogueTarget>Feldspar2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>We all thought you were dead for sure.</Text>
-				<DialogueTarget>Feldspar3</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Have you been here in Dark Bramble all this time?</Text>
-				<DialogueTarget>Feldspar4</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Feldspar1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_FELDSPAR_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_FELDSPAR_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -127,46 +56,7 @@
 			<Page>Goodness, well, wanna hear some tales of my exploits?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I found something!</Text>
-				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
-				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
-				<Text>I landed on the Sun Station.</Text>
-				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
-				<Text>I went inside the Interloper.</Text>
-				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where should I explore here?</Text>
-				<DialogueTarget>FeldsparExplore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
-				<DialogueTarget>FeldsparCore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What happened to this anglerfish?</Text>
-				<DialogueTarget>FeldsparFish</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Shouldn’t I tell ground control to come get you?</Text>
-				<DialogueTarget>FeldsparRescue</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nah, I’m good.</Text>
-				<DialogueTarget>FeldsparGood</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>FeldsparSecondary</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_FELDSPAR_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_FELDSPAR_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -181,46 +71,7 @@
 			<Page>Come to hear tales of my heroic exploits, have you?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I found something!</Text>
-				<DialogueTarget>FoundSomethingMenu</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
-				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
-				<Text>I landed on the Sun Station.</Text>
-				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
-				<Text>I went inside the Interloper.</Text>
-				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where should I explore here?</Text>
-				<DialogueTarget>FeldsparExplore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
-				<DialogueTarget>FeldsparCore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What happened to this anglerfish?</Text>
-				<DialogueTarget>FeldsparFish</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Shouldn’t I tell ground control to come get you?</Text>
-				<DialogueTarget>FeldsparRescue</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nah, I’m good.</Text>
-				<DialogueTarget>FeldsparGood</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>FeldsparSecondary</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>RH_FELDSPAR_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>
@@ -269,34 +120,7 @@
 			<Page>Heh. Well well, I must say, I'm a bit proud! Come on, pull up a marshmallow stick, fellow adventurer.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I found something!</Text>
-				<DialogueTarget>FoundSomethingMenu_TreasureIntro</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where should I explore here?</Text>
-				<DialogueTarget>FeldsparExplore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You reached the core of Giant’s Deep? How’d you do it?</Text>
-				<DialogueTarget>FeldsparCore</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Where’s your ship?</Text>
-				<DialogueTarget>FeldsparShipwreck</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What happened to this anglerfish?</Text>
-				<DialogueTarget>FeldsparFish</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Shouldn’t I tell ground control to come get you?</Text>
-				<DialogueTarget>FeldsparRescue</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nah, I’m good.</Text>
-				<DialogueTarget>FeldsparGood</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>FeldsparSecondary</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

@@ -7,23 +7,7 @@
 			<Page>Need anything from me, hatchling?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredCondition>Tree</RequiredCondition>
-				<Text>Marl is plotting to cut down that big tree. Again.</Text>
-				<DialogueTarget>Marl</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Are you going to watch the launch?</Text>
-				<DialogueTarget>Launch</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Do you really worry that the space program will burn the village down?</Text>
-				<DialogueTarget>Fires</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’m good.</Text>
-				<DialogueTarget>Good</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Mayor2</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

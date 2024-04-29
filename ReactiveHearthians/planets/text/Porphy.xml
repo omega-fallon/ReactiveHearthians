@@ -8,14 +8,7 @@
 			<Page>When you return, let’s you, me, and Gossan open up a bottle of the Good Stuff.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I’m only seeking adventure amongst one star, actually. Other stars are too far away.</Text>
-				<DialogueTarget>SolarSystem</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>The Good Stuff is less “delicious sap wine” and more “daunting digestive challenge.”</Text>
-				<DialogueTarget>GoodStuff</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>SapWineMaker1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -23,18 +16,18 @@
 		<EntryCondition>RH_SUITED</EntryCondition>
 		<EntryCondition>PorphySaysHi</EntryCondition>
 		<Dialogue>
-			<Page></Page>
+			<Page>Ho, the astronaut returns!</Page>
 		</Dialogue>
-		<DialogueTarget>SapWineMaker2</DialogueTarget>
+		<DialogueTarget>PorphyMenu</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_Redirect_2</Name>
 		<EntryCondition>RH_SUITED</EntryCondition>
 		<EntryCondition>Space</EntryCondition>
 		<Dialogue>
-			<Page></Page>
+			<Page>Oh my, and here I thought I’d heard your ship take off. Was your adventure only a short one?</Page>
 		</Dialogue>
-		<DialogueTarget>SapWineMaker3</DialogueTarget>
+		<DialogueTarget>PorphyMenu</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Porphy_RH_CoolThing</Name>

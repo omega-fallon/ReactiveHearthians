@@ -11,18 +11,7 @@
 			<Page>What do you say - ready to get this beauty off the ground? It’s all fueled up and ready to go!</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>All systems go!</Text>
-				<DialogueTarget>ScientistAnswer12</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’m ready if you are.</Text>
-				<DialogueTarget>ScientistAnswer13</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re <![CDATA[<i>]]>sure<![CDATA[</i>]]> you fixed the retro rockets?</Text>
-				<DialogueTarget>ScientistAnswer14</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Scientist1A</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>SCIENTIST_1</SetCondition>
 		<ConditionToCancel>RH_SLATE_FIRE_DAMAGED_RECENT</ConditionToCancel>
@@ -39,23 +28,7 @@
 			<Page>What do you say - ready to get this beauty off the ground? It’s all fueled up and ready to go!</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
-				<Text>Did… did I just… die?</Text>
-				<DialogueTarget>ScientistAnswer11</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>All systems go!</Text>
-				<DialogueTarget>ScientistAnswer12</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’m ready if you are.</Text>
-				<DialogueTarget>ScientistAnswer13</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re <![CDATA[<i>]]>sure<![CDATA[</i>]]> you fixed the retro rockets?</Text>
-				<DialogueTarget>ScientistAnswer14</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Scientist1B</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>SCIENTIST_1</SetCondition>
 		<ConditionToCancel>RH_SLATE_FIRE_DAMAGED_RECENT</ConditionToCancel>
@@ -70,26 +43,7 @@
 			<Page>What are you still doing here? Not having second thoughts, are you?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>Where are the launch codes again?</Text>
-				<DialogueTarget>ScientistAnswer21</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>How’s the ship looking?</Text>
-				<DialogueTarget>ScientistAnswer22</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>How safe would you say this thing is?</Text>
-				<DialogueTarget>ScientistAnswer23</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What’s my mission once I’m in space?</Text>
-				<DialogueTarget>ScientistAnswer24</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What else should I do before liftoff?</Text>
-				<DialogueTarget>ScientistAnswer25</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Scientist2</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_SLATE_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_SLATE_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -103,39 +57,7 @@
 			<Page>Ready to get this thing off the ground?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>You know the ship is a death-trap, right?</Text>
-				<DialogueTarget>ScientistAnswer35</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re lucky I’m in a time loop, because otherwise I’d be super dead.</Text>
-				<DialogueTarget>ScientistAnswer36</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>AUTOPILOT_INTO_SUN</RequiredPersistentCondition>
-				<Text>The autopilot flew my ship directly into the sun!</Text>
-				<DialogueTarget>ScientistAnswer37</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>KILLED_IN_GHOST_MATTER</RequiredPersistentCondition>
-				<Text>I keep getting killed by ghost matter.</Text>
-				<DialogueTarget>ScientistAnswer38</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>KILLED_BY_SUPERNOVA_AND_KNOWS_IT</RequiredPersistentCondition>
-				<Text>The sun is going to go supernova, by the way.</Text>
-				<DialogueTarget>ScientistAnswer39</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>THERE_IS_BUT_VOID</RequiredPersistentCondition>
-				<Text>Did you know it’s just an endless void outside our solar system?</Text>
-				<DialogueTarget>ScientistAnswer40</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>KnowsAboutWarpDrive</RequiredPersistentCondition>
-				<Text>Slate, level with me. What's the deal with my ship's warp drive?</Text>
-				<DialogueTarget>Scientist_RH_WarpDrive</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Scientist5</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_SLATE_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_SLATE_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -278,18 +200,7 @@
 			<Page>Ready to get this thing off the ground? Ship’s all fueled and ready to go.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>All systems go!</Text>
-				<DialogueTarget>ScientistAnswer12</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’m ready if you are.</Text>
-				<DialogueTarget>ScientistAnswer13</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re <![CDATA[<i>]]>sure<![CDATA[</i>]]> you fixed the retro rockets?</Text>
-				<DialogueTarget>ScientistAnswer14</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Scientist1A</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>SCIENTIST_1</SetCondition>
 	</DialogueNode>
@@ -297,7 +208,10 @@
 		<Name>Scientist_RH_HornfellsResolved_Space</Name>
 		<EntryCondition>SCIENTIST_RH_HORNFELLSRESOLVED</EntryCondition>
 		<EntryCondition>Space</EntryCondition>
-		<DialogueTarget>ScientistSpace</DialogueTarget>
+		<Dialogue>
+			<Page>Oh! Hatchling, what're you doing back here so soon? Get back up there and have some fun!</Page>
+			<Page>Don't tell me you're getting cold feet now… come on, it's perfectly safe, swear on my top eyes.</Page>
+		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Slate_RH_Hugged</Name>

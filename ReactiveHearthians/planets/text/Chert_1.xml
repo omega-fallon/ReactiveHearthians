@@ -8,15 +8,7 @@
 			<Page>Ahem. Well, it's good to see you! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
-				<Text>I have a question for you.</Text>
-				<DialogueTarget>Questions</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What are you up to?</Text>
-				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -38,15 +30,7 @@
 			<Page>Ahem. Well, it's good to see you! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
-				<Text>I have a question for you.</Text>
-				<DialogueTarget>Questions</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What are you up to?</Text>
-				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -71,15 +55,7 @@
 			<Page>Regardless, it's good to see you. I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
-				<Text>I have a question for you.</Text>
-				<DialogueTarget>Questions</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What are you up to?</Text>
-				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>

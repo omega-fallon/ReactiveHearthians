@@ -12,35 +12,7 @@
 		</RevealFacts>
 		<SetCondition>EskerSaysHi</SetCondition>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
-				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
-				<DialogueTarget>Esker_RH_High</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Don’t the other travelers come by?</Text>
-				<DialogueTarget>OtherTravelers</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Was that you whistling?</Text>
-				<DialogueTarget>Music</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Seems lonely up here.</Text>
-				<DialogueTarget>Lonely</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What is this place?</Text>
-				<DialogueTarget>Place</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
-				<Text>Marl says hi.</Text>
-				<DialogueTarget>Marl</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Talk to you later.</Text>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Esker1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_ESKER_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_ESKER_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -105,35 +77,7 @@
 		</RevealFacts>
 		<SetCondition>EskerSaysHi</SetCondition>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
-				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
-				<DialogueTarget>Esker_RH_High</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Don’t the other travelers come by?</Text>
-				<DialogueTarget>OtherTravelers</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Was that you whistling?</Text>
-				<DialogueTarget>Music</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Seems lonely up here.</Text>
-				<DialogueTarget>Lonely</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What is this place?</Text>
-				<DialogueTarget>Place</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
-				<Text>Marl says hi.</Text>
-				<DialogueTarget>Marl</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Talk to you later.</Text>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Esker1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>RH_ESKER_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>
@@ -164,30 +108,7 @@
 		</RevealFacts>
 		<SetCondition>EskerSaysHi</SetCondition>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>Don’t the other travelers come by?</Text>
-				<DialogueTarget>OtherTravelers</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Was that you whistling?</Text>
-				<DialogueTarget>Music</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Seems lonely up here.</Text>
-				<DialogueTarget>Lonely</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>What is this place?</Text>
-				<DialogueTarget>Place</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>SayHiToEsker</RequiredPersistentCondition>
-				<Text>Marl says hi.</Text>
-				<DialogueTarget>Marl</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Talk to you later.</Text>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Esker1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

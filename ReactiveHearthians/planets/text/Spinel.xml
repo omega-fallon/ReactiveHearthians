@@ -7,14 +7,7 @@
 			<Page>What are you up to, anyway?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I’m looking for Hornfels.</Text>
-				<DialogueTarget>Spinel12</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nothing.</Text>
-				<DialogueTarget>Spinel13</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Spinel11</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -35,14 +28,7 @@
 			<Page>What are you up to, hatchling?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I’m looking for Hornfels.</Text>
-				<DialogueTarget>Spinel12</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nothing.</Text>
-				<DialogueTarget>Spinel13</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Spinel11</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

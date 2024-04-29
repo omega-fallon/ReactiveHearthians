@@ -8,19 +8,7 @@
 			<Page>Come, sit with me as we watch it die.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>Sure, why not.</Text>
-				<DialogueTarget>Chert1</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
-				<Text>If it helps, we’re in a time loop, so we won’t really die.</Text>
-				<DialogueTarget>Chert2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>No, thanks.</Text>
-				<DialogueTarget>Chert3</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Questions</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -41,19 +29,7 @@
 			<Page>Come, sit with me as we watch it die.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>Sure, why not.</Text>
-				<DialogueTarget>Chert1</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredCondition>LOOP_COUNT_GOE_2</RequiredCondition>
-				<Text>If it helps, we’re in a time loop, so we won’t really die.</Text>
-				<DialogueTarget>Chert2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>No, thanks.</Text>
-				<DialogueTarget>Chert3</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Questions</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>

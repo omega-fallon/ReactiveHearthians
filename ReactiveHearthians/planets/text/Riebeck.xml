@@ -80,15 +80,7 @@
 			<Page>Lot of history here. …It’s great.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>What are you doing here?</Text>
-				<DialogueTarget>RiebeckIntro</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
-				<Text>I’m in a hurry — can I ask you something?</Text>
-				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Riebeck0</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -125,15 +117,7 @@
 			<Page>Lot of history here. …It’s great.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>What are you doing here?</Text>
-				<DialogueTarget>RiebeckIntro</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
-				<Text>I’m in a hurry — can I ask you something?</Text>
-				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Riebeck0</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_RIEBECK_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_RIEBECK_FIRE_DIALOGUE_THISLOOP</SetCondition>
@@ -166,15 +150,7 @@
 			<Page>Lot of history here. …It’s great.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>What are you doing here?</Text>
-				<DialogueTarget>RiebeckIntro</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<RequiredPersistentCondition>MET_RIEBECK</RequiredPersistentCondition>
-				<Text>I’m in a hurry — can I ask you something?</Text>
-				<DialogueTarget>RiebeckHurryToQuestions</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Riebeck0</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>RH_RIEBECK_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>

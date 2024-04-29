@@ -49,14 +49,7 @@
 			<Page>Gosh… I'm sure Slate's really proud of you. Y'know, even if they wouldn't say that out loud.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>Haven’t you been up in this tree a while?</Text>
-				<DialogueTarget>SignalscopeKid6</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Any good sounds from space today?</Text>
-				<DialogueTarget>SignalscopeKid3</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>SignalscopeKid5</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>

@@ -10,30 +10,7 @@
 			<Page>Tell me, what’s your plan once you’re in space?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I’m going to learn more about the Nomai.</Text>
-				<DialogueTarget>Curator2</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’ll meet up with the other travelers.</Text>
-				<DialogueTarget>Curator3</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I want to go somewhere no one’s gone before.</Text>
-				<DialogueTarget>Curator4</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I think I’ll start with something small.</Text>
-				<DialogueTarget>Curator5</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I don’t know.</Text>
-				<DialogueTarget>Curator6</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>I’m gonna wing it!</Text>
-				<DialogueTarget>Curator7</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Curator1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>TalkedToHornfels</SetCondition>
 	</DialogueNode>

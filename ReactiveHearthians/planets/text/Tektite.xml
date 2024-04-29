@@ -7,14 +7,7 @@
 			<Page>Me? I was using the old scout launcher and saw smoke in one of the photos, so I thought I’d come over here myself and take a look.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>So what crashed?</Text>
-				<DialogueTarget>Tektite1</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Is that a Dark Bramble seed?</Text>
-				<DialogueTarget>Tektite2</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Intro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>TalkedToImpactTektite</SetCondition>
 	</DialogueNode>
@@ -27,24 +20,7 @@
 			<Page>Oh, hatchling. Nice thing you've got there. Sorry, I'm a bit distracted at the moment. Need something from me?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I threw a Little Scout into the seed.</Text>
-				<DialogueTarget>Tektite5</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
-				<DialogueTarget>Tektite6</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
-				<DialogueTarget>Tektite7</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nope, I’m good.</Text>
-				<DialogueTarget>Tektite8</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Tektite4</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -57,14 +33,7 @@
 			<Page>I was using the old scout launcher and saw smoke in one of the photos, so I thought I’d come over here myself and take a look.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>So what crashed?</Text>
-				<DialogueTarget>Tektite1</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Is that a Dark Bramble seed?</Text>
-				<DialogueTarget>Tektite2</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Intro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<SetCondition>TalkedToImpactTektite</SetCondition>
 	</DialogueNode>
@@ -78,24 +47,7 @@
 			<Page>Oh, hatchling. I didn't see you there. Sorry, I'm a bit distracted at the moment. Need something from me?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I threw a Little Scout into the seed.</Text>
-				<DialogueTarget>Tektite5</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
-				<DialogueTarget>Tektite6</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
-				<DialogueTarget>Tektite7</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nope, I’m good.</Text>
-				<DialogueTarget>Tektite8</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Tektite4</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
@@ -106,24 +58,7 @@
 			<Page>Hugs are much appreciated, hatchling, much appreciated. Sorry if I seem distracted, it's just 'cause I am. Need something?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
-			<DialogueOption>
-				<Text>I threw a Little Scout into the seed.</Text>
-				<DialogueTarget>Tektite5</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X3</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>My signalscope is picking up a harmonica inside the seed.</Text>
-				<DialogueTarget>Tektite6</DialogueTarget>
-				<RequiredLogCondition>TH_IMPACT_CRATER_X2</RequiredLogCondition>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>You’re sure this seed isn’t from Timber Hearth?</Text>
-				<DialogueTarget>Tektite7</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<Text>Nope, I’m good.</Text>
-				<DialogueTarget>Tektite8</DialogueTarget>
-			</DialogueOption>
+			<ReuseDialogueOptionsListFrom>Tektite4</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
 		<ConditionToCancel>RH_TEKTITE_HUGGED</ConditionToCancel>
 	</DialogueNode>
