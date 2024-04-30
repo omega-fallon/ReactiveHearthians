@@ -1,0 +1,18 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Hug</Name>
+		<EntryCondition>RH_CHERT_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>You're a real sweetheart, hatchling. Thank you.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>JamSessionIsOver_Hug</Name>
+		<EntryCondition>JamSessionIsOver</EntryCondition>
+		<EntryCondition>RH_CHERT_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>So long as there are arms, and more one person who has them, there will be always be hugs.</Page>
+			<Page>No matter how much the rules change, that will always be true.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

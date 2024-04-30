@@ -1,0 +1,16 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Hug</Name>
+		<EntryCondition>RH_PRISONER_CHOICE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Hmm. This display of affection… it is familiar to me. Perhaps it is to all creatures.</Page>
+			<Page>When my kind found the Eye and realized what it was capable of, they were terrified. It was too difficult a truth. Like a light too bright to look upon directly, it burned them.</Page>
+			<Page>What they could not unlearn was hidden away in darkness — obfuscated, then lost. They did not want to see their story end.</Page>
+			<Page>My kind weren’t always like this. We weren’t always so afraid. I did what I could to set things right, yet I am still of my kind, and you know now what they did. I cannot promise our fear won’t stain your mind.</Page>
+			<Page>And so, a choice: Are you certain you want to remember me?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>WaitingForInvitation</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+</DialogueTree>

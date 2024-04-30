@@ -1,0 +1,22 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Hug</Name>
+		<EntryCondition>RH_SOLANUM_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thank you, my friend. Your display of affection is appreciated.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>JamSessionIsOver_Hug</Name>
+		<EntryCondition>JamSessionIsOver</EntryCondition>
+		<EntryCondition>RH_SOLANUM_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Ah, my friend. I appreciate this display of affection. It brings me comfort to see kindness at the end of all things.</Page>
+			<Page>Here we stand, before oblivion. All that remains is to collapse the innumerable possibilites before us.</Page>
+			<Page>Are you ready to learn what comes next?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>Farewell</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+</DialogueTree>

@@ -1,0 +1,10 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Hug</Name>
+		<EntryCondition>RH_RIEBECK_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Ah! Hatchling! Gosh, you're gonna make me cry.</Page>
+			<Page><![CDATA[<size=20>]]>Sniffle…<![CDATA[</size>]]> Alright. Alright. I'm better.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

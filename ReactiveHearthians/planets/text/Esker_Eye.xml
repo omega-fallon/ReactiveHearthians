@@ -1,0 +1,10 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>Hug</Name>
+		<EntryCondition>RH_ESKER_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Thanks, hatchling.</Page>
+			<Page>I'm gonna miss you a lot.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

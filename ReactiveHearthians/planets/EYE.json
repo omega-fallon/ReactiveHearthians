@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "EyeOfTheUniverse",
+  "Props": {
+    "dialogue": [
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Chert/Traveller_HEA_Chert/ConversationZone_Chert",
+        "xmlFile": "planets/text/Chert_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Esker/Villager_HEA_Esker/ConversationZone_Esker",
+        "xmlFile": "planets/text/Esker_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Feldspar/Traveller_HEA_Feldspar/ConversationZone_Feldspar",
+        "xmlFile": "planets/text/Feldspar_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Gabbro/Traveller_HEA_Gabbro/ConversationZone_Gabbro",
+        "xmlFile": "planets/text/Gabbro_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Riebeck/Traveller_HEA_Riebeck/ConversationZone_Riebeck",
+        "xmlFile": "planets/text/Riebeck_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Solanum/Character_NOM_Solanum/ConversationZone",
+        "xmlFile": "planets/text/Solanum_Eye.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Prisoner/PrisonerRoot_Choice/Prisoner_Choice/ConversationVolume_Prisoner",
+        "xmlFile": "planets/text/Prisoner_Eye_Choice.xml"
+      },
+      {
+        "pathToExistingDialogue": "EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Prisoner/PrisonerRoot_Campfire/Prisoner_Campfire/ConversationVolume_Prisoner",
+        "xmlFile": "planets/text/Prisoner_Eye_Campfire.xml"
+      }
+    ]
+  }
+}

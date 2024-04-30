@@ -1,0 +1,19 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>HugBefore</Name>
+		<EntryCondition>RH_PRISONER_CAMPFIRE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>Hmm. This display of affection… it is familiar to me. Perhaps it is to all creatures.</Page>
+			<Page>Thank you, small one.</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>HugBefore</Name>
+		<EntryCondition>RH_PRISONER_CHOICE_HUGGED</EntryCondition>
+		<EntryCondition>RH_PRISONER_CAMPFIRE_HUGGED</EntryCondition>
+		<Dialogue>
+			<Page>You are a cuddly one, I see. Like a newborn onto their mother.</Page>
+			<Page>I do not mind it. It feels good to make a difference, here, at the end.</Page>
+		</Dialogue>
+	</DialogueNode>
+</DialogueTree>

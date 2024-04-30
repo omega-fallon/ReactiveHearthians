@@ -24,7 +24,7 @@
 		<EntryCondition>TalkedToImpactTektite</EntryCondition>
 		<Dialogue>
 			<Page>Hatchling! Hearth's sake, get away from that thing! Don't go losing a limb like me. I don't need the seed causing any more damage than it already has!</Page>
-			<Page>Blasted thing... I liked this crater.</Page>
+			<Page>Blasted thing… I liked this crater.</Page>
 			<Page>Need something from me, hatchling?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
