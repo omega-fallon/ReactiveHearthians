@@ -633,7 +633,7 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(GabbroDialogueSwapper), nameof(GabbroDialogueSwapper.Start))]
             public static void GabbroDialogueSwapper_Postfix()
             {
-                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("GabbroDialogueSwapperGabbroDialogueSwapper postfix has been run.", MessageType.Success);
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("GabbroDialogueSwapper postfix has been run.", MessageType.Success);
 
                 ReactiveHearthians.newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ReactiveHearthians.Instance.ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_All.xml")), "{ pathToExistingDialogue: \"Sector_GabbroIsland/Interactables_GabbroIsland/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", ReactiveHearthians.Instance.Gabbro_Island);
 
