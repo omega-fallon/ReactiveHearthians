@@ -388,12 +388,6 @@ namespace ReactiveHearthians
                     StopCoroutine(WaitAGoshDarnedFrame_SolarSystem());
                     StartCoroutine(WaitAGoshDarnedFrame_Eye());
                 }
-
-                if (loadScene != OWScene.EyeOfTheUniverse)
-                {
-                    GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower_Supernova);
-                    GlobalMessenger<DeathType>.AddListener("PlayerDeath", MakeAllCower_Death);
-                }
             };
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -406,6 +400,8 @@ namespace ReactiveHearthians
             GlobalMessenger<Campfire>.AddListener("ExitRoastingMode", ExitRoastingMode);
             GlobalMessenger<float>.AddListener("EatMarshmallow", EatMarshmallow);
             GlobalMessenger.AddListener("EnableBigHeadMode", BigHeadMode);
+            GlobalMessenger.AddListener("TriggerSupernova", MakeAllCower_Supernova);
+            GlobalMessenger<DeathType>.AddListener("PlayerDeath", MakeAllCower_Death);
         }
 
         // Single-frame delay coroutine
