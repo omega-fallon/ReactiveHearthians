@@ -52,7 +52,7 @@
 		<Dialogue>
 			<Page>…Thank you. I'm… so very sorry you had to be here for this.</Page>
 		</Dialogue>
-		<ConditionToCancel>RH_CHERT_HUGGED_S4</ConditionToCancel>
+		
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
@@ -62,6 +62,6 @@
 		<Dialogue>
 			<Page>…Thank you. I'm… so very sorry you had to be here for this.</Page>
 		</Dialogue>
-		<ConditionToCancel>RH_CHERT_HUGGED_S4</ConditionToCancel>
+		
 	</DialogueNode>
 </DialogueTree>

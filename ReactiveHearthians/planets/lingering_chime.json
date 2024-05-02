@@ -4,8 +4,8 @@
   "Props": {
     "dialogue": [
       {
-        "pathToExistingDialogue": "Sector/Station/CodecDispenser/Core/CodecAddendumDialogue",
-        "xmlFile": "planets/text/Codec_Addendum.xml"
+        "pathToExistingDialogue": "",
+        "xmlFile": ""
       }
     ]
   }

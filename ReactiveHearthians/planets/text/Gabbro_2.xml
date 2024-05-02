@@ -26,6 +26,7 @@
 		<Dialogue>
 			<Page>Whoa! Thanks there, bud. It gets kinda lonely out here sometimes.</Page>
 		</Dialogue>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
 		<ConditionToCancel>RH_GABBRO_HUGGED</ConditionToCancel>
 	</DialogueNode>
 	

@@ -73,8 +73,20 @@
 		<Name>Chert_S1_Hugged</Name>
 		<EntryCondition>RH_CHERT_HUGGED_S1</EntryCondition>
 		<Dialogue>
-			<Page>Aww! Thank you, that's very kind of you.</Page>
+			<Page>Oh! Hello there, friend.</Page>
+			<Page>I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
-		<ConditionToCancel>RH_CHERT_HUGGED_S1</ConditionToCancel>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Hugged_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S1</EntryCondition>
+		<EntryCondition>SaidHiToChert</EntryCondition>
+		<Dialogue>
+			<Page>Aww! Thank you, traveler, that's very kind of you.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

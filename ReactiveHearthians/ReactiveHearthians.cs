@@ -13,6 +13,8 @@
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
 // Add damage dialogue
+// Have Chert's drumming turn chaotic and meloncholy at phases 3 and 4 respectively
+// Chert wakes you up if you're sleeping at their camp once they go to their third phase
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -118,6 +120,7 @@ namespace ReactiveHearthians
 
         public GameObject Gabbro_Island;
         public GameObject Ember_Twin;
+        public GameObject EyeOfTheUniverse;
 
         public List<BadMarshmallowCan> badcans;
         private List<CowerAnimTriggerVolume> cower_volumes;
@@ -228,6 +231,38 @@ namespace ReactiveHearthians
         public string tephraPosition;
         public string galenaPosition;
 
+        // Audio
+        public AudioClip ChertMusic_3;
+        public AudioClip ChertMusic_4;
+        public bool Chert3Swap_Done;
+        public bool Chert4Swap_Done;
+
+        private void Update()
+        {
+            var audioTable = Locator.GetAudioManager()._audioLibraryDict;
+
+            if (Chert4Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 20.5f)
+            {
+                ModHelper.Console.WriteLine("Chert's music changed to version 4.", MessageType.Success);
+                Chert4Swap_Done = true;
+                audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_4 });
+            }
+            else if (Chert3Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 17f)
+            {
+                ModHelper.Console.WriteLine("Chert's music changed to version 3.", MessageType.Success);
+                Chert3Swap_Done = true;
+                audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_3 });
+            }
+            else if (TimeLoop.GetMinutesElapsed() >= 11f)
+            {
+                // Nothing
+            }
+            else
+            {
+                // Nothing
+            }
+        }
+
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
@@ -268,6 +303,10 @@ namespace ReactiveHearthians
                 Play_As_Gabbro_Installed = false;
             }
 
+            // Getting Chert's custom music files
+            ChertMusic_3 = ModHelper.Assets.GetAudio("planets/music/Chert_UpSemitone.wav");
+            ChertMusic_4 = ModHelper.Assets.GetAudio("planets/music/Chert_DownSemitone.wav");
+
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
             {
@@ -277,6 +316,8 @@ namespace ReactiveHearthians
                 // Reset these variables
                 AllCower = false;
                 boomTime = 1360;
+                Chert4Swap_Done = false;
+                Chert3Swap_Done = false;
 
                 // The below code only runs on loading into the vanilla solar system
                 if (loadScene == OWScene.SolarSystem) 
@@ -285,6 +326,12 @@ namespace ReactiveHearthians
 
                     // Sets this to true by default
                     InSector_TimberHearth = true;
+
+                    // AC addendums (will move to a separate mod at some point)
+                    if (Astral_Codec_Installed)
+                    {
+                        newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Codec_Addendum.xml")), "{ pathToExistingDialogue: \"Sector/Station/CodecDispenser/Core/CodecAddendumDialogue\" }", GameObject.Find("LingeringChime_Body"));
+                    }
 
                     // Campfires people are sat near
                     slatefire = GameObject.Find("TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire/Controller_Campfire").GetComponent<Campfire>();
@@ -369,6 +416,19 @@ namespace ReactiveHearthians
                 {
                     ModHelper.Console.WriteLine("Loaded into the Eye!", MessageType.Success);
 
+                    EyeOfTheUniverse = GameObject.Find("EyeOfTheUniverse_Body");
+
+                    // DIALOGUE PATCHING HERE TO AVOID ERRORS
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Chert_Eye.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Chert/Traveller_HEA_Chert/ConversationZone_Chert\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Esker_Eye.xml")), "{ pathToExistingDialogue: \"Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Esker/Villager_HEA_Esker/ConversationZone_Esker\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Feldspar_Eye.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Feldspar/Traveller_HEA_Feldspar/ConversationZone_Feldspar\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Gabbro_Eye.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Gabbro/Traveller_HEA_Gabbro/ConversationZone_Gabbro\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Riebeck_Eye.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Riebeck/Traveller_HEA_Riebeck/ConversationZone_Riebeck\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Solanum_Eye.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Solanum/Character_NOM_Solanum/ConversationZone\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Prisoner_Eye_Choice.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Prisoner/PrisonerRoot_Choice/Prisoner_Choice/ConversationVolume_Prisoner\" }", EyeOfTheUniverse);
+                    newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Prisoner_Eye_Campfire.xml")), "{ pathToExistingDialogue: \"EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Prisoner/PrisonerRoot_Campfire/Prisoner_Campfire/ConversationVolume_Prisoner\" }", EyeOfTheUniverse);
+
+                    // Huggables
                     Chert_Eye = GameObject.Find("EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Chert/Traveller_HEA_Chert/");
 
                     Esker_Eye = GameObject.Find("EyeOfTheUniverse_Body/Sector_EyeOfTheUniverse/Sector_Campfire/Campsite/Esker/Villager_HEA_Esker/");
@@ -1277,7 +1337,7 @@ namespace ReactiveHearthians
         public void OnExitConversation()
         {
             // Resetting all hug & damage variables to false
-            string[] people = { "ARKOSE", "CHERT", "ESKER", "FELDSPAR", "GABBRO", "GALENA", "GNEISS", "GOSSAN", "HAL", "HORNFELS", "MARL", "MICA", "MORAINE", "PORPHY", "RIEBECK", "RUTILE", "SLATE", "SPINEL", "TEKTITE", "TEPHRA", "TUFF" };
+            string[] people = { "ARKOSE", "CHERT", "ESKER", "FELDSPAR", "GABBRO", "GALENA", "GNEISS", "GOSSAN", "HAL", "HORNFELS", "MARL", "MICA", "MORAINE", "PORPHY", "RIEBECK", "RUTILE", "SLATE", "SPINEL", "TEKTITE", "TEPHRA", "TUFF", "PRISONER_CHOICE", "PRISONER_CAMPFIRE", "SOLANUM" };
             foreach (string person in people)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_"+person+"_HUGGED", false);

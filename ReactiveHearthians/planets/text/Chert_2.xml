@@ -101,8 +101,22 @@
 		<Name>Chert_S2_Hugged</Name>
 		<EntryCondition>RH_CHERT_HUGGED_S2</EntryCondition>
 		<Dialogue>
+			<Page>Hmm? Oh! Hello there, friend.</Page>
+			<Page>I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+		
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S2_Hugged_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_HUGGED_S2</EntryCondition>
+		<EntryCondition>SaidHiToChert</EntryCondition>
+		<Dialogue>
 			<Page>Aww! Thank you. A hug… yes, that certainly helps keep my mind occupied.</Page>
 		</Dialogue>
-		<ConditionToCancel>RH_CHERT_HUGGED_S2</ConditionToCancel>
+		<DialogueTarget>Questions</DialogueTarget>
+		
 	</DialogueNode>
 </DialogueTree>

@@ -5,6 +5,6 @@
 		<Dialogue>
 			<Page>Gah! What good will a hug do now?! Leave me alone!</Page>
 		</Dialogue>
-		<ConditionToCancel>RH_CHERT_HUGGED_S3</ConditionToCancel>
+		
 	</DialogueNode>
 </DialogueTree>
