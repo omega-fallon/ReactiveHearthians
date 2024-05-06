@@ -13,8 +13,9 @@
 // Fix ATP pairing readout if you haven't paired to the statue (and also fix the one statue)
 // Add dialogue for slide reel burning
 // Add damage dialogue
-// Have Chert's drumming turn chaotic and meloncholy at phases 3 and 4 respectively
 // Chert wakes you up if you're sleeping at their camp once they go to their third phase
+// Pick up Chert dialogue - NOT DOING THIS
+// Add dialogue for the Probe landing in the village
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -44,6 +45,7 @@
 // Characters react to you dying in front of them
 // Change Gabbro dialogue on first loop if you do the geyser skip
 // Fix node redirects
+// Have Chert's drumming turn chaotic and meloncholy at phases 3 and 4 respectively (kind of accomplished)
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -55,6 +57,7 @@ using HugMod;
 using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -237,29 +240,36 @@ namespace ReactiveHearthians
         public bool Chert3Swap_Done;
         public bool Chert4Swap_Done;
 
+        // Loaded scene
+        public string loadedScene;
+
         private void Update()
         {
-            var audioTable = Locator.GetAudioManager()._audioLibraryDict;
+            if (loadedScene == "vanilla")
+            {
+                // Audio swapping
+                var audioTable = Locator.GetAudioManager()._audioLibraryDict;
 
-            if (Chert4Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 20.5f)
-            {
-                ModHelper.Console.WriteLine("Chert's music changed to version 4.", MessageType.Success);
-                Chert4Swap_Done = true;
-                audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_4 });
-            }
-            else if (Chert3Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 17f)
-            {
-                ModHelper.Console.WriteLine("Chert's music changed to version 3.", MessageType.Success);
-                Chert3Swap_Done = true;
-                audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_3 });
-            }
-            else if (TimeLoop.GetMinutesElapsed() >= 11f)
-            {
-                // Nothing
-            }
-            else
-            {
-                // Nothing
+                if (Chert4Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 20.5f)
+                {
+                    ModHelper.Console.WriteLine("Chert's music changed to version 4.", MessageType.Success);
+                    Chert4Swap_Done = true;
+                    audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_4 });
+                }
+                else if (Chert3Swap_Done == false && TimeLoop.GetMinutesElapsed() >= 17f)
+                {
+                    ModHelper.Console.WriteLine("Chert's music changed to version 3.", MessageType.Success);
+                    Chert3Swap_Done = true;
+                    audioTable[(int)AudioType.TravelerChert] = new AudioLibrary.AudioEntry(AudioType.TravelerChert, new[] { ChertMusic_3 });
+                }
+                else if (TimeLoop.GetMinutesElapsed() >= 11f)
+                {
+                    // Nothing
+                }
+                else
+                {
+                    // Nothing
+                }
             }
         }
 
@@ -278,6 +288,7 @@ namespace ReactiveHearthians
             // Mods loaded
             if (ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null)
             {
+                ModHelper.Console.WriteLine("Outsider installed!", MessageType.Success);
                 Outsider_Installed = true;
             }
             else
@@ -287,6 +298,7 @@ namespace ReactiveHearthians
 
             if (ModHelper.Interaction.TryGetMod("Walker.AstralCodex") != null)
             {
+                ModHelper.Console.WriteLine("Astral Codec installed!", MessageType.Success);
                 Astral_Codec_Installed = true;
             }
             else
@@ -296,6 +308,7 @@ namespace ReactiveHearthians
 
             if (ModHelper.Interaction.TryGetMod("xen.PlayAsGabbro") != null)
             {
+                ModHelper.Console.WriteLine("Play as Gabbro installed!", MessageType.Success);
                 Play_As_Gabbro_Installed = true;
             }
             else
@@ -318,11 +331,13 @@ namespace ReactiveHearthians
                 boomTime = 1360;
                 Chert4Swap_Done = false;
                 Chert3Swap_Done = false;
+                loadedScene = "unknown";
 
-                // The below code only runs on loading into the vanilla solar system
+                // Code dependent on which scene we're loading into
                 if (loadScene == OWScene.SolarSystem) 
                 {
                     ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
+                    loadedScene = "vanilla";
 
                     // Sets this to true by default
                     InSector_TimberHearth = true;
@@ -330,7 +345,7 @@ namespace ReactiveHearthians
                     // AC addendums (will move to a separate mod at some point)
                     if (Astral_Codec_Installed)
                     {
-                        newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Codec_Addendum.xml")), "{ pathToExistingDialogue: \"Sector/Station/CodecDispenser/Core/CodecAddendumDialogue\" }", GameObject.Find("LingeringChime_Body"));
+                        //newHorizons.CreateDialogueFromXML(null, File.ReadAllText(Path.Combine(ModHelper.Manifest.ModFolderPath, "planets/text/Codec_Addendum.xml")), "{ pathToExistingDialogue: \"Sector/Station/CodecDispenser/Core/CodecAddendumDialogue\" }", GameObject.Find("LingeringChime_Body"));
                     }
 
                     // Campfires people are sat near
@@ -415,6 +430,7 @@ namespace ReactiveHearthians
                 else if (loadScene == OWScene.EyeOfTheUniverse)
                 {
                     ModHelper.Console.WriteLine("Loaded into the Eye!", MessageType.Success);
+                    loadedScene = "eye";
 
                     EyeOfTheUniverse = GameObject.Find("EyeOfTheUniverse_Body");
 
@@ -741,7 +757,7 @@ namespace ReactiveHearthians
             [HarmonyPatch(typeof(DestructionVolume), nameof(DestructionVolume.VanishModelRocketShip))]
             public static void OnModelRocketShipDestroyed_Postfix()
             {
-                if (TimeLoop.GetSecondsElapsed() < 1330)
+                if (TimeLoop.GetSecondsElapsed() < ReactiveHearthians.Instance.boomTime)
                 {
                     DialogueConditionManager.SharedInstance.SetConditionState("MICAS_WRATH", true);
                 }
@@ -1030,6 +1046,16 @@ namespace ReactiveHearthians
                 {
                     ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Damage was taken elsewhere.", MessageType.Success);
                 }
+
+                // Pick up Chert mod check
+                if (ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("orclecle.PickUpChert") != null && damageType == InstantDamageType.Impact)
+                {
+                    if (Vector3.Distance(playerPosition, ReactiveHearthians.Instance.Chert_Standard.transform.position) <= reactRadius)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_IMPACT_DAMAGE", true);
+                        ReactiveHearthians.Instance.chert_last_damaged = TimeLoop.GetSecondsElapsed();
+                    }
+                }
             }
 
             // Patching for entering a hazard detector
@@ -1074,6 +1100,13 @@ namespace ReactiveHearthians
                         ReactiveHearthians.Instance.ModHelper.Console.WriteLine(eVolume.ToString(), MessageType.Success);
                     }
                 }
+            }
+
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(OrbitalProbeLaunchController), nameof(OrbitalProbeLaunchController.Awake))]
+            public static void OPC_Angle_Lock()
+            {
+                // fill in
             }
         }
 
@@ -1178,8 +1211,12 @@ namespace ReactiveHearthians
             {
                 // Do nothing; function has already been run before
             }
-            else
+            else if (deathType == DeathType.TimeLoop)
             {
+                // Do nothing, this is the "purple lines at the edge of the screen" death
+            }
+            else
+            {                
                 // Iterates through each cower_volume and runs the coweroutine on each
                 foreach (CowerAnimTriggerVolume cower_volume in cower_volumes)
                 {
@@ -1354,6 +1391,8 @@ namespace ReactiveHearthians
         // Dialogue variables
         public void OnEnterConversation()
         {
+            ModHelper.Console.WriteLine("Setting conversation variables...", MessageType.Success);
+
             // Installed mod variables. //
             DialogueConditionManager.SharedInstance.SetConditionState("ASTRAL_CODEC", Astral_Codec_Installed);
             DialogueConditionManager.SharedInstance.SetConditionState("THE_OUTSIDER", Outsider_Installed);
@@ -1390,6 +1429,29 @@ namespace ReactiveHearthians
             }
 
             // Time-in-loop variables //
+            // Chert phase variable
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S1", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S2", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S3", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S4", false);
+
+            if (TimeLoop.GetMinutesElapsed() >= 20.5f)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S4", true);
+            }
+            else if (TimeLoop.GetMinutesElapsed() >= 17f)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S3", true);
+            }
+            else if (TimeLoop.GetMinutesElapsed() >= 11f)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S2", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_S1", true);
+            }
+
             // This variable is set true when the Sun is over the Timber Hearth village. Timestamps provided by Lutias Kokopelli.
             if ((TimeLoop.GetSecondsElapsed() >= 103 && TimeLoop.GetSecondsElapsed() <= 307) || (TimeLoop.GetSecondsElapsed() >= 519 && TimeLoop.GetSecondsElapsed() <= 723) || (TimeLoop.GetSecondsElapsed() >= 935 && TimeLoop.GetSecondsElapsed() <= 1139))
             {
@@ -1581,7 +1643,7 @@ namespace ReactiveHearthians
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated
-            if (TheMountain != null && (TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel) == false)
+            if (TheMountain != null && !(TheMountain._warpCoreSocket.IsSocketOccupied() && TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel))
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
             }
@@ -1679,7 +1741,101 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAM_IS_CODE", true);
             }
 
+            // Chert position variables //
+            if (loadedScene == "vanilla")
+            {
+                if (ModHelper.Interaction.TryGetMod("orclecle.PickUpChert") != null)
+                {
+                    GameObject chertObject = GameObject.Find("Traveller_HEA_Chert");
+                    OWRigidbody chertBody = chertObject.GetAttachedOWRigidbody();
+
+                    // Resetting these first
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_EMBER_TWIN", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ASH_TWIN", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_TIMBER_HEARTH", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ATTLEROCK", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_BRITTLE_HOLLOW", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_HOLLOW_LANTERN", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_GIANTS_DEEP", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_DARK_BRAMBLE", false);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_QUANTUM_MOON", false);
+
+                    // Setting a variable based on which body Chert is on
+                    switch (chertBody.ToString())
+                    {
+                        case "CaveTwin_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Ember Twin.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_EMBER_TWIN", true);
+                            break;
+                        case "TowerTwin_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Ash Twin.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ASH_TWIN", true);
+                            break;
+                        case "TimberHearth_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Timber Hearth.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_TIMBER_HEARTH", true);
+                            break;
+                        case "Moon_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on the Attlerock.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ATTLEROCK", true);
+                            break;
+                        case "BrittleHollow_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Brittle Hollow.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_BRITTLE_HOLLOW", true);
+                            break;
+                        case "VolcanicMoon_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Hollow's Lantern.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_HOLLOW_LANTERN", true);
+                            break;
+                        case "GabbroIsland_Body (OWRigidbody)":
+                        case "StatueIsland_Body (OWRigidbody)":
+                        case "ConstructionYardIsland_Body (OWRigidbody)":
+                        case "QuantumIsland_Body (OWRigidbody)":
+                        case "BrambleIsland_Body (OWRigidbody)":
+                        case "GiantsDeep_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Giant's Deep.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_GIANTS_DEEP", true);
+                            break;
+                        case "DarkBramble_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on Dark Bramble.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_DARK_BRAMBLE", true);
+                            break;
+                        case "QuantumMoon_Body (OWRigidbody)":
+                            ModHelper.Console.WriteLine("Chert is on the Quantum Moon.", MessageType.Success);
+                            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_QUANTUM_MOON", true);
+                            break;
+                        default:
+                            if (chertBody.ToString().Contains("DB_") && chertBody.ToString().Contains("Dimension") && chertBody.ToString().Contains("_Body"))
+                            {
+                                ModHelper.Console.WriteLine("Chert is in Dark Bramble.", MessageType.Success);
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_DARK_BRAMBLE", true);
+                            }
+                            else
+                            {
+                                ModHelper.Console.WriteLine("Chert is on " + chertBody.ToString(), MessageType.Success);
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    ModHelper.Console.WriteLine("PickUpChert not installed; Chert is on Ember Twin.", MessageType.Success);
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_EMBER_TWIN", true);
+                }
+            }
+            else
+            {
+                ModHelper.Console.WriteLine("Not in the vanilla scene; Chert's position doesn't matter.", MessageType.Success);
+            }
+
             // Sets variables depending on what (if anything) the player is holding. //
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERTHELD", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
+
             try
             {
                 // The player is holding an item
@@ -1696,92 +1852,62 @@ namespace ReactiveHearthians
                         {
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", true);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                         // The item is a broken warp core
                         else if ((warpCore._wcType == WarpCoreType.VesselBroken) || (warpCore._wcType == WarpCoreType.SimpleBroken))
                         {
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
+                            // Nothing
                         }
                         // The item is some other kind of warp core
                         else
                         {
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", true);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                            DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                             DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                         }
                     }
                     // The item is one of the Stranger's lanterns
                     else if (item._type == ItemType.DreamLantern)
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", true);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     // The item is a vision torch
                     else if (item._type == ItemType.VisionTorch)
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     // The item is a Nomai scroll
                     else if (item._type == ItemType.Scroll)
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }
                     // The item is a slide reel
                     else if (item._type == ItemType.SlideReel)
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", true);
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
+                    }
+                    // The item is Chert
+                    else if (item.ToString() == "Traveller_HEA_Chert (PickUpChert.ChertItem)")
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERTHELD", true);
                     }
                     // The item is something else
                     else
                     {
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
-                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
+                        // Nothing
                     }
                 }
                 // The player is not holding an item
                 else
                 {
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
+                    // Nothing
                 }
             }
             catch
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_AWCHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_WARPCOREHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGERLANTERNHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_SLIDEREELHELD", false);
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", false);
+                ModHelper.Console.WriteLine("Couldn't set variables for held item.", MessageType.Error);
             }
 
             // This variable is set to true if the player has something new to say about the Stranger to Gabbro
@@ -1793,6 +1919,8 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", false);
             }
+
+            ModHelper.Console.WriteLine("Done setting conversation variables.", MessageType.Success);
         }
     }
 }

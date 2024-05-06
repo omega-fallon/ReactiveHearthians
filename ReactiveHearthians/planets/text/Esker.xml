@@ -135,6 +135,26 @@
 		</Dialogue>
 		<ConditionToCancel>RH_ESKER_HUGGED</ConditionToCancel>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Esker_RH_ChertHeld_First</Name>
+		<EntryCondition>RH_CHERTHELD</EntryCondition>
+		<Dialogue>
+			<Page>Chert! Hatchling! Goodness, I wasn't expecting either of you!</Page>
+			<Page>Now why are you holding my friend Chert like that, huh? They're not a kid, they're just small!</Page>
+			<Page>Chert: I'm actually getting used to it. In any case, it's wonderful to see you, Esker!</Page>
+			<Page>Likewise! Now, hatchling, you're on your first solo voyage, aren't you? Well, I suppose not 'solo' anymore, but still! Glad to see you're in once piece.</Page>
+		</Dialogue>
+		<RevealFacts>
+			<FactID>TM_ESKER_X1</FactID>
+		</RevealFacts>
+		<SetCondition>EskerSaysHi</SetCondition>
+		<SetCondition>RH_ESKER_CHERT_MET</SetCondition>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>Esker1</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Esker_RH_Boom</Name>
 		<EntryCondition>RH_BOOM</EntryCondition>

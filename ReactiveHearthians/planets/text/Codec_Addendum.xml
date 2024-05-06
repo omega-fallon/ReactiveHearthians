@@ -3,6 +3,7 @@
 		<Name>START</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
+				<!-- For some reason this triggers even if the mod isn't installed or complete? -->
 				<RequiredLogCondition>DS_DAMAGE</RequiredLogCondition>
 				<RequiredLogCondition>HNPodResolution</RequiredLogCondition>
 				<CancelledCondition>CODEX_ADDENDUM_LONELYHERMIT</CancelledCondition>
