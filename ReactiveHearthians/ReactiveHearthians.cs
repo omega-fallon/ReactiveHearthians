@@ -18,6 +18,7 @@
 // Add dialogue for the Probe landing near NPCs
 // Add dialogue for the probe passing by Chert
 // Add dialogue for the ship exploding near NPCs
+// Make NPCs cower when the ship/probe lands nearby
 
 // DONE LIST
 // option to tell Riebeck about the Stranger

@@ -107,7 +107,6 @@
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
-		
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Chert_S2_Hugged_TalkToAgain</Name>
@@ -117,6 +116,59 @@
 			<Page>Aww! Thank you. A hug… yes, that certainly helps keep my mind occupied.</Page>
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Ship breach dialogue -->
+	<DialogueNode>
+		<Name>Chert_S2_ShipHullBreach</Name>
+		<EntryCondition>RH_CHERT_SHIP_BREACH</EntryCondition>
+		<Dialogue>
+			<Page>Goodness! Oh my... your ship, it's... oh, friend, I'm so sorry.</Page>
+			<Page>This was supposed to be your big day, wasn't it? What an awful... awful shame.</Page>
+			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together... or rebuild, for that matter.</Page>
+			<Page>Ah, umm, don't worry, though! You're not stranded here; there's plenty of room for the both of us inside my ship! Once I'm done with my star charts, we can fly right back down to home base and get this all settled. That... might take a while, but I'll be on it, d-don't you worry!</Page>
+			<Page>In the meantime... how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either.</Page>
+			<Page>I'll just be here, umm... stargazing.</Page>
+		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>SaidHiToChert2</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
+
+		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
+
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S2_ShipHullBreach_1to2</Name>
+
+		<EntryCondition>RH_CHERT_SHIP_BREACH_TALKED</EntryCondition>
+		<EntryCondition>METCHERT_1</EntryCondition>
+
+		<Dialogue>
+			<Page>Hello again, friend. I hope you're fairing well here.</Page>
+			<Page>Personally, I've been having trouble here. Have you noticed anything unusual about the stars lately? Something seems...<![CDATA[<Pause=0.5>]]> how to put this... <![CDATA[<Pause=0.5>]]>off.</Page>
+			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all...</Page>
+		</Dialogue>
+		<SetCondition>SaidHiToChert2</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S2_ShipHullBreach_TalkToAgain</Name>
 		
+		<EntryCondition>RH_CHERT_SHIP_BREACH_TALKED</EntryCondition>
+		<EntryCondition>SaidHiToChert2</EntryCondition>
+		
+		<Dialogue>
+			<Page>Hello again, friend.</Page>
+		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>SaidHiToChert2</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
+
+		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

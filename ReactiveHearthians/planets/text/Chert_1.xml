@@ -9,6 +9,10 @@
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Chert_S1_Damage_TalkToAgain</Name>
@@ -18,6 +22,10 @@
 			<Page>My! Had a bumpy entrance, did you? Be careful, now.</Page>
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 	</DialogueNode>
 
 	<!-- Fire -->
@@ -31,6 +39,10 @@
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
@@ -42,6 +54,10 @@
 			<Page>My! Caught yourself in the fire, did you? Be careful, now.</Page>
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
@@ -56,6 +72,10 @@
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
@@ -65,7 +85,12 @@
 		<Dialogue>
 			<Page>Uhh… ahem, perhaps it's just the lighting, but I think your marshmallow stash may have spoiled.</Page>
 		</Dialogue>
+		
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
+		
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 
@@ -76,6 +101,11 @@
 			<Page>Oh! Hello there, friend.</Page>
 			<Page>I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
+		
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
 		</DialogueOptionsList>
@@ -87,6 +117,42 @@
 		<Dialogue>
 			<Page>Aww! Thank you, traveler, that's very kind of you.</Page>
 		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
+
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Ship breach dialogue -->
+	<DialogueNode>
+		<Name>Chert_S1_ShipHullBreach</Name>
+		<EntryCondition>RH_CHERT_SHIP_BREACH</EntryCondition>
+		<Dialogue>
+			<Page>Goodness! Oh my... your ship, it's... oh, friend, I'm so sorry.</Page>
+			<Page>This was supposed to be your big day, wasn't it? What an awful shame.</Page>
+			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together... or rebuild, for that matter.</Page>
+			<Page>Don't worry! You're not stranded here; there's plenty of room for the both of us inside my ship! Once I'm done with my star charts, we can fly right back down to home base and get this all settled.</Page>
+			<Page>In the meantime... how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either!</Page>
+		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
+
+		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
+
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S1_ShipHullBreach_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_SHIP_BREACH_TALKED</EntryCondition>
+		<Dialogue>
+			<Page>Hello again, friend. I hope you're fairing well here!</Page>
+		</Dialogue>
+
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

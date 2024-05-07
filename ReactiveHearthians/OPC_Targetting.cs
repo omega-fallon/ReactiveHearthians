@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ReactiveHearthians.planets
 {
-    internal class OPC_Targetting
+    public class OPC_Targetting : MonoBehaviour
     {
         private bool _hasHitplayer;
         private OWRigidbody player;
