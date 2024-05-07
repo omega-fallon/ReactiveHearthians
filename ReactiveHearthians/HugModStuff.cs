@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class HugModStuff : MonoBehaviour
     {
         public static HugModStuff Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public IHugModApi hugApi;
         public GameObject[] huggables;

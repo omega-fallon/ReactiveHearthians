@@ -18,6 +18,7 @@
 // Add dialogue for the Probe landing near NPCs
 // Add dialogue for the probe passing by Chert
 // Add dialogue for the ship exploding near NPCs
+// Add dialogue for if your ship is busted, you can tell someone you're stuck on the planet
 // Make NPCs cower when the ship/probe lands nearby
 
 // DONE LIST
@@ -60,6 +61,7 @@ using HugMod;
 using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
+using ReactiveHearthians.planets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -82,11 +84,26 @@ namespace ReactiveHearthians
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
             Instance = this;
+
+            // Adding subfiles
+            gameObject.AddComponent<BadMallow>();
+            gameObject.AddComponent<ChertMusicSwapper>();
+            gameObject.AddComponent<Cowering>();
+            gameObject.AddComponent<Damage>();
+            gameObject.AddComponent<DialogueManage>();
+            gameObject.AddComponent<HugModStuff>();
+            gameObject.AddComponent<OPC_Targetting>();
+            gameObject.AddComponent<ShipBreak>();
         }
 
         // Various publics
-        public GameObject Gabbro_Island;
         public GameObject Ember_Twin;
+        public GameObject Ash_Twin;
+        public GameObject Timber_Hearth;
+        public GameObject Attlerock;
+
+        public GameObject Gabbro_Island;
+
         public GameObject EyeOfTheUniverse;
 
         public TimeLoopCoreController TheMountain;
@@ -175,8 +192,12 @@ namespace ReactiveHearthians
                     }
 
                     // Bodies
-                    Gabbro_Island = GameObject.Find("GabbroIsland_Body");
                     Ember_Twin = GameObject.Find("CaveTwin_Body");
+                    Ash_Twin = GameObject.Find("TowerTwin_Body");
+                    Timber_Hearth = GameObject.Find("TimberHearth_Body");
+                    Attlerock = GameObject.Find("TimberMoon_Body");
+
+                    Gabbro_Island = GameObject.Find("GabbroIsland_Body");
 
                     // ATP
                     TheMountain = UnityEngine.Object.FindObjectOfType<TimeLoopCoreController>();

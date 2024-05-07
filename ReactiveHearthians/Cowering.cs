@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class Cowering : MonoBehaviour
     {
         public static Cowering Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public CowerAnimTriggerVolume cower_volume_mica;
         public CowerAnimTriggerVolume cower_volume_rutile;
@@ -64,7 +68,7 @@ namespace ReactiveHearthians
         }
 
         public bool AllCower;
-        public float boomTime;
+        public float boomTime = 1360;
         private void MakeAllCower_Supernova()
         {
             ReactiveHearthians.Instance.ModHelper.Console.WriteLine("MakeAllCower_Supernova triggered.", MessageType.Success);

@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class ChertMusicSwapper : MonoBehaviour
     {
         public static ChertMusicSwapper Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         // Audio
         public AudioClip ChertMusic_3;
@@ -23,7 +27,7 @@ namespace ReactiveHearthians
         public bool Chert3Swap_Done;
         public bool Chert4Swap_Done;
 
-        private void Update()
+        public void Update()
         {
             if (ReactiveHearthians.Instance.loadedScene == "vanilla")
             {

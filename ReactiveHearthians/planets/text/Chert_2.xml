@@ -147,7 +147,7 @@
 		<EntryCondition>METCHERT_1</EntryCondition>
 
 		<Dialogue>
-			<Page>Hello again, friend. I hope you're fairing well here.</Page>
+			<Page>Hello again, friend. I hope you're fairing well out here.</Page>
 			<Page>Personally, I've been having trouble here. Have you noticed anything unusual about the stars lately? Something seems...<![CDATA[<Pause=0.5>]]> how to put this... <![CDATA[<Pause=0.5>]]>off.</Page>
 			<Page>I’ve seen, what, ten supernovae already? Twelve? They’re in the double digits now, and that’s, you know, not normal. Not normal at all...</Page>
 		</Dialogue>

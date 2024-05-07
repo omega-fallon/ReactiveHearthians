@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class Damage : MonoBehaviour
     {
         public static Damage Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         // Hazard volumes
         public HazardVolume hazardvolume_slatefire;

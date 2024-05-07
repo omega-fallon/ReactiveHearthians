@@ -27,6 +27,8 @@ namespace ReactiveHearthians.planets
 
         public void FixedUpdate()
         {
+            return;
+
             if (LoadManager.GetCurrentScene() != OWScene.SolarSystem)
             {
                 return;

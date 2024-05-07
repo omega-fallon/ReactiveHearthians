@@ -3,9 +3,7 @@
 		<Name>START</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<!-- For some reason this triggers even if the mod isn't installed or complete? -->
-				<RequiredLogCondition>DS_DAMAGE</RequiredLogCondition>
-				<RequiredLogCondition>HNPodResolution</RequiredLogCondition>
+				<RequiredCondition>HearthsNeighborComplete</RequiredCondition>
 				<CancelledCondition>CODEX_ADDENDUM_LONELYHERMIT</CancelledCondition>
 				<Text><![CDATA[<i>Pray for the inhabitants of the Lonely Hermit…</i>]]></Text>
 				<DialogueTarget>LonelyHermit</DialogueTarget>

@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class DialogueManage : MonoBehaviour
     {
         public static DialogueManage Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public void Start()
         {
@@ -52,6 +56,15 @@ namespace ReactiveHearthians
 
             DialogueConditionManager.SharedInstance.SetConditionState("PLAY_AS_GABBRO", ReactiveHearthians.Instance.Play_As_Gabbro_Installed);
             DialogueConditionManager.SharedInstance.SetConditionState("NOPLAY_AS_GABBRO", !ReactiveHearthians.Instance.Play_As_Gabbro_Installed);
+
+            if (PlayerData.GetShipLogFactSave("HN_POD_RESOLUTION") != null && PlayerData.GetShipLogFactSave("HN_POD_RESOLUTION").revealOrder > -1)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("HearthsNeighborComplete", true);
+            }
+            else
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("HearthsNeighborComplete", false);
+            }
 
             // Nomai statue skip variable //
             if (PlayerData.GetPersistentCondition("RH_NOMAI_STATUE_LINKED") || TimeLoop.GetLoopCount() > 1)

@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class ShipBreak : MonoBehaviour
     {
         public static ShipBreak Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public void Start()
         {
@@ -29,13 +33,15 @@ namespace ReactiveHearthians
             Vector3 shipPosition = Locator.GetShipBody().transform.position;
             float reactRadius = 25;
 
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_SHIP_BREACH", true);
+
             // Chert
             if (Vector3.Distance(shipPosition, HugModStuff.Instance.Chert_Standard.transform.position) <= reactRadius)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_SHIP_BREACH", true);
             }
 
-            // All the villagers
+            // All the villagers - FIX THIS
             if (Vector3.Distance(shipPosition, HugModStuff.Instance.Porphy_Standard.transform.position) <= reactRadius)
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_VILLAGE_SHIP_BREACH", true);

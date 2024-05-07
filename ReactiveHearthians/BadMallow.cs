@@ -16,6 +16,10 @@ namespace ReactiveHearthians
     public class BadMallow : MonoBehaviour
     {
         public static BadMallow Instance;
+        public void Awake()
+        {
+            Instance = this;
+        }
 
         public Campfire slatefire;
         public Campfire riebeckfire;
