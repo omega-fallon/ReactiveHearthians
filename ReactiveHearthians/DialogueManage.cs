@@ -48,7 +48,7 @@ namespace ReactiveHearthians
         // Dialogue variables
         public void OnEnterConversation()
         {
-            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Setting conversation variables...", MessageType.Success);
+            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Setting conversation variables…", MessageType.Success);
 
             // Installed mod variables. //
             DialogueConditionManager.SharedInstance.SetConditionState("ASTRAL_CODEC", ReactiveHearthians.Instance.Astral_Codec_Installed);

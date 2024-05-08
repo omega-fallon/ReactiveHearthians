@@ -6,4 +6,25 @@
 			<Page>Gah! What good will a hug do now?! Leave me alone!</Page>
 		</Dialogue>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Questions</Name>
+
+		<DialogueOption>
+			<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+			<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
+			<Text>My ship's completely busted.</Text>
+			<DialogueTarget>Chert_S3_ShipHullBreach_Admit</DialogueTarget>
+		</DialogueOption>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S3_ShipHullBreach_Admit</Name>
+		<Dialogue>
+			<Page>Ship or no ship, we're all going to die! Can't you see it, red as a dying flame?! I'm stuck here too, stuck in a dying universe!</Page>
+		</Dialogue>
+
+		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
 </DialogueTree>

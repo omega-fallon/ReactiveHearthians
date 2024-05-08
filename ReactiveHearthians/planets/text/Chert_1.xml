@@ -132,7 +132,7 @@
 			<DialogueOption>
 				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
 				<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
-				<Text>I crashed my ship. It's completely busted.</Text>
+				<Text>My ship's completely busted.</Text>
 				<DialogueTarget>Chert_S1_ShipHullBreach_Admit</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
@@ -143,7 +143,7 @@
 			<DialogueOption>
 				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
 				<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
-				<Text>I crashed my ship. It's completely busted.</Text>
+				<Text>My ship's completely busted.</Text>
 				<DialogueTarget>Chert_S1_ShipHullBreach_Admit</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
@@ -152,11 +152,11 @@
 	<DialogueNode>
 		<Name>Chert_S1_ShipHullBreach_Admit</Name>
 		<Dialogue>
-			<Page>Oh, friend... I'm so sorry to hear that.</Page>
+			<Page>Oh, friend… I'm so sorry to hear that.</Page>
 			<Page>This was supposed to be your big day, wasn't it? What an awful shame.</Page>
-			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together... or rebuild, for that matter.</Page>
+			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together… or rebuild, for that matter.</Page>
 			<Page>Don't worry! You're not stranded here; there's plenty of room for the both of us inside my ship! Once I'm done with my star charts, we can fly right back down to home base and get this all settled.</Page>
-			<Page>In the meantime... how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either!</Page>
+			<Page>In the meantime… how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either! Just be careful, okay?</Page>
 		</Dialogue>
 
 		<SetCondition>SaidHiToChert</SetCondition>
@@ -172,11 +172,11 @@
 		<Name>Chert_S1_ShipHullBreach</Name>
 		<EntryCondition>RH_CHERT_SHIP_BREACH</EntryCondition>
 		<Dialogue>
-			<Page>Goodness! Oh my... your ship, it's... oh, friend, I'm so sorry.</Page>
+			<Page>Goodness! Oh my… your ship, it's… oh, friend, I'm so sorry.</Page>
 			<Page>This was supposed to be your big day, wasn't it? What an awful shame.</Page>
-			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together... or rebuild, for that matter.</Page>
+			<Page>I-it's alright, though! We all make mistakes. It's nothing Slate can't put back together… or rebuild, for that matter.</Page>
 			<Page>Don't worry! You're not stranded here; there's plenty of room for the both of us inside my ship! Once I'm done with my star charts, we can fly right back down to home base and get this all settled.</Page>
-			<Page>In the meantime... how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either!</Page>
+			<Page>In the meantime… how about you explore Ember Twin? There's plenty to see, so don't worry about getting bored, either! Just be careful, okay?</Page>
 		</Dialogue>
 
 		<SetCondition>SaidHiToChert</SetCondition>
@@ -200,8 +200,8 @@
 
 	<!-- Redirect -->
 	<DialogueNode>
-		<EntryCondition>ChertBreakdownNomai_2</EntryCondition>
-		<Name>ChertBreakdownNomai</Name>
+		<EntryCondition>ChertBreakdownNomai</EntryCondition>
+		<Name>ChertBreakdownNomai_2</Name>
 		<Dialogue>
 			<Page>B-b-but surely, I would have seen some kind of other sign than the supernovae, so p-perhaps…?</Page>
 		</Dialogue>

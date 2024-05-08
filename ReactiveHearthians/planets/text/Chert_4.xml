@@ -64,4 +64,28 @@
 		</Dialogue>
 		
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Questions</Name>
+
+		<DialogueOption>
+			<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+			<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
+			<Text>My ship's completely busted.</Text>
+			<DialogueTarget>Chert_S4_ShipHullBreach_Admit</DialogueTarget>
+		</DialogueOption>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S4_ShipHullBreach_Admit</Name>
+		<Dialogue>
+			<Page>Then I guess the choice has been made for you, hasn't it? Not that having a ship would save you right now.</Page>
+			<Page>There was still so much more I wanted to do… how unlucky we are to have been born at the end of the universe.</Page>
+		</Dialogue>
+
+		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
+		<SetCondition>Secondary1</SetCondition>
+		
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
 </DialogueTree>

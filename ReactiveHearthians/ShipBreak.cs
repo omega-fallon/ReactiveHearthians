@@ -21,6 +21,25 @@ namespace ReactiveHearthians
             Instance = this;
         }
 
+        [HarmonyPatch]
+        public class MyPatchClass
+        {
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(ShipEjectionSystem), nameof(ShipEjectionSystem.OnPressInteract))]
+            public static void ShipEject_PostFix(ShipEjectionSystem __instance)
+            {
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Eject button interacted with!", MessageType.Success);
+
+                if (__instance._cockpitModule.isDetached)
+                {
+                    // pass
+                }
+                if (__instance._ejectPrimed) {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_SHIP_EJECTED", true);
+                }
+            }
+        }
+
         public void Start()
         {
             GlobalMessenger.AddListener("ShipHullBreach", OnShipHullBreach);

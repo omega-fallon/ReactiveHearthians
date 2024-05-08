@@ -170,4 +170,57 @@
 			<Page>…Dear Hearth, it's… it's beautiful…</Page>
 		</Dialogue>
 	</DialogueNode>
+
+	<!-- Ship breach dialogue -->
+	<DialogueNode>
+		<Name>Esker1</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_ESKER_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Esker_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker2</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_ESKER_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Esker_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Esker_RH_ShipHullBreach_Admit</Name>
+		<Dialogue>
+			<Page>Oh geez, really? That's some tough luck, hatchling. I'm not sure what to do for you here.</Page>
+			<Page>Thing is, I don't have a ship. I could radio down to home base or one of the travelers, but, well… they ignore me most of the time.</Page>
+			<Page>Oh, I've got an idea! Fly down there in your jetpack. Nice and easy and the landing shouldn't break anything more than a few feet bones.</Page>
+		</Dialogue>
+
+		<SetCondition>RH_ESKER_SHIP_BREACH_TALKED</SetCondition>
+		
+		<DialogueTarget>Esker2</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S1_ShipHullBreach</Name>
+		<EntryCondition>RH_ESKER_SHIP_BREACH</EntryCondition>
+		<Dialogue>
+			<Page>Whoa there!</Page>
+			<Page>That was… quite the landing. For a second I thought that must've been Feldspar, but it's you, huh?</Page>
+			<Page>Geez, well. Your ship's completely broken. That's some tough luck, hatchling. I'm not sure what to do for you here.</Page>
+			<Page>Thing is, I don't have a ship. I could radio down to home base or one of the travelers, but, well… they ignore me most of the time.</Page>
+			<Page>Oh, I've got an idea! Fly down there in your jetpack. Nice and easy and the landing shouldn't break anything more than a few feet bones.</Page>
+		</Dialogue>
+
+		<SetCondition>RH_ESKER_SHIP_BREACH_TALKED</SetCondition>
+
+		<DialogueTarget>Esker2</DialogueTarget>
+	</DialogueNode>
 </DialogueTree>

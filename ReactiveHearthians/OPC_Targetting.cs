@@ -27,7 +27,7 @@ namespace ReactiveHearthians.planets
 
         public void FixedUpdate()
         {
-            return;
+            //return;
 
             if (LoadManager.GetCurrentScene() != OWScene.SolarSystem)
             {
@@ -51,14 +51,15 @@ namespace ReactiveHearthians.planets
 
             if (player == null)
             {
-                player = Locator.GetPlayerBody();
+                player = ReactiveHearthians.Instance.Ember_Twin.GetAttachedOWRigidbody();
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine(player.ToString());
             }
 
             if (probe == null)
             {
                 probe = launchController._probeBody;
                 var align = probe.gameObject.AddComponent<AlignWithTargetBody>();
-                align.SetTargetBody(Locator.GetPlayerBody());
+                align.SetTargetBody(player);
                 align.SetUsePhysicsToRotate(true);
                 align.SetLocalAlignmentAxis(new Vector3(-1, 0, 0));
             }
@@ -68,6 +69,8 @@ namespace ReactiveHearthians.planets
             var newSpeed = Mathf.Max(500, player.GetVelocity().magnitude + 500f);
 
             probe.SetVelocity(probe.transform.TransformDirection(new Vector3(-1, 0, 0) * newSpeed));
+
+            return;
 
             if (Vector3.Distance(player.GetPosition(), probe.GetPosition()) <= 50f)
             {

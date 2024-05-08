@@ -101,6 +101,7 @@ namespace ReactiveHearthians
         public GameObject Ash_Twin;
         public GameObject Timber_Hearth;
         public GameObject Attlerock;
+        public GameObject Brittle_Hollow;
 
         public GameObject Gabbro_Island;
 
@@ -196,6 +197,7 @@ namespace ReactiveHearthians
                     Ash_Twin = GameObject.Find("TowerTwin_Body");
                     Timber_Hearth = GameObject.Find("TimberHearth_Body");
                     Attlerock = GameObject.Find("TimberMoon_Body");
+                    Brittle_Hollow = GameObject.Find("BrittleHollow_Body");
 
                     Gabbro_Island = GameObject.Find("GabbroIsland_Body");
 

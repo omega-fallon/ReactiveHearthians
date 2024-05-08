@@ -87,7 +87,7 @@
 			</DialogueOption>
 			<DialogueOption>
 				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
+				<RequiredLogCondition>COMET_INTERIOR_X1</RequiredLogCondition>
 				<Text>I went inside the Interloper.</Text>
 				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
 			</DialogueOption>
@@ -104,7 +104,7 @@
 			</DialogueOption>
 			<DialogueOption>
 				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR</RequiredLogCondition>
+				<RequiredLogCondition>COMET_INTERIOR_X1</RequiredLogCondition>
 				<Text>I went inside the Interloper.</Text>
 				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
 			</DialogueOption>
@@ -170,5 +170,35 @@
 			<Page>You're a real trailblazer, hatchling. Just don't let it get to your head.</Page>
 		</Dialogue>
 		<SetCondition>FELDSPAR_RH_INTERLOPERBRAG</SetCondition>
+	</DialogueNode>
+	
+	<!-- Ship breach dialogue -->
+	\<DialogueNode>
+		<Name>FeldsparPrimaryMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_FELDSPAR_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Feldspar_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Feldspar_RH_ShipHullBreach_Admit</Name>
+
+		<Dialogue>
+			<Page>Ah! Well, that makes two of us, then.</Page>
+			<Page><![CDATA[<i>Sigh…</i>]]> well, hatchling, you've got two choices here.</Page>
+			<Page>First off, you could come stay here with ol' Feldspar, living off the land, roasting marshmallows, and swapping tales of adventure!</Page>
+			<Page>Secondly, you could try floating your way out, which I wouldn't recommend on account of the myriad ravenous anglerfish.</Page>
+			<Page>You might think that the third option is to radio back home, but as you can probably imagine, that got kablooey'd along with everything else in my ship.</Page>
+			<Page>Now, don't start worrying about what's gonna happen to you! First off, you're not gonna die, not with me around. And secondly, I'm sure someone'll come rescue us. Eventually.</Page>
+			<Page>…Try not to worry about it, alright hatchling?</Page>
+		</Dialogue>
+		
+		<SetCondition>RH_FELDSPAR_SHIP_BREACH_TALKED</SetCondition>
+		<DialogueTarget>FeldsparPrimaryMenu</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>
