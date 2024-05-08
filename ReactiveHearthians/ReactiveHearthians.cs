@@ -105,6 +105,7 @@ namespace ReactiveHearthians
         public GameObject Attlerock;
         public GameObject Brittle_Hollow;
         public GameObject Dark_Bramble;
+        public GameObject Quantum_Moon;
 
         public GameObject Gabbro_Island;
 
@@ -202,6 +203,7 @@ namespace ReactiveHearthians
                     Attlerock = GameObject.Find("TimberMoon_Body");
                     Brittle_Hollow = GameObject.Find("BrittleHollow_Body");
                     Dark_Bramble = GameObject.Find("DarkBramble_Body");
+                    Quantum_Moon = GameObject.Find("QuantumMoon_Body");
 
                     Gabbro_Island = GameObject.Find("GabbroIsland_Body");
 

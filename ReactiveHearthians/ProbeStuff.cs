@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace ReactiveHearthians
 {
@@ -42,30 +43,33 @@ namespace ReactiveHearthians
                         probe = launchController._probeBody;
                     }
 
-                    float chertProbeDist = Vector3.Distance(probe.transform.position, HugModStuff.Instance.Chert_Standard.transform.position);
-                    float emberProbeDist = Vector3.Distance(probe.transform.position, ReactiveHearthians.Instance.Ember_Twin.transform.position);
-                    float chertEmberDist = Vector3.Distance(HugModStuff.Instance.Chert_Standard.transform.position, ReactiveHearthians.Instance.Ember_Twin.transform.position);
-
-                    // Getting a new lowest distance
-                    if (chertProbeDist < chertProbeLowestDistance)
+                    if (chertProbeSpotted == false)
                     {
-                        chertProbeLowestDistance = chertProbeDist;
-                        //ReactiveHearthians.Instance.ModHelper.Console.WriteLine("New lowest distance! Chert and the Probe are " + chertProbeLowestDistance.ToString() + " meters away.", MessageType.Success);
-                    }
+                        float chertProbeDist = Vector3.Distance(probe.transform.position, HugModStuff.Instance.Chert_Standard.transform.position);
 
-                    // Probe is in range for testing
-                    if (chertProbeSpotted == false && chertProbeDist < 170)
-                    {
-                        ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Probe is in range for testing.", MessageType.Success);
+                        // Probe is in range for testing
+                        if (chertProbeDist < 240)
+                        {
+                            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Probe is in range for testing; drawing a raycast.", MessageType.Success);
 
-                        if (emberProbeDist < chertEmberDist)
-                        {
-                            // The probe is closer to Ember Twin than Chert is to Ember Twin; this means the probe is below Chert's line of sight. Do nothing.
-                        }
-                        else
-                        {
-                            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Chert has spotted the probe!", MessageType.Success);
-                            chertProbeSpotted = true;
+                            // Copied raycast code
+                            int layerMask = OWLayerMask.groundMask;
+
+                            Vector3 chertPos = HugModStuff.Instance.Chert_Standard.transform.position;
+                            Vector3 probePos = probe.transform.position;
+
+                            RaycastHit hit;
+                            Physics.Raycast(chertPos, probePos - chertPos, out hit, 240, layerMask);
+                            Debug.DrawRay(chertPos, probePos - chertPos * hit.distance, Color.yellow);
+
+                            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Raycast hit this thing: " + hit.collider.ToString(), MessageType.Success);
+
+                            if (hit.collider.ToString() == "Structure_NOM_Probe_Renderer (UnityEngine.MeshCollider)")
+                            {
+                                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Chert has spotted the probe!", MessageType.Success);
+                                chertProbeSpotted = true;
+                                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", true);
+                            }
                         }
                     }
                 }

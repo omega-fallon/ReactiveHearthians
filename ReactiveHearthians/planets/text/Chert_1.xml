@@ -1,5 +1,68 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
 	<DialogueNode>
+		<Name>Chert_S1_ProbeSeen_First</Name>
+		<EntryCondition>RH_CHERT_PROBE_SPOTTED</EntryCondition>
+		<Dialogue>
+			<Page>Goodness, it’s you! Hello! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+			<Page>I'm not sure if you spotted it, but some kind of probe just flew straight past Ember Twin a little while ago! I barely had a chance to look at it before it was gone.</Page>
+			<Page>I can't possibly imagine where it might've come from.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I think it came from Giant's Deep. I saw it get fired when I woke up on Timber Hearth.</Text>
+				<DialogueTarget>Chert_S1_Probe_Origin</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_ProbeNearby_First</Name>
+		<EntryCondition>RH_CHERT_PROBE_SPOTTED</EntryCondition>
+		<EntryCondition>RH_CHERT_PROBE_NEARBY</EntryCondition>
+		<Dialogue>
+			<Page>Goodness, it’s you! Hello! I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+			<Page>I'm not sure if you spotted it, but some kind of probe landed here a little while ago! I can't possibly imagine where it might've come from. Once I'm done with my star charts, I plan on investigating it up close.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>I think it came from Giant's Deep. I saw it get fired when I woke up on Timber Hearth.</Text>
+				<DialogueTarget>Chert_S1_Probe_Origin</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>ChertFirstContact</RequiredPersistentCondition>
+				<Text>I have a question for you.</Text>
+				<DialogueTarget>Questions</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>What are you up to?</Text>
+				<DialogueTarget>ChertIntroExplanation</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S1_Probe_Origin</Name>
+		<Dialogue>
+			<Page>Really now? So that structure is some kind of probe cannon? Fascinating! I did happen to notice it looking a lot more... exploded apart than usual.</Page>
+			<Page> But why would it only fire now, after all this time sitting dormant? I highly doubt Gabbro could've gotten that old machinery to work, but then again, Gabbro is... well, Gabbro. Perhaps you ought to talk to them about it!</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	
+	<!-- Damage -->
+	<DialogueNode>
 		<Name>Chert_S1_Damage_First</Name>
 		<EntryCondition>RH_CHERT_IMPACT_DAMAGE</EntryCondition>
 		<Dialogue>
@@ -12,7 +75,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Chert_S1_Damage_TalkToAgain</Name>
@@ -25,7 +87,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 	</DialogueNode>
 
 	<!-- Fire -->
@@ -42,7 +103,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
@@ -57,7 +117,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<ConditionToCancel>RH_CHERT_FIRE_DAMAGED_RECENT</ConditionToCancel>
 		<SetCondition>RH_CHERT_FIRE_DIALOGUE_THISLOOP</SetCondition>
 	</DialogueNode>
@@ -75,7 +134,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 	</DialogueNode>
 	<DialogueNode>
@@ -88,7 +146,6 @@
 		
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		<SetCondition>RH_CHERT_ATE_BAD_MALLOW_DIALOGUE_THIS_LOOP</SetCondition>
 		
 		<DialogueTarget>Questions</DialogueTarget>
@@ -104,7 +161,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 		
 		<DialogueOptionsList>
 			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
@@ -120,7 +176,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
@@ -161,7 +216,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 
 		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
 
@@ -181,7 +235,6 @@
 
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
-		<SetPersistentCondition>ChertFirstContact</SetPersistentCondition>
 
 		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
 

@@ -44,6 +44,8 @@ namespace ReactiveHearthians
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S3", false);
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S2", false);
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S1", false);
+
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", false);
         }
 
         // Dialogue variables
@@ -311,8 +313,11 @@ namespace ReactiveHearthians
             // Ship nearby variables //
             // fill in
 
-            // Probe variables //
-            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", ProbeStuff.Instance.chertProbeSpotted);
+            // Probe nearby variables //
+            if (ProbeStuff.Instance.chertProbeSpotted && Vector3.Distance(ProbeStuff.Instance.probe.transform.position, HugModStuff.Instance.Chert_Standard.transform.position) <= 240)
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_NEARBY", true);
+            }
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated

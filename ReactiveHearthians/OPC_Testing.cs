@@ -51,7 +51,7 @@ namespace ReactiveHearthians.planets
 
             if (player == null)
             {
-                player = ReactiveHearthians.Instance.Dark_Bramble.GetAttachedOWRigidbody();
+                player = ReactiveHearthians.Instance.Ember_Twin.GetAttachedOWRigidbody();
                 ReactiveHearthians.Instance.ModHelper.Console.WriteLine(player.ToString());
             }
 
