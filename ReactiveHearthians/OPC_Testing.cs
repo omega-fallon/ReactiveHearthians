@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ReactiveHearthians.planets
 {
-    public class OPC_Targetting : MonoBehaviour
+    public class OPC_Testing : MonoBehaviour
     {
         private bool _hasHitplayer;
         private OWRigidbody player;
@@ -51,7 +51,7 @@ namespace ReactiveHearthians.planets
 
             if (player == null)
             {
-                player = ReactiveHearthians.Instance.Ember_Twin.GetAttachedOWRigidbody();
+                player = ReactiveHearthians.Instance.Dark_Bramble.GetAttachedOWRigidbody();
                 ReactiveHearthians.Instance.ModHelper.Console.WriteLine(player.ToString());
             }
 

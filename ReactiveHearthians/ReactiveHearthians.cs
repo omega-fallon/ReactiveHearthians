@@ -20,6 +20,7 @@
 // Add dialogue for the ship exploding near NPCs
 // Add dialogue for if your ship is busted, you can tell someone you're stuck on the planet
 // Make NPCs cower when the ship/probe lands nearby
+// Add dialogue for your ship being nearby a villager
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -92,8 +93,9 @@ namespace ReactiveHearthians
             gameObject.AddComponent<Damage>();
             gameObject.AddComponent<DialogueManage>();
             gameObject.AddComponent<HugModStuff>();
-            gameObject.AddComponent<OPC_Targetting>();
+            gameObject.AddComponent<OPC_Testing>();
             gameObject.AddComponent<ShipBreak>();
+            gameObject.AddComponent<ProbeStuff>();
         }
 
         // Various publics
@@ -102,6 +104,7 @@ namespace ReactiveHearthians
         public GameObject Timber_Hearth;
         public GameObject Attlerock;
         public GameObject Brittle_Hollow;
+        public GameObject Dark_Bramble;
 
         public GameObject Gabbro_Island;
 
@@ -198,6 +201,7 @@ namespace ReactiveHearthians
                     Timber_Hearth = GameObject.Find("TimberHearth_Body");
                     Attlerock = GameObject.Find("TimberMoon_Body");
                     Brittle_Hollow = GameObject.Find("BrittleHollow_Body");
+                    Dark_Bramble = GameObject.Find("DarkBramble_Body");
 
                     Gabbro_Island = GameObject.Find("GabbroIsland_Body");
 

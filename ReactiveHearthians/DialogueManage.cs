@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using HugMod;
+using NAudio.CoreAudioApi;
 using NewHorizons;
 using OWML.Common;
 using OWML.ModHelper;
@@ -306,6 +307,12 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_TUFF_IMPACT_DAMAGE", false);
             }
+
+            // Ship nearby variables //
+            // fill in
+
+            // Probe variables //
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", ProbeStuff.Instance.chertProbeSpotted);
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated

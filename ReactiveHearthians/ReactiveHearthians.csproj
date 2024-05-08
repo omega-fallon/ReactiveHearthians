@@ -41,6 +41,6 @@
     <None Include="addon-manifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="OPC_Targetting.cs" />
+    <None Include="OPC_Testing.cs" />
   </ItemGroup>
 </Project>
