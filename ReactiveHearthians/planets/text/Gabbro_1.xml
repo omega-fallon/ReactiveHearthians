@@ -82,4 +82,34 @@
 		<SetPersistentCondition>GABBRO_LOOPEND_TOLD</SetPersistentCondition>
 		<DialogueTarget>GabbroMenu</DialogueTarget>
 	</DialogueNode>
+	
+	<!-- Ship breach dialogue -->
+	<DialogueNode>
+		<Name>GabbroMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_GABBRO_SHIP_BREACH_TALKED</CancelledCondition>
+				<CancelledPersistentCondition>RH_GABBRO_SHIP_BREACH_EVER_TALKED</CancelledPersistentCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Gabbro_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_ShipHullBreach_Admit</Name>
+
+		<Dialogue>
+			<Page>Dang! That's rough, buddy. I'd offer to lend you mine, but ah... well, I have no idea where it is.</Page>
+			<Page>It’s definitely on this planet <![CDATA[<i>]]>some<![CDATA[</i>]]>where. I mean, unless a cyclone came by and tossed it into space, I guess. Heh, that would be pretty nuts.</Page>
+			<Page>I hope it’s not lonely.</Page>
+			<Page>Speaking of lonely, I may or may not have been getting a little bit of that myself, so this is perfect! That's right, you're stuck with me until the end of time!</Page>
+			<Page>Ah, I kid, I kid. Seriously, though, I'm gonna have to head back home at some point. I'll take you with me. Until then, enjoy my company and have fun on Giant's Deep! It's really not that bad, I promise!</Page>
+		</Dialogue>
+
+		<SetCondition>RH_GABBRO_SHIP_BREACH_TALKED</SetCondition>
+		<SetPersistentCondition>RH_GABBRO_SHIP_BREACH_EVER_TALKED</SetPersistentCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
 </DialogueTree>

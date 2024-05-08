@@ -271,4 +271,38 @@
 			<Page>…</Page>
 		</Dialogue>
 	</DialogueNode>
+
+	<!-- Ship breach dialogue -->
+	<DialogueNode>
+		<Name>GabbroMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_GABBRO_SHIP_BREACH_TALKED</CancelledCondition>
+				<CancelledPersistentCondition>RH_GABBRO_SHIP_BREACH_EVER_TALKED</CancelledPersistentCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Gabbro_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_GABBRO_SHIP_BREACH_TALKED</CancelledCondition>
+				<RequiredPersistentCondition>RH_GABBRO_SHIP_BREACH_EVER_TALKED</RequiredPersistentCondition>
+				<Text>I totalled my ship again.</Text>
+				<DialogueTarget>Gabbro_RH_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_ShipHullBreach_Admit</Name>
+
+		<Dialogue>
+			<Page>Ha! Nice. It must be fun doing that without having to worry about the consequences.</Page>
+			<Page>I wonder how far you could eject yourself into space? No reason not to push that big red button anymore, right?</Page>
+		</Dialogue>
+
+		<SetCondition>RH_GABBRO_SHIP_BREACH_TALKED</SetCondition>
+		<SetPersistentCondition>RH_GABBRO_SHIP_BREACH_EVER_TALKED</SetPersistentCondition>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
 </DialogueTree>
