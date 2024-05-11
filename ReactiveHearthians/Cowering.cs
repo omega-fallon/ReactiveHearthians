@@ -25,7 +25,7 @@ namespace ReactiveHearthians
         public CowerAnimTriggerVolume cower_volume_rutile;
         public CowerAnimTriggerVolume cower_volume_porphy;
 
-        private List<CowerAnimTriggerVolume> cower_volumes;
+        public List<CowerAnimTriggerVolume> cower_volumes;
 
         public void Start()
         {
@@ -122,9 +122,9 @@ namespace ReactiveHearthians
             {
                 // Do nothing; function has already been run before
             }
-            else if (deathType == DeathType.TimeLoop)
+            else if (deathType == DeathType.TimeLoop || deathType == DeathType.Meditation)
             {
-                // Do nothing, this is the "purple lines at the edge of the screen" death
+                // Do nothing, this is the "purple lines at the edge of the screen" death and meditation death respectively
             }
             else
             {
@@ -145,7 +145,7 @@ namespace ReactiveHearthians
             }
         }
 
-        private IEnumerator Coweroutine(Animator animator, float time)
+        public IEnumerator Coweroutine(Animator animator, float time_min, float time_max=9999)
         {
             if (HugModStuff.Instance.hugApi != null)
             {
@@ -158,11 +158,11 @@ namespace ReactiveHearthians
                 if (huggable != null) HugModStuff.Instance.hugApi.SetAnimationTrigger(huggable, (int)HugTrigger.None);
             }
 
-            while (TimeLoop.GetSecondsElapsed() < time) yield return null;
+            while (TimeLoop.GetSecondsElapsed() < time_min) yield return null;
             animator.SetTrigger("ProbeDodge");
             while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") && !animator.GetCurrentAnimatorStateInfo(1).IsName("Cower 2")) yield return null;
             var n = animator.GetCurrentAnimatorStateInfo(0).IsName("Cower 2") ? 0 : 1;
-            while (true)
+            while (TimeLoop.GetSecondsElapsed() < time_max)
             {
                 var info = animator.GetCurrentAnimatorStateInfo(n);
                 if (info.normalizedTime * info.length >= 0.2f) animator.CrossFade("Cower 2", 0.2f, n, -0.2f);

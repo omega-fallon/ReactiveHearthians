@@ -51,7 +51,7 @@ namespace ReactiveHearthians.planets
 
             if (player == null)
             {
-                player = ReactiveHearthians.Instance.Ember_Twin.GetAttachedOWRigidbody();
+                player = ReactiveHearthians.Instance.Timber_Hearth.GetAttachedOWRigidbody();
                 ReactiveHearthians.Instance.ModHelper.Console.WriteLine(player.ToString());
             }
 
@@ -70,9 +70,7 @@ namespace ReactiveHearthians.planets
 
             probe.SetVelocity(probe.transform.TransformDirection(new Vector3(-1, 0, 0) * newSpeed));
 
-            return;
-
-            if (Vector3.Distance(player.GetPosition(), probe.GetPosition()) <= 50f)
+            if (Vector3.Distance(player.GetPosition(), probe.GetPosition()) <= 75f)
             {
                 ReactiveHearthians.Instance.ModHelper.Console.WriteLine($"HIT player!");
                 _hasHitplayer = true;

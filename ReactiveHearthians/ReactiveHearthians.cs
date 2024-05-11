@@ -1,5 +1,9 @@
 ﻿// THANKS TO: Xen, Lutias Kokopelli, Ixrec, viovayo, Magister Dragon
 
+// INVALID LIST:
+// Pick up Chert dialogue - NOT DOING THIS
+// Add dialogue for the Probe landing near NPCs - INVALID; PROBE IS INTANGIBLE
+
 // TODO LIST:
 // Change Riebeck’s introductory message that they start a conversation with if the player has told them about Solanum (sort of how the message Chert greets you with changes if you tell them about the time loop or they realize that the sun is going to blow)
 // Also make Riebeck acknowledge that nearby chunks of BH have fallen throughout the loop
@@ -14,13 +18,12 @@
 // Add dialogue for slide reel burning
 // Add damage dialogue
 // Chert wakes you up if you're sleeping at their camp once they go to their third phase
-// Pick up Chert dialogue - NOT DOING THIS
-// Add dialogue for the Probe landing near NPCs
-// Add dialogue for the probe passing by Chert
 // Add dialogue for the ship exploding near NPCs
-// Add dialogue for if your ship is busted, you can tell someone you're stuck on the planet
-// Make NPCs cower when the ship/probe lands nearby
+// Make NPCs cower when the ship lands nearby
 // Add dialogue for your ship being nearby a villager
+// Add specific dialogue for Stranger lanterns and reels
+// Riebeck Solanum followup
+// Solanum dialogue for a subsequent talk with her
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -51,6 +54,11 @@
 // Change Gabbro dialogue on first loop if you do the geyser skip
 // Fix node redirects
 // Have Chert's drumming turn chaotic and meloncholy at phases 3 and 4 respectively (kind of accomplished)
+// Add dialogue for the probe passing by Chert
+// Tell Riebeck about the writing on Hollow's Lantern
+// Tell Riebeck you've gone through the black hole at the center of Brittle Hollow
+// Add dialogue for if your ship is busted, you can tell someone you're stuck on the planet
+// Tell Chert about the Stranger
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -93,9 +101,11 @@ namespace ReactiveHearthians
             gameObject.AddComponent<Damage>();
             gameObject.AddComponent<DialogueManage>();
             gameObject.AddComponent<HugModStuff>();
-            gameObject.AddComponent<OPC_Testing>();
+            //gameObject.AddComponent<OPC_Testing>();
             gameObject.AddComponent<ShipBreak>();
             gameObject.AddComponent<ProbeStuff>();
+            gameObject.AddComponent<BlackHoleTracker>();
+            gameObject.AddComponent<SlideReelBurning>();
         }
 
         // Various publics

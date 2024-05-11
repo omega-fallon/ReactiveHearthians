@@ -1,5 +1,5 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
-	<!-- Stranger & mod stuff -->
+	<!-- New dialogue options -->
 	<DialogueNode>
 		<Name>RiebeckLearned</Name>
 		<DialogueOptionsList>
@@ -9,31 +9,74 @@
 				<Text>I found a hidden planet in our solar system.</Text>
 				<DialogueTarget>RiebeckLearned_RH_Stranger</DialogueTarget>
 			</DialogueOption>
-		</DialogueOptionsList>
-		<DialogueOptionsList>
 			<DialogueOption>
 				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
 				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
 				<CancelledLogCondition>codex_astral_codex_species</CancelledLogCondition>
-				<Text>I found a space station far below the orbital plane.</Text>
+				<Text>I found an invisible space station far below the orbital plane.</Text>
 				<DialogueTarget>RiebeckLearned_RH_LingeringChime</DialogueTarget>
 			</DialogueOption>
-		</DialogueOptionsList>
-		<DialogueOptionsList>
 			<DialogueOption>
 				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
 				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
 				<RequiredLogCondition>codex_astral_codex_species</RequiredLogCondition>
-				<Text>I found a space station far below the orbital plane that comes from the universe before ours.</Text>
+				<Text>I found an invisible space station far below the orbital plane that comes from the universe before ours.</Text>
 				<DialogueTarget>RiebeckLearned_RH_LingeringChime_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredLogCondition>VM_VOLCANO_X3</RequiredLogCondition>
+				<Text>I found Nomai writing on Hollow's Lantern.</Text>
+				<DialogueTarget>RiebeckLearned_RH_HollowsLantern</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SUCCESSFUL_RETURN_TO_BH</RequiredPersistentCondition>
+				<Text>I fell into the black hole below us and came back here!</Text>
+				<DialogueTarget>RiebeckLearned_RH_BlackHoleReturn</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>RiebeckLearned_RH_HollowsLantern</Name>
+		<Dialogue>
+			<Page>Wait, there's stuff <![CDATA[<i>on</i>]]> Hollow's Lantern? I thought it was all just lava and volca…</Page>
+			<Page>Oh Hearth, you're kidding. You went <![CDATA[<i>inside</i>]]> of one? Feldspar would be proud, I guess.</Page>
+			<Page>Well, I'm glad you made it out alright! Geez!! So they were talking about mining ore on Timber Hearth to be used in the "Ash Twin Project"?</Page>
+			<Page>Interesting. I can't say I've ever heard of that before! As far as I can tell, all Ash Twin has are teleportation towers and solar panels.</Page>
+			<Page>And they wanted the material to be supernova-proof? That seems… excessive, honestly. Did they think our sun was going to go supernova? That'd be odd, because clearly it hasn't, and that was hundreds of thousands of years ago.</Page>
+			<Page>Well! I certainly appreciate you telling me that. Much to think about!</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>RiebeckLearned_RH_BlackHoleReturn</Name>
+		<Dialogue>
+			<Page>WHAT?!</Page>
+			<Page>Wh-wh, you… how?!</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>There's a teleporter station on the other side that can send you back to Brittle Hollow.</Text>
+				<DialogueTarget>RiebeckLearned_RH_BlackHoleReturn2</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
 	<DialogueNode>
+		<Name>RiebeckLearned_RH_BlackHoleReturn2</Name>
+		<Dialogue>
+			<Page>Oh. Oh! <![CDATA[<size=20>]]>Heh, yeah, that makes sense.<![CDATA[</size>]]> O-of course! It's just like the Nomai to have a safety measure like that installed.</Page>
+			<Page>That, umm… kind of makes me feel maybe a little bit slightly better? <![CDATA[<size=20>]]>Maybe?<![CDATA[</size>]]></Page>
+			<Page>I mean, at least now I know I won't be guaranteed to die. It's still, um, pretty scary, though, so I'll pass on testing that for myself.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	
+	<DialogueNode>
 		<Name>RiebeckLearned_RH_Stranger</Name>
 		<Dialogue>
 			<Page>WHAT?!<![CDATA[<Pause=1>]]> I'm sorry, hang on a second, I need to compose myself.</Page>
-			<Page>Mmm, okay.<![CDATA[<Pause=1>]]> WHAT?! Okay, so this entire time, there's been a secret ring world orbiting our sun and the only reason we ever even found out about it is because its cloaking mechanism makes it block the sun's light when it passes in front of it?!</Page>
+			<Page>Mmm, okay.<![CDATA[<Pause=1>]]> WHAT?!<![CDATA[<Pause=1>]]> Okay, so this entire time, there's been a secret ring world orbiting our sun and the only reason we ever even found out about it is because its cloaking mechanism makes it block the sun's light when it passes in front of it?!</Page>
 			<Page>AND IT ISN'T EVEN NOMAIAN?!</Page>
 			<Page>Okay. Okay. Whew… easy now, Riebeck.</Page>
 			<Page>Sorry, just… we only <![CDATA[<i>recently</i>]]> nailed down translating Nomai text. And there's still so much we don't know about them! And now you're telling me there's <![CDATA[<i>another</i>]]>, <![CDATA[<i>totally separate</i>]]> alien race in this system for us to investigate?</Page>
@@ -64,6 +107,16 @@
 		</Dialogue>
 		<SetCondition>RIEBECK_KNOWS_CHIME</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Questions</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<EntryCondition></EntryCondition>
+				<Text>Do you want to talk more about that living Nomai I found?</Text>
+			</DialogueOption>
+		</DialogueOptionsList>
 	</DialogueNode>
 	
 	<!-- Standard reaction stuff -->

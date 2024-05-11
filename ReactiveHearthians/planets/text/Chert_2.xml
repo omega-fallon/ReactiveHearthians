@@ -215,6 +215,33 @@
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 
+	<!-- New discoveries -->
+	<DialogueNode>
+		<Name>FoundSomethingMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>CHERT_KNOWS_STRANGER</CancelledCondition>
+				<RequiredLogCondition>IP_RING_WORLD_X1</RequiredLogCondition>
+				<Text>I found a hidden ring world in our solar system!</Text>
+				<DialogueTarget>Chert_S1_Stranger</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Stranger</Name>
+		<Dialogue>
+			<Page>Really?! Goodness, that's fascinating!</Page>
+			<Page>It's surrounded by some sort of cloaking field? It's just… been there the whole time?</Page>
+			<Page>And… there's… another species in there? It's not Nomaian, it's… froms somewhere else?</Page>
+			<Page>Oh my, that's… wow, that's a lot for me to take in all at once. It frankly frightens me a little.</Page>
+			<Page>Who knows how long they've just been… watching us, without us ever knowing. Agh! It's giving me the creeps just thinking about it!</Page>
+			<Page>Have fun investigating that! I think I'll stay right here, thank you very much.</Page>
+		</Dialogue>
+		<SetCondition>CHERT_KNOWS_STRANGER</SetCondition>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Redirect -->
 	<DialogueNode>
 		<EntryCondition>ChertBreakdownNomai</EntryCondition>
 		<Name>ChertBreakdownNomai_2</Name>

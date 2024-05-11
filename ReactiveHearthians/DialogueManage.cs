@@ -155,6 +155,12 @@ namespace ReactiveHearthians
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_BOOM", true);
             }
 
+            // Solanum met, setting to a standard variable //
+            if (PlayerData.GetPersistentCondition("MET_SOLANUM"))
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_SOLANUM_MET", true);
+            }
+
             // Campfire recency checks //
             if (DialogueConditionManager.SharedInstance.GetConditionState("RH_SLATE_FIRE_DIALOGUE_THISLOOP") != true && DialogueConditionManager.SharedInstance.GetConditionState("RH_SLATE_FIRE_DAMAGED") && TimeLoop.GetSecondsElapsed() - Damage.Instance.hazardvolume_slatefire_lasttouched <= 10)
             {
@@ -311,17 +317,14 @@ namespace ReactiveHearthians
             }
 
             // Ship nearby variables //
-            // fill in
-
-            // Probe nearby variables //
-            if (ProbeStuff.Instance.chertProbeSpotted && Vector3.Distance(ProbeStuff.Instance.probe.transform.position, HugModStuff.Instance.Chert_Standard.transform.position) <= 240)
+            if (ReactiveHearthians.Instance.loadedScene == "vanilla" && Vector3.Distance(Locator.GetShipBody().GetPosition(), HugModStuff.Instance.Porphy_Standard.transform.position) <= 50)
             {
-                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_NEARBY", true);
+                // fill in
             }
 
             // Misc variables //
             // This variable is set true if the ATP is deactivated
-            if (ReactiveHearthians.Instance.TheMountain != null && !(ReactiveHearthians.Instance.TheMountain._warpCoreSocket.IsSocketOccupied() && ReactiveHearthians.Instance.TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel))
+            if (ReactiveHearthians.Instance.loadedScene == "vanilla" && ReactiveHearthians.Instance.TheMountain != null && !(ReactiveHearthians.Instance.TheMountain._warpCoreSocket.IsSocketOccupied() && ReactiveHearthians.Instance.TheMountain._warpCoreSocket.GetWarpCoreType() == WarpCoreType.Vessel))
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_ATPDOWN", true);
             }
@@ -420,23 +423,23 @@ namespace ReactiveHearthians
             }
 
             // Chert position variables //
+            // Resetting these first
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_EMBER_TWIN", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ASH_TWIN", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_TIMBER_HEARTH", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ATTLEROCK", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_BRITTLE_HOLLOW", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_HOLLOW_LANTERN", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_GIANTS_DEEP", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_DARK_BRAMBLE", false);
+            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_QUANTUM_MOON", false);
+
             if (ReactiveHearthians.Instance.loadedScene == "vanilla")
             {
                 if (ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("orclecle.PickUpChert") != null)
                 {
                     GameObject chertObject = GameObject.Find("Traveller_HEA_Chert");
                     OWRigidbody chertBody = chertObject.GetAttachedOWRigidbody();
-
-                    // Resetting these first
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_EMBER_TWIN", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ASH_TWIN", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_TIMBER_HEARTH", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_ATTLEROCK", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_BRITTLE_HOLLOW", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_HOLLOW_LANTERN", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_GIANTS_DEEP", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_DARK_BRAMBLE", false);
-                    DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_ON_QUANTUM_MOON", false);
 
                     // Setting a variable based on which body Chert is on
                     switch (chertBody.ToString())
@@ -490,7 +493,7 @@ namespace ReactiveHearthians
                             }
                             else
                             {
-                                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Chert is on " + chertBody.ToString(), MessageType.Success);
+                                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("No variable set. Chert is on " + chertBody.ToString(), MessageType.Success);
                             }
                             break;
                     }

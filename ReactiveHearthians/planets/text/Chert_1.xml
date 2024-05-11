@@ -55,8 +55,8 @@
 	<DialogueNode>
 		<Name>Chert_S1_Probe_Origin</Name>
 		<Dialogue>
-			<Page>Really now? So that structure is some kind of probe cannon? Fascinating! I did happen to notice it looking a lot more... exploded apart than usual.</Page>
-			<Page> But why would it only fire now, after all this time sitting dormant? I highly doubt Gabbro could've gotten that old machinery to work, but then again, Gabbro is... well, Gabbro. Perhaps you ought to talk to them about it!</Page>
+			<Page>Really now? So that structure is some kind of probe cannon? Fascinating! I did happen to notice it looking a lot more… exploded apart than usual.</Page>
+			<Page> But why would it only fire now, after all this time sitting dormant? I highly doubt Gabbro could've gotten that old machinery to work, but then again, Gabbro is… well, Gabbro. Perhaps you ought to talk to them about it!</Page>
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
@@ -151,6 +151,7 @@
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 
+	<!-- Hugged -->
 	<DialogueNode>
 		<Name>Chert_S1_Hugged</Name>
 		<EntryCondition>RH_CHERT_HUGGED_S1</EntryCondition>
@@ -178,6 +179,38 @@
 		<SetCondition>METCHERT_1</SetCondition>
 
 		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- Slide reel  burned -->
+	<DialogueNode>
+		<Name>Chert_S1_SlideReelBurned</Name>
+		<EntryCondition>RH_CHERT_SLIDEREEL_BURNED</EntryCondition>
+		<Dialogue>
+			<Page>What was that you threw into the fire? It seemed... somewhat valueable.</Page>
+			<Page>Regardless, it's good to see you. I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
+		</Dialogue>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
+
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>ChertIntro1</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_SlideReelBurned_TalkToAgain</Name>
+		<EntryCondition>RH_CHERT_SLIDEREEL_BURNED</EntryCondition>
+		<Dialogue>
+			<Page>What was that you threw into the fire? It seemed... somewhat valueable.</Page>
+			<Page>Well, regardless, what can I do for you?</Page>
+		</Dialogue>
+
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>Questions</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+
+		<SetCondition>SaidHiToChert</SetCondition>
+		<SetCondition>METCHERT_1</SetCondition>
 	</DialogueNode>
 
 	<!-- Ship breach dialogue -->
@@ -248,6 +281,32 @@
 			<Page>Hello again, friend. I hope you're fairing well out here!</Page>
 		</Dialogue>
 
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+
+	<!-- New discoveries -->
+	<DialogueNode>
+		<Name>FoundSomethingMenu</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>CHERT_KNOWS_STRANGER</CancelledCondition>
+				<RequiredLogCondition>IP_RING_WORLD_X1</RequiredLogCondition>
+				<Text>I found a hidden ring world in our solar system!</Text>
+				<DialogueTarget>Chert_S1_Stranger</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Stranger</Name>
+		<Dialogue>
+			<Page>Really?! Goodness, that's fascinating!</Page>
+			<Page>It's surrounded by some sort of cloaking field? It's just… been there the whole time?</Page>
+			<Page>And… there's… another species in there? It's not Nomaian, it's… froms somewhere else?</Page>
+			<Page>Oh my, that's… wow, that's a lot for me to take in all at once. It frankly frightens me a little.</Page>
+			<Page>Who knows how long they've just been… watching us, without us ever knowing. Agh! It's giving me the creeps just thinking about it!</Page>
+			<Page>Have fun investigating that! I think I'll stay right here, thank you very much.</Page>
+		</Dialogue>
+		<SetCondition>CHERT_KNOWS_STRANGER</SetCondition>
 		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 

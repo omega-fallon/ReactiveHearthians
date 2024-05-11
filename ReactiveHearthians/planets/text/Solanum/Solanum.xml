@@ -1,0 +1,20 @@
+﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<DialogueNode>
+		<Name>RH_Solanum_Intro</Name>
+		<EntryCondition>RH_SOLANUM_MET</EntryCondition>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Hello?</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Can you understand anything I'm saying?</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<EntryCondition>RH_ATPDOWN</EntryCondition>
+				<Text>We're here forever now.</Text>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+</DialogueTree>

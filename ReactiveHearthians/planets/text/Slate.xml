@@ -105,7 +105,27 @@
 			<Page>Oh! Hatchling, what're you doing back here so soon? Get back up there and have some fun!</Page>
 			<Page>Don't tell me you're getting cold feet now… come on, it's perfectly safe, swear on my top eyes.</Page>
 		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_SLATE_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>Hey, umm… my ship's broken.</Text>
+				<DialogueTarget>Slate_RH_ShipBreachAdmit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Slate_RH_ShipBreachAdmit</Name>
+		<Dialogue>
+			<Page>…</Page>
+			<Page><![CDATA[<color=grey>Sigh…</color>]]><![CDATA[<Pause/>]]> that's… I…</Page>
+			<Page>Alright. Well, back to the drawing board, I guess. And you'll be back in training. And basically all our progress is completely undone.</Page>
+			<Page>Great.</Page>
+		</Dialogue>
+		<SetCondition>RH_SLATE_SHIP_BREACH_TALKED</SetCondition>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Scientist_RH_Space_Fire</Name>
 		<EntryCondition>RH_SLATE_FIRE_DAMAGED_RECENT</EntryCondition>
@@ -226,6 +246,13 @@
 		<EntryCondition>SCIENTIST_RH_DISTRAUGHT</EntryCondition>
 		<Dialogue>
 			 <Page>No, no… it couldn't be. Chert would've seen it coming… right?</Page>
+		</Dialogue>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Slate_RH_ShipBreach_NoTalk</Name>
+		<EntryCondition>RH_SLATE_SHIP_BREACH_TALKED</EntryCondition>
+		<Dialogue>
+			<Page>Don't talk to me.</Page>
 		</Dialogue>
 	</DialogueNode>
 	<DialogueNode>

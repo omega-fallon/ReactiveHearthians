@@ -38,6 +38,28 @@ namespace ReactiveHearthians
                     DialogueConditionManager.SharedInstance.SetConditionState("RH_SHIP_EJECTED", true);
                 }
             }
+
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(ShipDamageController), nameof(ShipDamageController.Explode))]
+            public static void ShipExplode_PostFix(ShipDamageController __instance)
+            {
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Ship has exploded!", MessageType.Success);
+
+                // Proximity to people - fix this!
+                if (Vector3.Distance(__instance.transform.position, HugModStuff.Instance.Porphy_Standard.transform.position) <= 150)
+                {
+                    DialogueConditionManager.SharedInstance.SetConditionState("RH_VILLAGE_SHIP_EXPLODED", true);
+                }
+
+                // Cower code
+                foreach (CowerAnimTriggerVolume cower_volume in Cowering.Instance.cower_volumes)
+                {
+                    if (cower_volume.gameObject.activeInHierarchy)
+                    {
+                        cower_volume.StartCoroutine(Cowering.Instance.Coweroutine(cower_volume._animator, 0, TimeLoop.GetSecondsElapsed()+5));
+                    }
+                }
+            }
         }
 
         public void Start()

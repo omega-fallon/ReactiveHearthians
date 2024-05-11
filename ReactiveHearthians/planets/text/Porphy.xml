@@ -91,6 +91,15 @@
 		</Dialogue>
 		<ConditionToCancel>RH_PORPHY_HUGGED</ConditionToCancel>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Porphy_RH_ShipExploded</Name>
+		<EntryCondition>RH_VILLAGE_SHIP_EXPLODED</EntryCondition>
+		<Dialogue>
+			<Page>Hearth's name! That</Page>
+		</Dialogue>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Porphy_RH_Distraught</Name>
 		<EntryCondition>PORPHY_RH_DISTRAUGHT</EntryCondition>
