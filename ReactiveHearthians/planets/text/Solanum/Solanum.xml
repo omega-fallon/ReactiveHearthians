@@ -2,19 +2,101 @@
 	<DialogueNode>
 		<Name>RH_Solanum_Intro</Name>
 		<EntryCondition>RH_SOLANUM_MET</EntryCondition>
+		<Dialogue>
+			<Page>…</Page>
+		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<Text>Hello?</Text>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_TWICE</CancelledPersistentCondition>
+				<Text>Hello again.</Text>
 				<DialogueTarget>Nomai2</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<Text>Can you understand anything I'm saying?</Text>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_TWICE</CancelledPersistentCondition>
+				<Text>Can you understand anything I'm saying? Anything at all?</Text>
 				<DialogueTarget>Nomai2</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<EntryCondition>RH_ATPDOWN</EntryCondition>
+				<RequiredCondition>RH_ATPDOWN</RequiredCondition>
 				<Text>We're here forever now.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_TWICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_THRICE</CancelledPersistentCondition>
+				<Text>Everyone you know is dead.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_TWICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_THRICE</CancelledPersistentCondition>
+				<Text>Could you please take your mask off?</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_TWICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_THRICE</CancelledPersistentCondition>
+				<Text>I don't know why I keep coming back.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>RH_SOLANUM_HUGGED</RequiredCondition>
+				<Text>You're very soft and warm.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_THRICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</CancelledPersistentCondition>
+				<Text>How does it feel, being the last one?</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_THRICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</CancelledPersistentCondition>
+				<Text>I feel so lonely all the time.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_THRICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</CancelledPersistentCondition>
+				<Text>I can't get you out of my head.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_THRICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</CancelledPersistentCondition>
+				<Text>You're more dead than alive.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_THRICE</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</CancelledPersistentCondition>
+				<Text>I know what it's like to die. You're not alone.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_TEN_TIMES</CancelledPersistentCondition>
+				<Text>I think I might be a little obsessed with you.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_FIVE_TIMES</RequiredPersistentCondition>
+				<CancelledPersistentCondition>RH_SOLANUM_TALKED_TEN_TIMES</CancelledPersistentCondition>
+				<Text>I wish you could understand.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_TEN_TIMES</RequiredPersistentCondition>
+				<Text>I think I love you.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>RH_SOLANUM_TALKED_TEN_TIMES</RequiredPersistentCondition>
+				<Text>I can't get you out of my head.</Text>
+				<DialogueTarget>Nomai2</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
+		<SetPersistentCondition>RH_SOLANUM_TALKED_TWICE</SetPersistentCondition>
 	</DialogueNode>
 </DialogueTree>

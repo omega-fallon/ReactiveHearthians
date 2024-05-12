@@ -22,12 +22,52 @@ namespace ReactiveHearthians
             Instance = this;
         }
 
+        public int solanumConversationCount;
+
         public void Start()
         {
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
         }
-        
+
+        // Doing stuff based on which person you're talking to
+        [HarmonyPatch]
+        public class MyPatchClass
+        {
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(CharacterDialogueTree), nameof(CharacterDialogueTree.EndConversation))]
+            public static void ConversationEnd_PostFix(CharacterDialogueTree __instance)
+            {
+                string name = __instance._xmlCharacterDialogueAsset.name.ToString();
+
+                // Counting times talked to Solanum
+                if (ReactiveHearthians.Instance.loadedScene == "vanilla" && name == "Solanum" && __instance.InConversation())
+                {
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Character talked to is " + name, MessageType.Success);
+
+                    DialogueManage.Instance.solanumConversationCount += 1;
+
+                    if (DialogueManage.Instance.solanumConversationCount >= 2)
+                    {
+                        PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_TWICE", true);
+                    }
+                    if (DialogueManage.Instance.solanumConversationCount >= 3)
+                    {
+                        PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_THRICE", true);
+                    }
+                    if (DialogueManage.Instance.solanumConversationCount >= 5)
+                    {
+                        PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_FIVE_TIMES", true);
+                    }
+                    if (DialogueManage.Instance.solanumConversationCount >= 10)
+                    {
+                        PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_TEN_TIMES", true);
+                    }
+                }
+            }
+        }
+
+
         // Resetting dialogue variables
         public void OnExitConversation()
         {

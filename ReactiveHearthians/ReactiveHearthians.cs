@@ -24,6 +24,7 @@
 // Add specific dialogue for Stranger lanterns and reels
 // Riebeck Solanum followup
 // Solanum dialogue for a subsequent talk with her
+// Make the entire village panic
 
 // DONE LIST
 // option to tell Riebeck about the Stranger

@@ -77,29 +77,12 @@
 	</DialogueNode>
 	
 	<DialogueNode>
-		<Name>FeldsparSecondary</Name>
+		<Name>FoundSomethingMenu</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
 				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
-				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
-				<Text>I landed on the Sun Station.</Text>
-				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
-			</DialogueOption>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_INTERLOPERBRAG</CancelledCondition>
-				<RequiredLogCondition>COMET_INTERIOR_X1</RequiredLogCondition>
-				<Text>I went inside the Interloper.</Text>
-				<DialogueTarget>Feldspar_RH_InterloperBrag</DialogueTarget>
-			</DialogueOption>
-		</DialogueOptionsList>
-	</DialogueNode>
-	<DialogueNode>
-		<Name>FeldsparPrimaryMenu</Name>
-		<DialogueOptionsList>
-			<DialogueOption>
-				<CancelledCondition>FELDSPAR_RH_SUNSTATIONBRAG</CancelledCondition>
-				<RequiredCondition>FLEW_TO_SS</RequiredCondition>
-				<Text>I landed on the Sun Station.</Text>
+				<RequiredPersistentCondition>FLEW_TO_SS</RequiredPersistentCondition>
+				<Text>I landed on the Sun Station with my ship.</Text>
 				<DialogueTarget>Feldspar_RH_SunStationBrag</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
@@ -173,7 +156,7 @@
 	</DialogueNode>
 	
 	<!-- Ship breach dialogue -->
-	\<DialogueNode>
+	<DialogueNode>
 		<Name>FeldsparPrimaryMenu</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
