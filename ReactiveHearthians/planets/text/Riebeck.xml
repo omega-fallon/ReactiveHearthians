@@ -13,6 +13,7 @@
 				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
 				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
 				<CancelledLogCondition>codex_astral_codex_species</CancelledLogCondition>
+				<RequiredCondition>ASTRAL_CODEC</RequiredCondition>
 				<Text>I found an invisible space station far below the orbital plane.</Text>
 				<DialogueTarget>RiebeckLearned_RH_LingeringChime</DialogueTarget>
 			</DialogueOption>
@@ -20,6 +21,7 @@
 				<CancelledCondition>RIEBECK_KNOWS_CHIME</CancelledCondition>
 				<RequiredLogCondition>codex_lingering_chime</RequiredLogCondition>
 				<RequiredLogCondition>codex_astral_codex_species</RequiredLogCondition>
+				<RequiredCondition>ASTRAL_CODEC</RequiredCondition>
 				<Text>I found an invisible space station far below the orbital plane that comes from the universe before ours.</Text>
 				<DialogueTarget>RiebeckLearned_RH_LingeringChime_2</DialogueTarget>
 			</DialogueOption>
