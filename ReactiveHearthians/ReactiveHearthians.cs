@@ -23,8 +23,11 @@
 // Add dialogue for your ship being nearby a villager
 // Add specific dialogue for Stranger lanterns and reels
 // Riebeck Solanum followup
-// Solanum dialogue for a subsequent talk with her
 // Make the entire village panic
+// Tell Feldspar about the Stranger; they'd want to know there's something in the solar system they missed
+// Tell Feldspar their first campsite choice (the jellyfish) is outside of dark bramble
+// GHOST BUSTER: Tell someone that you killed an Owlk
+// Tell travelers that Feldspar is alive
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -60,6 +63,8 @@
 // Tell Riebeck you've gone through the black hole at the center of Brittle Hollow
 // Add dialogue for if your ship is busted, you can tell someone you're stuck on the planet
 // Tell Chert about the Stranger
+// Solanum dialogue for a subsequent talk with her
+// Talk to Gabbro about ways you've died
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
@@ -107,6 +112,7 @@ namespace ReactiveHearthians
             gameObject.AddComponent<ProbeStuff>();
             gameObject.AddComponent<BlackHoleTracker>();
             gameObject.AddComponent<SlideReelBurning>();
+            gameObject.AddComponent<DeathTypeTracker>();
         }
 
         // Various publics
@@ -115,8 +121,12 @@ namespace ReactiveHearthians
         public GameObject Timber_Hearth;
         public GameObject Attlerock;
         public GameObject Brittle_Hollow;
+        public GameObject Hollows_Lantern;
+        public GameObject Giants_Deep;
         public GameObject Dark_Bramble;
         public GameObject Quantum_Moon;
+        public GameObject AshTwinProject;
+        public GameObject The_Stranger;
 
         public GameObject Gabbro_Island;
 
@@ -186,6 +196,9 @@ namespace ReactiveHearthians
                 Play_As_Gabbro_Installed = false;
             }
 
+            // Current language
+            ModHelper.Console.WriteLine("The current language is: " + PlayerData.GetSavedLanguage().ToString(), MessageType.Success);
+
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
             {
@@ -213,8 +226,12 @@ namespace ReactiveHearthians
                     Timber_Hearth = GameObject.Find("TimberHearth_Body");
                     Attlerock = GameObject.Find("TimberMoon_Body");
                     Brittle_Hollow = GameObject.Find("BrittleHollow_Body");
+                    Hollows_Lantern = GameObject.Find("VolcanicMoon_Body");
+                    Giants_Deep = GameObject.Find("GiantsDeep_Body");
                     Dark_Bramble = GameObject.Find("DarkBramble_Body");
                     Quantum_Moon = GameObject.Find("QuantumMoon_Body");
+                    AshTwinProject = GameObject.Find("TimeLoopRing_Body");
+                    The_Stranger = GameObject.Find("RingWorld_Body");
 
                     Gabbro_Island = GameObject.Find("GabbroIsland_Body");
 

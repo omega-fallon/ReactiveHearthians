@@ -115,7 +115,7 @@
 		<Name>Questions</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<EntryCondition></EntryCondition>
+				<EntryCondition>RIEBECK_KNOWS_SOLANUM</EntryCondition>
 				<Text>Do you want to talk more about that living Nomai I found?</Text>
 			</DialogueOption>
 		</DialogueOptionsList>

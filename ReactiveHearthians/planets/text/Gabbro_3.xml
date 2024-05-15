@@ -63,7 +63,397 @@
 				<Text>I'm turning the time loop off again.</Text>
 				<DialogueTarget>Gabbro_NoMoreLoop_3_Again</DialogueTarget>
 			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_TALKED</CancelledPersistentCondition>
+				<Text>Wanna hear about the most horrifying ways I've died so far?</Text>
+				<DialogueTarget>Gabbro_RH_Deaths</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_DEATHS_TALKED</RequiredPersistentCondition>
+				<Text>Interested in hearing about more of my many terrible deaths?</Text>
+				<DialogueTarget>Gabbro_RH_Deaths</DialogueTarget>
+			</DialogueOption>
 		</DialogueOptionsList>
+	</DialogueNode>
+
+	<!-- Discussion of deaths -->
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Menu</Name>
+		<Dialogue>
+			<Page>Got anything else?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_HL</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DIED_TO_LAVA_HL</RequiredPersistentCondition>
+				<Text>I melted in the lava of Hollow's Lantern.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_LanternLava</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_SAND</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_CRUSHED_BY_SAND</RequiredPersistentCondition>
+				<Text>I got crushed by rising sand on Ember Twin.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Sand</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_LAUNCH_ELEVATOR</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_CRUSHED_BY_LAUNCH_ELEVATOR</RequiredPersistentCondition>
+				<Text>I got crushed under the elevator to the launch platform.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_LaunchElevator</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_DROWNED</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DROWNED</RequiredPersistentCondition>
+				<Text>I drowned.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Drowned</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_FORGOT_SPACE_SUIT</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_FORGOT_SPACE_SUIT</RequiredPersistentCondition>
+				<Text>I forgot to put on my space suit and immediately choked to death.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_ForgotSpaceSuit</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_RAN_OUT_OF_O2</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_RAN_OUT_OF_O2</RequiredPersistentCondition>
+				<Text>I ran out of oxygen.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_RanOutOfO2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_ELECTROCUTED_GD</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_ELECTROCUTED_GD_CORE</RequiredPersistentCondition>
+				<Text>I got electrocuted by the core of Giant's Deep.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Electrocuted_GD</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_ANGLERFISH</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DIED_ANGLERFISH</RequiredPersistentCondition>
+				<Text>I got eaten by an anglerfish.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Anglerfish</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_GHOST_MATTER</CancelledPersistentCondition>
+				<RequiredPersistentCondition>KILLED_IN_GHOST_MATTER</RequiredPersistentCondition>
+				<Text>I died to ghost matter. It was not fun.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_GhostMatter</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_AUTOPILOT_SUN</CancelledPersistentCondition>
+				<RequiredPersistentCondition>AUTOPILOT_INTO_SUN</RequiredPersistentCondition>
+				<Text>My ship's autopilot sent me directly into the sun.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_AutoPilotSun</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_ATP</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DIED_INSIDE_ATP</RequiredPersistentCondition>
+				<Text>I died inside of the Ash Twin Project.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_AshTwinProject</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_LANTERN</CancelledPersistentCondition>
+
+				<CancelledPersistentCondition>GABBRO_DEATHS_PROTOTYPE_LANTERN</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DIED_TO_PROTOTYPE_LANTERN</RequiredPersistentCondition>
+				<Text>I tried using a weird lantern artifact on the Stranger, but it blew me up.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_PrototypeLantern</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER</RequiredPersistentCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_LANTERN</RequiredPersistentCondition>
+
+				<CancelledPersistentCondition>GABBRO_DEATHS_PROTOTYPE_LANTERN</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_DIED_TO_PROTOTYPE_LANTERN</RequiredPersistentCondition>
+				<Text>I tried using a prototype artifact on the Stranger, but it blew me up.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_PrototypeLantern_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_INHABITANTS</RequiredPersistentCondition>
+
+				<CancelledPersistentCondition>GABBRO_DEATHS_NECK_SNAPPED</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_NECK_SNAPPED</RequiredPersistentCondition>
+				<Text>One of those alien guys in the dream world snapped my neck!</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_NeckSnapped</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_DEATHS_ESCAPE</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA</RequiredPersistentCondition>
+				<Text>I actually managed to survive after the supernova, but I still got sent back in time.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Not at the moment, no.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_NoMore</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_TALKED</SetPersistentCondition>
+		<Dialogue>
+			<Page>You know it, buddy! Lay 'em on me.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<ReuseDialogueOptionsListFrom>Gabbro_RH_Deaths_Menu</ReuseDialogueOptionsListFrom>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_LanternLava</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_HL</SetPersistentCondition>
+		<Dialogue>
+			<Page>Really now? How'd it feel? I imagine it's like dying to the supernova, only more... liquidy.</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>It felt like being boiled in a big pot of sap soup.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_LanternLava2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>It felt like if fire was a liquid.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_LanternLava2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>I was too busy burning to death to really stop and smell the flowers, to be honest.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_LanternLava3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_LanternLava2</Name>
+		<Dialogue>
+			<Page>Cool! I'd love to try it.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_LanternLava2</Name>
+		<Dialogue>
+			<Page>Ah well, still sounds fun!</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Sand</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_SAND</SetPersistentCondition>
+		<Dialogue>
+			<Page>Yeowch! Hard pass on that one. I can't <![CDATA[<i>stand</i>]]> headaches. Even a tiny one can make it impossible to think.</Page>
+			<Page>Oh geez, could you imagine being stuck in a time loop with a <![CDATA[<i>headache</i>]]> the entire time?! We're lucky. We're so lucky we don't. I hadn't even considered that.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_LaunchElevator</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_LAUNCH_ELEVATOR</SetPersistentCondition>
+		<Dialogue>
+			<Page>Ha! Oh my gosh. Sorry for laughing, that's just... <![CDATA[<i>really</i>]]> funny.</Page>
+			<Page>Imagine the look on Slate's face! Everything they'd planned, then... splat! Flat as a sheet!</Page>
+			<Page>They'd be so freaked out, and they'd... well, probably cry a bunch and tell Hornfels what happened and...</Page>
+			<Page>Hmm, alright, maybe it's not actually <![CDATA[<i>that</i>]]> funny. Wow, who knew death could be such a morbid topic?</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Drowned</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_DROWNED</SetPersistentCondition>
+		<Dialogue>
+			<Page>A classic way to go, eh?</Page>
+			<Page>Honestly, it sucks to think about. I mean, we have gills, but they're all... what's the word... vestigial? They close up after you're a newhatch.</Page>
+			<Page>Gosh, what am I saying? You already knew that. Obviously.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_ForgotSpaceSuit</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_FORGOT_SPACE_SUIT</SetPersistentCondition>
+		<Dialogue>
+			<Page>Wow! That's pretty much the one thing you never want to forget, buddy!</Page>
+			<Page>It's a wonder we're in a time loop, otherwise... wow, that'd be quite the way to go.</Page>
+			<Page>Hopefully that's the kind of mistake you only make once, eh?</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_RanOutOfO2</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_RAN_OUT_OF_O2</SetPersistentCondition>
+		<Dialogue>
+			<Page>Jeez. Yeah, that's rough, buddy.</Page>
+			<Page>I've been telling Slate over and over again: you have <![CDATA[<i>got</i>]]> to figure out a way to give the suits more air capacity. 6 minutes is <![CDATA[<i>not</i>]]> enough!</Page>
+			<Page>But they always say: "Oh, Gabbro, just go back to your ship!" Well what if my ship is floating off in the water and I can't get to it? What if I'm down in some winding cave system, huh? I mean, seriously, what kind of exploration do they expect us to do in <![CDATA[<i>6 minutes</i>]]>?!</Page>
+			<Page>Ah, sorry for my little rant there. Going back to your ship probably is the right thing to do. It's annoying, but it's the right thing to do.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Electrocuted_GD</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_ELECTROCUTED_GD</SetPersistentCondition>
+		<Dialogue>
+			<Page>It's electric, huh? Maybe that has something to do with all the jellyfish down there. That could be like their nest or something, and the electric field is for deterring predators. Only they can get in and out.</Page>
+			<Page>Just a theory, though.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Anglerfish</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_ANGLERFISH</SetPersistentCondition>
+		<Dialogue>
+			<Page>Eugh. Hard pass. Not into being eaten, not at all.</Page>
+			<Page>I guess those things are still kind of cool. Just... cool from a distance, y'know?</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_GhostMatter</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_GHOST_MATTER</SetPersistentCondition>
+		<Dialogue>
+			<Page>Honestly, I'm not too interested. It'd probably just be like dying in the supernova but slower.</Page>
+			<Page>Remember when Tektite was always shouting at everyone who got anywhere near that ghost matter pit in the village? That was great.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_AutoPilotSun</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_AUTOPILOT_SUN</SetPersistentCondition>
+		<Dialogue>
+			<Page>Ooh, yeah. That happens. Did nobody tell you to watch out for that? That's like, a really big thing they should've mentioned!</Page>
+			<Page>In case nobody's told you yet, the autopilot doesn't know if there's something between you and your destination. Planet, sun, Hollow's Lantern, whatever it may be, it's basically invisible to the thing.</Page>
+			<Page>So! Two tips: one, before engaging autopilot, make sure that the sun isn't directly or even indirectly between you and your destination; and two, only engage autopilot <![CDATA[<i>after</i>]]> takeoff, otherwise you might slam yourself right back into the ground and damage your landing gear.</Page>
+			<Page>...Huh. Look at me, giving out salient advice! And they said I'd never do it! Eat my pants, Hornfels!</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_AshTwinProject</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_ATP</SetPersistentCondition>
+		<Dialogue>
+			<Page>Oh? ...What about that was interesting?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>While I was inside it, I survived the supernova for a little while. It broke open eventually, but it was beautiful.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_AshTwinProject_2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_AshTwinProject_2</Name>
+		<Dialogue>
+			<Page>Wow. That does sound cool, yeah!</Page>
+			<Page>Surviving the supernova... what on Hearth did they build that thing out of?</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_PrototypeLantern</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_PROTOTYPE_LANTERN</SetPersistentCondition>
+		<Dialogue>
+			<Page>Whoa! What, was it like, some kind of weapon? Maybe it's faulty?</Page>
+			<Page>I can't imagine what a lantern that explodes when you light it could possibly by used for... whoever invented that must've been the Stranger's Feldspar!</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_PrototypeLantern_2</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_PROTOTYPE_LANTERN</SetPersistentCondition>
+		<Dialogue>
+			<Page>Whoa! I guess our two species aren't actually that different, huh? A lot of our prototypes blew up too!</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_NeckSnapped</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_NECK_SNAPPED</SetPersistentCondition>
+		<Dialogue>
+			<Page>Wow! That is <![CDATA[<i>cold</i>]]>!</Page>
+			<Page>They must <![CDATA[<i>really</i>]]> not like outsiders. I mean, it's not like they actually snapped your actual neck, and you're in a time loop so even if they did it wouldn't matter, but still! Wow!</Page>
+			<Page><![CDATA[<color=grey>Sigh...</color>]]><![CDATA[<Pause/>]]> Well, it just goes to show you, not everyone is going to be your friend. Tough lesson, but it's the truth.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Escape</Name>
+		<SetPersistentCondition>GABBRO_DEATHS_ESCAPE</SetPersistentCondition>
+		<Dialogue>
+			<Page>Whoa! How'd you do that?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA_OUTOFRANGE</RequiredPersistentCondition>
+				<Text>I just flew out of range of it.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape_1</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER</RequiredPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA_STRANGER</RequiredPersistentCondition>
+				<Text>I was on the Stranger.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER</CancelledPersistentCondition>
+				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA_STRANGER</RequiredPersistentCondition>
+				<Text>I was, umm... out of range. It's a long story.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape_4</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA_ATP</RequiredPersistentCondition>
+				<Text>I was inside the Ash Twin Project.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape_3</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<Text>Dunno. It just kind of... happened.</Text>
+				<DialogueTarget>Gabbro_RH_Deaths_Escape_4</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Escape_1</Name>
+		<Dialogue>
+			<Page>I guess that'd do it, yeah. It's a shame every other star system is too far away to fly to.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Escape_2</Name>
+		<Dialogue>
+			<Page>It's that far away? ...Wait, but that doesn't make any sense, it has to be between the sun and the map satellite, right? That's how it caused that shadow.</Page>
+			<Page>Hmm. Something doesn't add up there.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Escape_3</Name>
+		<Dialogue>
+			<Page>Right, you're safe from the supernova in there. Cool! Kinda pointless I guess, but cool!</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_Escape_4</Name>
+		<Dialogue>
+			<Page>Hmm. Well, alright then.</Page>
+		</Dialogue>
+		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
+	</DialogueNode>
+	
+	<DialogueNode>
+		<Name>Gabbro_RH_Deaths_NoMore</Name>
+		<Dialogue>
+			<Page>Guess you'll have to go out and die in some more creative ways then, huh? Have fun!</Page>
+		</Dialogue>
 	</DialogueNode>
 
 	<!-- Eye reactions -->

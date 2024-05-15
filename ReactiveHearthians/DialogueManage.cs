@@ -28,6 +28,7 @@ namespace ReactiveHearthians
         {
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
+            GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", GabbroFlagsWatcher);
         }
 
         // Doing stuff based on which person you're talking to
@@ -45,6 +46,7 @@ namespace ReactiveHearthians
                 {
                     ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Character talked to is " + name, MessageType.Success);
 
+                    // NOT PERSISTENT, FIX THIS
                     DialogueManage.Instance.solanumConversationCount += 1;
 
                     if (DialogueManage.Instance.solanumConversationCount >= 2)
@@ -631,6 +633,31 @@ namespace ReactiveHearthians
                 ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Couldn't set variables for held item.", MessageType.Error);
             }
 
+            GabbroStranger();
+
+            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Done setting conversation variables.", MessageType.Success);
+        }
+
+        // Updates Gabbro conversation completion flags mid-conversation
+        public void GabbroFlagsWatcher(string str, bool bl)
+        {
+            switch (str)
+            {
+                case "GABBRO_RH_STRANGER_RING":
+                case "GABBRO_RH_STRANGER_INHABITANTS":
+                case "GABBRO_RH_STRANGER_EYE":
+                case "GABBRO_RH_STRANGER_DREAMWORLD":
+                case "GABBRO_RH_STRANGER_DREAMWORLD_CODE":
+                case "GABBRO_RH_STRANGER_PRISONER":
+                case "GABBRO_RH_STRANGER_LANTERN":
+                case "GABBRO_RH_STRANGER_FRIEND":
+                    GabbroStranger();
+                    break;
+            }
+        }
+
+        public void GabbroStranger()
+        {
             // This variable is set to true if the player has something new to say about the Stranger to Gabbro
             if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && PlayerData.GetPersistentCondition("DREAMWORLD_EVER_BEEN")) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD_CODE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAM_IS_CODE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_FRIEND") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1")))
             {
@@ -640,8 +667,6 @@ namespace ReactiveHearthians
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", false);
             }
-
-            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Done setting conversation variables.", MessageType.Success);
         }
     }
 }
