@@ -9,22 +9,37 @@
 
 	<DialogueNode>
 		<Name>Questions</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>Chert_Feldspar</CancelledCondition>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Just thought you'd like to know: Feldspar is alive.</Text>
+				<DialogueTarget>Chert_S3_Feldspar</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Chert_S3_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
 
-		<DialogueOption>
-			<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
-			<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
-			<Text>My ship's completely busted.</Text>
-			<DialogueTarget>Chert_S3_ShipHullBreach_Admit</DialogueTarget>
-		</DialogueOption>
+	<DialogueNode>
+		<Name>Chert_S3_Feldspar</Name>
+		<SetCondition>Chert_Feldspar</SetCondition>
+		<Dialogue>
+			<Page>Oh, wonderful! Great! Fantastic! Lucky them, Feldspar is going to be alive for all of 5 more minutes!</Page>
+			<Page>Hearth, why?! What did we do to deserve this?!</Page>
+		</Dialogue>
 	</DialogueNode>
 
 	<DialogueNode>
 		<Name>Chert_S3_ShipHullBreach_Admit</Name>
 		<Dialogue>
-			<Page>Ship or no ship, we're all going to die! Can't you see it, red as a dying flame?! I'm stuck here too, stuck in a dying universe!</Page>
+			<Page>It doesn't matter! Ship or no ship, we're all going to die! Can't you see it, red as a dying flame?! I'm stuck here too, stuck in a dying universe!</Page>
 		</Dialogue>
 
 		<SetCondition>RH_CHERT_SHIP_BREACH_TALKED</SetCondition>
-		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

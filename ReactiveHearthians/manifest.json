@@ -3,8 +3,11 @@
   "author": "OmegaFallon",
   "name": "Reactive Hearthians",
   "uniqueName": "OmegaFallon.ReactiveHearthians",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "owmlVersion": "2.7.2",
   "dependencies": [ "xen.NewHorizons" ],
-  "conflicts": [ ]
+  "conflicts": [],
+  "pathsToPreserve": [
+    "OmegaFallon.ReactiveHearthians/my_number.json"
+  ]
 }

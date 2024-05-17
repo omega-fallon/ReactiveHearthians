@@ -22,8 +22,6 @@ namespace ReactiveHearthians
             Instance = this;
         }
 
-        public int solanumConversationCount;
-
         public void Start()
         {
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
@@ -42,26 +40,35 @@ namespace ReactiveHearthians
                 string name = __instance._xmlCharacterDialogueAsset.name.ToString();
 
                 // Counting times talked to Solanum
-                if (ReactiveHearthians.Instance.loadedScene == "vanilla" && name == "Solanum" && __instance.InConversation())
+                if (ReactiveHearthians.Instance.loadedScene == "vanilla" && name == "Solanum")
                 {
                     ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Character talked to is " + name, MessageType.Success);
 
-                    // NOT PERSISTENT, FIX THIS
-                    DialogueManage.Instance.solanumConversationCount += 1;
+                    // Load, increment, then save the counter to a file
+                    int solanumSpokenConversationCount = ReactiveHearthians.Instance.ModHelper.Storage.Load<int>("my_number.json");
+                    if (solanumSpokenConversationCount == 0 && PlayerData.GetPersistentCondition("MET_SOLANUM"))
+                    {
+                        solanumSpokenConversationCount += 1;
+                    }
+                    solanumSpokenConversationCount += 1;
+                    ReactiveHearthians.Instance.ModHelper.Storage.Save(solanumSpokenConversationCount, "my_number.json");
 
-                    if (DialogueManage.Instance.solanumConversationCount >= 2)
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Solanum conversation count is: " + solanumSpokenConversationCount.ToString(), MessageType.Success);
+
+                    // Set dialogue variables
+                    if (solanumSpokenConversationCount >= 2)
                     {
                         PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_TWICE", true);
                     }
-                    if (DialogueManage.Instance.solanumConversationCount >= 3)
+                    if (solanumSpokenConversationCount >= 3)
                     {
                         PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_THRICE", true);
                     }
-                    if (DialogueManage.Instance.solanumConversationCount >= 5)
+                    if (solanumSpokenConversationCount >= 5)
                     {
                         PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_FIVE_TIMES", true);
                     }
-                    if (DialogueManage.Instance.solanumConversationCount >= 10)
+                    if (solanumSpokenConversationCount >= 10)
                     {
                         PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_TEN_TIMES", true);
                     }
@@ -602,6 +609,11 @@ namespace ReactiveHearthians
                     }
                     // The item is a Nomai scroll
                     else if (item._type == ItemType.Scroll)
+                    {
+                        DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
+                    }
+                    // The item is one of the stones used to talk with Solanum
+                    else if (item._type == ItemType.ConversationStone)
                     {
                         DialogueConditionManager.SharedInstance.SetConditionState("RH_COOLTHINGHELD", true);
                     }

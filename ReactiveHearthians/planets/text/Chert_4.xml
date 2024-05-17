@@ -68,12 +68,41 @@
 	<DialogueNode>
 		<Name>Questions</Name>
 
-		<DialogueOption>
-			<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
-			<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
-			<Text>My ship's completely busted.</Text>
-			<DialogueTarget>Chert_S4_ShipHullBreach_Admit</DialogueTarget>
-		</DialogueOption>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<CancelledCondition>Chert_Feldspar</CancelledCondition>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Just thought you'd like to know: Feldspar is alive.</Text>
+				<DialogueTarget>Chert_S4_Feldspar</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
+				<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
+				<Text>My ship's completely busted.</Text>
+				<DialogueTarget>Chert_S4_ShipHullBreach_Admit</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S4_Feldspar</Name>
+		<SetCondition>Chert_Feldspar</SetCondition>
+		<Dialogue>
+			<Page>Is that so? All this time, huh. Tell me, where?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>Dark Bramble.</Text>
+				<DialogueTarget>Chert_S4_Feldspar_2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S4_Feldspar_2</Name>
+		<Dialogue>
+			<Page>Of course. Yes, that makes sense. That's exactly where they'd thrive.</Page>
+			<Page>Perhaps they ought to be envied. They'll be the last person the supernova hits.</Page>
+		</Dialogue>
 	</DialogueNode>
 
 	<DialogueNode>

@@ -50,6 +50,26 @@
 				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
 				<DialogueTarget>Esker_RH_High</DialogueTarget>
 			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Just thought you'd like to know: Feldspar is alive.</Text>
+				<DialogueTarget>Esker_RH_Feldspar</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker2</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>BIG_HEAD_MODE</RequiredCondition>
+				<Text>Duuuuuuude… what is <![CDATA[<i>up</i>]]> with your head?</Text>
+				<DialogueTarget>Esker_RH_High</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Just thought you'd like to know: Feldspar is alive.</Text>
+				<DialogueTarget>Esker_RH_Feldspar</DialogueTarget>
+			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
 
@@ -61,6 +81,27 @@
 			<Page>Potentially even literally. This is going to be a bad, long high for you. I'd recommend lying down on the ground with an empty bucket at the ready.</Page>
 			<Page>If you start seeing weird things or hearing voices do <![CDATA[<i>not</i>]]> engage. At some point it's going to feel like there are bugs on you but I promise there aren't actually any bugs.</Page>
 			<Page>Are you getting all this? Hearth to hatchling? Oh boy… welp, this is gonna be a learning experience. Good luck.</Page>
+		</Dialogue>
+		<DialogueTarget>Esker2</DialogueTarget>
+	</DialogueNode>
+	
+	<DialogueNode>
+		<Name>Esker_RH_Feldspar</Name>
+		<Dialogue>
+			<Page>Huh? ...Oh, you mean you picked up that harmonica signal coming from Dark Bramble. I'm sorry, hatchling, but that's...</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>No, you don't understand. I went to Dark Bramble. They're in there, still alive, just... relaxing, I guess.</Text>
+				<DialogueTarget>Esker_RH_Feldspar_2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Esker_RH_Feldspar_2</Name>
+		<Dialogue>
+			<Page>Stop pulling my leg, hatchling. It isn't funny. Inside of Dark Bramble? Nobody could possibly live in there, it's a death trap!</Page>
+			<Page>Just... nevermind. I'm gonna forget you said that.</Page>
 		</Dialogue>
 	</DialogueNode>
 

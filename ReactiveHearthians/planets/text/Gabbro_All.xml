@@ -1,5 +1,5 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
-	<!-- Stranger -->
+	<!-- New discoveries -->
 	<DialogueNode>
 		<Name>FoundSomethingMenu</Name>
 		<DialogueOptionsList>
@@ -15,8 +15,36 @@
 				<Text>I found out something new about the Stranger.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Additional</DialogueTarget>
 			</DialogueOption>
+			<DialogueOption>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_FELDSPAR</CancelledPersistentCondition>
+				<Text>Feldspar's alive!</Text>
+				<DialogueTarget>Gabbro_RH_Feldspar</DialogueTarget>
+			</DialogueOption>
 		</DialogueOptionsList>
 	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gabbro_RH_Feldspar</Name>
+		<SetPersistentCondition>GABBRO_RH_FELDSPAR</SetPersistentCondition>
+		<Dialogue>
+			<Page>Whoa! Really? That's incredible! Where are they hiding, then?</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<Text>They're in Dark Bramble, living inside an anglerfish skeleton.</Text>
+				<DialogueTarget>Gabbro_RH_Feldspar_2</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Feldspar_2</Name>
+		<Dialogue>
+			<Page>Ah... the one place nobody would ever check, right? Makes sense. I'm glad to see that they're alive!</Page>
+		</Dialogue>
+		<DialogueTarget>GabbroMenu</DialogueTarget>
+	</DialogueNode>
+	
 	<DialogueNode>
 		<Name>Gabbro_RH_Stranger_Discover</Name>
 		<Dialogue>

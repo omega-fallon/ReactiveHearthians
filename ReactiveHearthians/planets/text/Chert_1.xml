@@ -229,12 +229,55 @@
 		<Name>Questions</Name>
 		<DialogueOptionsList>
 			<DialogueOption>
+				<CancelledCondition>Chert_Feldspar</CancelledCondition>
+				<RequiredPersistentCondition>MetFeldspar</RequiredPersistentCondition>
+				<Text>Just thought you'd like to know: Feldspar is alive.</Text>
+				<DialogueTarget>Chert_S1_Feldspar</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
 				<RequiredCondition>RH_SHIP_BREACH</RequiredCondition>
 				<CancelledCondition>RH_CHERT_SHIP_BREACH_TALKED</CancelledCondition>
 				<Text>My ship's completely busted.</Text>
 				<DialogueTarget>Chert_S1_ShipHullBreach_Admit</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Chert_S1_Feldspar</Name>
+		<SetCondition>Chert_Feldspar</SetCondition>
+		<Dialogue>
+			<Page>Goodness!! Really? Oh, Hearth, I'm relieved. Where are they?!</Page>
+		</Dialogue>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredLogCondition>DB_FELDSPAR_X3</RequiredLogCondition>
+				<Text>They've been living inside Dark Bramble this whole time. They, uhh... don't want to leave.</Text>
+				<DialogueTarget>Chert_S1_Feldspar_2</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<CancelledLogCondition>DB_FELDSPAR_X3</CancelledLogCondition>
+				<Text>They've been living inside Dark Bramble this whole time.</Text>
+				<DialogueTarget>Chert_S1_Feldspar_3</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Feldspar_2</Name>
+		<Dialogue>
+			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That...</Page>
+			<Page>Oh, goodness, I was about to say I can't believe it, but I can. Of <![CDATA[<i>course</i>]]> they'd land there and not want to leave. Well, fine. They're welcome to stay!</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Chert_S1_Feldspar_3</Name>
+		<Dialogue>
+			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That...</Page>
+			<Page>Oh, goodness, I was about to say I can't believe it, but I can. If anyone could survive in conditions like that, it'd be Feldspar!</Page>
+			<Page>Well, go and rescue them, please! I'm sure everyone would be ecstatic to see them again.</Page>
+		</Dialogue>
+		<DialogueTarget>Questions</DialogueTarget>
 	</DialogueNode>
 
 	<DialogueNode>
