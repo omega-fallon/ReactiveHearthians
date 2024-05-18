@@ -228,7 +228,7 @@
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
 	<DialogueNode>
-		<Name>Gabbro_RH_Deaths_LanternLava2</Name>
+		<Name>Gabbro_RH_Deaths_LanternLava3</Name>
 		<Dialogue>
 			<Page>Ah well, still sounds fun!</Page>
 		</Dialogue>

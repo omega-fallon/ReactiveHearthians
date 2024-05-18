@@ -29,21 +29,24 @@ namespace ReactiveHearthians
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", GabbroFlagsWatcher);
         }
 
-        // Doing stuff based on which person you're talking to
+        
         [HarmonyPatch]
         public class MyPatchClass
         {
+            // Solanum convo counter
             [HarmonyPostfix]
-            [HarmonyPatch(typeof(CharacterDialogueTree), nameof(CharacterDialogueTree.EndConversation))]
-            public static void ConversationEnd_PostFix(CharacterDialogueTree __instance)
+            [HarmonyPatch(typeof(NomaiConversationManager), nameof(NomaiConversationManager.OnFinishDialogue))]
+            public static void NomaiConversationManager_PostFix()
             {
-                string name = __instance._xmlCharacterDialogueAsset.name.ToString();
+                ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player talked to Solanum.", MessageType.Success);
 
-                // Counting times talked to Solanum
-                if (ReactiveHearthians.Instance.loadedScene == "vanilla" && name == "Solanum")
+                // Checking for the Vision completeness
+                if (ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("hearth1an.TheVision") != null && Locator.GetShipLogManager().IsFactRevealed("SOLANUM_PROJECTION_COMPLETE"))
                 {
-                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Character talked to is " + name, MessageType.Success);
-
+                    ReactiveHearthians.Instance.ModHelper.Console.WriteLine("The Vision's plotline is in progress; do not count Solanum interactions.", MessageType.Success);
+                }
+                else
+                {
                     // Load, increment, then save the counter to a file
                     int solanumSpokenConversationCount = ReactiveHearthians.Instance.ModHelper.Storage.Load<int>("my_number.json");
                     if (solanumSpokenConversationCount == 0 && PlayerData.GetPersistentCondition("MET_SOLANUM"))
@@ -73,6 +76,15 @@ namespace ReactiveHearthians
                         PlayerData.SetPersistentCondition("RH_SOLANUM_TALKED_TEN_TIMES", true);
                     }
                 }
+            }
+
+            // Patching for ending a conversation with a specific character
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(CharacterDialogueTree), nameof(CharacterDialogueTree.EndConversation))]
+            public static void ConversationEnd_PostFix(CharacterDialogueTree __instance)
+            {
+                string name = __instance._xmlCharacterDialogueAsset.name.ToString();
+                // use this patch in the future if necessary
             }
         }
 
