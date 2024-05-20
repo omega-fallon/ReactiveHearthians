@@ -203,7 +203,7 @@
 		<Name>Gabbro_RH_Deaths_LanternLava</Name>
 		<SetPersistentCondition>GABBRO_DEATHS_HL</SetPersistentCondition>
 		<Dialogue>
-			<Page>Really now? How'd it feel? I imagine it's like dying to the supernova, only more... liquidy.</Page>
+			<Page>Really now? How'd it feel? I imagine it's like dying to the supernova, only more… liquidy.</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
@@ -249,9 +249,9 @@
 		<Name>Gabbro_RH_Deaths_LaunchElevator</Name>
 		<SetPersistentCondition>GABBRO_DEATHS_LAUNCH_ELEVATOR</SetPersistentCondition>
 		<Dialogue>
-			<Page>Ha! Oh my gosh. Sorry for laughing, that's just... <![CDATA[<i>really</i>]]> funny.</Page>
-			<Page>Imagine the look on Slate's face! Everything they'd planned, then... splat! Flat as a sheet!</Page>
-			<Page>They'd be so freaked out, and they'd... well, probably cry a bunch and tell Hornfels what happened and...</Page>
+			<Page>Ha! Oh my gosh. Sorry for laughing, that's just… <![CDATA[<i>really</i>]]> funny.</Page>
+			<Page>Imagine the look on Slate's face! Everything they'd planned, then… splat! Flat as a sheet!</Page>
+			<Page>They'd be so freaked out, and they'd… well, probably cry a bunch and tell Hornfels what happened and…</Page>
 			<Page>Hmm, alright, maybe it's not actually <![CDATA[<i>that</i>]]> funny. Wow, who knew death could be such a morbid topic?</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
@@ -262,7 +262,7 @@
 		<SetPersistentCondition>GABBRO_DEATHS_DROWNED</SetPersistentCondition>
 		<Dialogue>
 			<Page>A classic way to go, eh?</Page>
-			<Page>Honestly, it sucks to think about. I mean, we have gills, but they're all... what's the word... vestigial? They close up after you're a newhatch.</Page>
+			<Page>Honestly, it sucks to think about. I mean, we have gills, but they're all… what's the word… vestigial? They close up after you're a newhatch.</Page>
 			<Page>Gosh, what am I saying? You already knew that. Obviously.</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
@@ -273,7 +273,7 @@
 		<SetPersistentCondition>GABBRO_DEATHS_FORGOT_SPACE_SUIT</SetPersistentCondition>
 		<Dialogue>
 			<Page>Wow! That's pretty much the one thing you never want to forget, buddy!</Page>
-			<Page>It's a wonder we're in a time loop, otherwise... wow, that'd be quite the way to go.</Page>
+			<Page>It's a wonder we're in a time loop, otherwise… wow, that'd be quite the way to go.</Page>
 			<Page>Hopefully that's the kind of mistake you only make once, eh?</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
@@ -306,7 +306,7 @@
 		<SetPersistentCondition>GABBRO_DEATHS_ANGLERFISH</SetPersistentCondition>
 		<Dialogue>
 			<Page>Eugh. Hard pass. Not into being eaten, not at all.</Page>
-			<Page>I guess those things are still kind of cool. Just... cool from a distance, y'know?</Page>
+			<Page>I guess those things are still kind of cool. Just… cool from a distance, y'know?</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
@@ -328,7 +328,7 @@
 			<Page>Ooh, yeah. That happens. Did nobody tell you to watch out for that? That's like, a really big thing they should've mentioned!</Page>
 			<Page>In case nobody's told you yet, the autopilot doesn't know if there's something between you and your destination. Planet, sun, Hollow's Lantern, whatever it may be, it's basically invisible to the thing.</Page>
 			<Page>So! Two tips: one, before engaging autopilot, make sure that the sun isn't directly or even indirectly between you and your destination; and two, only engage autopilot <![CDATA[<i>after</i>]]> takeoff, otherwise you might slam yourself right back into the ground and damage your landing gear.</Page>
-			<Page>...Huh. Look at me, giving out salient advice! And they said I'd never do it! Eat my pants, Hornfels!</Page>
+			<Page>…Huh. Look at me, giving out salient advice! And they said I'd never do it! Eat my pants, Hornfels!</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
@@ -337,7 +337,7 @@
 		<Name>Gabbro_RH_Deaths_AshTwinProject</Name>
 		<SetPersistentCondition>GABBRO_DEATHS_ATP</SetPersistentCondition>
 		<Dialogue>
-			<Page>Oh? ...What about that was interesting?</Page>
+			<Page>Oh? …What about that was interesting?</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
@@ -350,7 +350,7 @@
 		<Name>Gabbro_RH_Deaths_AshTwinProject_2</Name>
 		<Dialogue>
 			<Page>Wow. That does sound cool, yeah!</Page>
-			<Page>Surviving the supernova... what on Hearth did they build that thing out of?</Page>
+			<Page>Surviving the supernova… what on Hearth did they build that thing out of?</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
@@ -360,7 +360,7 @@
 		<SetPersistentCondition>GABBRO_DEATHS_PROTOTYPE_LANTERN</SetPersistentCondition>
 		<Dialogue>
 			<Page>Whoa! What, was it like, some kind of weapon? Maybe it's faulty?</Page>
-			<Page>I can't imagine what a lantern that explodes when you light it could possibly by used for... whoever invented that must've been the Stranger's Feldspar!</Page>
+			<Page>I can't imagine what a lantern that explodes when you light it could possibly by used for… whoever invented that must've been the Stranger's Feldspar!</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
@@ -379,7 +379,7 @@
 		<Dialogue>
 			<Page>Wow! That is <![CDATA[<i>cold</i>]]>!</Page>
 			<Page>They must <![CDATA[<i>really</i>]]> not like outsiders. I mean, it's not like they actually snapped your actual neck, and you're in a time loop so even if they did it wouldn't matter, but still! Wow!</Page>
-			<Page><![CDATA[<color=grey>Sigh...</color>]]><![CDATA[<Pause/>]]> Well, it just goes to show you, not everyone is going to be your friend. Tough lesson, but it's the truth.</Page>
+			<Page><![CDATA[<color=grey>Sigh…</color>]]><![CDATA[<Pause/>]]> Well, it just goes to show you, not everyone is going to be your friend. Tough lesson, but it's the truth.</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>
@@ -405,7 +405,7 @@
 			<DialogueOption>
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER</CancelledPersistentCondition>
 				<RequiredPersistentCondition>PLAYER_ESCAPED_SUPERNOVA_STRANGER</RequiredPersistentCondition>
-				<Text>I was, umm... out of range. It's a long story.</Text>
+				<Text>I was, umm… out of range. It's a long story.</Text>
 				<DialogueTarget>Gabbro_RH_Deaths_Escape_4</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
@@ -414,7 +414,7 @@
 				<DialogueTarget>Gabbro_RH_Deaths_Escape_3</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
-				<Text>Dunno. It just kind of... happened.</Text>
+				<Text>Dunno. It just kind of… happened.</Text>
 				<DialogueTarget>Gabbro_RH_Deaths_Escape_4</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
@@ -429,8 +429,8 @@
 	<DialogueNode>
 		<Name>Gabbro_RH_Deaths_Escape_2</Name>
 		<Dialogue>
-			<Page>It's that far away? ...Wait, but that doesn't make any sense, it has to be between the sun and the map satellite, right? That's how it caused that shadow.</Page>
-			<Page>Hmm. Something doesn't add up there.</Page>
+			<Page>It's that far away? …Wait, but that doesn't make any sense, it has to be between the sun and the map satellite, right? That's how it caused that shadow.</Page>
+			<Page>Maybe it moves? I don't know, something doesn't add up there.</Page>
 		</Dialogue>
 		<DialogueTarget>Gabbro_RH_Deaths_Menu</DialogueTarget>
 	</DialogueNode>

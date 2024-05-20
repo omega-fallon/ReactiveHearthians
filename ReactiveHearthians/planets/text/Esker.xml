@@ -88,11 +88,11 @@
 	<DialogueNode>
 		<Name>Esker_RH_Feldspar</Name>
 		<Dialogue>
-			<Page>Huh? ...Oh, you mean you picked up that harmonica signal coming from Dark Bramble. I'm sorry, hatchling, but that's...</Page>
+			<Page>Huh? …Oh, you mean you picked up that harmonica signal coming from Dark Bramble. I'm sorry, hatchling, but that's…</Page>
 		</Dialogue>
 		<DialogueOptionsList>
 			<DialogueOption>
-				<Text>No, you don't understand. I went to Dark Bramble. They're in there, still alive, just... relaxing, I guess.</Text>
+				<Text>No, you don't understand. I went to Dark Bramble. They're in there, still alive, just… relaxing, I guess.</Text>
 				<DialogueTarget>Esker_RH_Feldspar_2</DialogueTarget>
 			</DialogueOption>
 		</DialogueOptionsList>
@@ -101,7 +101,7 @@
 		<Name>Esker_RH_Feldspar_2</Name>
 		<Dialogue>
 			<Page>Stop pulling my leg, hatchling. It isn't funny. Inside of Dark Bramble? Nobody could possibly live in there, it's a death trap!</Page>
-			<Page>Just... nevermind. I'm gonna forget you said that.</Page>
+			<Page>Just… nevermind. I'm gonna forget you said that.</Page>
 		</Dialogue>
 	</DialogueNode>
 

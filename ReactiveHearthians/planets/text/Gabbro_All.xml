@@ -40,7 +40,7 @@
 	<DialogueNode>
 		<Name>Gabbro_RH_Feldspar_2</Name>
 		<Dialogue>
-			<Page>Ah... the one place nobody would ever check, right? Makes sense. I'm glad to see that they're alive!</Page>
+			<Page>Ah… the one place nobody would ever check, right? Makes sense. I'm glad to see that they're alive!</Page>
 		</Dialogue>
 		<DialogueTarget>GabbroMenu</DialogueTarget>
 	</DialogueNode>

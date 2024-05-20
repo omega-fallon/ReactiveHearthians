@@ -186,7 +186,7 @@
 		<Name>Chert_S1_SlideReelBurned</Name>
 		<EntryCondition>RH_CHERT_SLIDEREEL_BURNED</EntryCondition>
 		<Dialogue>
-			<Page>What was that you threw into the fire? It seemed... somewhat valueable.</Page>
+			<Page>What was that you threw into the fire? It seemed… somewhat valueable.</Page>
 			<Page>Regardless, it's good to see you. I take it your first launch went well, then? Welcome to the Hourglass Twins. <![CDATA[<Pause=2>]]>Mind the sand, now.</Page>
 		</Dialogue>
 
@@ -201,7 +201,7 @@
 		<Name>Chert_S1_SlideReelBurned_TalkToAgain</Name>
 		<EntryCondition>RH_CHERT_SLIDEREEL_BURNED</EntryCondition>
 		<Dialogue>
-			<Page>What was that you threw into the fire? It seemed... somewhat valueable.</Page>
+			<Page>What was that you threw into the fire? It seemed… somewhat valueable.</Page>
 			<Page>Well, regardless, what can I do for you?</Page>
 		</Dialogue>
 
@@ -252,7 +252,7 @@
 		<DialogueOptionsList>
 			<DialogueOption>
 				<RequiredLogCondition>DB_FELDSPAR_X3</RequiredLogCondition>
-				<Text>They've been living inside Dark Bramble this whole time. They, uhh... don't want to leave.</Text>
+				<Text>They've been living inside Dark Bramble this whole time. They, uhh… don't want to leave.</Text>
 				<DialogueTarget>Chert_S1_Feldspar_2</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
@@ -265,7 +265,7 @@
 	<DialogueNode>
 		<Name>Chert_S1_Feldspar_2</Name>
 		<Dialogue>
-			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That...</Page>
+			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That…</Page>
 			<Page>Oh, goodness, I was about to say I can't believe it, but I can. Of <![CDATA[<i>course</i>]]> they'd land there and not want to leave. Well, fine. They're welcome to stay!</Page>
 		</Dialogue>
 		<DialogueTarget>Questions</DialogueTarget>
@@ -273,7 +273,7 @@
 	<DialogueNode>
 		<Name>Chert_S1_Feldspar_3</Name>
 		<Dialogue>
-			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That...</Page>
+			<Page>What?! Inside Dark Bramble, with the anglerfish and the warped space, where it's incredibly easy to get lost or eaten or starve or run out of oxygen?! That…</Page>
 			<Page>Oh, goodness, I was about to say I can't believe it, but I can. If anyone could survive in conditions like that, it'd be Feldspar!</Page>
 			<Page>Well, go and rescue them, please! I'm sure everyone would be ecstatic to see them again.</Page>
 		</Dialogue>
