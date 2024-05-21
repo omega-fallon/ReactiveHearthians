@@ -24,10 +24,8 @@
 // Add specific dialogue for Stranger lanterns and reels
 // Riebeck Solanum followup
 // Make the entire village panic
-// Tell Feldspar about the Stranger; they'd want to know there's something in the solar system they missed
 // Tell Feldspar their first campsite choice (the jellyfish) is outside of dark bramble
 // GHOST BUSTER: Tell someone that you killed an Owlk
-// Tell travelers that Feldspar is alive
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -65,6 +63,8 @@
 // Tell Chert about the Stranger
 // Solanum dialogue for a subsequent talk with her
 // Talk to Gabbro about ways you've died
+// Tell travelers that Feldspar is alive
+// Tell Feldspar about the Stranger; they'd want to know there's something in the solar system they missed
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
