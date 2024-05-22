@@ -111,6 +111,14 @@
 				<DialogueTarget>Gabbro_RH_Stranger_Friend</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
+				<RequiredCondition>GHOSTBUSTER</RequiredCondition>
+				<RequiredPersistentCondition>INHABITANT_KILLED</RequiredPersistentCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_MURDERER</CancelledPersistentCondition>
+				<Text>I think I committed murder by blowing out one of their flames.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Murderer</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
 				<Text>Nevermind, sorry.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Nevermind</DialogueTarget>
 			</DialogueOption>
@@ -171,6 +179,14 @@
 				<CancelledPersistentCondition>GABBRO_RH_STRANGER_FRIEND</CancelledPersistentCondition>
 				<Text>I found a friendly inhabitant in the dream world through a fire in Dark Bramble.</Text>
 				<DialogueTarget>Gabbro_RH_Stranger_Friend</DialogueTarget>
+			</DialogueOption>
+			<DialogueOption>
+				<RequiredCondition>GHOSTBUSTER</RequiredCondition>
+				<RequiredPersistentCondition>INHABITANT_KILLED</RequiredPersistentCondition>
+				<RequiredPersistentCondition>GABBRO_RH_STRANGER_DREAMWORLD</RequiredPersistentCondition>
+				<CancelledPersistentCondition>GABBRO_RH_STRANGER_MURDERER</CancelledPersistentCondition>
+				<Text>I think I committed murder by blowing out one of their flames.</Text>
+				<DialogueTarget>Gabbro_RH_Stranger_Murderer</DialogueTarget>
 			</DialogueOption>
 			<DialogueOption>
 				<Text>That's actually all I know…</Text>
@@ -266,6 +282,17 @@
 			<Page>It's fortunate that they spoke Nomai. Probably good that you went and talked to them; poor guy probably hasn't talked to anyone new in millenia!</Page>
 		</Dialogue>
 		<SetPersistentCondition>GABBRO_RH_STRANGER_FRIEND</SetPersistentCondition>
+		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Gabbro_RH_Stranger_Murderer</Name>
+		<Dialogue>
+			<Page>Oh, that's… not great.</Page>
+			<Page>I mean, I guess it's fine since they just come right back after the loop? Still, that's kind of messed up…</Page>
+			<Page>Dang, I get the feeling there's a <![CDATA[<i>deep</i>]]> geyser hole we could go down about whether one's actions still have morality attached to them in a scenario where neither consequences nor memory persist after the fact.</Page>
+			<Page>But that's probably a discussion to be had with someone smarter than me.</Page>
+		</Dialogue>
+		<SetPersistentCondition>GABBRO_RH_STRANGER_MURDERER</SetPersistentCondition>
 		<DialogueTarget>Gabbro_RH_Stranger_WhatElse</DialogueTarget>
 	</DialogueNode>
 </DialogueTree>

@@ -24,6 +24,7 @@
 		</DialogueOptionsList>
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
+		<SetConditon>CHERT_RH_PROBE_TALKED</SetConditon>
 	</DialogueNode>
 	<DialogueNode>
 		<Name>Chert_S1_ProbeNearby_First</Name>
@@ -50,6 +51,7 @@
 		</DialogueOptionsList>
 		<SetCondition>SaidHiToChert</SetCondition>
 		<SetCondition>METCHERT_1</SetCondition>
+		<SetConditon>CHERT_RH_PROBE_TALKED</SetConditon>
 	</DialogueNode>
 
 	<DialogueNode>

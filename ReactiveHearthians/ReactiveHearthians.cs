@@ -138,6 +138,7 @@ namespace ReactiveHearthians
         public bool Outsider_Installed;
         public bool Astral_Codec_Installed;
         public bool Play_As_Gabbro_Installed;
+        public bool Ghostbuster_Installed;
 
         // Sectors inside of bodies
         public bool InSector_TimberHearth;
@@ -194,6 +195,16 @@ namespace ReactiveHearthians
             else
             {
                 Play_As_Gabbro_Installed = false;
+            }
+
+            if (ModHelper.Interaction.TryGetMod("xen.GhostBuster") != null)
+            {
+                ModHelper.Console.WriteLine("Ghostbuster installed!", MessageType.Success);
+                Ghostbuster_Installed = true;
+            }
+            else
+            {
+                Ghostbuster_Installed = false;
             }
 
             // Current language

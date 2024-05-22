@@ -27,8 +27,8 @@ namespace ReactiveHearthians
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", GabbroFlagsWatcher);
+            GlobalMessenger<string>.AddListener("xen.Ghostbuster_KilledInhabitant", OnKilledInhabitant);
         }
-
         
         [HarmonyPatch]
         public class MyPatchClass
@@ -88,6 +88,12 @@ namespace ReactiveHearthians
             }
         }
 
+        // You monster!
+        public void OnKilledInhabitant(string owlkName)
+        {
+            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player killed " + owlkName, MessageType.Success);
+            PlayerData.SetPersistentCondition("INHABITANT_KILLED", true);
+        }
 
         // Resetting dialogue variables
         public void OnExitConversation()
@@ -106,7 +112,10 @@ namespace ReactiveHearthians
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S2", false);
             DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_HUGGED_S1", false);
 
-            DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", false);
+            if (DialogueConditionManager.SharedInstance.GetConditionState("CHERT_RH_PROBE_TALKED"))
+            {
+                DialogueConditionManager.SharedInstance.SetConditionState("RH_CHERT_PROBE_SPOTTED", false);
+            }
         }
 
         // Dialogue variables
@@ -120,6 +129,8 @@ namespace ReactiveHearthians
 
             DialogueConditionManager.SharedInstance.SetConditionState("PLAY_AS_GABBRO", ReactiveHearthians.Instance.Play_As_Gabbro_Installed);
             DialogueConditionManager.SharedInstance.SetConditionState("NOPLAY_AS_GABBRO", !ReactiveHearthians.Instance.Play_As_Gabbro_Installed);
+
+            DialogueConditionManager.SharedInstance.SetConditionState("GHOSTBUSTER", ReactiveHearthians.Instance.Ghostbuster_Installed);
 
             if (PlayerData.GetShipLogFactSave("HN_POD_RESOLUTION") != null && PlayerData.GetShipLogFactSave("HN_POD_RESOLUTION").revealOrder > -1)
             {
@@ -683,7 +694,7 @@ namespace ReactiveHearthians
         public void GabbroStranger()
         {
             // This variable is set to true if the player has something new to say about the Stranger to Gabbro
-            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && PlayerData.GetPersistentCondition("DREAMWORLD_EVER_BEEN")) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD_CODE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAM_IS_CODE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_FRIEND") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1")))
+            if (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_RING") == false || DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_INHABITANTS") == false || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_EYE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_EYE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_LANTERN") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGERLANTERNHELD") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == false && PlayerData.GetPersistentCondition("DREAMWORLD_EVER_BEEN")) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD_CODE") == false && DialogueConditionManager.SharedInstance.GetConditionState("RH_STRANGER_DREAM_IS_CODE") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_PRISONER") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && Locator.GetShipLogManager().IsFactRevealed("IP_SARCOPHAGUS_X5") == true) || (DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_FRIEND") == false && DialogueConditionManager.SharedInstance.GetConditionState("GABBRO_RH_STRANGER_DREAMWORLD") == true && ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("SBtT.TheOutsider") != null && Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_HOME_X1")) || (ReactiveHearthians.Instance.ModHelper.Interaction.TryGetMod("xen.GhostBuster") != null && PlayerData.GetPersistentCondition("INHABITANT_KILLED") && PlayerData.GetPersistentCondition("GABBRO_RH_STRANGER_DREAMWORLD") && !PlayerData.GetPersistentCondition("GABBRO_RH_STRANGER_MURDERER")))
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_GABBRO_STRANGER_SOMETHINGNEW", true);
             }
