@@ -31,7 +31,7 @@ namespace ReactiveHearthians
 
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
-            GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", GabbroFlagsWatcher);
+            GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", FlagsWatcher);
             GlobalMessenger<string>.AddListener("xen.Ghostbuster_KilledInhabitant", OnKilledInhabitant);
 
             GlobalMessenger.AddListener("EnterDreamWorld", OnEnterDreamWorld);
@@ -704,10 +704,15 @@ namespace ReactiveHearthians
         }
 
         // Updates Gabbro conversation completion flags mid-conversation
-        public void GabbroFlagsWatcher(string str, bool bl)
+        public void FlagsWatcher(string str, bool bl)
         {
             switch (str)
             {
+                // PostZeroG
+                case "PostZeroG":
+                    PlayerData.SetPersistentCondition("ZERO_G_MISSION_DONE", true);
+                    break;
+                // Gabbro's variables
                 case "GABBRO_RH_STRANGER_RING":
                 case "GABBRO_RH_STRANGER_INHABITANTS":
                 case "GABBRO_RH_STRANGER_EYE":
@@ -716,6 +721,7 @@ namespace ReactiveHearthians
                 case "GABBRO_RH_STRANGER_PRISONER":
                 case "GABBRO_RH_STRANGER_LANTERN":
                 case "GABBRO_RH_STRANGER_FRIEND":
+                case "GABBRO_RH_STRANGER_MURDERER":
                     GabbroStranger();
                     break;
             }

@@ -1,4 +1,57 @@
 ﻿<DialogueTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/dialogue_schema.xsd">
+	<!-- Second loop easter egg -->
+	<DialogueNode>
+		<Name>Coach1</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredCondition>LOOP_COUNT_IS_2</RequiredCondition>
+				<Text>Yeah, I just died.</Text>
+				<DialogueTarget>Gossan_RH_JustDied</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gossan_RH_JustDied</Name>
+		<Dialogue>
+			<Page>Uhh… pardon? I'm not quite sure what you mean by that.</Page>
+			<Page>In case you're worried, as far as I can tell, you look 100% alive, no doubt about it.</Page>
+			<Page>Maybe you're just getting nervous. Here, I've got just the thing for you.</Page>
+		</Dialogue>
+		<DialogueTarget>Coach7</DialogueTarget>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Coach7</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ZERO_G_MISSION_DONE</RequiredPersistentCondition>
+				<Text>Sure, why not do this again?</Text>
+				<DialogueTarget>Gossan_RH_DoItAgain</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+	<DialogueNode>
+		<Name>Coach8</Name>
+		<DialogueOptionsList>
+			<DialogueOption>
+				<RequiredPersistentCondition>ZERO_G_MISSION_DONE</RequiredPersistentCondition>
+				<Text>Sure, why not do this again?</Text>
+				<DialogueTarget>Gossan_RH_DoItAgain</DialogueTarget>
+			</DialogueOption>
+		</DialogueOptionsList>
+	</DialogueNode>
+
+	<DialogueNode>
+		<Name>Gossan_RH_DoItAgain</Name>
+		<Dialogue>
+			<Page>What? No, no, the last time you did it, it was an obstacle course. This time is totally different.</Page>
+			<Page>Well, anyways, have fun, and try not to concuss yourself on your first launch.</Page>
+		</Dialogue>
+		<SetCondition>CoachSaysHi_1</SetCondition>
+	</DialogueNode>
+	
+	<!-- Standard stuff -->
 	<DialogueNode>
 		<Name>Gossan_RH_CoolThing</Name>
 		<EntryCondition>RH_COOLTHINGHELD</EntryCondition>
