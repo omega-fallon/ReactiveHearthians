@@ -24,10 +24,18 @@ namespace ReactiveHearthians
 
         public void Start()
         {
+            LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
+            {
+                owlksKilled = 0;
+            };
+
             GlobalMessenger.AddListener("EnterConversation", OnEnterConversation);
             GlobalMessenger.AddListener("ExitConversation", OnExitConversation);
             GlobalMessenger<string, bool>.AddListener("DialogueConditionChanged", GabbroFlagsWatcher);
             GlobalMessenger<string>.AddListener("xen.Ghostbuster_KilledInhabitant", OnKilledInhabitant);
+
+            GlobalMessenger.AddListener("EnterDreamWorld", OnEnterDreamWorld);
+            GlobalMessenger.AddListener("ExitDreamWorld", OnExitDreamWorld);
         }
         
         [HarmonyPatch]
@@ -88,10 +96,32 @@ namespace ReactiveHearthians
             }
         }
 
+        // Dream World
+        public DreamWorldController dreamWorldController;
+        public void OnEnterDreamWorld()
+        {
+            dreamWorldController = Locator.GetDreamWorldController();
+            dreamWorldController.OnExitLanternBounds += OnExitLanternBounds;
+        }
+        public void OnExitDreamWorld()
+        {
+            dreamWorldController.OnExitLanternBounds -= OnExitLanternBounds;
+        }
+
+        // Dream World OOB glitch tracker
+        public void OnExitLanternBounds()
+        {
+            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player has seen the matrix.", MessageType.Success);
+            PlayerData.SetPersistentCondition("DREAM_WORLD_MATRIX_SEEN", true);
+        }
+
         // You monster!
+        public int owlksKilled;
         public void OnKilledInhabitant(string owlkName)
         {
+            owlksKilled += 1;
             ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player killed " + owlkName, MessageType.Success);
+            ReactiveHearthians.Instance.ModHelper.Console.WriteLine("Player has killed " + owlksKilled.ToString() + " inhabitants this loop.", MessageType.Success);
             PlayerData.SetPersistentCondition("INHABITANT_KILLED", true);
         }
 
@@ -489,7 +519,7 @@ namespace ReactiveHearthians
             }
 
             // This variable is set true if the player knows the dream world is a simulation.
-            if (Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_1_RULE_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_RULE_X2") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_3_RULE_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_3_STORY_X2"))
+            if (PlayerData.GetPersistentCondition("DREAM_WORLD_MATRIX_SEEN") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_1_RULE_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_2_RULE_X2") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_3_RULE_X1") || Locator.GetShipLogManager().IsFactRevealed("IP_DREAM_3_STORY_X2"))
             {
                 DialogueConditionManager.SharedInstance.SetConditionState("RH_STRANGER_DREAM_IS_CODE", true);
             }

@@ -25,7 +25,6 @@
 // Riebeck Solanum followup
 // Make the entire village panic
 // Tell Feldspar their first campsite choice (the jellyfish) is outside of dark bramble
-// GHOST BUSTER: Tell someone that you killed an Owlk
 
 // DONE LIST
 // option to tell Riebeck about the Stranger
@@ -65,6 +64,8 @@
 // Talk to Gabbro about ways you've died
 // Tell travelers that Feldspar is alive
 // Tell Feldspar about the Stranger; they'd want to know there's something in the solar system they missed
+// GHOST BUSTER: Tell someone that you killed an Owlk
+// Track doing the lantern set down glitch for dream world code
 
 // ASTRAL CODEC ADDENDUMS
 // - Hearth's Neighbor [done]
