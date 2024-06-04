@@ -710,8 +710,20 @@ namespace ReactiveHearthians
             {
                 // PostZeroG
                 case "PostZeroG":
-                    PlayerData.SetPersistentCondition("ZERO_G_MISSION_DONE", true);
+                    if (bl)
+                    {
+                        PlayerData.SetPersistentCondition("ZERO_G_MISSION_DONE", true);
+                    }
                     break;
+
+                // EndHideAndSeek
+                case "EndHideAndSeek":
+                    if (bl)
+                    {
+                        PlayerData.SetPersistentCondition("HIDE_AND_SEEK_DONE", true);
+                    }
+                    break;
+
                 // Gabbro's variables
                 case "GABBRO_RH_STRANGER_RING":
                 case "GABBRO_RH_STRANGER_INHABITANTS":
